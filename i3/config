@@ -5,19 +5,23 @@ focus_follows_mouse no
 hide_edge_borders smart
 
 # Font for window titles and the i3-bar. 
-font pango: DejaVu Sans Mono 12
+# the font size is 0 so we don't have a titlebar
+font pango: JetBrainsMono Nerd Font 0
 
 # Gaps between windows
-gaps inner 20
-gaps outer 15 
-smart_gaps on
-
+gaps inner 30
+gaps top 32 
+# smart_gaps on
 
 # Start XDG autostart .desktop files using dex. 
 exec --no-startup-id dex --autostart --environment i3
 
 #Start picom compositor
-exec-always --no-startup-id picom --config ~/.config/picom.conf &
+exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf 
+
+
+#Start polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -34,6 +38,9 @@ bindsym $mod+X kill
 
 # start applications launcher
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# start power menu 
+bindsym $mod+q exec --no-startup-id rofi -show powermenu -modi powermenu:~/.config/rofi/scripts/power-menu.sh -debug
 
 # change focus
 bindsym $mod+h focus left
@@ -107,7 +114,11 @@ mode "resize" {
 #disable the floating for jetbrains toolbox cuz it was floating by default
 for_window [title="JetBrains Toolbox"] floating disable 
 
-exec_always --no-startup-id feh --bg-scale ~/Downloads/dracula.png
+for_window [class="Vivaldi-stable"] border normal
+for_window [class="Code"] border normal
+
+
+exec_always --no-startup-id feh --bg-scale ~/Documents/wallpapers/purple-trees.jpg
 
 
 # class                 border  bground text    indicator child_border
