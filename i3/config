@@ -118,7 +118,7 @@ for_window [class="Vivaldi-stable"] border normal
 for_window [class="Code"] border normal
 
 
-exec_always --no-startup-id feh --bg-scale ~/Documents/wallpapers/purple-trees.jpg
+exec_always --no-startup-id feh --bg-scale ~/Documents/g-comp/wallpapers/purple-trees.jpg
 
 
 # class                 border  bground text    indicator child_border
