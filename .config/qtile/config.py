@@ -12,6 +12,8 @@ terminal ="kitty"
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+   Key([mod], "r", lazy.spawn("rofi -show drun -show-icons")), 
+
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
