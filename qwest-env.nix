@@ -1,15 +1,15 @@
 let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 	name = "qwest-env";
 	paths = with pkgs; [
-		starship        #1. terminal Prompt bar 
-		neovim     	#2. text editor
-		tmux       	#3. terminal multiplexer
-		rofi       	#4. application launcher on steroids
-		yazi       	#5. terminal file manager
-		bat        	#6. better cat
-		eza        	#7. better ls
-		fd         	#8. better find
-		ripgrep    	#9. better grep
+		starship        #1.  terminal Prompt bar 
+		neovim     	#2.  text editor
+		tmux       	#3.  terminal multiplexer
+		rofi       	#4.  application launcher on steroids
+		yazi       	#5.  terminal file manager
+		bat        	#6.  better cat
+		eza        	#7.  better ls
+		fd         	#8.  better find
+		ripgrep    	#9.  better grep
 		btop       	#10. terminal system monitor
 		zoxide    	#11. better cd
 		tldr       	#12. better man
@@ -17,6 +17,16 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		neo        	#14. matrix rain (use the numbers to change color)
 		google-chrome   #15. browser 
 		atuin           #16. Better Shell History
+		starship        #17. terminal Prompt bar  
+		gh              #18. github cli
+		delta           #19. better git diff
+		jq              #20. operate on json
+		fx              #21. view json
+		lazydocker      #22. docker helpers
+		duf             #23. modern df
+		dust            #24. modern du
+		gum             #25. better TUI for user interaction in shell scripts
+		stow            #26. symlinc the dotfiles repo
 	]; 
 }
 
