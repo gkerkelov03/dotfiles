@@ -15,7 +15,7 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		tldr       	#12. better man
 		fzf        	#13. general-purpose fuzzy finder
 		neo        	#14. matrix rain (use the numbers to change color)
-		brave		#15. browser
+		google-chrome   #15. browser 
 		atuin           #16. Better Shell History
 	]; 
 }
