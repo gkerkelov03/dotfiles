@@ -1,0 +1,6 @@
+2026/03/23-05:33:00.135 5 Reusing MANIFEST /home/qwest/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/23-05:33:00.144 5 Recovering log #6
+2026/03/23-05:33:00.147 5 Reusing old log /home/qwest/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/000006.log 
+2026/03/23-05:34:00.159 5 Level-0 table #10: started
+2026/03/23-05:34:00.180 5 Level-0 table #10: 418267 bytes OK
+2026/03/23-05:34:00.188 5 Delete type=0 #6
