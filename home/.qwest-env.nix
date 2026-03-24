@@ -28,6 +28,7 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		gum             #25. better TUI for user interaction in shell scripts
 		stow            #26. symlinc the dotfiles repo
 		fastfetch       #27. display info in a cool way in the terminal 
+		lazygit         #28. git TUI 
 	]; 
 }
 
