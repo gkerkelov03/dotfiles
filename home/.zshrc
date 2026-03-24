@@ -22,23 +22,25 @@ eval "$(zoxide init zsh)"  # fast directory jumping
 # -----------------------------
 # Aliases: modern replacements
 # -----------------------------
-alias ll="eza -lah --color=always"
-alias la="eza -A --color=always"
-alias l="eza -CF --color=always"
-alias ls="eza"
-alias cat="bat"
-alias grep="rg"
-alias du="dust"
-alias df="duf"
-alias top="btop"
-alias vim="nvim"
+alias l="eza -C -F --color=always"
+alias ll='eza --long --all --human-readable --color=always'  
+alias la='eza --all --color=always'  
+alias l='eza --grid --classify --color=always'  
+
 alias gs="git status"
 alias gp="git push"
 alias gl="git log --oneline --graph --decorate"
 alias gd="git diff | delta"
+
+alias vim="nvim"
+alias top="btop"
+alias cat="bat"
+alias grep="rg"
+alias du="dust"
+alias df="duf"
+
 alias chrome="google-chrome &"
 alias update="sudo apt update && sudo apt upgrade -y"
-alias clear="clear"
 alias c="clear"
 
 # -----------------------------
@@ -49,6 +51,11 @@ mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # cd with zoxide integration
 z() { zoxide add "$PWD"; cd "$1"; } # automatically adds current dir before cd
+
+#zoxide with fuzzy finder
+zjump() {
+  cd "$(zoxide query -l | fzf)" || echo "Canceled"
+}
 
 # go up N directories: e.g., up 3
 up() { cd $(printf "%s/.." $(seq 1 $1)) }
@@ -125,7 +132,7 @@ fzfcd() {
 # Misc handy shortcuts
 # -----------------------------
 # Open editor in current directory
-e() { nvim "$@" ; }
+v() { nvim "$@" ; }
 
 # Open bat preview in pager for any file
 bp() { bat "$@" | less -R; }
