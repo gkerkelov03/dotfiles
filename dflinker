@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Get the directory where this script lives
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+HOME_DIR="$REPO_ROOT/home"
+CONFIG_DIR="$REPO_ROOT/config"
+
+# Target destinations
+TARGET_HOME="$HOME"
+TARGET_CONFIG="$HOME/.config"
+
+# Ensure .config exists
+mkdir -p "$TARGET_CONFIG"
+
+function link_files() {
+    echo "--- Linking Dotfiles ---"
+    
+    # Link files from /home to ~/
+    for file in $(ls -A "$HOME_DIR"); do
+        echo "Linking $file to $TARGET_HOME/.$file"
+        ln -snf "$HOME_DIR/$file" "$TARGET_HOME/.$file"
+    done
+
+    # Link directories/files from /config to ~/.config/
+    for item in $(ls -A "$CONFIG_DIR"); do
+        echo "Linking $item to $TARGET_CONFIG/$item"
+        ln -snf "$CONFIG_DIR/$item" "$TARGET_CONFIG/$item"
+    done
+    echo "Done!"
+}
+
+function remove_links() {
+    echo "--- Removing Symlinks ---"
+    
+    # Remove from ~/
+    for file in $(ls -A "$HOME_DIR"); do
+        if [ -L "$TARGET_HOME/.$file" ]; then
+            echo "Removing $TARGET_HOME/.$file"
+            rm "$TARGET_HOME/.$file"
+        fi
+    done
+
+    # Remove from ~/.config/
+    for item in $(ls -A "$CONFIG_DIR"); do
+        if [ -L "$TARGET_CONFIG/$item" ]; then
+            echo "Removing $TARGET_CONFIG/$item"
+            rm "$TARGET_CONFIG/$item"
+        fi
+    done
+    echo "Done!"
+}
+
+function show_help() {
+    echo "Usage: dflinker [option]"
+    echo "Options:"
+    echo "  -l, --link    Symlink files from repo to system"
+    echo "  -r, --remove  Remove symlinks from system"
+    echo "  -h, --help    Show this help message"
+}
+
+# Logic for flags
+case "$1" in
+    -l|--link)
+        link_files
+        ;;
+    -r|--remove)
+        remove_links
+        ;;
+    -h|--help|*)
+        show_help
+        ;;
+esac
