@@ -2,7 +2,7 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 	name = "qwest-env";
 	paths = with pkgs; [
 		starship        #1.  terminal Prompt bar 
-    neovim          #2.  text editor
+        neovim          #2.  text editor
 		tmux       	#3.  terminal multiplexer
 		rofi       	#4.  application launcher on steroids
 		yazi       	#5.  terminal file manager
@@ -30,6 +30,7 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		fastfetch       #27. display info in a cool way in the terminal 
 		lazygit         #28. git TUI 
 		gcc             #28. the c and c++ compiler
+		xclip           #28. clipboard utilities used by nvim for example
 	]; 
 }
 

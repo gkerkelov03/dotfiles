@@ -1,72 +1,74 @@
 #!/bin/bash
 
-# Get the directory where this script lives
+# Get the absolute path of the repository
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOME_DIR="$REPO_ROOT/home"
 CONFIG_DIR="$REPO_ROOT/config"
-
-# Target destinations
 TARGET_HOME="$HOME"
 TARGET_CONFIG="$HOME/.config"
 
-# Ensure .config exists
-mkdir -p "$TARGET_CONFIG"
+# Ensure hidden files (dotfiles) are caught by the loops
+shopt -s dotglob
 
-function link_files() {
-    echo "--- Linking Dotfiles ---"
-    
-    # Link files from /home to ~/
-    for file in $(ls -A "$HOME_DIR"); do
-        echo "Linking $file to $TARGET_HOME/.$file"
-        ln -snf "$HOME_DIR/$file" "$TARGET_HOME/.$file"
-    done
+link_files() {
+    echo "--- 🔗 Linking Dotfiles ---"
+    mkdir -p "$TARGET_CONFIG"
 
-    # Link directories/files from /config to ~/.config/
-    for item in $(ls -A "$CONFIG_DIR"); do
-        echo "Linking $item to $TARGET_CONFIG/$item"
-        ln -snf "$CONFIG_DIR/$item" "$TARGET_CONFIG/$item"
-    done
-    echo "Done!"
-}
+    # 1. Link items from home/ directly to $HOME/
+    for item in "$HOME_DIR"/*; do
+        [ -e "$item" ] || continue
+        target="$TARGET_HOME/$(basename "$item")"
 
-function remove_links() {
-    echo "--- Removing Symlinks ---"
-    
-    # Remove from ~/
-    for file in $(ls -A "$HOME_DIR"); do
-        if [ -L "$TARGET_HOME/.$file" ]; then
-            echo "Removing $TARGET_HOME/.$file"
-            rm "$TARGET_HOME/.$file"
+        if [ -e "$target" ] && [ ! -L "$target" ]; then
+            echo "⚠️  Skipping $target (Physical file/folder exists)"
+        else
+            echo "Linking $item -> $target"
+            ln -snf "$item" "$target"
         fi
     done
 
-    # Remove from ~/.config/
-    for item in $(ls -A "$CONFIG_DIR"); do
-        if [ -L "$TARGET_CONFIG/$item" ]; then
-            echo "Removing $TARGET_CONFIG/$item"
-            rm "$TARGET_CONFIG/$item"
+    # 2. Link items from config/ to ~/.config/
+    for item in "$CONFIG_DIR"/*; do
+        [ -e "$item" ] || continue
+        target="$TARGET_CONFIG/$(basename "$item")"
+
+        if [ -e "$target" ] && [ ! -L "$target" ]; then
+            echo "⚠️  Skipping $target (Physical file/folder exists)"
+        else
+            echo "Linking $item -> $target"
+            ln -snf "$item" "$target"
         fi
     done
     echo "Done!"
 }
 
-function show_help() {
-    echo "Usage: dflinker [option]"
+remove_links() {
+    echo "--- 🗑️ Removing Symlinks ---"
+
+    # Remove links in $HOME
+    for item in "$HOME_DIR"/*; do
+        target="$TARGET_HOME/$(basename "$item")"
+        [ -L "$target" ] && echo "Removing $target" && rm "$target"
+    done
+
+    # Remove links in ~/.config
+    for item in "$CONFIG_DIR"/*; do
+        target="$TARGET_CONFIG/$(basename "$item")"
+        [ -L "$target" ] && echo "Removing $target" && rm "$target"
+    done
+    echo "Done!"
+}
+
+show_help() {
+    echo "Usage: ./dflinker [option]"
     echo "Options:"
     echo "  -l, --link    Symlink files from repo to system"
     echo "  -r, --remove  Remove symlinks from system"
     echo "  -h, --help    Show this help message"
 }
 
-# Logic for flags
 case "$1" in
-    -l|--link)
-        link_files
-        ;;
-    -r|--remove)
-        remove_links
-        ;;
-    -h|--help|*)
-        show_help
-        ;;
+-l | --link) link_files ;;
+-r | --remove) remove_links ;;
+*) show_help ;;
 esac
