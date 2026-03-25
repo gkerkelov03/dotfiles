@@ -1,74 +1,73 @@
 #!/bin/bash
 
-# Get the absolute path of the repository
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# --- Configuration ---
+REPO_ROOT="$HOME/dotfiles"
 HOME_DIR="$REPO_ROOT/home"
 CONFIG_DIR="$REPO_ROOT/config"
 TARGET_HOME="$HOME"
 TARGET_CONFIG="$HOME/.config"
 
-# Ensure hidden files (dotfiles) are caught by the loops
+# --- Colors (Tailwind-inspired Palette) ---
+PURPLE="#BD93F9"
+CYAN="#8BE9FD"
+GREEN="#50FA7B"
+GRAY="#6272A4"
+BG="#282A36"
+
 shopt -s dotglob
 
-link_files() {
-    echo "--- 🔗 Linking Dotfiles ---"
+# Clean the screen for a fresh start
+clear
+
+# 1. Header with custom styling
+gum style \
+    --foreground "$PURPLE" --border-foreground "$PURPLE" \
+    --border rounded --align center --width 60 --margin "1 2" --padding "1 1" \
+    "💎 DOTFILES ENFORCER" "Enforcing system-wide aesthetic from $REPO_ROOT"
+
+# 2. Functional Sync Logic
+sync_item() {
+    local src="$1"
+    local dest="$2"
+
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        # Check if already correct
+        if [ -L "$dest" ] && [ "$(readlink -f "$dest")" == "$src" ]; then
+            return
+        fi
+        rm -rf "$dest"
+    fi
+    ln -snf "$src" "$dest"
+}
+
+# 3. Execution with a sleek Spinner
+gum spin --spinner monkey --title "✨ Aligning the stars (symlinking)..." -- sleep 0.8 && {
     mkdir -p "$TARGET_CONFIG"
 
-    # 1. Link items from home/ directly to $HOME/
+    # Sync Home items
     for item in "$HOME_DIR"/*; do
-        [ -e "$item" ] || continue
-        target="$TARGET_HOME/$(basename "$item")"
-
-        if [ -e "$target" ] && [ ! -L "$target" ]; then
-            echo "⚠️  Skipping $target (Physical file/folder exists)"
-        else
-            echo "Linking $item -> $target"
-            ln -snf "$item" "$target"
-        fi
+        [[ -e "$item" ]] || continue
+        sync_item "$item" "$TARGET_HOME/$(basename "$item")"
     done
 
-    # 2. Link items from config/ to ~/.config/
+    # Sync Config items
     for item in "$CONFIG_DIR"/*; do
-        [ -e "$item" ] || continue
-        target="$TARGET_CONFIG/$(basename "$item")"
-
-        if [ -e "$target" ] && [ ! -L "$target" ]; then
-            echo "⚠️  Skipping $target (Physical file/folder exists)"
-        else
-            echo "Linking $item -> $target"
-            ln -snf "$item" "$target"
-        fi
+        [[ -e "$item" ]] || continue
+        sync_item "$item" "$TARGET_CONFIG/$(basename "$item")"
     done
-    echo "Done!"
 }
 
-remove_links() {
-    echo "--- 🗑️ Removing Symlinks ---"
+# 4. Success Dashboard
+echo ""
+gum style --foreground "$GREEN" --bold "  󰄬 CONFIGURATION DEPLOYED"
+echo ""
 
-    # Remove links in $HOME
-    for item in "$HOME_DIR"/*; do
-        target="$TARGET_HOME/$(basename "$item")"
-        [ -L "$target" ] && echo "Removing $target" && rm "$target"
-    done
+# Create a nice layout for the summary
+LEFT=$(gum style --foreground "$CYAN" --width 25 "📁 Source Dir" "🏠 Target Home" "⚙️  Target Config")
+RIGHT=$(gum style --foreground "$GRAY" --width 40 "$REPO_ROOT" "$TARGET_HOME" "$TARGET_CONFIG")
 
-    # Remove links in ~/.config
-    for item in "$CONFIG_DIR"/*; do
-        target="$TARGET_CONFIG/$(basename "$item")"
-        [ -L "$target" ] && echo "Removing $target" && rm "$target"
-    done
-    echo "Done!"
-}
+gum join --horizontal "$LEFT" "$RIGHT"
 
-show_help() {
-    echo "Usage: ./dflinker [option]"
-    echo "Options:"
-    echo "  -l, --link    Symlink files from repo to system"
-    echo "  -r, --remove  Remove symlinks from system"
-    echo "  -h, --help    Show this help message"
-}
-
-case "$1" in
--l | --link) link_files ;;
--r | --remove) remove_links ;;
-*) show_help ;;
-esac
+echo ""
+gum style --foreground "$PURPLE" --italic "  Run this script anytime to reset your environment."
+echo ""
