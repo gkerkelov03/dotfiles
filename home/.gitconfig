@@ -1,0 +1,55 @@
+#Use delta by default
+[user]
+    name = Your Name
+    email = your@email.com
+
+[core]
+    editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and p to jump between files
+    light = false      # set to true if you use a light terminal theme
+    side-by-side = true
+    line-numbers = true
+    syntax-theme = Dracula
+    features = decorations
+    minus-style = red italic
+    plus-style = green bold
+
+    conflict-foreground-color = "#BD93F9" # Purple
+    conflict-marker-begin = "┏━"
+    conflict-marker-end   = "┗━"
+    conflict-marker-mid   = "┣━"
+    
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = "#BD93F9" box 
+    line-numbers-left-style = "#6272A4"
+    line-numbers-right-style = "#6272A4"
+
+[alias]
+    # The "Masterpiece" Log View
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    # Quick status
+    s = status -sb
+    # Fancy diff
+    d = diff
+    # Clean branches
+    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative))'
+
+[column]
+    ui = auto
+
+[merge]
+    conflictstyle = zdiff3
+
+[branch]
+    sort = -committerdate
+
+[fetch]
+    prune = true

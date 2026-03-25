@@ -17,7 +17,7 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		neo        	#14. matrix rain (use the numbers to change color)
 		google-chrome   #15. browser 
 		atuin           #16. Better Shell History
-		alacritty       #17. Terminal
+        jrnl            #17. Journal / Notes in the terminal
 		gh              #18. github cli
 		delta           #19. better git diff
 		jq              #20. operate on json

@@ -4,6 +4,7 @@ from libqtile.config import Key, Group, Screen, Match
 from libqtile.lazy import lazy
 
 mod = "mod4"
+alt = "mod1"
 terminal = "kitty"
 directions = {"h": "left", "l": "right", "j": "down", "k": "up"}
 keys = [
@@ -12,6 +13,8 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "r", lazy.reload_config(), desc="Reload config"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+    Key([alt], "i", lazy.spawn("xdotool key Down"), desc="Map to DOWN Arrow Key"),
+    Key([alt], "u", lazy.spawn("xdotool key Up"), desc="Map to UP Arrow Key"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle layouts"),
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle split/unsplit"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"), 

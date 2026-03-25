@@ -1,7 +1,5 @@
-# -----------------------------
-# Starship prompt
-# -----------------------------
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"  
 
 # -----------------------------
 # History & shell options
@@ -17,31 +15,27 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY AUTO_CD PUSHD_IGNORE_DUPS EXTENDED_GLOB 
 # -----------------------------
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
-eval "$(zoxide init zsh)"  # fast directory jumping
 
 # -----------------------------
 # Aliases: modern replacements
 # -----------------------------
-alias l="eza -C -F --color=always"
-alias ll='eza --long --all --human-readable --color=always'  
-alias la='eza --all --color=always'  
-alias l='eza --grid --classify --color=always'  
+alias l='eza -G --icons --classify --color=always --group-directories-first'
+alias la='eza -a --icons --color=always --group-directories-first'
+alias ll='eza -lAh --icons --octal-permissions --no-user --group-directories-first --git --header --color=always'
 
-alias gs="git status"
-alias gp="git push"
-alias gl="git log --oneline --graph --decorate"
-alias gd="git diff | delta"
+alias g='git'
+alias gs='git s'     # Calls the 's' alias inside git config
+alias gl='git lg'    # Calls the 'lg' alias inside git config
+alias gd='git d'     # Calls the 'd' alias (Delta diff)
+alias gp='git push'
 
-alias vim="nvim"
-alias top="btop"
+alias v="nvim"
 alias cat="bat"
 alias grep="rg"
 alias du="dust"
 alias df="duf"
 
 alias chrome="google-chrome &"
-alias update="sudo apt update && sudo apt upgrade -y"
-alias c="clear"
 
 # -----------------------------
 # Navigation helpers
@@ -49,16 +43,10 @@ alias c="clear"
 # mkcd: make directory + enter it
 mkcd() { mkdir -p "$1" && cd "$1"; }
 
-# cd with zoxide integration
-z() { zoxide add "$PWD"; cd "$1"; } # automatically adds current dir before cd
-
 #zoxide with fuzzy finder
 zjump() {
   cd "$(zoxide query -l | fzf)" || echo "Canceled"
 }
-
-# go up N directories: e.g., up 3
-up() { cd $(printf "%s/.." $(seq 1 $1)) }
 
 # -----------------------------
 # TLDR wrapper: fallback to bat if page missing
@@ -91,36 +79,6 @@ gco() { git checkout "$@" }
 ld() { lazydocker "$@" }
 
 # -----------------------------
-# JSON helpers
-# -----------------------------
-jqr() { jq "$@" }
-fxr() { fx "$@" }
-
-# -----------------------------
-# Interactive prompts with gum
-# -----------------------------
-ask() { gum input --prompt "$1: " }
-confirm() { gum confirm "$1" }
-
-# -----------------------------
-# Quick project navigation
-# -----------------------------
-cdrepo() { cd ~/code/"$1" || echo "Project not found" }
-# zoxide + fzf project jump
-proj() { cd "$(ls -d ~/code/* | fzf)" || echo "Canceled" }
-
-# -----------------------------
-# Fun / info commands
-# -----------------------------
-matrix() { neo }
-fetch() { fastfetch }
-
-# -----------------------------
-# Dotfiles management
-# -----------------------------
-stowrc() { stow -t ~ "$@" }
-
-# -----------------------------
 # Fuzzy directory jumping
 # -----------------------------
 fzfcd() {
@@ -131,21 +89,8 @@ fzfcd() {
 # -----------------------------
 # Misc handy shortcuts
 # -----------------------------
-# Open editor in current directory
-v() { nvim "$@" ; }
-
-# Open bat preview in pager for any file
-bp() { bat "$@" | less -R; }
-
 # Quick tree view of current directory
 tree() { fd --type d . | sed 's|[^/]*/| |g' ; }
-
-# Quick search for text in current project
-fs() { rg --color=always "$@" | fzf --ansi --preview 'bat --color=always {1}' ; }
-
-# Clipboard helpers (if xclip installed)
-copy() { xclip -selection clipboard <<< "$*" ; }
-paste() { xclip -selection clipboard -o ; }
 
 # -----------------------------
 # Go to previous directory quickly
