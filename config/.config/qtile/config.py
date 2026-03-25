@@ -22,8 +22,8 @@ for key, dir in directions.items():
     keys.append(Key([mod, "shift"], key, getattr(lazy.layout, f"shuffle_{dir}")(), desc=f"Move window {dir}"))
     keys.append(Key([mod, "control"], key, getattr(lazy.layout, f"grow_{dir}")(), desc=f"Grow window {dir}"))
 
-groups = Group(str(i)) for i in range(1, 6)
-for g in [groups]:
+groups = [Group(str(i)) for i in range(1, 6)]
+for g in groups:
     keys.extend([
         Key([mod], g.name, lazy.group[g.name].toscreen(), desc=f"Switch to group {g.name}"),
         Key([mod, "shift"], g.name, lazy.window.togroup(g.name), desc=f"Move window to group {g.name}"),
@@ -44,7 +44,7 @@ status_bar_widgets_list = [
     widget.Clock(format="%Y-%m-%d %a %I:%M %p")
 ]
 status_bar = bar.Bar(status_bar_widgets_list, 15)
-screens = [Screen(bottom=status_bar, background="#000000")]
+screens = [Screen(bottom=status_bar)]
 
 wmname = "LG3D"                         # Fix Java GUI apps
 focus_on_window_activation = "smart"    # Focus new windows only when appropriate (avoids focus stealing)
