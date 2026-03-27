@@ -1,10 +1,18 @@
-let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
-	name = "qwest-env";
-	paths = with pkgs; [
+{ config, pkgs, ... }:
+
+{
+  home.username = "your-username";
+  home.homeDirectory = "/home/your-username";
+
+  home.stateVersion = "23.11"; # don’t change casually
+
+  programs.home-manager.enable = true;
+
+  home.packages = with pkgs; [
 		starship        #1.  terminal Prompt bar 
-        neovim          #2.  text editor
+                neovim          #2.  text editor
 		tmux       	#3.  terminal multiplexer
-		rofi       	#4.  application launcher on steroids
+		rofi-wayland    #4.  application launcher on steroids
 		yazi       	#5.  terminal file manager
 		bat        	#6.  better cat
 		eza        	#7.  better ls
@@ -17,20 +25,20 @@ let pkgs = import <nixpkgs> {config.allowUnfree = true;}; in pkgs.buildEnv {
 		neo        	#14. matrix rain (use the numbers to change color)
 		google-chrome   #15. browser 
 		atuin           #16. Better Shell History
-        jrnl            #17. Journal / Notes in the terminal
-		gh              #18. github cli
+				#17.
+            	gh              #18. github cli
 		delta           #19. better git diff
 		jq              #20. operate on json
 		fx              #21. view json
 		lazydocker      #22. docker helpers
 		duf             #23. modern df
 		dust            #24. modern du
-		gum             #25. better TUI for user interaction in shell scripts
-		stow            #26. symlinc the dotfiles repo
+				#25
+				#26
 		fastfetch       #27. display info in a cool way in the terminal 
 		lazygit         #28. git TUI 
-		gcc             #28. the c and c++ compiler
-		xclip           #28. clipboard utilities used by nvim for example
+		gcc             #29. the c and c++ compiler
+		wl-clipboard    #30. clipboard utilities used by nvim for example
 	]; 
 }
 

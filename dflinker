@@ -1,73 +1,17 @@
 #!/bin/bash
+set -e
 
-# --- Configuration ---
-REPO_ROOT="$HOME/dotfiles"
-HOME_DIR="$REPO_ROOT/home"
-CONFIG_DIR="$REPO_ROOT/config"
-TARGET_HOME="$HOME"
-TARGET_CONFIG="$HOME/.config"
+REPO="$HOME/dotfiles"
+mkdir -p "$HOME/.config"
 
-# --- Colors (Tailwind-inspired Palette) ---
-PURPLE="#BD93F9"
-CYAN="#8BE9FD"
-GREEN="#50FA7B"
-GRAY="#6272A4"
-BG="#282A36"
+for f in "$REPO/home/"*; do
+  [ -e "$f" ] || continue
+  ln -snf "$f" "$HOME/$(basename "$f")"
+done
 
-shopt -s dotglob
+for f in "$REPO/config/"*; do
+  [ -e "$f" ] || continue
+  ln -snf "$f" "$HOME/.config/$(basename "$f")"
+done
 
-# Clean the screen for a fresh start
-clear
-
-# 1. Header with custom styling
-gum style \
-    --foreground "$PURPLE" --border-foreground "$PURPLE" \
-    --border rounded --align center --width 60 --margin "1 2" --padding "1 1" \
-    "💎 DOTFILES ENFORCER" "Enforcing system-wide aesthetic from $REPO_ROOT"
-
-# 2. Functional Sync Logic
-sync_item() {
-    local src="$1"
-    local dest="$2"
-
-    if [ -e "$dest" ] || [ -L "$dest" ]; then
-        # Check if already correct
-        if [ -L "$dest" ] && [ "$(readlink -f "$dest")" == "$src" ]; then
-            return
-        fi
-        rm -rf "$dest"
-    fi
-    ln -snf "$src" "$dest"
-}
-
-# 3. Execution with a sleek Spinner
-gum spin --spinner monkey --title "✨ Aligning the stars (symlinking)..." -- sleep 0.8 && {
-    mkdir -p "$TARGET_CONFIG"
-
-    # Sync Home items
-    for item in "$HOME_DIR"/*; do
-        [[ -e "$item" ]] || continue
-        sync_item "$item" "$TARGET_HOME/$(basename "$item")"
-    done
-
-    # Sync Config items
-    for item in "$CONFIG_DIR"/*; do
-        [[ -e "$item" ]] || continue
-        sync_item "$item" "$TARGET_CONFIG/$(basename "$item")"
-    done
-}
-
-# 4. Success Dashboard
-echo ""
-gum style --foreground "$GREEN" --bold "  󰄬 CONFIGURATION DEPLOYED"
-echo ""
-
-# Create a nice layout for the summary
-LEFT=$(gum style --foreground "$CYAN" --width 25 "📁 Source Dir" "🏠 Target Home" "⚙️  Target Config")
-RIGHT=$(gum style --foreground "$GRAY" --width 40 "$REPO_ROOT" "$TARGET_HOME" "$TARGET_CONFIG")
-
-gum join --horizontal "$LEFT" "$RIGHT"
-
-echo ""
-gum style --foreground "$PURPLE" --italic "  Run this script anytime to reset your environment."
-echo ""
+echo ok
