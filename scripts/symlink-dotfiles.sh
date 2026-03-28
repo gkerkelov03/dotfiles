@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+shopt -s dotglob
+
+REPO="$HOME/dotfiles"
+mkdir -p "$HOME/.config"
+
+for f in "$REPO/home/"*; do
+    [ -e "$f" ] || continue
+    ln -snf "$f" "$HOME/$(basename "$f")"
+done
+
+for f in "$REPO/config/"*; do
+    [ -e "$f" ] || continue
+    ln -snf "$f" "$HOME/.config/$(basename "$f")"
+done
+
+echo ok
+
