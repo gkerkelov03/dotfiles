@@ -47,6 +47,10 @@
 
 [merge]
     conflictstyle = zdiff3
+    ff = true
+    
+[pull]
+    rebase = false
 
 [branch]
     sort = -committerdate
