@@ -14,9 +14,7 @@
     let
       system = "x86_64-linux";
 
-      pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev: {
-        config.allowUnfree = true;
-      });
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations."qwest" =
         home-manager.lib.homeManagerConfiguration {
