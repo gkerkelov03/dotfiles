@@ -5,7 +5,9 @@
 
   home.username = "qwest";
   home.homeDirectory = "/home/qwest";
+  
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
 		starship        #1.  terminal Prompt bar 
