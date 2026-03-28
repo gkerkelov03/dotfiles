@@ -5,8 +5,9 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 alt = "mod1"
-terminal = "kitty"
+terminal = "alacritty"
 directions = {"h": "left", "l": "right", "j": "down", "k": "up"}
+
 keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "o", lazy.spawn("rofi -show drun"), desc="Open launcher"),
