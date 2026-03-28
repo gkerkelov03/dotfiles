@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -e
 shopt -s dotglob
 
@@ -15,5 +16,4 @@ for f in "$REPO/config/"*; do
     ln -snf "$f" "$HOME/.config/$(basename "$f")"
 done
 
-echo ok
-
+echo done
