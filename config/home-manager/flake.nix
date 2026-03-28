@@ -20,6 +20,8 @@
     in {
       homeConfigurations."qwest" =
         home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          
           modules = [
             ./home.nix
           ];
