@@ -11,9 +11,9 @@
 
   home.packages = with pkgs; [
 		starship        #1.  terminal Prompt bar 
-        neovim          #2.  text editor
+                neovim          #2.  text editor
 		tmux       	    #3.  terminal multiplexer
-		rofi-wayland    #4.  application launcher on steroids
+		rofi                #4.  application launcher on steroids
 		yazi       	    #5.  terminal file manager
 		bat        	    #6.  better cat
 		eza        	    #7.  better ls

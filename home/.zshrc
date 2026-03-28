@@ -30,12 +30,15 @@ alias gd='git d'     # Calls the 'd' alias (Delta diff)
 alias gp='git push'
 
 alias v="nvim"
+alias vim="nvim"
+
 alias cat="bat"
 alias grep="rg"
 alias du="dust"
 alias df="duf"
 
 alias chrome="google-chrome &"
+alias hms="home-manager switch --flake ~/.config/home-manager\#qwest"
 
 # -----------------------------
 # Navigation helpers
