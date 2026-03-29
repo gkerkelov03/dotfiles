@@ -1,7 +1,7 @@
 #Use delta by default
 [user]
-    name = Your Name
-    email = your@email.com
+    name = Georgi Kerkelov
+    email = gkerkelov03@gmail.com
 
 [core]
     editor = nvim
@@ -33,13 +33,9 @@
     line-numbers-right-style = "#6272A4"
 
 [alias]
-    # The "Masterpiece" Log View
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    # Quick status
     s = status -sb
-    # Fancy diff
     d = diff
-    # Clean branches
     br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative))'
 
 [column]
