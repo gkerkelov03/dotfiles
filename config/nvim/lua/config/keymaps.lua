@@ -13,3 +13,6 @@ keymap.set("n", "<leader>O", "O<Esc>")
 -- Center search results
 keymap.set("n", "n", "nzz")
 keymap.set("n", "N", "Nzz")
+
+-- Delete all
+keymap.set("n", "<leader>da", ":%d<cr>", { desc = "Delete all" })
