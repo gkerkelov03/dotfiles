@@ -16,3 +16,6 @@ keymap.set("n", "N", "Nzz")
 
 -- Delete all
 keymap.set("n", "<leader>da", ":%d<cr>", { desc = "Delete all" })
+
+-- Copy all
+keymap.set("n", "<leader>ya", ":%y+<cr>", { desc = "Copy all" })
