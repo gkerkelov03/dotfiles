@@ -7,9 +7,11 @@
   home.homeDirectory = "/home/qwest";
   
   programs.home-manager.enable = true;
+  fonts.fontconfig.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+        nerd-fonts.jetbrains-mono
 		starship        #1.  terminal Prompt bar 
         neovim          #2.  text editor
 		tmux            #3.  terminal multiplexer
@@ -40,4 +42,5 @@
 		xclip           #30. clipboard utilities used by nvim for example
 	]; 
 }
+
 
