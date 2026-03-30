@@ -2,4 +2,22 @@
 import = ["./dracula.toml"]
 
 
+[window]
+padding = { x = 12, y = 12 }
+dynamic_title = true
+opacity = 0.90
+blur = true
 
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+size = 12.0
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+
+[terminal.shell]
+program = "zsh" 

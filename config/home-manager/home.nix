@@ -40,6 +40,9 @@
 		lazygit         #28. git TUI 
 		gcc             #29. the c and c++ compiler
 		xclip           #30. clipboard utilities used by nvim for example
+        dog             #31. modern tool for DNS lookups (better dig)
+        curlie          #31. better fully compatible curl
+        xh              #32. better fully compatible curl
 	]; 
 }
 
