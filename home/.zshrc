@@ -17,7 +17,6 @@ alias ll='eza -lAh --icons --octal-permissions --no-user --group-directories-fir
 alias vim="nvim"
 alias cat="bat"
 alias grep="rg"
-alias curl="curlie"
 alias du="dust"
 alias df="duf"
 

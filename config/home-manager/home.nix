@@ -11,39 +11,50 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-        nerd-fonts.jetbrains-mono
-		starship        #1.  terminal Prompt bar 
-        neovim          #2.  text editor
-		tmux            #3.  terminal multiplexer
-		rofi            #4.  application launcher on steroids
-		yazi            #5.  terminal file manager
-		bat             #6.  better cat
-		eza             #7.  better ls
-		fd              #8.  better find
-		ripgrep         #9.  better grep
-		btop            #10. terminal system monitor
-		zoxide          #11. better cd
-		tldr            #12. better man
-		fzf             #13. general-purpose fuzzy finder
-		neo             #14. matrix rain (use the numbers to change color)
-		google-chrome   #15. browser 
-		atuin           #16. Better Shell History
-		curl            #17. Send network requests
-        gh              #18. github cli
-		delta           #19. better git diff
-		jq              #20. operate on json
-		fx              #21. view json
-		lazydocker      #22. docker helpers
-		duf             #23. modern df
-		dust            #24. modern du
-		fastfetch       #27. display info in a cool way in the terminal 
-		lazygit         #28. git TUI 
-		gcc             #29. the c and c++ compiler
-		xclip           #30. clipboard utilities used by nvim for example
-        dog             #31. modern tool for DNS lookups (better dig)
-        curlie          #31. better fully compatible curl
-        xh              #32. better fully compatible curl
-	]; 
+		starship        #terminal Prompt bar
+		tmux            #terminal multiplexer
+		yazi            #terminal file manager
+		btop            #terminal system monitor
+		fzf             #general-purpose fuzzy finder
+		neo             #matrix rain (use the numbers to change color)
+		atuin           #Better Shell History
+        gh              #github cli
+		delta           #better git diff
+		lazydocker      #docker helpers
+		fastfetch       #display info in a cool way in the terminal 
+		lazygit         #git TUI 
+
+        #JSON
+		jless           #view json
+		jc              #turn text to json
+		gron            #flatten json (mainly for grep/awk)
+		jqp             #jq query builder
+		jq              #operate on json
+
+        #GUI apps
+        neovim          #text editor
+		google-chrome   #browser
+		rofi            #application launcher 
+
+        #Modern CLI tools that replace the old ones
+		bat             #better cat
+		eza             #better ls
+		fd              #better find
+		ripgrep         #better grep
+		zoxide          #better cd
+		tldr            #better man
+		duf             #better df
+		dust            #better du
+        dog             #better dig
+        xh              #better curl
+
+        #Utilities
+		gcc             #the c & c++ compiler
+        xclip           #clipboard utilities
+
+        #Fonts
+        nerd-fonts.jetbrains-mono 
+	];
 }
 
 
