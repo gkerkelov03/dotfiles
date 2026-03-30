@@ -1,0 +1,89 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "dracula"
+
+format = """
+[](yellow)\
+$git_branch\
+$git_status\
+$directory\
+[](fg:yellow)\
+$character
+"""
+
+right_format = """
+[](comment)
+$time\
+[](fg:comment bg:cyan)\
+$os\
+[ ](cyan)\
+"""
+
+[palettes.dracula]
+background = "#282a36"
+current_line = "#44475a"
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+
+
+[directory.substitutions]
+"/home/qwest" = " "
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[os]
+disabled = false     
+style = "bg:cyan fg:background" 
+format = "[ ]($style)"     
+
+[directory]
+style = "fg:background bg:yellow"
+format = "[$path]($style)" 
+home_symbol = " "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:comment fg:green"
+format = '[  $time ]($style)'
+
+[character]
+success_symbol = '[ ](bold yellow)'
+error_symbol = '[ ](bold red)'
+
+[git_branch]
+symbol = ""
+style = "fg:background bg:yellow" 
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:background bg:yellow" 
+format = '[($all_status$ahead_behind )]($style)'
+
+##########################################################################
+
+[aws]
+style = "bold orange" 
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:current_line fg:green"
+format = '[[ $symbol ($version) ]($style)]'
+
+[rust]
+symbol = ""
+style = "bg:current_line fg:orange"
+format = '[[ $symbol ($version) ]($style)]'
+

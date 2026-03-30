@@ -1,15 +1,4 @@
 colourful: true
-# yellow #F1FA8C
-# red    #FF5555
-# purple #BD93F9
-# pink   #FF79C6
-# orange #FFB86C
-# green  #50FA7B
-# cyan   #8BE9FD
-# others:
-# dark-blue    #6272A4
-# foreground   #F8F8F2
-# current_line #44475A
 
 filekinds:
   normal: {foreground: "#F8F8F2"}
@@ -39,7 +28,7 @@ perms:
   attribute: {foreground: "#F8F8F2"}
 
 size:
-  major: {foreground: "F1FA8C"}
+  major: {foreground: "#F1FA8C"}
   minor: {foreground: "#BD93F9"}
   number_byte: {foreground: "#F8F8F2"}
   number_kilo: {foreground: "#F8F8F2"}

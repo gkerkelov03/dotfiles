@@ -11,30 +11,26 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-		starship        #terminal Prompt bar
+        neovim          #text editor
 		tmux            #terminal multiplexer
+		fzf             #general-purpose fuzzy finder
+		starship        #terminal Prompt bar
+		atuin           #Better Shell History
 		yazi            #terminal file manager
 		btop            #terminal system monitor
-		fzf             #general-purpose fuzzy finder
-		neo             #matrix rain (use the numbers to change color)
-		atuin           #Better Shell History
-        gh              #github cli
-		delta           #better git diff
-		lazydocker      #docker helpers
-		fastfetch       #display info in a cool way in the terminal 
-		lazygit         #git TUI 
 
-        #JSON
-		jless           #view json
-		jc              #turn text to json
-		gron            #flatten json (mainly for grep/awk)
-		jqp             #jq query builder
-		jq              #operate on json
+
+
+		lazydocker      #docker TUI
 
         #GUI apps
-        neovim          #text editor
 		google-chrome   #browser
 		rofi            #application launcher 
+
+        #Git
+		lazygit         #git TUI 
+        gh              #github cli
+		delta           #syntax-highlighting pager for GitHub-style terminal diffs
 
         #Modern CLI tools that replace the old ones
 		bat             #better cat
@@ -47,10 +43,24 @@
 		dust            #better du
         dog             #better dig
         xh              #better curl
+        
+        #Terminal visualizers
+		neo             #matrix rain (use the numbers to change color)
+		fastfetch       #display system info 
+        pipes
+
+        #JSON
+		jless           #view json
+		jc              #turn text to json
+		gron            #flatten json (mainly for grep/awk)
+		jqp             #jq query builder
+		jq              #operate on json
 
         #Utilities
+        ouch            #archive & unarchive
 		gcc             #the c & c++ compiler
         xclip           #clipboard utilities
+
 
         #Fonts
         nerd-fonts.jetbrains-mono 
