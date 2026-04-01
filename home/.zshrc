@@ -4,17 +4,35 @@ eval "$(zoxide init zsh)"
 export STARSHIP_CONFIG=~/dotfiles/config/starship/starship.toml
 
 setopt \
-    INC_APPEND_HISTORY    #add command to history immediately
-    SHARE_HISTORY         #share history across all open shells
-    AUTO_CD               #allow 'cd' by typing directory name only
-    PUSHD_IGNORE_DUPS     #avoid duplicate entries in directory stack
-    EXTENDED_GLOB         #enable advanced globbing patterns
-    CORRECT               #suggest corrections for mistyped commands
-    AUTO_MENU             #cycle through completion options with TAB
-    NOMATCH               #zsh: no matches found: *.txt instead of error
-    HIST_IGNORE_          #remove consecutive duplicate history entries
-    HIST_REDUCE_BLANKS    #remove extra spaces before saving history
-    NO_BEEP               #disable beep sound
+  INC_APPEND_HISTORY      # write commands to history immediately
+  SHARE_HISTORY           # share history across all shells
+  HIST_IGNORE_ALL_DUPS    # remove all duplicate entries (not just consecutive)
+  HIST_FIND_NO_DUPS       # skip duplicates when searching history
+  HIST_SAVE_NO_DUPS       # don't write duplicates to history file
+  HIST_REDUCE_BLANKS      # clean up extra spaces in history
+
+  AUTO_CD                 # cd by typing directory name
+  AUTO_PUSHD              # push directories onto stack automatically
+  PUSHD_IGNORE_DUPS       # avoid duplicate dirs in stack
+  PUSHD_SILENT            # no output from pushd/popd
+
+  EXTENDED_GLOB           # advanced globbing (power feature)
+  GLOB_DOTS               # include hidden files in globbing
+  NO_CASE_GLOB            # case-insensitive globbing
+  NO_CASE_MATCH           # case-insensitive matching
+
+  COMPLETE_IN_WORD        # tab completion inside words
+  ALWAYS_TO_END           # move cursor to end after completion
+  AUTO_MENU               # cycle completion menu on TAB
+
+  INTERACTIVE_COMMENTS    # allow comments in command line
+  MAGIC_EQUAL_SUBST       # expand paths in assignments (VAR=~/dir)
+
+  CORRECT                 # suggest command corrections (optional but "modern")
+
+  NOMATCH                 # fail fast if glob matches nothing (safety)
+
+  NO_BEEP                 # disable terminal beeping
     
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
