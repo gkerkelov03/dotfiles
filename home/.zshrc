@@ -1,38 +1,32 @@
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"  
+eval "$(atuin init zsh)"
 
 export STARSHIP_CONFIG=~/dotfiles/config/starship/starship.toml
 
-setopt \
-  INC_APPEND_HISTORY      # write commands to history immediately
-  SHARE_HISTORY           # share history across all shells
-  HIST_IGNORE_ALL_DUPS    # remove all duplicate entries (not just consecutive)
-  HIST_FIND_NO_DUPS       # skip duplicates when searching history
-  HIST_SAVE_NO_DUPS       # don't write duplicates to history file
-  HIST_REDUCE_BLANKS      # clean up extra spaces in history
+INC_APPEND_HISTORY      # needed for atuin sync
+  SHARE_HISTORY           # share history across sessions
+  HIST_IGNORE_ALL_DUPS    # clean history
+  HIST_REDUCE_BLANKS      # remove extra spaces
 
-  AUTO_CD                 # cd by typing directory name
-  AUTO_PUSHD              # push directories onto stack automatically
-  PUSHD_IGNORE_DUPS       # avoid duplicate dirs in stack
-  PUSHD_SILENT            # no output from pushd/popd
+  AUTO_PUSHD              # directory stack tracking
+  PUSHD_IGNORE_DUPS       # no duplicate dirs
+  PUSHD_SILENT            # silent pushd/popd
 
-  EXTENDED_GLOB           # advanced globbing (power feature)
-  GLOB_DOTS               # include hidden files in globbing
+  EXTENDED_GLOB           # advanced globbing
+  GLOB_DOTS               # include hidden files
   NO_CASE_GLOB            # case-insensitive globbing
   NO_CASE_MATCH           # case-insensitive matching
 
-  COMPLETE_IN_WORD        # tab completion inside words
-  ALWAYS_TO_END           # move cursor to end after completion
-  AUTO_MENU               # cycle completion menu on TAB
+  COMPLETE_IN_WORD        # better completion UX
+  ALWAYS_TO_END           # smoother completion
+  AUTO_MENU               # menu-based completion
 
-  INTERACTIVE_COMMENTS    # allow comments in command line
-  MAGIC_EQUAL_SUBST       # expand paths in assignments (VAR=~/dir)
+  INTERACTIVE_COMMENTS    # allow comments
+  MAGIC_EQUAL_SUBST       # expand paths in VAR=~/x
 
-  CORRECT                 # suggest command corrections (optional but "modern")
-
-  NOMATCH                 # fail fast if glob matches nothing (safety)
-
-  NO_BEEP                 # disable terminal beeping
+  NOMATCH                 # fail fast on bad globs
+  NO_BEEP                 # disable beeping sound
     
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
