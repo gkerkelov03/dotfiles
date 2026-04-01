@@ -3,9 +3,19 @@ eval "$(zoxide init zsh)"
 
 export STARSHIP_CONFIG=~/dotfiles/config/starship/starship.toml
 
-setopt INC_APPEND_HISTORY SHARE_HISTORY AUTO_CD PUSHD_IGNORE_DUPS EXTENDED_GLOB \
-       CORRECT AUTO_MENU NOMATCH HIST_IGNORE_DUPS HIST_REDUCE_BLANKS NO_BEEP
-
+setopt \
+    INC_APPEND_HISTORY    #add command to history immediately
+    SHARE_HISTORY         #share history across all open shells
+    AUTO_CD               #allow 'cd' by typing directory name only
+    PUSHD_IGNORE_DUPS     #avoid duplicate entries in directory stack
+    EXTENDED_GLOB         #enable advanced globbing patterns
+    CORRECT               #suggest corrections for mistyped commands
+    AUTO_MENU             #cycle through completion options with TAB
+    NOMATCH               #zsh: no matches found: *.txt instead of error
+    HIST_IGNORE_          #remove consecutive duplicate history entries
+    HIST_REDUCE_BLANKS    #remove extra spaces before saving history
+    NO_BEEP               #disable beep sound
+    
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
 
