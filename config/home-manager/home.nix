@@ -22,6 +22,7 @@
 
 
 		lazydocker      #docker TUI
+		sheldon         #zsh plugin manager
 
         #GUI apps
 		google-chrome   #browser

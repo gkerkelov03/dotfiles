@@ -1,39 +1,78 @@
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"  
-eval "$(atuin init zsh)"
-
 export STARSHIP_CONFIG=~/dotfiles/config/starship/starship.toml
 
-INC_APPEND_HISTORY      # needed for atuin sync
-  SHARE_HISTORY           # share history across sessions
-  HIST_IGNORE_ALL_DUPS    # clean history
-  HIST_REDUCE_BLANKS      # remove extra spaces
+#set default apps
+export EDITOR="nvim"           #default editor
+export VISUAL="nvim"           #used by interactive tools
+export SUDO_EDITOR="nvim"      #ensures sudoedit uses nvim
+export BROWSER="google-chrome" #default browser
 
-  AUTO_PUSHD              # directory stack tracking
-  PUSHD_IGNORE_DUPS       # no duplicate dirs
-  PUSHD_SILENT            # silent pushd/popd
+#setup the zsh history file and in memory history each session
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=5000
+export SAVEHIST=5000
 
-  EXTENDED_GLOB           # advanced globbing
-  GLOB_DOTS               # include hidden files
-  NO_CASE_GLOB            # case-insensitive globbing
-  NO_CASE_MATCH           # case-insensitive matching
+# History behavior
+setopt INC_APPEND_HISTORY      #immediately add command to history
+setopt SHARE_HISTORY           #share history across sessions
+setopt HIST_IGNORE_ALL_DUPS    #remove duplicate entries
+setopt HIST_REDUCE_BLANKS      #remove extra spaces
 
-  COMPLETE_IN_WORD        # better completion UX
-  ALWAYS_TO_END           # smoother completion
-  AUTO_MENU               # menu-based completion
+# Directory stack behavior
+setopt AUTO_PUSHD              #track directory stack
+setopt PUSHD_IGNORE_DUPS       #no duplicate directories in stack
+setopt PUSHD_SILENT            #do not print pushd/popd output
 
-  INTERACTIVE_COMMENTS    # allow comments
-  MAGIC_EQUAL_SUBST       # expand paths in VAR=~/x
+# Globbing & file matching
+setopt EXTENDED_GLOB           #advanced globbing (**/*.txt, etc.)
+setopt GLOB_DOTS               #include hidden files (.*)
+setopt NO_CASE_GLOB            #globbing is case-insensitive
+setopt NO_CASE_MATCH           #pattern matching is case-insensitive
+setopt NOMATCH                 #fail with error message 
 
-  NOMATCH                 # fail fast on bad globs
-  NO_BEEP                 # disable beeping sound
-    
-autoload -Uz compinit && compinit
-autoload -Uz bashcompinit && bashcompinit
+# Completion & command editing
+setopt COMPLETE_IN_WORD        #completion works in middle of word
+setopt ALWAYS_TO_END           #cursor goes to end after completion
+setopt AUTO_MENU               #menu-based completion
+setopt INTERACTIVE_COMMENTS    #allow comments in commands
 
-alias ls='eza -G --icons --classify --color=always --group-directories-first'
-alias la='eza -a --icons --color=always --group-directories-first'
-alias ll='eza -lAh --icons --octal-permissions --no-user --group-directories-first --git --header --color=always'
+# Convenience & usability
+setopt MAGIC_EQUAL_SUBST       #expand paths in VAR=~/something
+setopt AUTO_CD                 #type directory name instead of cd dir
+setopt NO_BEEP                 #disable annoying bell
+
+
+
+
+# --- Simple Dracula Completion ---
+autoload -Uz compinit && compinit -C
+
+# --- Clean Dracula Completion ---
+export LS_COLORS="di=36:ln=35:ex=32:bd=34:cd=34"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Fixed Dracula Theme for FZF
+export FZF_DEFAULT_OPTS='
+  --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
+  --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
+  --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
+  --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4
+  --reverse --height 40% --border'
+
+# Apply the theme to fzf-tab
+zstyle ':fzf-tab:*' fzf-flags '--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9,fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9'
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+
+
+
+
+
+
+
+#Setup ls to use eza
+alias ls="eza -a1 --icons --git --group-directories-first --color-scale --mounts"
+alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
+alias lsls="eza -la --icons --total-size --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
 
 alias vim="nvim"
 alias cat="bat"
@@ -45,31 +84,38 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-alias chrome="google-chrome &"
 alias hms="home-manager switch --flake ~/.config/home-manager\#qwest"
 
-man() { tldr "$@" 2>/dev/null && return command man "$@"directory }
+man() { tldr "$@" 2>/dev/null || command man "$@" }
 gac() { git add . && git commit -m "$*" }
 
-cd() { z "$@" && ll }
-cdi() { zi "$@" && ll }
+cd() { z "$@" && ls }
+cdi() { zi "$@" && ls }
 mkcd() { mkdir -p "$1" && cd "$1"; }
 
 zjump() { cd "$(zoxide query -l | fzf)" || echo "Canceled" }
-tree() { fd --type d . | sed 's|[^/]*/| |g' ; }
 
-zip() { ouch compress "$@" "$@.zip"}
-unzip() { ouch decompress "$@"}
+zip() { ouch compress "$@" "${1:r}.zip" }
+unzip() { ouch decompress "$@" }
 
-fedit() {
-    local file
-    file=$(fd --type f . | fzf --preview 'bat --style=numbers --color=always {}' --height=50%)
-    [ -n "$file" ] && nvim "$file"
-}
+plugins=(
+    git                      # Git aliases
+    sudo                     # Retypes command with sudo in front
+    copypath                 # Copy pwd to clipboard
+    copyfile                 # Copy file to clipboard
+    copybuffer               # Ctrl+O to copy the current command to clipboard
+    zsh-autosuggestions      # suggestions based on history
+    zsh-syntax-highlighting  # Colorize commands
+    fzf-tab
+    zsh-autopair
+    zsh-completions
+    you-should-use
 
-fzfcd() {
-    local dir
-    dir=$(find . -type d | fzf --height 50% --reverse --prompt "Dir> ") && cd "$dir"
-}
+)
 
-
+#start the necessary tools
+eval "$(fzf --zsh)" 
+eval "$(zoxide init zsh)"  
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(sheldon source)"
+eval "$(starship init zsh)"

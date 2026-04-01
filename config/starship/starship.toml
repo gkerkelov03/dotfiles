@@ -34,11 +34,7 @@ yellow = "#f1fa8c"
 
 
 [directory.substitutions]
-"/home/qwest" = " "
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"/home/qwest" = "  "
 
 [os]
 disabled = false     
