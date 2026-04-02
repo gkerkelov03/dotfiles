@@ -84,6 +84,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+
+alias symlink-dotfiles="sh ~/dotfiles/scripts/symlink-dotfiles"
 alias hms="home-manager switch --flake ~/.config/home-manager\#qwest"
 
 man() { tldr "$@" 2>/dev/null || command man "$@" }
