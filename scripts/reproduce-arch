@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+echo "--- Starting Minimal Wayland & Nix Setup ---"
+
+# 1. Install core packages
+echo "Installing zsh, hyprland, and foot..."
+sudo pacman -S --needed zsh hyprland foot
+
+# 2. Change shell to ZSH
+if [ "$SHELL" != "/bin/zsh" ]; then
+    echo "Changing default shell to zsh..."
+    chsh -s /bin/zsh
+fi
+
+# 3. Symlink dotfiles
+if [ -f "~/dotfiles/scripts/symlink-dotfiles" ]; then
+    echo "Running symlink-dotfiles script..."
+    sh ~/dotfiles/scripts/symlink-dotfiles
+else
+    echo "Warning: Symlink script not found at ~/dotfiles/scripts/symlink-dotfiles"
+fi
+
+# 4. Install Nix
+if [ -f "~/dotfiles/scripts/install-nix" ]; then
+    echo "Installing Nix..."
+    sh ~/dotfiles/scripts/install-nix install
+else
+    echo "Warning: Nix install script not found."
+fi
+
+# 5. Source Nix (using the multi-user daemon path)
+echo "Sourcing Nix profile..."
+if [ -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+else
+    echo "Error: Could not find nix-daemon.sh. Is Nix installed?"
+    exit 1
+fi
+
+# 6. Run Home-Manager
+# Note: Using quotes around the flake URI to prevent ZSH/Bash from misinterpreting the '#'
+echo "Applying Home-Manager flake..."
+nix run home-manager/master -- switch --flake "$HOME/.config/home-manager#qwest"
+
+echo "--- Setup Complete! Please restart ---"
