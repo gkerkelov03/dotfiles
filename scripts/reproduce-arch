@@ -41,8 +41,8 @@ else
 fi
 
 # 6. Run Home-Manager
-# Note: Using quotes around the flake URI to prevent ZSH/Bash from misinterpreting the '#'
 echo "Applying Home-Manager flake..."
 nix run home-manager/master -- switch --flake "$HOME/.config/home-manager#qwest"
 
 echo "--- Setup Complete! Please restart ---"
+
