@@ -4,8 +4,7 @@
     * **Red Hat**: sudo dnf upgrade --refresh -y
 2. **Setup the dotfiles:**
     * git clone <https://gitlab.com/kerkelov/dotfiles> ~/dotfiles
-    * ln -s ~/dotfiles/scripts/symlink-dotfiles ~/.local/bin/symlink-dotfiles
-    * chmod +x ~/dotfiles/scripts/symlink-dotfiles && symlink-dotfiles
+    * sh ~/dotfiles/scripts/symlink-dotfiles
 3. **Install nix:** sh ~/dotfiles/scripts/install-nix
 4. **Reboot the system**
 5. **Install home manager:** nix run home-manager/master -- switch --flake ~/.config/home-manager#qwest
