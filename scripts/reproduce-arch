@@ -4,7 +4,7 @@ echo "--- Starting Minimal Wayland & Nix Setup ---"
 
 # 1. Install core packages
 echo "Installing essentials"
-sudo pacman -S --needed zsh hyprland foot pipewire wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland
+sudo pacman -S --needed zsh hyprland foot xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-base
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
@@ -13,17 +13,17 @@ if [ "$SHELL" != "/bin/zsh" ]; then
 fi
 
 # 3. Symlink dotfiles
-if [ -f "~/dotfiles/scripts/symlink-dotfiles" ]; then
+if [ -f "$HOME/dotfiles/scripts/symlink-dotfiles" ]; then
     echo "Running symlink-dotfiles script..."
-    sh ~/dotfiles/scripts/symlink-dotfiles
+    sh $HOME/dotfiles/scripts/symlink-dotfiles
 else
-    echo "Warning: Symlink script not found at ~/dotfiles/scripts/symlink-dotfiles"
+    echo "Warning: Symlink script not found at $HOME/dotfiles/scripts/symlink-dotfiles"
 fi
 
 # 4. Install Nix
-if [ -f "~/dotfiles/scripts/install-nix" ]; then
+if [ -f "$HOME/dotfiles/scripts/install-nix" ]; then
     echo "Installing Nix..."
-    sh ~/dotfiles/scripts/install-nix install
+    sh $HOME/dotfiles/scripts/install-nix install
 else
     echo "Warning: Nix install script not found."
 fi
@@ -39,7 +39,7 @@ fi
 
 # 6. Run Home-Manager
 echo "Applying Home-Manager flake..."
-nix run home-manager/master -- switch --flake "$HOME/.config/home-manager#qwest"
+nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-manager#qwest"
 
 echo "--- Setup Complete! Please restart ---"
 
