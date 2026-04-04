@@ -6,8 +6,8 @@ set -e
 echo "--- Starting Minimal Wayland & Nix Setup ---"
 
 # 1. Install core packages
-echo "Installing zsh, hyprland, and foot..."
-sudo pacman -S --needed zsh hyprland foot
+echo "Installing essentials"
+sudo pacman -S --needed zsh hyprland foot pipewire wireplumber xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
