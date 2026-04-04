@@ -1,0 +1,171 @@
+{
+    "app_config": {
+        "audio_config": {
+            "audio": "pipewire"
+        },
+        "bluetooth_config": {
+            "enabled": true
+        },
+        "print_service_config": {
+            "enabled": true
+        }
+    },
+    "archinstall-language": "English",
+    "auth_config": {},
+    "bootloader_config": {
+        "bootloader": "Limine",
+        "removable": false,
+        "uki": false
+    },
+    "custom_commands": [],
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": null
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "4cf456d9-7326-4e9c-b395-c380f301a8fb",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "5ba81701-ddc3-4eba-8f1b-80f6629cba6e",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 31137464320
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "disk_encryption": {
+            "encryption_type": "luks",
+            "iter_time": 2000,
+            "lvm_volumes": [],
+            "partitions": [
+                "5ba81701-ddc3-4eba-8f1b-80f6629cba6e"
+            ]
+        }
+    },
+    "hostname": "arch",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US.UTF-8"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {
+            "Bulgaria": [
+                "http://mirror.telepoint.bg/archlinux/$repo/os/$arch",
+                "https://mirror.telepoint.bg/archlinux/$repo/os/$arch",
+                "http://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
+                "https://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
+                "http://mirror.host.ag/archlinux/$repo/os/$arch"
+            ],
+            "Greece": [
+                "http://ftp.otenet.gr/linux/archlinux/$repo/os/$arch",
+                "http://ftp.cc.uoc.gr/mirrors/linux/archlinux/$repo/os/$arch",
+                "https://repo.greeklug.gr/data/pub/linux/archlinux/$repo/os/$arch"
+            ],
+            "Romania": [
+                "http://archlinux.mirrors.linux.ro/$repo/os/$arch",
+                "http://mirrors.pidginhost.com/arch/$repo/os/$arch",
+                "https://mirrors.pidginhost.com/arch/$repo/os/$arch",
+                "http://mirrors.nxthost.com/archlinux/$repo/os/$arch",
+                "https://mirrors.nxthost.com/archlinux/$repo/os/$arch",
+                "http://mirror.efect.ro/archlinux/$repo/os/$arch",
+                "https://mirror.efect.ro/archlinux/$repo/os/$arch",
+                "http://mirrors.chroot.ro/archlinux/$repo/os/$arch",
+                "https://mirrors.chroot.ro/archlinux/$repo/os/$arch",
+                "http://mirrors.hostico.ro/archlinux/$repo/os/$arch",
+                "https://mirrors.hostico.ro/archlinux/$repo/os/$arch",
+                "http://ro.mirror.flokinet.net/archlinux/$repo/os/$arch",
+                "https://ro.mirror.flokinet.net/archlinux/$repo/os/$arch",
+                "http://mirrors.hosterion.ro/archlinux/$repo/os/$arch",
+                "https://mirrors.hosterion.ro/archlinux/$repo/os/$arch",
+                "https://ro.arch.niranjan.co/$repo/os/$arch"
+            ]
+        },
+        "optional_repositories": []
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [
+        "git",
+        "dos2unix"
+    ],
+    "parallel_downloads": 0,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "script": null,
+    "services": [],
+    "swap": {
+        "algorithm": "zstd",
+        "enabled": true
+    },
+    "timezone": "Europe/Sofia",
+    "version": "4.1"
+}
