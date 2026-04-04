@@ -1,0 +1,3 @@
+#!/bin/bash
+
+archinstall --config ./system.json --creds ./users.json
