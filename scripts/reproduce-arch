@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Exit immediately if a command exits with a non-zero status
-set -e
-
 echo "--- Starting Minimal Wayland & Nix Setup ---"
 
 # 1. Install core packages
