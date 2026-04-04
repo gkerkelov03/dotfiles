@@ -19,59 +19,83 @@
     },
     "custom_commands": [],
     "disk_config": {
-    "btrfs_options": {
-        "snapshot_config": null
-    },
-    "config_type": "default_layout",
-    "device_modifications": [
-        {
-            "device": "/dev/sda",
+        "btrfs_options": {
+            "snapshot_config": null
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "c57c1a9c-f03f-47e5-8277-27eda4ca0792",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "ed7d9227-4f69-4559-bd00-c781405267ec",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 159986483200
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "disk_encryption": {
+            "encryption_type": "luks",
+            "iter_time": 2000,
+            "lvm_volumes": [],
             "partitions": [
-                {
-                    "btrfs": [],
-                    "dev_path": null,
-                    "flags": [
-                        "boot"
-                    ],
-                    "fs_type": "fat32",
-                    "mount_options": [],
-                    "mountpoint": "/boot",
-                    "obj_id": "boot-partition",
-                    "size": {
-                        "unit": "GiB",
-                        "value": 1
-                    },
-                    "status": "create",
-                    "type": "primary"
-                },
-                {
-                    "btrfs": [],
-                    "dev_path": null,
-                    "flags": [],
-                    "fs_type": "ext4",
-                    "mount_options": [],
-                    "mountpoint": "/",
-                    "obj_id": "root-partition",
-                    "size": {
-                        "unit": "%",
-                        "value": 100
-                    },
-                    "status": "create",
-                    "type": "primary"
-                }
-            ],
-            "wipe": true
+                "ed7d9227-4f69-4559-bd00-c781405267ec"
+            ]
         }
-    ],
-    "disk_encryption": {
-        "encryption_type": "luks",
-        "iter_time": 2000,
-        "lvm_volumes": [],
-        "partitions": [
-            "root-partition"
-        ]
-    }
-},
+    },
     "hostname": "arch",
     "kernels": [
         "linux"
@@ -91,11 +115,6 @@
                 "http://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
                 "https://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
                 "http://mirror.host.ag/archlinux/$repo/os/$arch"
-            ],
-            "Greece": [
-                "http://ftp.otenet.gr/linux/archlinux/$repo/os/$arch",
-                "http://ftp.cc.uoc.gr/mirrors/linux/archlinux/$repo/os/$arch",
-                "https://repo.greeklug.gr/data/pub/linux/archlinux/$repo/os/$arch"
             ],
             "Romania": [
                 "http://archlinux.mirrors.linux.ro/$repo/os/$arch",
@@ -122,9 +141,7 @@
         "type": "nm"
     },
     "ntp": true,
-    "packages": [
-        "dos2unix"
-    ],
+    "packages": [],
     "parallel_downloads": 0,
     "profile_config": {
         "gfx_driver": null,
