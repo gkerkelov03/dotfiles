@@ -36,7 +36,7 @@
                         "fs_type": "fat32",
                         "mount_options": [],
                         "mountpoint": "/boot",
-                        "obj_id": "4cf456d9-7326-4e9c-b395-c380f301a8fb",
+                        "obj_id": "5bebad87-04f0-4b1f-8ac2-ba8355a39ee7",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
@@ -63,14 +63,14 @@
                         "fs_type": "ext4",
                         "mount_options": [],
                         "mountpoint": "/",
-                        "obj_id": "5ba81701-ddc3-4eba-8f1b-80f6629cba6e",
+                        "obj_id": "7c6758bc-97ce-4325-9d10-e8aa0ca4eb07",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
                                 "value": 512
                             },
                             "unit": "B",
-                            "value": 31137464320
+                            "value": 41874882560
                         },
                         "start": {
                             "sector_size": {
@@ -92,7 +92,7 @@
             "iter_time": 2000,
             "lvm_volumes": [],
             "partitions": [
-                "5ba81701-ddc3-4eba-8f1b-80f6629cba6e"
+                "7c6758bc-97ce-4325-9d10-e8aa0ca4eb07"
             ]
         }
     },
@@ -147,7 +147,6 @@
     },
     "ntp": true,
     "packages": [
-        "git",
         "dos2unix"
     ],
     "parallel_downloads": 0,
