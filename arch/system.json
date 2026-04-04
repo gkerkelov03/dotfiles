@@ -19,83 +19,59 @@
     },
     "custom_commands": [],
     "disk_config": {
-        "btrfs_options": {
-            "snapshot_config": null
-        },
-        "config_type": "default_layout",
-        "device_modifications": [
-            {
-                "device": "/dev/sda",
-                "partitions": [
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [
-                            "boot"
-                        ],
-                        "fs_type": "fat32",
-                        "mount_options": [],
-                        "mountpoint": "/boot",
-                        "obj_id": "5bebad87-04f0-4b1f-8ac2-ba8355a39ee7",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "GiB",
-                            "value": 1
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "MiB",
-                            "value": 1
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    },
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [],
-                        "fs_type": "ext4",
-                        "mount_options": [],
-                        "mountpoint": "/",
-                        "obj_id": "7c6758bc-97ce-4325-9d10-e8aa0ca4eb07",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 41874882560
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 1074790400
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    }
-                ],
-                "wipe": true
-            }
-        ],
-        "disk_encryption": {
-            "encryption_type": "luks",
-            "iter_time": 2000,
-            "lvm_volumes": [],
-            "partitions": [
-                "7c6758bc-97ce-4325-9d10-e8aa0ca4eb07"
-            ]
-        }
+    "btrfs_options": {
+        "snapshot_config": null
     },
+    "config_type": "default_layout",
+    "device_modifications": [
+        {
+            "device": "/dev/sda",
+            "partitions": [
+                {
+                    "btrfs": [],
+                    "dev_path": null,
+                    "flags": [
+                        "boot"
+                    ],
+                    "fs_type": "fat32",
+                    "mount_options": [],
+                    "mountpoint": "/boot",
+                    "obj_id": "boot-partition",
+                    "size": {
+                        "unit": "GiB",
+                        "value": 1
+                    },
+                    "status": "create",
+                    "type": "primary"
+                },
+                {
+                    "btrfs": [],
+                    "dev_path": null,
+                    "flags": [],
+                    "fs_type": "ext4",
+                    "mount_options": [],
+                    "mountpoint": "/",
+                    "obj_id": "root-partition",
+                    "size": {
+                        "unit": "%",
+                        "value": 100
+                    },
+                    "status": "create",
+                    "type": "primary"
+                }
+            ],
+            "wipe": true
+        }
+    ],
+    "disk_encryption": {
+        "encryption_type": "luks",
+        "iter_time": 2000,
+        "lvm_volumes": [],
+        "partitions": [
+            "root-partition"
+        ]
+    }
+},
     "hostname": "arch",
     "kernels": [
         "linux"
