@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo "--- Starting Minimal Wayland & Nix Setup ---"
+echo "--- Starting setup ---"
 
 # 1. Install core packages
 echo "Installing essentials"
-sudo pacman -S --needed zsh hyprland foot xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-base
+sudo pacman -S zsh foot hyprland qt5-wayland qt6-base xdg-desktop-portal-hyprland hyprpolkitagent 
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
@@ -28,7 +28,7 @@ else
     echo "Warning: Nix install script not found."
 fi
 
-# 5. Source Nix (using the multi-user daemon path)
+# 5. Source Nix 
 echo "Sourcing Nix profile..."
 if [ -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -41,5 +41,8 @@ fi
 echo "Applying Home-Manager flake..."
 nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-manager#qwest"
 
-echo "--- Setup Complete! Please restart ---"
+# 7. Start Hyprland
+echo "--- Setup Complete! Starting Hyprland ---"
+start-hyprland
+
 
