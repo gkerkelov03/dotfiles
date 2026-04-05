@@ -1,8 +1,10 @@
-1. **Install Arch Linux:**
+0. **Arch system info**
+   * disk should be exactly 150gb, root pass and qwest pass are gonna be ? and disc decription pass is passcapfcymba
+2. **Install Arch Linux:**
    * archinstall --config-url https://raw.githubusercontent.com/qwesti/dotfiles/refs/heads/main/arch/system.json --creds-url https://raw.githubusercontent.com/qwesti/dotfiles/refs/heads/main/arch/users.json
-2. **Get the dotfiles:**
+3. **Get the dotfiles:**
    * git clone <https://gitlab.com/kerkelov/dotfiles> ~/dotfiles
-3. **Run the reproduce-home script:**
+4. **Run the reproduce-home script:**
    * bash ~/dotfiles/scripts/reproduce-home
 
 
