@@ -59,12 +59,7 @@
 
         #Utilities
         ouch            #archive & unarchive
-		gcc             #the c & c++ compiler
-        xclip           #clipboard utilities
-
-
-        #Fonts
-        nerd-fonts.jetbrains-mono 
+        wl-clipboard    #clipboard utilities
 	];
 }
 
