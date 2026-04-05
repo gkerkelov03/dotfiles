@@ -4,7 +4,15 @@ echo "--- Starting setup ---"
 
 # 1. Install core packages
 echo "Installing essentials"
-sudo pacman -S zsh foot hyprland qt5-wayland qt6-base xdg-desktop-portal-hyprland hyprpolkitagent 
+
+#These are suggested to install in hyperland config
+sudo pacman -S --needed --noconfirm qt5-wayland hyprpolkitagent 
+
+#Additional mine stuff
+sudo pacman -S --needed --noconfirm zsh
+
+#Caelestia dependencies from the caelestia dots repo
+sudo paru -S --needed --noconfirm caelestia-shell foot fish caelestia-cli hyprland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker wl-clipboard cliphist inotify-tools app2unit wireplumber trash-cli adw-gtk-theme papirus-icon-theme qtengine-git ttf-jetbrains-mono-nerd
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
