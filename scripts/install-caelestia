@@ -1,5 +1,5 @@
 echo "Installing paru..."
-sudo pacman -S --needed git base-devel --noconfirm
+sudo pacman -S --needed base-devel --noconfirm
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
