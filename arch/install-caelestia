@@ -15,7 +15,7 @@ else
 fi
 
 echo 'Installing metapackage...'
-paru -Ui . --noconfirm
+paru -Ui --noconfirm
 rm -f *.pkg.tar.zst
 
 echo 'Installing hypr config...'
