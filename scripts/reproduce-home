@@ -31,7 +31,7 @@ fi
 # 4. Install Nix
 if [ -f "$HOME/dotfiles/scripts/install-nix" ]; then
     echo "Installing Nix..."
-    sh $HOME/dotfiles/scripts/install-nix install
+    sh $HOME/dotfiles/scripts/install-nix install --no-confirm
 else
     echo "Warning: Nix install script not found."
 fi
