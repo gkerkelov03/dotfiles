@@ -58,6 +58,7 @@
 
         #Utilities
         ouch            #archive & unarchive
+		age				#encryption tool
 	];
 }
 
