@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -18,8 +18,8 @@ echo 'Installing hypr config...'
 git clone --depth=1 --filter=blob:none --sparse https://github.com/caelestia-dots/caelestia.git tmp
 cd tmp
 git sparse-checkout set hypr
-rm -rf ../config/hypr
-mv hypr ../config
+rm -rf "$HOME/dotfiles/config/hypr"
+mv hypr "$HOME/dotfiles/config"
 cd ..
 rm -rf tmp
 chmod u+x "$HOME/dotfiles/config/hypr/scripts/wsaction.fish"
