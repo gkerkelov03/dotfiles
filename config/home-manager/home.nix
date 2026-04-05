@@ -25,8 +25,7 @@
 		sheldon         #zsh plugin manager
 
         #GUI apps
-		google-chrome   #browser
-		rofi            #application launcher 
+		google-chrome   #browser 
 
         #Git
 		lazygit         #git TUI 
@@ -59,7 +58,6 @@
 
         #Utilities
         ouch            #archive & unarchive
-        wl-clipboard    #clipboard utilities
 	];
 }
 
