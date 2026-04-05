@@ -31,11 +31,6 @@ chmod u+x "$HOME/dotfiles/config/hypr/scripts/wsaction.fish"
 # Scheme initialization
 if [ ! -f "$HOME/.local/state/caelestia/scheme.json" ]; then
     caelestia scheme set -n shadotheme
-    sleep 0.5
-    hyprctl reload
 fi
-
-# Start shell
-caelestia shell -d >/dev/null
 
 echo 'Done!'
