@@ -1,8 +1,3 @@
-# Variables
-set -l config $HOME/.config
-set -l state $HOME/.local/state
-
-# --- Paru Installation ---
 echo "Installing paru..."
 sudo pacman -S --needed git base-devel --noconfirm
 git clone https://aur.archlinux.org/paru.git
@@ -16,12 +11,18 @@ paru -Ui . --noconfirm
 rm -f *.pkg.tar.zst
 
 echo 'Installing hypr config...'
-mv (realpath hypr) $config/hypr
-chmod u+x $config/hypr/scripts/wsaction.fish
+git clone --depth=1 --filter=blob:none --sparse https://github.com/caelestia-dots/caelestia.git tmp
+cd tmp
+git sparse-checkout set hypr
+rm -rf ../config/hypr
+mv hypr ../config
+cd ..
+rm -rf tmp
+chmod u+x $HOME/dotfiles/config/hypr/scripts/wsaction.fish
 hyprctl reload
 
 # Scheme initialization
-if ! test -f $state/caelestia/scheme.json
+if ! test -f $HOME/.local/state/caelestia/scheme.json
     caelestia scheme set -n shadotheme
     sleep .5
     hyprctl reload
