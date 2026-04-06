@@ -26,7 +26,7 @@ rm -rf "$HOME/dotfiles/config/hypr"
 mv hypr "$HOME/dotfiles/config"
 cd ..
 rm -rf tmp
-chmod u+x "$HOME/dotfiles/config/hypr/scripts/wsaction.fish"
+sudo chmod u+x "$HOME/dotfiles/config/hypr/scripts/wsaction.fish"
 
 # Scheme initialization
 if [ ! -f "$HOME/.local/state/caelestia/scheme.json" ]; then
