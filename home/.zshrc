@@ -70,6 +70,7 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 
 
 #Setup ls to use eza
+alias l="eza -1 --icons --git --group-directories-first --color-scale --mounts"
 alias ls="eza -a1 --icons --git --group-directories-first --color-scale --mounts"
 alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
 alias lsls="eza -la --icons --total-size --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
