@@ -6,10 +6,10 @@ echo "--- Starting setup ---"
 echo "Installing essentials"
 
 #These are suggested to install in hyperland config
-sudo pacman -S --needed --noconfirm qt5-wayland hyprpolkitagent 
+sudo pacman -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent 
 
 #Additional mine stuff
-sudo pacman -S --needed --noconfirm zsh
+sudo pacman -S --needed --noconfirm zsh zen-browser-bin
 
 #Caelestia dependencies from the caelestia dots repo
 sudo paru -S --needed --noconfirm caelestia-shell foot fish caelestia-cli hyprland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker wl-clipboard cliphist inotify-tools app2unit wireplumber trash-cli adw-gtk-theme papirus-icon-theme qtengine-git ttf-jetbrains-mono-nerd

@@ -138,7 +138,7 @@
             },
             {
                 "id": "activeWindow",
-                "enabled": true
+                "enabled": false
             },
             {
                 "id": "spacer",
@@ -150,7 +150,7 @@
             },
             {
                 "id": "clock",
-                "enabled": true
+                "enabled": false
             },
             {
                 "id": "statusIcons",
