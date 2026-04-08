@@ -6,13 +6,10 @@ echo "--- Starting setup ---"
 echo "Installing essentials"
 
 #These are suggested to install in hyperland config
-sudo pacman -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent 
+paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent 
 
-#Additional mine stuff
-sudo pacman -S --needed --noconfirm zsh zen-browser-bin
-
-#Caelestia dependencies from the caelestia dots repo
-sudo paru -S --needed --noconfirm caelestia-shell foot fish caelestia-cli hyprland xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprpicker wl-clipboard cliphist inotify-tools app2unit wireplumber trash-cli adw-gtk-theme papirus-icon-theme qtengine-git ttf-jetbrains-mono-nerd
+#My stuff
+paru -S --needed --noconfirm zsh zen-browser-bin dos2unix
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
@@ -51,6 +48,5 @@ nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-
 
 # 7. Start Hyprland
 echo "--- Setup Complete! Starting Hyprland ---"
-start-hyprland
 
 

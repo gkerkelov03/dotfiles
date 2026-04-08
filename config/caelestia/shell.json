@@ -174,11 +174,11 @@
         },
         "showOnHover": true,
         "status": {
-            "showAudio": false,
+            "showAudio": true,
             "showBattery": true,
             "showBluetooth": true,
-            "showKbLayout": false,
-            "showMicrophone": false,
+            "showKbLayout": true,
+            "showMicrophone": true,
             "showNetwork": true,
             "showWifi": true,
             "showLockStatus": true
@@ -275,7 +275,7 @@
                 "icon": "casino",
                 "description": "Switch to a random wallpaper",
                 "command": ["caelestia", "wallpaper", "-r"],
-                "enabled": true,
+                "enabled": false,
                 "dangerous": false
             },
             {
@@ -283,7 +283,7 @@
                 "icon": "light_mode",
                 "description": "Change the scheme to light mode",
                 "command": ["setMode", "light"],
-                "enabled": true,
+                "enabled": false,
                 "dangerous": false
             },
             {
@@ -291,7 +291,7 @@
                 "icon": "dark_mode",
                 "description": "Change the scheme to dark mode",
                 "command": ["setMode", "dark"],
-                "enabled": true,
+                "enabled": false,
                 "dangerous": false
             },
             {
@@ -344,7 +344,7 @@
             }
         ],
         "dragThreshold": 50,
-        "vimKeybinds": false,
+        "vimKeybinds": true,
         "enableDangerousActions": false,
         "maxShown": 7,
         "maxWallpapers": 9,
@@ -383,17 +383,17 @@
         "sessionGif": "root:/assets/kurukuru.gif",
         "noNotifsPic": "root:/assets/dino.png",
         "lockNoNotifsPic": "root:/assets/dino.png",
-        "wallpaperDir": "~/Pictures/Wallpapers",
+        "wallpaperDir": "~/Wallpapers",
         "lyricsDir": "~/Music/lyrics"
     },
     "services": {
         "audioIncrement": 0.1,
         "brightnessIncrement": 0.1,
         "maxVolume": 1.0,
-        "defaultPlayer": "Spotify",
+        "defaultPlayer": "mpv",
         "gpuType": "",
         "playerAliases": [{ "from": "com.github.th_ch.youtube_music", "to": "YT Music" }],
-        "weatherLocation": "",
+        "weatherLocation": "Sofia",
         "useFahrenheit": false,
         "useFahrenheitPerformance": false,
         "useTwelveHourClock": false,

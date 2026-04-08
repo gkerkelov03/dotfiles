@@ -17,7 +17,7 @@ fi
 echo 'Installing metapackage...'
 paru -Ui --noconfirm
 rm -f *.pkg.tar.zst
-
+   
 echo 'Installing hypr config...'
 git clone --depth=1 --filter=blob:none --sparse https://github.com/caelestia-dots/caelestia.git tmp
 cd tmp
