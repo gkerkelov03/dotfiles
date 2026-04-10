@@ -6,10 +6,10 @@ echo "--- Starting setup ---"
 echo "Installing essentials"
 
 #These are suggested to install in hyperland config
-paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent 
+paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent
 
 #My stuff
-paru -S --needed --noconfirm zsh zen-browser-bin dos2unix
+paru -S --needed --noconfirm zsh dos2unix noto-fonts-emoji python-adblock
 
 # 2. Change shell to ZSH
 if [ "$SHELL" != "/bin/zsh" ]; then
@@ -33,7 +33,7 @@ else
     echo "Warning: Nix install script not found."
 fi
 
-# 5. Source Nix 
+# 5. Source Nix
 echo "Sourcing Nix profile..."
 if [ -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -48,5 +48,3 @@ nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-
 
 # 7. Start Hyprland
 echo "--- Setup Complete! Starting Hyprland ---"
-
-
