@@ -18,12 +18,8 @@ if [ "$SHELL" != "/bin/fish" ]; then
 fi
 
 # 3. Symlink dotfiles
-if [ -f "$HOME/dotfiles/scripts/symlink-dotfiles" ]; then
-    echo "Running symlink-dotfiles script..."
-    sh $HOME/dotfiles/scripts/symlink-dotfiles
-else
-    echo "Warning: Symlink script not found at $HOME/dotfiles/scripts/symlink-dotfiles"
-fi
+echo "Running symlink-dotfiles script..."
+bash $HOME/dotfiles/scripts/symlink-dotfiles.sh
 
 # 4. Install Nix
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
