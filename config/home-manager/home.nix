@@ -59,8 +59,9 @@
 
 		#Utilities
 		ouch            #archive & unarchive
-		age		#encryption tool
+		age             #encryption tool
 		mpvpaper        #set videos as wallpaper
+        unzip           #unzipping needed by some tools
 	];
 }
 
