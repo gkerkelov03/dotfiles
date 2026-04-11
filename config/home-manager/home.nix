@@ -26,6 +26,7 @@
 
 		#GUI apps
 		mpv
+		obsidian
 
 		#Git
 		lazygit         #git TUI 

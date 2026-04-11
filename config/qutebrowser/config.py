@@ -21,7 +21,10 @@ c.aliases = {
     "inst": "open instagram.com"
 }
 
-# Setup q w e to do -0.1 +0.1 =1 speed
+config.bind("J", "tab-prev")
+config.bind("K", "tab-next")
+
+# Setup q w e to do -0.1 +0.1 =1 speed for videos
 config.bind("q", "clear-messages ;; jseval document.querySelector('video, audio').playbackRate = (document.querySelector('video, audio').playbackRate - 0.1).toFixed(1)")
 config.bind("w", "clear-messages ;; jseval document.querySelector('video, audio').playbackRate = (document.querySelector('video, audio').playbackRate + 0.1).toFixed(1)")
 config.bind("e", "clear-messages ;; jseval document.querySelector('video, audio').playbackRate = (document.querySelector('video, audio').playbackRate = 1)")
@@ -29,17 +32,25 @@ config.bind("e", "clear-messages ;; jseval document.querySelector('video, audio'
 # Setup yazi as an external file picker
 c.downloads.location.directory = os.path.expanduser("~/downloads")
 c.fileselect.handler = "external"
-yazi_chooser = [
-    "foot",
-    "--", 
-    "yazi", 
-    "--chooser-file", 
-    "{}" 
-]
-
+yazi_chooser = [ "foot", "--", "yazi", "--chooser-file", "{}" ]
 c.fileselect.single_file.command = yazi_chooser
 c.fileselect.multiple_files.command = yazi_chooser
 c.fileselect.folder.command = yazi_chooser
+
+#Basic options that should've been the default
+c.content.autoplay = False
+c.session.lazy_restore = True
+c.scrolling.smooth = True
+c.completion.height = "20%"
+
+# Permissions allow all
+c.content.notifications.enabled = True
+c.content.javascript.clipboard = 'access-paste'
+c.content.geolocation = True
+c.content.media.video_capture = True
+c.content.media.audio_capture = True
+c.content.media.audio_video_capture = True
+c.content.desktop_capture = True
 
 # Use GPU as much as possible
 c.qt.args = [
@@ -49,10 +60,3 @@ c.qt.args = [
     "enable-quic",
 ]
 c.qt.workarounds.disable_accelerated_2d_canvas = "never"
-
-#Options
-c.content.autoplay = False
-c.content.notifications.enabled = False
-c.session.lazy_restore = True
-c.scrolling.smooth = True
-c.completion.height = "20%"
