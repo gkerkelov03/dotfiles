@@ -9,12 +9,12 @@ echo "Installing essentials"
 paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent
 
 #My stuff
-paru -S --needed --noconfirm zsh dos2unix noto-fonts-emoji python-adblock
+paru -S --needed --noconfirm dos2unix noto-fonts-emoji
 
-# 2. Change shell to ZSH
-if [ "$SHELL" != "/bin/zsh" ]; then
-    echo "Changing default shell to zsh..."
-    chsh -s /bin/zsh
+# 2. Change shell to fish
+if [ "$SHELL" != "/bin/fish" ]; then
+    echo "Changing default shell to fish..."
+    chsh -s /bin/fish
 fi
 
 # 3. Symlink dotfiles
@@ -26,12 +26,7 @@ else
 fi
 
 # 4. Install Nix
-if [ -f "$HOME/dotfiles/scripts/install-nix" ]; then
-    echo "Installing Nix..."
-    sh $HOME/dotfiles/scripts/install-nix install --no-confirm
-else
-    echo "Warning: Nix install script not found."
-fi
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 # 5. Source Nix
 echo "Sourcing Nix profile..."
@@ -46,5 +41,11 @@ fi
 echo "Applying Home-Manager flake..."
 nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-manager#qwest"
 
-# 7. Start Hyprland
-echo "--- Setup Complete! Starting Hyprland ---"
+# 7. Install fisher and load fisher plugins
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish -c '
+    source; 
+    fisher update; 
+    source ~/dotfiles/config/fish/conf.d/nvm.fish; 
+    nvm install latest
+'
+echo "Done"
