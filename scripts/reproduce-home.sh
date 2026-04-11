@@ -37,7 +37,11 @@ fi
 echo "Applying Home-Manager flake..."
 nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-manager#qwest"
 
-# 7. Install fisher and load fisher plugins
+# 7. Install dotnet and ef
+sudo paru -S dotnet-sdk
+dotnet tool install --global dotnet-ef
+
+# 8. Install fisher and load fisher plugins
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish -c '
     source; 
     fisher update; 
