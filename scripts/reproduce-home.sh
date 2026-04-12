@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-echo "--- Starting setup ---"
-
 # 1. Install core packages
 echo "Installing essentials"
-
 #These are suggested to install in hyperland config
 paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent
-
 #My stuff
-paru -S --needed --noconfirm dos2unix noto-fonts-emoji
+paru -S --needed --noconfirm dos2unix noto-fonts-emoji projectdo
 
 # 2. Change shell to fish
 if [ "$SHELL" != "/bin/fish" ]; then
@@ -38,7 +34,7 @@ echo "Applying Home-Manager flake..."
 nix run github:nix-community/home-manager -- switch --flake "$HOME/.config/home-manager#qwest"
 
 # 7. Install dotnet and ef
-sudo paru -S dotnet-sdk
+paru -S --needed --noconfirm dotnet-sdk
 dotnet tool install --global dotnet-ef
 
 # 8. Install fisher and load fisher plugins

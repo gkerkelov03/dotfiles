@@ -14,17 +14,18 @@
         "enableQt": true,
         "enableDiscord": false,
         "enableSpicetify": false
+        "enableNvtop": false,
     },
     "toggles": {
         "communication": {
             "discord": {
-                "enable": true,
+                "enable": false,
                 "match": [{ "class": "discord" }],
                 "command": ["discord"],
                 "move": true
             },
             "whatsapp": {
-                "enable": true,
+                "enable": false,
                 "match": [{ "class": "whatsapp" }],
                 "move": true
             }
@@ -38,7 +39,7 @@
         },
         "todo": {
             "todoist": {
-                "enable": true,
+                "enable": false,
                 "match": [{ "class": "Todoist" }],
                 "command": ["todoist"],
                 "move": true

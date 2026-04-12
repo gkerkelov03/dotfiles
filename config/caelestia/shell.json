@@ -77,21 +77,21 @@
         {
           "icon": "battery_android_frame_2",
           "level": 20,
-          "message": "You might want to plug in a charger",
-          "title": "Low battery"
+          "message": "",
+          "title": "Battery 20%"
         },
         {
           "icon": "battery_android_frame_1",
           "level": 10,
-          "message": "You should probably plug in a charger <b>now</b>",
-          "title": "Did you see the previous message?"
+          "message": "",
+          "title": "Battery 10%"
         },
         {
           "critical": true,
           "icon": "battery_android_alert",
           "level": 5,
-          "message": "PLUG THE CHARGER RIGHT NOW!!",
-          "title": "Critical battery level"
+          "message": "",
+          "title": "Battery 5%"
         }
       ],
       "criticalLevel": 3
