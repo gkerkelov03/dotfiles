@@ -1,24 +1,20 @@
-pkgname=caelestia-meta 
-pkgver=1 
-pkgrel=1 
-arch=('any') 
-depends=(
-  'caelestia-cli'
-  'caelestia-shell'
-  'hyprland'
-  'xdg-desktop-portal-hyprland'
-  'xdg-desktop-portal-gtk'
-  'hyprpicker'
-  'wl-clipboard'
-  'cliphist'
-  'inotify-tools'
-  'app2unit'
-  'wireplumber'
-  'trash-cli'
-  'foot'
-  'fish'
-  'adw-gtk-theme'
-  'papirus-icon-theme'
-  'qtengine-git'
-  'ttf-jetbrains-mono-nerd'
-)
+caelestia-cli
+caelestia-shell
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+cliphist
+inotify-tools
+app2unit
+wireplumber
+rash-cli
+adw-gtk-theme
+papirus-icon-theme
+qtengine-git
+
+foot
+fish
+wl-clipboard
+
+hyprpicker
+ttf-jetbrains-mono-nerd
