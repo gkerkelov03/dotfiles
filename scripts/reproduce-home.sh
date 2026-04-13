@@ -5,7 +5,7 @@ echo "Installing essentials"
 #These are suggested to install in hyperland config
 paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent
 #My stuff
-paru -S --needed --noconfirm dos2unix noto-fonts-emoji projectdo
+paru -S --needed --noconfirm dos2unix noto-fonts-emoji noto-fonts-cjk projectdo neovim
 
 # 2. Change shell to fish
 if [ "$SHELL" != "/bin/fish" ]; then
@@ -22,12 +22,7 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 # 5. Source Nix
 echo "Sourcing Nix profile..."
-if [ -f "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]; then
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-else
-    echo "Error: Could not find nix-daemon.sh. Is Nix installed?"
-    exit 1
-fi
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
 # 6. Run Home-Manager
 echo "Applying Home-Manager flake..."

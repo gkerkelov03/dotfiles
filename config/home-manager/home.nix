@@ -11,7 +11,6 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-        neovim          #text editor
 		tmux            #terminal multiplexer
 		fzf             #general-purpose fuzzy finder
 		starship        #terminal Prompt bar
@@ -63,7 +62,6 @@
 		age             #encryption tool
 		mpvpaper        #set videos as wallpaper
         unzip           #unzipping needed by some tools
-        projectdo       #needed for a fish plugin
 	];
 }
 
