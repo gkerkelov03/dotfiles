@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-# 1. Install core packages
-echo "Installing essentials"
-#These are suggested to install in hyperland config
-paru -S --needed --noconfirm mesa-utils qt5-wayland hyprpolkitagent
-#My stuff
-paru -S --needed --noconfirm dos2unix noto-fonts-emoji noto-fonts-cjk projectdo neovim
+#Install paru if not already installed
+command -v paru &>/dev/null || {
+    sudo pacman -S --needed --noconfirm base-devel git
+    git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
+    (cd /tmp/paru && makepkg -si --noconfirm)
+    rm -rf /tmp/paru
+}
+
+bash "$HOME/dotfiles/scripts/install-all-packages.sh"
+bash "$HOME/dotfiles/scripts/update-hyprland-config.sh"
 
 # 2. Change shell to fish
 if [ "$SHELL" != "/bin/fish" ]; then
