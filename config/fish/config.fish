@@ -5,6 +5,7 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
 
     set -g fish_key_bindings fish_vi_key_bindings
+
     set -gx FZF_DEFAULT_OPTS "
         --color=16
         --color=fg:-1,bg:-1,hl:5,fg+:15,bg+:8,hl+:5
@@ -15,9 +16,14 @@ if status is-interactive
         --padding=1
         --height=40%
     "
-    abbr -a b --function projectdo_build
-    abbr -a r --function projectdo_run
-    abbr -a t --function projectdo_test
+    abbr b --function projectdo_build
+    abbr r --function projectdo_run
+    abbr t --function projectdo_test
+    alias neo "neo --defaultbg --colormode=16"
+
+    bind yy fish_clipboard_copy
+    bind Y fish_clipboard_copy
+    bind p fish_clipboard_paste
 
     # For jumping between prompts in foot terminal
     function mark_prompt_start --on-event fish_prompt

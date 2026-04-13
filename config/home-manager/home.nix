@@ -25,8 +25,9 @@
 		sheldon         #zsh plugin manager
 
 		#GUI apps
-		mpv
-		obsidian
+		mpv             #media player
+		obsidian        #notes taking app
+        keepassxc       #passwords manager
 
 		#Git
 		lazygit         #git TUI 
@@ -62,6 +63,7 @@
 		age             #encryption tool
 		mpvpaper        #set videos as wallpaper
         unzip           #unzipping needed by some tools
+        projectdo       #needed for a fish plugin
 	];
 }
 

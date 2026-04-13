@@ -21,16 +21,16 @@
       }
     },
     "anim": {
-      "mediaGifSpeedAdjustment": 180,
-      "sessionGifSpeed": 0.8,
+      "mediaGifSpeedAdjustment": 300,
+      "sessionGifSpeed": 0.7,
       "durations": {
         "scale": 0.9
       }
     },
     "transparency": {
       "enabled": true,
-      "base": 0.3092984858247423,
-      "layers": 0.24874758376288664
+      "base": 0.24581910438144305,
+      "layers": 0.40077239046391727
     }
   },
   "general": {
