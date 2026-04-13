@@ -38,5 +38,6 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
     fisher update; 
     source ~/dotfiles/config/fish/conf.d/nvm.fish; 
     nvm install latest
+    nvm use latest
 '
 echo "Done"
