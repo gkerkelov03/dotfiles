@@ -1,20 +1,82 @@
+#Caelestia stuff
 caelestia-cli
 caelestia-shell
-hyprland
-xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
-cliphist
-inotify-tools
+qtengine-git
 app2unit
 wireplumber
+cliphist
+inotify-tools
 rash-cli
 adw-gtk-theme
 papirus-icon-theme
-qtengine-git
 
-foot
-fish
-wl-clipboard
+#Hyprland
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+mesa-utils
+qt5-wayland
+hyprpolkitagent
 
-hyprpicker
-ttf-jetbrains-mono-nerd
+#My stuff
+neovim                       #goated text editor
+foot                         #terminal
+fish                         #modern shell
+tmux                         #terminal multiplexer
+fzf                          #general-purpose fuzzy finder
+atuin                        #Better Shell History
+yazi                         #file manager
+btop                         #system monitor
+lazydocker                   #docker TUI
+
+#GUI apps
+mpv                          #media player
+obsidian                     #notes taking app
+keepassxc                    #passwords manager
+
+#Git
+lazygit                      #git TUI 
+gh                           #github cli
+delta                        #pager for git diff
+
+#CLI tools replacements
+bat                          #better cat
+eza                          #better ls
+fd                           #better find
+ripgrep                      #better grep
+zoxide                       #better cd
+tealdeer                     #better man rust version of tldr
+duf                          #better df
+dust                         #better du
+doggo                        #better dig and better dog
+xh                           #better curl
+
+#Terminal visualizers
+neo                          #matrix rain
+fastfetch                    #display system info
+pipes                        #draw colorfull pipes
+
+#JSON
+jless                        #view json
+jc                           #turn text to json
+gron                         #flatten json (mainly for grep/awk)
+jqp                          #jq query builder
+jq                           #operate on json
+
+#Utilities
+ouch                         #archive & unarchive
+age                          #encryption tool
+mpvpaper                     #set videos as wallpaper
+unzip                        #unzipping needed by some tools
+wget                         #needed by some tools
+dos2unix                     #cleanup windows line endings mess
+projectdo                    #fish plugin
+wl-clipboard                 #clipboard utility
+hyprpicker                   #extract hex from a color
+pip                          #python package manager
+luarocks                     #lua package manager
+
+#Fonts
+ttf-jetbrains-mono-nerd       #nerd font
+noto-fonts-emoji              #emoji font
+noto-fonts-cjk                #japanese symbols font

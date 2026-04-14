@@ -16,6 +16,7 @@
 # F: open link in a new tab
 # J: previous tab
 # K: next tab
+# a: toggle show tabs
 
 # m: add quickmark
 # M: add bookmark
@@ -59,7 +60,7 @@ config.bind("J", "tab-prev")
 config.bind("K", "tab-next")
 config.bind("yf", "hint links yank")
 config.bind("x", "devtools")
-
+config.bind("a", "config-cycle tabs.show always never")
 # Setup q w e to do -0.1 +0.1 =1 speed for videos
 config.bind(
     "q",
