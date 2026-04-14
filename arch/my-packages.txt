@@ -63,6 +63,11 @@ gron                         #flatten json (mainly for grep/awk)
 jqp                          #jq query builder
 jq                           #operate on json
 
+#Dev tools
+dotnet-sdk                   #.NET (dotnet tool)
+pip                          #python package manager
+luarocks                     #lua package manager
+
 #Utilities
 ouch                         #archive & unarchive
 age                          #encryption tool
@@ -73,8 +78,6 @@ dos2unix                     #cleanup windows line endings mess
 projectdo                    #fish plugin
 wl-clipboard                 #clipboard utility
 hyprpicker                   #extract hex from a color
-pip                          #python package manager
-luarocks                     #lua package manager
 
 #Fonts
 ttf-jetbrains-mono-nerd       #nerd font

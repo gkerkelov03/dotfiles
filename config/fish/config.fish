@@ -5,20 +5,22 @@ if status is-interactive
     atuin init fish --disable-up-arrow | source
 
     set -g fish_key_bindings fish_vi_key_bindings
+    set -gx nvm_default_version lts
     set -gx EDITOR nvim
     set -gx VISUAL nvim
     set -gx SUDO_EDITOR nvim
     set -gx BROWSER qutebrowser
     set -gx FZF_DEFAULT_OPTS "
-        --color=16
-        --color=fg:-1,bg:-1,hl:5,fg+:15,bg+:8,hl+:5
-        --color=info:4,prompt:2,pointer:12,marker:13,spinner:12,header:6
-        --layout=reverse
-        --border=rounded
-        --margin=1
-        --padding=1
-        --height=40%
-    "
+    --color=16
+    --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
+    --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
+    --layout=reverse
+    --border=rounded
+    --margin=1
+    --padding=1
+    --height=40%
+    --prompt='❯ '
+"
     abbr b --function projectdo_build
     abbr r --function projectdo_run
     abbr t --function projectdo_test
