@@ -75,3 +75,9 @@
 [help]
     # Autocorrect typos in git commands (e.g. 'git stats' -> 'git status')
     autocorrect = prompt
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
