@@ -1,63 +1,77 @@
-#Use delta by default
 [user]
     name = Georgi Kerkelov
     email = gkerkelov03@gmail.com
 
 [core]
     editor = nvim
-	pager = delta
+    pager = delta
+    # Speed up git on large repos by caching file system stats
+    fsmonitor = true
+    untrackedCache = true
 
 [interactive]
     diffFilter = delta --color-only
 
 [delta]
     navigate = true    # use n and p to jump between files
-    light = false      # set to true if you use a light terminal theme
     side-by-side = true
     line-numbers = true
-    syntax-theme = Dracula
     features = decorations
+    # Using 16-color names for terminal compatibility
     minus-style = red italic
     plus-style = green bold
+    syntax-theme = none
 
-    conflict-foreground-color = "#BD93F9" # Purple
-    conflict-marker-begin = "┏━"
-    conflict-marker-end   = "┗━"
-    conflict-marker-mid   = "┣━"
-    
 [delta "decorations"]
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
-    file-decoration-style = "#BD93F9" box 
-    line-numbers-left-style = "#6272A4"
-    line-numbers-right-style = "#6272A4"
+    file-decoration-style = blue box
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
 
-[alias]
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    s = status -sb
-    d = diff
-    br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative))'
-
-[column]
-    ui = auto
+[diff]
+    # Better diff algorithm for moved code blocks
+    colorMoved = default
+    # Use the 'histogram' algorithm for more readable diffs
+    algorithm = histogram
+    # Renames are detected more accurately
+    renames = true
 
 [merge]
     conflictstyle = zdiff3
-    ff = true
-    
+    # Automatically setup a backup during merge
+    keepBackup = false
+
+[push]
+    # Automatically setup remote tracking on first push
+    autoSetupRemote = true
+    # Only push the current branch
+    default = current
+    followTags = true
+
 [pull]
-    rebase = false
+    # Keeps history linear and clean
+    rebase = true
+
+[rebase]
+    # Automatically stash changes before rebasing
+    autoStash = true
+    # Shows a summary of what changed in the rebase
+    stat = true
+
+[column]
+    ui = auto
 
 [branch]
     sort = -committerdate
 
 [fetch]
     prune = true
+    all = true
+
 [init]
-	defaultBranch = main
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/qwest/.nix-profile/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/qwest/.nix-profile/bin/gh auth git-credential
+    defaultBranch = main
+
+[help]
+    # Autocorrect typos in git commands (e.g. 'git stats' -> 'git status')
+    autocorrect = prompt

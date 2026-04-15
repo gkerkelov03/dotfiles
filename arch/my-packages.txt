@@ -33,6 +33,7 @@ lazydocker                   #docker TUI
 mpv                          #media player
 obsidian                     #notes taking app
 keepassxc                    #passwords manager
+onlyoffice-bin               #word excel and power point
 
 #Git
 lazygit                      #git TUI 
@@ -74,6 +75,7 @@ age                          #encryption tool
 mpvpaper                     #set videos as wallpaper
 unzip                        #unzipping needed by some tools
 wget                         #needed by some tools
+less                         #needed by git diff
 dos2unix                     #cleanup windows line endings mess
 projectdo                    #fish plugin
 wl-clipboard                 #clipboard utility
