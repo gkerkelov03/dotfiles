@@ -1,0 +1,1 @@
+/home/qwest/dotfiles/config/fish/magic-enter-cmd.fish

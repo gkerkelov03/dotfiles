@@ -17,8 +17,6 @@ if status is-interactive
     set -gx DOTNET_ROOT /usr/share/dotnet
     set -p PATH $HOME/.dotnet/tools
 
-    set -g fish_key_bindings fish_vi_key_bindings
-
     set -gx nvm_default_version lts
 
     set -gx BAT_THEME ansi
@@ -54,11 +52,16 @@ if status is-interactive
     alias neo "neo --defaultbg --colormode=16"
     alias pipes "pipes.sh"
 
-    bind yy fish_clipboard_copy
-    bind Y fish_clipboard_copy
-    bind p fish_clipboard_paste
+    alias symlink-dotfiles="sh ~/dotfiles/scripts/symlink-dotfiles.sh"
 
-    alias symlink-dotfiles="sh ~/dotfiles/scripts/symlink-dotfiles"
+    function fish_user_key_bindings
+        fish_vi_key_bindings
+
+        # 3. Your manual bindings (ensure they use -M default/insert)
+        bind yy fish_clipboard_copy
+        bind Y fish_clipboard_copy
+        bind p fish_clipboard_paste
+    end
 
     function man
         tldr $argv 2>/dev/null; or command man $argv

@@ -17,6 +17,7 @@
 # J: previous tab
 # K: next tab
 # a: toggle show tabs
+# Alt + <number>: open tab <number>
 
 # m: add quickmark
 # M: add bookmark
