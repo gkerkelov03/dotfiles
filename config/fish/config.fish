@@ -71,7 +71,7 @@ if status is-interactive
         mkdir -p $argv[1] && cd $argv[1]
     end
 
-    function mark_prompt_start --on-event fish_prompt
-        echo -en "\e]133;A\e\\"
+    function auto_ls --on-variable PWD
+        l
     end
 end
