@@ -37,8 +37,8 @@ onlyoffice-bin               #word excel and power point
 
 #Git
 lazygit                      #git TUI 
-gh                           #github cli
-delta                        #pager for git diff
+github-cli                   #github cli
+git-delta                    #pager for git diff
 
 #CLI tools replacements
 bat                          #better cat
@@ -53,9 +53,9 @@ doggo                        #better dig and better dog
 xh                           #better curl
 
 #Terminal visualizers
-neo                          #matrix rain
+neo-matrix                   #matrix rain
 fastfetch                    #display system info
-pipes                        #draw colorfull pipes
+pipes.sh                     #draw colorfull pipes
 
 #JSON
 jless                        #view json
@@ -66,7 +66,7 @@ jq                           #operate on json
 
 #Dev tools
 dotnet-sdk                   #.NET (dotnet tool)
-pip                          #python package manager
+python-pip                          #python package manager
 luarocks                     #lua package manager
 
 #Utilities
