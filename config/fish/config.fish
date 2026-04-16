@@ -47,8 +47,9 @@ if status is-interactive
 
     abbr lg lazygit
     abbr gd 'git diff'
-    abbr ga 'git add .'
-    abbr gc 'git commit -am'
+    abbr ga 'git add'
+    abbr gaa 'git add .'
+    abbr gc --set-cursor 'git commit -m "%"'
     abbr gl 'git log'
     abbr gs git_status
     abbr gst 'git stash'
