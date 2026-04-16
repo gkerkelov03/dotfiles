@@ -14,6 +14,7 @@ papirus-icon-theme
 hyprland
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
+mesa
 mesa-utils
 qt5-wayland
 hyprpolkitagent
