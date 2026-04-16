@@ -17,7 +17,13 @@ if status is-interactive
     set -gx DOTNET_ROOT /usr/share/dotnet
     set -p PATH $HOME/.dotnet/tools
 
-    set -gx nvm_default_version lts
+    set -U fish_key_bindings fish_vi_key_bindings
+    set -U nvm_default_version lts
+
+    set -U tide_character_icon \U000f016c
+    set -U tide_character_vi_icon_default \U000f016c
+    set -U tide_character_vi_icon_visual \U000f016c
+    set -U tide_character_vi_icon_insert \U000f016c
 
     set -gx BAT_THEME ansi
 
@@ -39,6 +45,23 @@ if status is-interactive
     abbr r --function projectdo_run
     abbr t --function projectdo_test
 
+    abbr lg lazygit
+    abbr gd 'git diff'
+    abbr ga 'git add .'
+    abbr gc 'git commit -am'
+    abbr gl 'git log'
+    abbr gs git_status
+    abbr gst 'git stash'
+    abbr gsp 'git stash pop'
+    abbr gp 'git push'
+    abbr gpl 'git pull'
+    abbr gsw 'git switch'
+    abbr gsm 'git switch main'
+    abbr gb 'git branch'
+    abbr gbd 'git branch -d'
+    abbr gco 'git checkout'
+    abbr gsh 'git show'
+
     alias l="eza -1 --icons --git --group-directories-first --color-scale --mounts"
     alias ls="eza -a1 --icons --git --group-directories-first --color-scale --mounts"
     alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
@@ -49,19 +72,17 @@ if status is-interactive
     alias grep="rg"
     alias du="dust"
     alias df="duf"
-    alias neo "neo --defaultbg --colormode=16"
-    alias pipes "pipes.sh"
+    alias neo "neo-matrix --defaultbg --colormode=16"
 
     alias symlink-dotfiles="sh ~/dotfiles/scripts/symlink-dotfiles.sh"
 
-    function fish_user_key_bindings
-        fish_vi_key_bindings
+    #Keybindigs for vim mode
+    bind -M default yy fish_clipboard_copy
+    bind -M default Y fish_clipboard_copy
+    bind -M default p fish_clipboard_paste
 
-        # 3. Your manual bindings (ensure they use -M default/insert)
-        bind yy fish_clipboard_copy
-        bind Y fish_clipboard_copy
-        bind p fish_clipboard_paste
-    end
+    bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
+    bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
 
     function man
         tldr $argv 2>/dev/null; or command man $argv
@@ -69,6 +90,16 @@ if status is-interactive
 
     function mkcd
         mkdir -p $argv[1] && cd $argv[1]
+    end
+
+    function git_status
+        git -c color.status=always status -sb | awk '
+        /^##/ {print "0"$0; next} 
+        /A/   {print "1"$0; next} 
+        /M/   {print "2    "$0; next} 
+        /D/   {print "3        "$0; next} 
+        /\?\?/ {print "4            "$0; next} 
+        {print "5"$0}' | sort -k1,1n | sed 's/^.//'
     end
 
     function auto_ls --on-variable PWD

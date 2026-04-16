@@ -55,7 +55,6 @@ xh                           #better curl
 #Terminal visualizers
 neo-matrix                   #matrix rain
 fastfetch                    #display system info
-pipes.sh                     #draw colorfull pipes
 
 #JSON
 jless                        #view json
