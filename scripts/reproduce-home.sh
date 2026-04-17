@@ -18,6 +18,9 @@ dotnet tool install --global dotnet-ef
 #Install gh dash
 gh extension install dlvhdr/gh-dash
 
+#Enable the service that updates the db of the locate command (plocate package)
+sudo systemctl enable --now plocate-updatedb.timer
+
 #Install fisher and load fisher plugins
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish -c '
     source; 

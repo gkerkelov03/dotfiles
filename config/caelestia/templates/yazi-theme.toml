@@ -1,0 +1,113 @@
+# ====================================================================
+# YAZI DYNAMIC TEMPLATE (STRICT SYMBOL MATCHING)
+# Verified against provided color list
+# ====================================================================
+
+[manager]
+cwd = { fg = "#{{ tertiary.hex }}", italic = true }
+
+# Hovered: Primary background with OnPrimary text
+hovered = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
+preview_hovered = { underline = true, fg = "#{{ secondary.hex }}" }
+
+# Selection
+selection = { bg = "#{{ surfaceContainerHigh.hex }}", fg = "#{{ primary.hex }}" }
+find_keyword = { fg = "#{{ yellow.hex }}", italic = true, bold = true, underline = true }
+find_position = { fg = "#{{ secondary.hex }}", bg = "reset", italic = true }
+
+# Markers
+marker_copied = { fg = "#{{ onSuccess.hex }}", bg = "#{{ success.hex }}" }
+marker_cut = { fg = "#{{ onError.hex }}", bg = "#{{ error.hex }}" }
+marker_selected = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primaryFixedDim.hex }}" }
+loading_style = { fg = "#{{ primary.hex }}", bold = true }
+
+# Layout
+border_symbol = "│"
+border_style = { fg = "#{{ outlineVariant.hex }}" }
+
+[manager.tab]
+active = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
+inactive = { fg = "#{{ onSurfaceVariant.hex }}", bg = "#{{ surfaceContainer.hex }}" }
+
+# ====================================================================
+# STATUS BAR & HEADER
+# ====================================================================
+
+[header]
+title = { fg = "#{{ primary.hex }}", bold = true }
+device = { fg = "#{{ outline.hex }}" }
+host = { fg = "#{{ teal.hex }}" }
+user = { fg = "#{{ blue.hex }}" }
+
+[status]
+separator_open = ""
+separator_close = ""
+
+mode_normal = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
+mode_select = { fg = "#{{ onSecondary.hex }}", bg = "#{{ secondary.hex }}", bold = true }
+mode_unset = { fg = "#{{ onError.hex }}", bg = "#{{ error.hex }}", bold = true }
+
+progress_label = { fg = "#{{ onSurface.hex }}", bold = true }
+progress_normal = { fg = "#{{ primary.hex }}", bg = "#{{ surfaceContainer.hex }}" }
+progress_error = { fg = "#{{ error.hex }}", bg = "#{{ surfaceContainer.hex }}" }
+
+permissions = { fg = "#{{ outline.hex }}" }
+
+# ====================================================================
+# FILETYPES
+# ====================================================================
+
+[filetype]
+rules = [
+  { name = "*/", fg = "#{{ blue.hex }}", bold = true },
+  { name = ".env*", fg = "#{{ green.hex }}", bold = true },
+  { name = "*.{json,yaml,yml,toml,xml,conf,ini}", fg = "#{{ sky.hex }}" },
+  { name = "*.{js,ts,jsx,tsx,py,rb,php,pl}", fg = "#{{ yellow.hex }}" },
+  { name = "*.{c,cpp,rs,go,swift,java}", fg = "#{{ mauve.hex }}" },
+  { name = "*.{sh,bash,zsh,fish,bat}", fg = "#{{ green.hex }}", bold = true },
+  { name = "*.{jpg,jpeg,png,gif,webp,svg}", fg = "#{{ teal.hex }}" },
+  { name = "*.{mp4,mkv,avi,webm,mov}", fg = "#{{ lavender.hex }}" },
+  { name = "*.{mp3,flac,wav,ogg}", fg = "#{{ lavender.hex }}", italic = true },
+  { name = "*.{zip,tar,gz,7z,rar,xz}", fg = "#{{ maroon.hex }}", bold = true },
+  { name = "*.{md,mdx,txt,rst,org}", fg = "#{{ sapphire.hex }}", italic = true },
+  { name = "*.pdf", fg = "#{{ error.hex }}", bold = true },
+  { name = "*", fg = "#{{ onSurface.hex }}" },
+]
+
+# ====================================================================
+# UI COMPONENTS
+# ====================================================================
+
+[input]
+border = { fg = "#{{ primary.hex }}" }
+title = { fg = "#{{ primary.hex }}" }
+value = { fg = "#{{ onSurface.hex }}" }
+selected = { bg = "#{{ surfaceContainerHighest.hex }}" }
+
+[select]
+border = { fg = "#{{ primary.hex }}" }
+active = { fg = "#{{ secondary.hex }}", bold = true }
+
+[completion]
+border = { fg = "#{{ primary.hex }}" }
+active = { bg = "#{{ surfaceContainerHighest.hex }}", fg = "#{{ primary.hex }}" }
+
+[notify]
+border = { fg = "#{{ primary.hex }}" }
+
+[notify.levels]
+info = { fg = "#{{ green.hex }}" }
+warn = { fg = "#{{ yellow.hex }}" }
+error = { fg = "#{{ error.hex }}" }
+
+[which-key]
+cand = { fg = "#{{ tertiary.hex }}" }
+rest = { fg = "#{{ secondary.hex }}" }
+desc = { fg = "#{{ onSurface.hex }}" }
+separator = " ➜ "
+
+[help]
+on = { fg = "#{{ primary.hex }}" }
+run = { fg = "#{{ secondary.hex }}" }
+hovered = { bg = "#{{ surfaceContainerHighest.hex }}", fg = "#{{ onSurface.hex }}" }
+footer = { fg = "#{{ outline.hex }}" }

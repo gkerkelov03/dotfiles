@@ -34,7 +34,7 @@ lazydocker                   #docker TUI
 mpv                          #media player
 obsidian                     #notes taking app
 keepassxc                    #passwords manager
-onlyoffice-bin               #word excel and power point
+libreoffice-fresh            #word, excel, power point, visio, access and some math formulas
 
 #Git
 lazygit                      #git TUI 

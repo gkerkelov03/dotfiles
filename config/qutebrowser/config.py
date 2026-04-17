@@ -16,8 +16,10 @@
 # F: open link in a new tab
 # J: previous tab
 # K: next tab
+# gh: move tab to the left
+# gl: move tab to the right
 # a: toggle show tabs
-# Alt + <number>: open tab <number>
+# a: toggle show tabs
 
 # m: add quickmark
 # M: add bookmark
@@ -28,7 +30,7 @@
 
 # yy: copy current url
 # yf: copy some link that you see
-# go: edit current url
+# co: edit current url
 
 # q: video speed -0.1
 # w: video speed +0.1
@@ -59,9 +61,13 @@ c.aliases = {"src": "config-source"}
 
 config.bind("J", "tab-prev")
 config.bind("K", "tab-next")
+config.bind("gh", "tab-move -")
+config.bind("gl", "tab-move +")
 config.bind("yf", "hint links yank")
 config.bind("x", "devtools")
 config.bind("a", "config-cycle tabs.show always never")
+config.bind("co", "cmd-set-text :open {url:pretty}")
+
 # Setup q w e to do -0.1 +0.1 =1 speed for videos
 config.bind(
     "q",
@@ -75,7 +81,6 @@ config.bind(
     "e",
     "clear-messages ;; jseval document.querySelector('video, audio').playbackRate = (document.querySelector('video, audio').playbackRate = 1)",
 )
-
 # Setup yazi as an external file picker
 c.downloads.location.directory = os.path.expanduser("~/downloads")
 c.fileselect.handler = "external"
