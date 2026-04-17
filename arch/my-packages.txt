@@ -80,6 +80,7 @@ dos2unix                     #cleanup windows line endings mess
 projectdo                    #fish plugin
 wl-clipboard                 #clipboard utility
 hyprpicker                   #extract hex from a color
+plocate                      #the fastest version of the locate command
 
 #Fonts
 ttf-jetbrains-mono-nerd       #nerd font
