@@ -1,2 +1,21 @@
-[flavor]
-use = "dracula"
+[mgr]
+cwd = { fg = "#81c8be" }
+border_symbol = "│"
+border_style = { fg = "#838ba7" }
+
+[filetype]
+rules = [
+  { url = "*/", fg = "#e78284", bold = true },
+  { mime = "image/*", fg = "#81c8be" },
+  { url = "*", is = "exec", fg = "#a6d189" },
+]
+
+[icon]
+prepend_conds = [
+  { if = "hidden & dir", text = "👻", fg = "#e78284" }, # Hidden directories
+  { if = "dir", text = "" },                          # Directories
+  { if = "!(dir | link)", text = "📄" },                # Normal files (not directories or symlinks)
+]
+files = [{ name = ".git", text = "", fg = "#e78284" }]
+dirs = [{ name = "Desktop", text = "", fg = "#563d7c" }]
+exts = [{ name = "mp3", text = "", fg = "#00afff" }]

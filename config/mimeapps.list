@@ -1,0 +1,39 @@
+[Default Applications]
+#Images
+image/jpeg=satty.desktop
+image/png=satty.desktop
+image/gif=satty.desktop
+image/svg+xml=satty.desktop
+image/webp=satty.desktop
+image/bmp=satty.desktop
+image/avif=satty.desktop
+image/heif=satty.desktop
+image/heic=satty.desktop
+
+#Documents
+application/pdf=org.kde.okular.desktop
+application/epub+zip=org.kde.okular.desktop
+
+#Video & Audio
+# MPV is the best native Wayland player in 2026
+video/x-matroska=mpv.desktop
+video/mp4=mpv.desktop
+video/mpeg=mpv.desktop
+audio/mpeg=mpv.desktop
+
+# Word Documents
+application/msword=libreoffice-writer.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
+
+# Excel Spreadsheets
+application/vnd.ms-excel=libreoffice-calc.desktop
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop
+
+# PowerPoint Presentations
+application/vnd.ms-powerpoint=libreoffice-impress.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop
+
+# LibreOffice Native (OpenDocument)
+application/vnd.oasis.opendocument.text=libreoffice-writer.desktop
+application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop
+application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop
