@@ -1,113 +1,798 @@
-# ====================================================================
-# YAZI DYNAMIC TEMPLATE (STRICT SYMBOL MATCHING)
-# Verified against provided color list
-# ====================================================================
+[app]
+overall = { bg = "#{{background.hex}}" }
 
-[manager]
-cwd = { fg = "#{{ tertiary.hex }}", italic = true }
+[mgr]
+cwd = { fg = "#{{tertiary.hex}}" }
 
-# Hovered: Primary background with OnPrimary text
-hovered = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
-preview_hovered = { underline = true, fg = "#{{ secondary.hex }}" }
+find_keyword = { fg = "#{{yellow.hex}}", italic = true }
+find_position = { fg = "#{{pink.hex}}", bg = "reset", italic = true }
 
-# Selection
-selection = { bg = "#{{ surfaceContainerHigh.hex }}", fg = "#{{ primary.hex }}" }
-find_keyword = { fg = "#{{ yellow.hex }}", italic = true, bold = true, underline = true }
-find_position = { fg = "#{{ secondary.hex }}", bg = "reset", italic = true }
+marker_copied = { fg = "#{{success.hex}}", bg = "#{{successContainer.hex}}" }
+marker_cut = { fg = "#{{error.hex}}", bg = "#{{errorContainer.hex}}" }
+marker_marked = { fg = "#{{tertiary.hex}}", bg = "#{{tertiaryContainer.hex}}" }
+marker_selected = { fg = "#{{primary.hex}}", bg = "#{{primaryContainer.hex}}" }
 
-# Markers
-marker_copied = { fg = "#{{ onSuccess.hex }}", bg = "#{{ success.hex }}" }
-marker_cut = { fg = "#{{ onError.hex }}", bg = "#{{ error.hex }}" }
-marker_selected = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primaryFixedDim.hex }}" }
-loading_style = { fg = "#{{ primary.hex }}", bold = true }
+count_copied = { fg = "#{{onSuccessContainer.hex}}", bg = "#{{successContainer.hex}}" }
+count_cut = { fg = "#{{onErrorContainer.hex}}", bg = "#{{errorContainer.hex}}" }
+count_selected = { fg = "#{{onPrimaryContainer.hex}}", bg = "#{{primaryContainer.hex}}" }
 
-# Layout
 border_symbol = "│"
-border_style = { fg = "#{{ outlineVariant.hex }}" }
+border_style = { fg = "#{{outlineVariant.hex}}" }
 
-[manager.tab]
-active = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
-inactive = { fg = "#{{ onSurfaceVariant.hex }}", bg = "#{{ surfaceContainer.hex }}" }
+[tabs]
+active = { fg = "#{{onPrimaryContainer.hex}}", bg = "#{{primaryContainer.hex}}", bold = true }
+inactive = { fg = "#{{onSurfaceVariant.hex}}", bg = "#{{surfaceContainerLow.hex}}" }
 
-# ====================================================================
-# STATUS BAR & HEADER
-# ====================================================================
+[mode]
+normal_main = { fg = "#{{background.hex}}", bg = "#{{primary.hex}}", bold = true }
+normal_alt = { fg = "#{{primary.hex}}", bg = "#{{surfaceContainerHighest.hex}}" }
 
-[header]
-title = { fg = "#{{ primary.hex }}", bold = true }
-device = { fg = "#{{ outline.hex }}" }
-host = { fg = "#{{ teal.hex }}" }
-user = { fg = "#{{ blue.hex }}" }
+select_main = { fg = "#{{background.hex}}", bg = "#{{secondary.hex}}", bold = true }
+select_alt = { fg = "#{{secondary.hex}}", bg = "#{{surfaceContainerHighest.hex}}" }
+
+unset_main = { fg = "#{{background.hex}}", bg = "#{{tertiary.hex}}", bold = true }
+unset_alt = { fg = "#{{tertiary.hex}}", bg = "#{{surfaceContainerHighest.hex}}" }
+
+[indicator]
+parent = { fg = "#{{secondary.hex}}", bg = "#{{surfaceContainer.hex}}" }
+current = { fg = "#{{primary.hex}}", bg = "#{{surfaceContainerHigh.hex}}" }
+preview = { fg = "#{{tertiary.hex}}", bg = "#{{surfaceContainerHighest.hex}}" }
 
 [status]
-separator_open = ""
-separator_close = ""
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
-mode_normal = { fg = "#{{ onPrimary.hex }}", bg = "#{{ primary.hex }}", bold = true }
-mode_select = { fg = "#{{ onSecondary.hex }}", bg = "#{{ secondary.hex }}", bold = true }
-mode_unset = { fg = "#{{ onError.hex }}", bg = "#{{ error.hex }}", bold = true }
+progress_label = { fg = "#{{onSurface.hex}}", bold = true }
+progress_normal = { fg = "#{{primary.hex}}", bg = "#{{surfaceContainerHigh.hex}}" }
+progress_error = { fg = "#{{error.hex}}", bg = "#{{surfaceContainerHigh.hex}}" }
 
-progress_label = { fg = "#{{ onSurface.hex }}", bold = true }
-progress_normal = { fg = "#{{ primary.hex }}", bg = "#{{ surfaceContainer.hex }}" }
-progress_error = { fg = "#{{ error.hex }}", bg = "#{{ surfaceContainer.hex }}" }
+perm_type = { fg = "#{{primary.hex}}" }
+perm_read = { fg = "#{{yellow.hex}}" }
+perm_write = { fg = "#{{error.hex}}" }
+perm_exec = { fg = "#{{success.hex}}" }
+perm_sep = { fg = "#{{outlineVariant.hex}}" }
 
-permissions = { fg = "#{{ outline.hex }}" }
+[input]
+border = { fg = "#{{primary.hex}}" }
+title = { fg = "#{{onSurface.hex}}" }
+value = { fg = "#{{text.hex}}" }
+selected = { bg = "#{{surfaceContainerHighest.hex}}" }
 
-# ====================================================================
-# FILETYPES
-# ====================================================================
+[pick]
+border = { fg = "#{{tertiary.hex}}" }
+active = { fg = "#{{pink.hex}}" }
+inactive = { fg = "#{{onSurfaceVariant.hex}}" }
+
+[confirm]
+border = { fg = "#{{error.hex}}" }
+title = { fg = "#{{error.hex}}" }
+body = { fg = "#{{onSurface.hex}}" }
+list = { fg = "#{{onSurfaceVariant.hex}}" }
+btn_yes = { fg = "#{{background.hex}}", bg = "#{{primary.hex}}" }
+btn_no = { fg = "#{{onSurface.hex}}", bg = "#{{surfaceVariant.hex}}" }
+
+[cmp]
+border = { fg = "#{{outline.hex}}" }
+
+[tasks]
+border = { fg = "#{{outline.hex}}" }
+title = { fg = "#{{primary.hex}}" }
+hovered = { fg = "#{{secondary.hex}}", bold = true }
+
+[which]
+mask = { bg = "#{{scrim.hex}}" }
+cand = { fg = "#{{tertiary.hex}}" }
+rest = { fg = "#{{subtext1.hex}}" }
+desc = { fg = "#{{pink.hex}}" }
+separator = "  "
+separator_style = { fg = "#{{outlineVariant.hex}}" }
+
+[help]
+on = { fg = "#{{tertiary.hex}}" }
+run = { fg = "#{{pink.hex}}" }
+desc = { fg = "#{{subtext1.hex}}" }
+hovered = { bg = "#{{surfaceContainerHighest.hex}}", bold = true }
+footer = { fg = "#{{surfaceVariant.hex}}", bg = "#{{onSurfaceVariant.hex}}" }
+
+[notify]
+title_info = { fg = "#{{success.hex}}" }
+title_warn = { fg = "#{{yellow.hex}}" }
+title_error = { fg = "#{{error.hex}}" }
 
 [filetype]
 rules = [
-  { name = "*/", fg = "#{{ blue.hex }}", bold = true },
-  { name = ".env*", fg = "#{{ green.hex }}", bold = true },
-  { name = "*.{json,yaml,yml,toml,xml,conf,ini}", fg = "#{{ sky.hex }}" },
-  { name = "*.{js,ts,jsx,tsx,py,rb,php,pl}", fg = "#{{ yellow.hex }}" },
-  { name = "*.{c,cpp,rs,go,swift,java}", fg = "#{{ mauve.hex }}" },
-  { name = "*.{sh,bash,zsh,fish,bat}", fg = "#{{ green.hex }}", bold = true },
-  { name = "*.{jpg,jpeg,png,gif,webp,svg}", fg = "#{{ teal.hex }}" },
-  { name = "*.{mp4,mkv,avi,webm,mov}", fg = "#{{ lavender.hex }}" },
-  { name = "*.{mp3,flac,wav,ogg}", fg = "#{{ lavender.hex }}", italic = true },
-  { name = "*.{zip,tar,gz,7z,rar,xz}", fg = "#{{ maroon.hex }}", bold = true },
-  { name = "*.{md,mdx,txt,rst,org}", fg = "#{{ sapphire.hex }}", italic = true },
-  { name = "*.pdf", fg = "#{{ error.hex }}", bold = true },
-  { name = "*", fg = "#{{ onSurface.hex }}" },
+  # Media
+  { mime = "image/*", fg = "#{{sky.hex}}" },
+  { mime = "{audio,video}/*", fg = "#{{maroon.hex}}" },
+
+  # Archives
+  { mime = "application/*zip", fg = "#{{pink.hex}}" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#{{pink.hex}}" },
+
+  # Documents
+  { mime = "application/{pdf,doc,rtf}", fg = "#{{yellow.hex}}" },
+
+  # Virtual file system
+  { mime = "vfs/{absent,stale}", fg = "#{{error.hex}}" },
+
+  # Special file
+  { url = "*", is = "orphan", bg = "#{{errorContainer.hex}}" },
+  { url = "*", is = "exec", fg = "#{{success.hex}}" },
+
+  # Dummy file
+  { url = "*", is = "dummy", bg = "#{{surfaceVariant.hex}}" },
+  { url = "*/", is = "dummy", bg = "#{{surfaceVariant.hex}}" },
+
+  # Fallback
+  { url = "*/", fg = "#{{primary.hex}}" },
 ]
 
-# ====================================================================
-# UI COMPONENTS
-# ====================================================================
+[spot]
+border = { fg = "#{{outline.hex}}" }
+title = { fg = "#{{primary.hex}}" }
+tbl_cell = { fg = "#{{secondary.hex}}", reversed = true }
+tbl_col = { bold = true }
 
-[input]
-border = { fg = "#{{ primary.hex }}" }
-title = { fg = "#{{ primary.hex }}" }
-value = { fg = "#{{ onSurface.hex }}" }
-selected = { bg = "#{{ surfaceContainerHighest.hex }}" }
+[icon]
+conds = [
+  # Special files
+  { if = "orphan", text = "", fg = "#{{error.hex}}" },
+  { if = "link", text = "", fg = "#{{teal.hex}}" },
+  { if = "block", text = "", fg = "#{{yellow.hex}}" },
+  { if = "char", text = "", fg = "#{{yellow.hex}}" },
+  { if = "fifo", text = "", fg = "#{{pink.hex}}" },
+  { if = "sock", text = "", fg = "#{{mauve.hex}}" },
+  { if = "sticky", text = "", fg = "#{{teal.hex}}" },
+  { if = "dummy", text = "", fg = "#{{error.hex}}" },
 
-[select]
-border = { fg = "#{{ primary.hex }}" }
-active = { fg = "#{{ secondary.hex }}", bold = true }
-
-[completion]
-border = { fg = "#{{ primary.hex }}" }
-active = { bg = "#{{ surfaceContainerHighest.hex }}", fg = "#{{ primary.hex }}" }
-
-[notify]
-border = { fg = "#{{ primary.hex }}" }
-
-[notify.levels]
-info = { fg = "#{{ green.hex }}" }
-warn = { fg = "#{{ yellow.hex }}" }
-error = { fg = "#{{ error.hex }}" }
-
-[which-key]
-cand = { fg = "#{{ tertiary.hex }}" }
-rest = { fg = "#{{ secondary.hex }}" }
-desc = { fg = "#{{ onSurface.hex }}" }
-separator = " ➜ "
-
-[help]
-on = { fg = "#{{ primary.hex }}" }
-run = { fg = "#{{ secondary.hex }}" }
-hovered = { bg = "#{{ surfaceContainerHighest.hex }}", fg = "#{{ onSurface.hex }}" }
-footer = { fg = "#{{ outline.hex }}" }
+  # Fallback
+  { if = "dir & hovered", text = "", fg = "#{{primaryFixed.hex}}" },
+  { if = "dir", text = "", fg = "#{{primary.hex}}" },
+  { if = "exec", text = "", fg = "#{{success.hex}}" },
+  { if = "!dir", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+]
+dirs = [
+  { name = ".config", text = "", fg = "#{{subtext1.hex}}" },
+  { name = ".git", text = "", fg = "#{{maroon.hex}}" },
+  { name = ".github", text = "", fg = "#{{text.hex}}" },
+  { name = ".npm", text = "", fg = "#{{green.hex}}" },
+  { name = "documents", text = "", fg = "#{{blue.hex}}" },
+  { name = "downloads", text = "", fg = "#{{success.hex}}" },
+  { name = "pictures", text = "", fg = "#{{peach.hex}}" },
+  { name = "images", text = "", fg = "#{{peach.hex}}" },
+  { name = "videos", text = "", fg = "#{{pink.hex}}" },
+  { name = "recordings", text = "", fg = "#{{pink.hex}}" },
+]
+files = [
+  { name = "kritadisplayrc", text = "", fg = "#{{teal.hex}}" },
+  { name = ".gtkrc-2.0", text = "", fg = "#{{mauve.hex}}" },
+  { name = "bspwmrc", text = "", fg = "#{{blue.hex}}" },
+  { name = "webpack", text = "󰜫", fg = "#{{sky.hex}}" },
+  { name = "tsconfig.json", text = "", fg = "#{{blue.hex}}" },
+  { name = ".vimrc", text = "", fg = "#{{green.hex}}" },
+  { name = "gemfile$", text = "", fg = "#{{red.hex}}" },
+  { name = "xmobarrc", text = "", fg = "#{{peach.hex}}" },
+  { name = "avif", text = "", fg = "#{{maroon.hex}}" },
+  { name = "fp-info-cache", text = "", fg = "#{{teal.hex}}" },
+  { name = ".zshrc", text = "", fg = "#{{primary.hex}}" },
+  { name = "robots.txt", text = "󰚩", fg = "#{{yellow.hex}}" },
+  { name = "dockerfile", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = ".git-blame-ignore-revs", text = "", fg = "#{{maroon.hex}}" },
+  { name = ".nvmrc", text = "", fg = "#{{green.hex}}" },
+  { name = "hyprpaper.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = ".prettierignore", text = "", fg = "#{{mauve.hex}}" },
+  { name = "rakefile", text = "", fg = "#{{red.hex}}" },
+  { name = "code_of_conduct", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "cmakelists.txt", text = "", fg = "#{{blue.hex}}" },
+  { name = ".env", text = "", fg = "#{{yellow.hex}}" },
+  { name = "copying.lesser", text = "", fg = "#{{peach.hex}}" },
+  { name = "readme", text = "󰂺", fg = "#{{teal.hex}}" },
+  { name = "settings.gradle", text = "", fg = "#{{blue.hex}}" },
+  { name = "gruntfile.coffee", text = "", fg = "#{{peach.hex}}" },
+  { name = ".eslintignore", text = "", fg = "#{{mauve.hex}}" },
+  { name = "kalgebrarc", text = "", fg = "#{{sky.hex}}" },
+  { name = "kdenliverc", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".prettierrc.cjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = "cantorrc", text = "", fg = "#{{sky.hex}}" },
+  { name = "rmd", text = "", fg = "#{{blue.hex}}" },
+  { name = "vagrantfile$", text = "", fg = "#{{blue.hex}}" },
+  { name = ".Xauthority", text = "", fg = "#{{peach.hex}}" },
+  { name = "prettier.config.ts", text = "", fg = "#{{mauve.hex}}" },
+  { name = "node_modules", text = "", fg = "#{{green.hex}}" },
+  { name = ".prettierrc.toml", text = "", fg = "#{{mauve.hex}}" },
+  { name = "build.zig.zon", text = "", fg = "#{{peach.hex}}" },
+  { name = ".ds_store", text = "", fg = "#{{subtext0.hex}}" },
+  { name = "PKGBUILD", text = "", fg = "#{{blue.hex}}" },
+  { name = ".prettierrc", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".bash_profile", text = "", fg = "#{{primary.hex}}" },
+  { name = ".npmignore", text = "", fg = "#{{green.hex}}" },
+  { name = ".mailmap", text = "󰊢", fg = "#{{maroon.hex}}" },
+  { name = ".codespellrc", text = "󰓆", fg = "#{{peach.hex}}" },
+  { name = "svelte.config.js", text = "", fg = "#{{peach.hex}}" },
+  { name = "eslint.config.ts", text = "", fg = "#{{mauve.hex}}" },
+  { name = "config", text = "", fg = "#{{subtext1.hex}}" },
+  { name = ".gitlab-ci.yml", text = "", fg = "#{{peach.hex}}" },
+  { name = ".gitconfig", text = "", fg = "#{{maroon.hex}}" },
+  { name = "_gvimrc", text = "", fg = "#{{green.hex}}" },
+  { name = ".xinitrc", text = "", fg = "#{{peach.hex}}" },
+  { name = "checkhealth", text = "󰓙", fg = "#{{success.hex}}" },
+  { name = "sxhkdrc", text = "", fg = "#{{blue.hex}}" },
+  { name = ".bashrc", text = "", fg = "#{{primary.hex}}" },
+  { name = "tailwind.config.mjs", text = "󱏿", fg = "#{{sky.hex}}" },
+  { name = "ext_typoscript_setup.txt", text = "", fg = "#{{blue.hex}}" },
+  { name = "commitlint.config.ts", text = "󰜘", fg = "#{{success.hex}}" },
+  { name = "py.typed", text = "", fg = "#{{yellow.hex}}" },
+  { name = ".nanorc", text = "", fg = "#{{pink.hex}}" },
+  { name = "commit_editmsg", text = "", fg = "#{{maroon.hex}}" },
+  { name = ".luaurc", text = "", fg = "#{{blue.hex}}" },
+  { name = "fp-lib-table", text = "", fg = "#{{teal.hex}}" },
+  { name = ".editorconfig", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "justfile", text = "", fg = "#{{peach.hex}}" },
+  { name = "kdeglobals", text = "", fg = "#{{sky.hex}}" },
+  { name = "license.md", text = "", fg = "#{{peach.hex}}" },
+  { name = ".clang-format", text = "", fg = "#{{blue.hex}}" },
+  { name = "docker-compose.yaml", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "copying", text = "", fg = "#{{peach.hex}}" },
+  { name = "go.mod", text = "", fg = "#{{sky.hex}}" },
+  { name = "lxqt.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = "brewfile", text = "", fg = "#{{red.hex}}" },
+  { name = "gulpfile.coffee", text = "", fg = "#{{red.hex}}" },
+  { name = ".dockerignore", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = ".settings.json", text = "", fg = "#{{blue.hex}}" },
+  { name = "tailwind.config.js", text = "󱏿", fg = "#{{sky.hex}}" },
+  { name = ".clang-tidy", text = "", fg = "#{{blue.hex}}" },
+  { name = ".gvimrc", text = "", fg = "#{{green.hex}}" },
+  { name = "nuxt.config.cjs", text = "󱄆", fg = "#{{green.hex}}" },
+  { name = "xsettingsd.conf", text = "", fg = "#{{peach.hex}}" },
+  { name = "nuxt.config.js", text = "󱄆", fg = "#{{green.hex}}" },
+  { name = "eslint.config.cjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = "sym-lib-table", text = "", fg = "#{{teal.hex}}" },
+  { name = ".condarc", text = "", fg = "#{{green.hex}}" },
+  { name = "xmonad.hs", text = "", fg = "#{{red.hex}}" },
+  { name = "tmux.conf", text = "", fg = "#{{green.hex}}" },
+  { name = "xmobarrc.hs", text = "", fg = "#{{red.hex}}" },
+  { name = ".prettierrc.yaml", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".pre-commit-config.yaml", text = "󰛢", fg = "#{{yellow.hex}}" },
+  { name = "i3blocks.conf", text = "", fg = "#{{peach.hex}}" },
+  { name = "xorg.conf", text = "", fg = "#{{peach.hex}}" },
+  { name = ".zshenv", text = "", fg = "#{{primary.hex}}" },
+  { name = "vlcrc", text = "󰕼", fg = "#{{peach.hex}}" },
+  { name = "license", text = "", fg = "#{{peach.hex}}" },
+  { name = "unlicense", text = "", fg = "#{{peach.hex}}" },
+  { name = "tmux.conf.local", text = "", fg = "#{{green.hex}}" },
+  { name = ".SRCINFO", text = "󰣇", fg = "#{{blue.hex}}" },
+  { name = "tailwind.config.ts", text = "󱏿", fg = "#{{sky.hex}}" },
+  { name = "security.md", text = "󰒃", fg = "#{{red.hex}}" },
+  { name = "security", text = "󰒃", fg = "#{{red.hex}}" },
+  { name = ".eslintrc", text = "", fg = "#{{mauve.hex}}" },
+  { name = "gradle.properties", text = "", fg = "#{{blue.hex}}" },
+  { name = "code_of_conduct.md", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "PrusaSlicerGcodeViewer.ini", text = "", fg = "#{{peach.hex}}" },
+  { name = "PrusaSlicer.ini", text = "", fg = "#{{peach.hex}}" },
+  { name = "procfile", text = "", fg = "#{{pink.hex}}" },
+  { name = "mpv.conf", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".prettierrc.json5", text = "", fg = "#{{mauve.hex}}" },
+  { name = "i3status.conf", text = "", fg = "#{{peach.hex}}" },
+  { name = "prettier.config.mjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".pylintrc", text = "", fg = "#{{yellow.hex}}" },
+  { name = "prettier.config.cjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".luacheckrc", text = "", fg = "#{{blue.hex}}" },
+  { name = "containerfile", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "eslint.config.mjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = "gruntfile.js", text = "", fg = "#{{peach.hex}}" },
+  { name = "bun.lockb", text = "", fg = "#{{peach.hex}}" },
+  { name = ".gitattributes", text = "", fg = "#{{maroon.hex}}" },
+  { name = "gruntfile.ts", text = "", fg = "#{{peach.hex}}" },
+  { name = "pom.xml", text = "", fg = "#{{maroon.hex}}" },
+  { name = "favicon.ico", text = "", fg = "#{{yellow.hex}}" },
+  { name = "package-lock.json", text = "", fg = "#{{green.hex}}" },
+  { name = "build", text = "", fg = "#{{maroon.hex}}" },
+  { name = "package.json", text = "", fg = "#{{green.hex}}" },
+  { name = "nuxt.config.ts", text = "󱄆", fg = "#{{green.hex}}" },
+  { name = "nuxt.config.mjs", text = "󱄆", fg = "#{{green.hex}}" },
+  { name = "mix.lock", text = "", fg = "#{{mauve.hex}}" },
+  { name = "makefile", text = "", fg = "#{{peach.hex}}" },
+  { name = "gulpfile.js", text = "", fg = "#{{red.hex}}" },
+  { name = "lxde-rc.xml", text = "", fg = "#{{peach.hex}}" },
+  { name = "kritarc", text = "", fg = "#{{teal.hex}}" },
+  { name = "gtkrc", text = "", fg = "#{{mauve.hex}}" },
+  { name = "ionic.config.json", text = "", fg = "#{{sky.hex}}" },
+  { name = ".prettierrc.mjs", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".prettierrc.yml", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".npmrc", text = "", fg = "#{{green.hex}}" },
+  { name = "weston.ini", text = "", fg = "#{{peach.hex}}" },
+  { name = "gulpfile.babel.js", text = "", fg = "#{{red.hex}}" },
+  { name = "i18n.config.ts", text = "󰗊", fg = "#{{rosewater.hex}}" },
+  { name = "commitlint.config.js", text = "󰜘", fg = "#{{success.hex}}" },
+  { name = ".gitmodules", text = "", fg = "#{{maroon.hex}}" },
+  { name = "gradle-wrapper.properties", text = "", fg = "#{{blue.hex}}" },
+  { name = "hypridle.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = "vercel.json", text = "▲", fg = "#{{text.hex}}" },
+  { name = "hyprlock.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = "go.sum", text = "", fg = "#{{sky.hex}}" },
+  { name = "kdenlive-layoutsrc", text = "", fg = "#{{mauve.hex}}" },
+  { name = "gruntfile.babel.js", text = "", fg = "#{{peach.hex}}" },
+  { name = "compose.yml", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "i18n.config.js", text = "󰗊", fg = "#{{rosewater.hex}}" },
+  { name = "readme.md", text = "󰂺", fg = "#{{teal.hex}}" },
+  { name = "gradlew", text = "", fg = "#{{blue.hex}}" },
+  { name = "go.work", text = "", fg = "#{{sky.hex}}" },
+  { name = "gulpfile.ts", text = "", fg = "#{{red.hex}}" },
+  { name = "gnumakefile", text = "", fg = "#{{peach.hex}}" },
+  { name = "FreeCAD.conf", text = "", fg = "#{{maroon.hex}}" },
+  { name = "compose.yaml", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "eslint.config.js", text = "", fg = "#{{mauve.hex}}" },
+  { name = "hyprland.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = "docker-compose.yml", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "groovy", text = "", fg = "#{{green.hex}}" },
+  { name = "QtProject.conf", text = "", fg = "#{{sky.hex}}" },
+  { name = "platformio.ini", text = "", fg = "#{{peach.hex}}" },
+  { name = "build.gradle", text = "", fg = "#{{blue.hex}}" },
+  { name = ".nuxtrc", text = "󱄆", fg = "#{{green.hex}}" },
+  { name = "_vimrc", text = "", fg = "#{{green.hex}}" },
+  { name = ".zprofile", text = "", fg = "#{{primary.hex}}" },
+  { name = ".xsession", text = "", fg = "#{{peach.hex}}" },
+  { name = "prettier.config.js", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".babelrc", text = "", fg = "#{{yellow.hex}}" },
+  { name = "workspace", text = "", fg = "#{{maroon.hex}}" },
+  { name = ".prettierrc.json", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".prettierrc.js", text = "", fg = "#{{mauve.hex}}" },
+  { name = ".Xresources", text = "", fg = "#{{peach.hex}}" },
+  { name = ".gitignore", text = "", fg = "#{{maroon.hex}}" },
+  { name = ".justfile", text = "", fg = "#{{peach.hex}}" },
+]
+exts = [
+  { name = "otf", text = "", fg = "#{{peach.hex}}" },
+  { name = "import", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "krz", text = "", fg = "#{{teal.hex}}" },
+  { name = "adb", text = "", fg = "#{{maroon.hex}}" },
+  { name = "ttf", text = "", fg = "#{{peach.hex}}" },
+  { name = "webpack", text = "󰜫", fg = "#{{sky.hex}}" },
+  { name = "dart", text = "", fg = "#{{sky.hex}}" },
+  { name = "vsh", text = "", fg = "#{{mauve.hex}}" },
+  { name = "doc", text = "󰈬", fg = "#{{blue.hex}}" },
+  { name = "zsh", text = "", fg = "#{{primary.hex}}" },
+  { name = "ex", text = "", fg = "#{{mauve.hex}}" },
+  { name = "hx", text = "", fg = "#{{peach.hex}}" },
+  { name = "fodt", text = "", fg = "#{{blue.hex}}" },
+  { name = "mojo", text = "", fg = "#{{red.hex}}" },
+  { name = "templ", text = "", fg = "#{{yellow.hex}}" },
+  { name = "nix", text = "", fg = "#{{sky.hex}}" },
+  { name = "cshtml", text = "󱦗", fg = "#{{green.hex}}" },
+  { name = "fish", text = "", fg = "#{{red.hex}}" },
+  { name = "ply", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "sldprt", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "gemspec", text = "", fg = "#{{red.hex}}" },
+  { name = "mjs", text = "", fg = "#{{yellow.hex}}" },
+  { name = "csh", text = "", fg = "#{{primary.hex}}" },
+  { name = "cmake", text = "", fg = "#{{blue.hex}}" },
+  { name = "fodp", text = "", fg = "#{{peach.hex}}" },
+  { name = "vi", text = "", fg = "#{{green.hex}}" },
+  { name = "msf", text = "", fg = "#{{mauve.hex}}" },
+  { name = "blp", text = "󰺾", fg = "#{{teal.hex}}" },
+  { name = "less", text = "", fg = "#{{blue.hex}}" },
+  { name = "sh", text = "", fg = "#{{success.hex}}" },
+  { name = "odg", text = "", fg = "#{{peach.hex}}" },
+  { name = "mint", text = "󰌪", fg = "#{{green.hex}}" },
+  { name = "dll", text = "", fg = "#{{subtext0.hex}}" },
+  { name = "odf", text = "", fg = "#{{blue.hex}}" },
+  { name = "sqlite3", text = "", fg = "#{{sky.hex}}" },
+  { name = "Dockerfile", text = "󰡨", fg = "#{{blue.hex}}" },
+  { name = "ksh", text = "", fg = "#{{primary.hex}}" },
+  { name = "rmd", text = "", fg = "#{{blue.hex}}" },
+  { name = "wv", text = "", fg = "#{{pink.hex}}" },
+  { name = "xml", text = "󰗀", fg = "#{{peach.hex}}" },
+  { name = "markdown", text = "", fg = "#{{teal.hex}}" },
+  { name = "qml", text = "", fg = "#{{sky.hex}}" },
+  { name = "3gp", text = "", fg = "#{{pink.hex}}" },
+  { name = "pxi", text = "", fg = "#{{yellow.hex}}" },
+  { name = "flac", text = "", fg = "#{{pink.hex}}" },
+  { name = "gpr", text = "", fg = "#{{maroon.hex}}" },
+  { name = "huff", text = "󰡘", fg = "#{{mauve.hex}}" },
+  { name = "json", text = "", fg = "#{{yellow.hex}}" },
+  { name = "gv", text = "󱁉", fg = "#{{green.hex}}" },
+  { name = "bmp", text = "", fg = "#{{peach.hex}}" },
+  { name = "lock", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "sha384", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "cobol", text = "⚙", fg = "#{{blue.hex}}" },
+  { name = "cob", text = "⚙", fg = "#{{blue.hex}}" },
+  { name = "java", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cjs", text = "", fg = "#{{yellow.hex}}" },
+  { name = "qm", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+  { name = "ebuild", text = "", fg = "#{{teal.hex}}" },
+  { name = "mustache", text = "", fg = "#{{peach.hex}}" },
+  { name = "terminal", text = "", fg = "#{{success.hex}}" },
+  { name = "ejs", text = "", fg = "#{{yellow.hex}}" },
+  { name = "brep", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "rar", text = "", fg = "#{{pink.hex}}" },
+  { name = "gradle", text = "", fg = "#{{blue.hex}}" },
+  { name = "gnumakefile", text = "", fg = "#{{peach.hex}}" },
+  { name = "applescript", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "elm", text = "", fg = "#{{sky.hex}}" },
+  { name = "ebook", text = "", fg = "#{{yellow.hex}}" },
+  { name = "kra", text = "", fg = "#{{teal.hex}}" },
+  { name = "tf", text = "", fg = "#{{mauve.hex}}" },
+  { name = "xls", text = "󰈛", fg = "#{{green.hex}}" },
+  { name = "fnl", text = "", fg = "#{{subtext0.hex}}" },
+  { name = "kdbx", text = "", fg = "#{{success.hex}}" },
+  { name = "kicad_pcb", text = "", fg = "#{{teal.hex}}" },
+  { name = "cfg", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "ape", text = "", fg = "#{{pink.hex}}" },
+  { name = "org", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "yml", text = "", fg = "#{{maroon.hex}}" },
+  { name = "swift", text = "", fg = "#{{peach.hex}}" },
+  { name = "eln", text = "", fg = "#{{mauve.hex}}" },
+  { name = "sol", text = "", fg = "#{{blue.hex}}" },
+  { name = "awk", text = "", fg = "#{{primary.hex}}" },
+  { name = "7z", text = "", fg = "#{{pink.hex}}" },
+  { name = "apl", text = "⍝", fg = "#{{blue.hex}}" },
+  { name = "epp", text = "", fg = "#{{maroon.hex}}" },
+  { name = "app", text = "", fg = "#{{success.hex}}" },
+  { name = "dot", text = "󱁉", fg = "#{{green.hex}}" },
+  { name = "kpp", text = "", fg = "#{{teal.hex}}" },
+  { name = "eot", text = "", fg = "#{{peach.hex}}" },
+  { name = "hpp", text = "", fg = "#{{blue.hex}}" },
+  { name = "spec.tsx", text = "", fg = "#{{sky.hex}}" },
+  { name = "hurl", text = "", fg = "#{{lavender.hex}}" },
+  { name = "cxxm", text = "", fg = "#{{blue.hex}}" },
+  { name = "c", text = "", fg = "#{{blue.hex}}" },
+  { name = "fcmacro", text = "", fg = "#{{maroon.hex}}" },
+  { name = "sass", text = "", fg = "#{{pink.hex}}" },
+  { name = "yaml", text = "", fg = "#{{maroon.hex}}" },
+  { name = "xz", text = "", fg = "#{{pink.hex}}" },
+  { name = "material", text = "󰔉", fg = "#{{pink.hex}}" },
+  { name = "json5", text = "", fg = "#{{yellow.hex}}" },
+  { name = "signature", text = "λ", fg = "#{{mauve.hex}}" },
+  { name = "3mf", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "jpg", text = "", fg = "#{{peach.hex}}" },
+  { name = "xpi", text = "", fg = "#{{red.hex}}" },
+  { name = "fcmat", text = "", fg = "#{{maroon.hex}}" },
+  { name = "pot", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+  { name = "bin", text = "", fg = "#{{success.hex}}" },
+  { name = "xlsx", text = "󰈛", fg = "#{{green.hex}}" },
+  { name = "aac", text = "", fg = "#{{pink.hex}}" },
+  { name = "kicad_sym", text = "", fg = "#{{teal.hex}}" },
+  { name = "xcstrings", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+  { name = "lff", text = "", fg = "#{{peach.hex}}" },
+  { name = "xcf", text = "", fg = "#{{mauve.hex}}" },
+  { name = "azcli", text = "", fg = "#{{blue.hex}}" },
+  { name = "license", text = "", fg = "#{{peach.hex}}" },
+  { name = "jsonc", text = "", fg = "#{{yellow.hex}}" },
+  { name = "xaml", text = "󰙳", fg = "#{{blue.hex}}" },
+  { name = "md5", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "xm", text = "", fg = "#{{mauve.hex}}" },
+  { name = "sln", text = "", fg = "#{{mauve.hex}}" },
+  { name = "jl", text = "", fg = "#{{mauve.hex}}" },
+  { name = "ml", text = "", fg = "#{{peach.hex}}" },
+  { name = "http", text = "", fg = "#{{sky.hex}}" },
+  { name = "x", text = "", fg = "#{{mauve.hex}}" },
+  { name = "wvc", text = "", fg = "#{{pink.hex}}" },
+  { name = "wrz", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "csproj", text = "󰪮", fg = "#{{mauve.hex}}" },
+  { name = "wrl", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "wma", text = "", fg = "#{{pink.hex}}" },
+  { name = "woff2", text = "", fg = "#{{peach.hex}}" },
+  { name = "woff", text = "", fg = "#{{peach.hex}}" },
+  { name = "tscn", text = "", fg = "#{{maroon.hex}}" },
+  { name = "webmanifest", text = "", fg = "#{{yellow.hex}}" },
+  { name = "webm", text = "", fg = "#{{maroon.hex}}" },
+  { name = "fcbak", text = "", fg = "#{{maroon.hex}}" },
+  { name = "log", text = "󰌱", fg = "#{{subtext1.hex}}" },
+  { name = "wav", text = "", fg = "#{{pink.hex}}" },
+  { name = "wasm", text = "", fg = "#{{mauve.hex}}" },
+  { name = "styl", text = "", fg = "#{{green.hex}}" },
+  { name = "gif", text = "", fg = "#{{peach.hex}}" },
+  { name = "resi", text = "", fg = "#{{yellow.hex}}" },
+  { name = "aiff", text = "", fg = "#{{pink.hex}}" },
+  { name = "sha256", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "igs", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "vsix", text = "", fg = "#{{mauve.hex}}" },
+  { name = "vim", text = "", fg = "#{{green.hex}}" },
+  { name = "diff", text = "", fg = "#{{maroon.hex}}" },
+  { name = "drl", text = "", fg = "#{{teal.hex}}" },
+  { name = "erl", text = "", fg = "#{{red.hex}}" },
+  { name = "vhdl", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "🔥", text = "", fg = "#{{red.hex}}" },
+  { name = "hrl", text = "", fg = "#{{red.hex}}" },
+  { name = "fsi", text = "", fg = "#{{sky.hex}}" },
+  { name = "mm", text = "", fg = "#{{blue.hex}}" },
+  { name = "bz", text = "", fg = "#{{pink.hex}}" },
+  { name = "vh", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "kdb", text = "", fg = "#{{success.hex}}" },
+  { name = "gz", text = "", fg = "#{{pink.hex}}" },
+  { name = "cpp", text = "", fg = "#{{blue.hex}}" },
+  { name = "ui", text = "", fg = "#{{sky.hex}}" },
+  { name = "txt", text = "󰈙", fg = "#{{onSurface.hex}}" },
+  { name = "spec.ts", text = "", fg = "#{{sky.hex}}" },
+  { name = "ccm", text = "", fg = "#{{blue.hex}}" },
+  { name = "typoscript", text = "", fg = "#{{blue.hex}}" },
+  { name = "typ", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "txz", text = "", fg = "#{{pink.hex}}" },
+  { name = "test.ts", text = "", fg = "#{{success.hex}}" },
+  { name = "tsx", text = "", fg = "#{{sky.hex}}" },
+  { name = "mk", text = "", fg = "#{{peach.hex}}" },
+  { name = "webp", text = "", fg = "#{{peach.hex}}" },
+  { name = "opus", text = "", fg = "#{{pink.hex}}" },
+  { name = "bicep", text = "", fg = "#{{sky.hex}}" },
+  { name = "ts", text = "", fg = "#{{sky.hex}}" },
+  { name = "tres", text = "", fg = "#{{maroon.hex}}" },
+  { name = "torrent", text = "", fg = "#{{teal.hex}}" },
+  { name = "cxx", text = "", fg = "#{{blue.hex}}" },
+  { name = "iso", text = "", fg = "#{{maroon.hex}}" },
+  { name = "ixx", text = "", fg = "#{{blue.hex}}" },
+  { name = "hxx", text = "", fg = "#{{blue.hex}}" },
+  { name = "gql", text = "", fg = "#{{mauve.hex}}" },
+  { name = "tmux", text = "", fg = "#{{green.hex}}" },
+  { name = "ini", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "m3u8", text = "󰲹", fg = "#{{maroon.hex}}" },
+  { name = "image", text = "", fg = "#{{peach.hex}}" },
+  { name = "tfvars", text = "", fg = "#{{mauve.hex}}" },
+  { name = "tex", text = "", fg = "#{{blue.hex}}" },
+  { name = "cbl", text = "⚙", fg = "#{{blue.hex}}" },
+  { name = "flc", text = "", fg = "#{{peach.hex}}" },
+  { name = "elc", text = "", fg = "#{{mauve.hex}}" },
+  { name = "test.tsx", text = "", fg = "#{{success.hex}}" },
+  { name = "twig", text = "", fg = "#{{peach.hex}}" },
+  { name = "sql", text = "", fg = "#{{yellow.hex}}" },
+  { name = "test.jsx", text = "", fg = "#{{success.hex}}" },
+  { name = "htm", text = "", fg = "#{{red.hex}}" },
+  { name = "gcode", text = "󰐫", fg = "#{{peach.hex}}" },
+  { name = "test.js", text = "", fg = "#{{success.hex}}" },
+  { name = "ino", text = "", fg = "#{{teal.hex}}" },
+  { name = "tcl", text = "󰛓", fg = "#{{maroon.hex}}" },
+  { name = "cljs", text = "", fg = "#{{mauve.hex}}" },
+  { name = "tsconfig", text = "", fg = "#{{sky.hex}}" },
+  { name = "img", text = "", fg = "#{{peach.hex}}" },
+  { name = "t", text = "", fg = "#{{teal.hex}}" },
+  { name = "fcstd1", text = "", fg = "#{{maroon.hex}}" },
+  { name = "out", text = "", fg = "#{{success.hex}}" },
+  { name = "jsx", text = "", fg = "#{{sky.hex}}" },
+  { name = "bash", text = "", fg = "#{{primary.hex}}" },
+  { name = "edn", text = "", fg = "#{{mauve.hex}}" },
+  { name = "rss", text = "", fg = "#{{peach.hex}}" },
+  { name = "flf", text = "", fg = "#{{peach.hex}}" },
+  { name = "cache", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "sbt", text = "", fg = "#{{red.hex}}" },
+  { name = "cppm", text = "", fg = "#{{blue.hex}}" },
+  { name = "svelte", text = "", fg = "#{{peach.hex}}" },
+  { name = "mo", text = "∞", fg = "#{{yellow.hex}}" },
+  { name = "sv", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "ko", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "suo", text = "", fg = "#{{mauve.hex}}" },
+  { name = "sldasm", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "icalendar", text = "", fg = "#{{pink.hex}}" },
+  { name = "go", text = "", fg = "#{{sky.hex}}" },
+  { name = "sublime", text = "", fg = "#{{peach.hex}}" },
+  { name = "stl", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "mobi", text = "", fg = "#{{yellow.hex}}" },
+  { name = "graphql", text = "", fg = "#{{mauve.hex}}" },
+  { name = "m3u", text = "󰲹", fg = "#{{maroon.hex}}" },
+  { name = "cpy", text = "⚙", fg = "#{{blue.hex}}" },
+  { name = "kdenlive", text = "", fg = "#{{mauve.hex}}" },
+  { name = "pyo", text = "", fg = "#{{yellow.hex}}" },
+  { name = "po", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+  { name = "scala", text = "", fg = "#{{red.hex}}" },
+  { name = "exs", text = "", fg = "#{{mauve.hex}}" },
+  { name = "odp", text = "", fg = "#{{peach.hex}}" },
+  { name = "dump", text = "", fg = "#{{yellow.hex}}" },
+  { name = "stp", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "step", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "ste", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "aif", text = "", fg = "#{{pink.hex}}" },
+  { name = "strings", text = "", fg = "#{{onSurfaceVariant.hex}}" },
+  { name = "cp", text = "", fg = "#{{blue.hex}}" },
+  { name = "fsscript", text = "", fg = "#{{sky.hex}}" },
+  { name = "mli", text = "", fg = "#{{peach.hex}}" },
+  { name = "bak", text = "󰁯", fg = "#{{subtext1.hex}}" },
+  { name = "ssa", text = "󰨖", fg = "#{{lavender.hex}}" },
+  { name = "toml", text = "", fg = "#{{primary.hex}}" },
+  { name = "makefile", text = "", fg = "#{{peach.hex}}" },
+  { name = "php", text = "", fg = "#{{mauve.hex}}" },
+  { name = "zst", text = "", fg = "#{{pink.hex}}" },
+  { name = "spec.jsx", text = "", fg = "#{{sky.hex}}" },
+  { name = "kbx", text = "󰯄", fg = "#{{success.hex}}" },
+  { name = "fbx", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "blend", text = "󰂫", fg = "#{{peach.hex}}" },
+  { name = "ifc", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "spec.js", text = "", fg = "#{{sky.hex}}" },
+  { name = "so", text = "", fg = "#{{success.hex}}" },
+  { name = "desktop", text = "", fg = "#{{sky.hex}}" },
+  { name = "sml", text = "λ", fg = "#{{peach.hex}}" },
+  { name = "slvs", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "pp", text = "", fg = "#{{maroon.hex}}" },
+  { name = "ps1", text = "󰨊", fg = "#{{sky.hex}}" },
+  { name = "dropbox", text = "", fg = "#{{blue.hex}}" },
+  { name = "kicad_mod", text = "", fg = "#{{teal.hex}}" },
+  { name = "bat", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "slim", text = "", fg = "#{{red.hex}}" },
+  { name = "skp", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "css", text = "", fg = "#{{blue.hex}}" },
+  { name = "xul", text = "", fg = "#{{red.hex}}" },
+  { name = "ige", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "glb", text = "", fg = "#{{teal.hex}}" },
+  { name = "ppt", text = "󰈧", fg = "#{{maroon.hex}}" },
+  { name = "sha512", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "ics", text = "", fg = "#{{pink.hex}}" },
+  { name = "mdx", text = "", fg = "#{{teal.hex}}" },
+  { name = "sha1", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "f3d", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "ass", text = "󰨖", fg = "#{{lavender.hex}}" },
+  { name = "godot", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "ifb", text = "", fg = "#{{pink.hex}}" },
+  { name = "cson", text = "", fg = "#{{yellow.hex}}" },
+  { name = "lib", text = "", fg = "#{{success.hex}}" },
+  { name = "luac", text = "", fg = "#{{blue.hex}}" },
+  { name = "heex", text = "", fg = "#{{mauve.hex}}" },
+  { name = "scm", text = "󰘧", fg = "#{{rosewater.hex}}" },
+  { name = "psd1", text = "󰨊", fg = "#{{sky.hex}}" },
+  { name = "sc", text = "", fg = "#{{red.hex}}" },
+  { name = "scad", text = "", fg = "#{{peach.hex}}" },
+  { name = "kts", text = "", fg = "#{{mauve.hex}}" },
+  { name = "svh", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "mts", text = "", fg = "#{{sky.hex}}" },
+  { name = "nfo", text = "", fg = "#{{onSurface.hex}}" },
+  { name = "pck", text = "", fg = "#{{maroon.hex}}" },
+  { name = "rproj", text = "󰗆", fg = "#{{blue.hex}}" },
+  { name = "rlib", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cljd", text = "", fg = "#{{mauve.hex}}" },
+  { name = "ods", text = "", fg = "#{{green.hex}}" },
+  { name = "res", text = "", fg = "#{{yellow.hex}}" },
+  { name = "apk", text = "", fg = "#{{green.hex}}" },
+  { name = "haml", text = "", fg = "#{{red.hex}}" },
+  { name = "d.ts", text = "", fg = "#{{sky.hex}}" },
+  { name = "razor", text = "󱦘", fg = "#{{mauve.hex}}" },
+  { name = "rake", text = "", fg = "#{{red.hex}}" },
+  { name = "patch", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cuh", text = "", fg = "#{{green.hex}}" },
+  { name = "d", text = "", fg = "#{{red.hex}}" },
+  { name = "query", text = "", fg = "#{{teal.hex}}" },
+  { name = "psb", text = "", fg = "#{{blue.hex}}" },
+  { name = "nu", text = ">", fg = "#{{green.hex}}" },
+  { name = "mov", text = "", fg = "#{{maroon.hex}}" },
+  { name = "lrc", text = "󰨖", fg = "#{{lavender.hex}}" },
+  { name = "pyx", text = "", fg = "#{{yellow.hex}}" },
+  { name = "pyw", text = "", fg = "#{{yellow.hex}}" },
+  { name = "cu", text = "", fg = "#{{green.hex}}" },
+  { name = "bazel", text = "", fg = "#{{maroon.hex}}" },
+  { name = "obj", text = "󰆧", fg = "#{{teal.hex}}" },
+  { name = "pyi", text = "", fg = "#{{yellow.hex}}" },
+  { name = "pyd", text = "", fg = "#{{yellow.hex}}" },
+  { name = "exe", text = "", fg = "#{{success.hex}}" },
+  { name = "pyc", text = "", fg = "#{{yellow.hex}}" },
+  { name = "fctb", text = "", fg = "#{{maroon.hex}}" },
+  { name = "part", text = "", fg = "#{{teal.hex}}" },
+  { name = "blade.php", text = "", fg = "#{{red.hex}}" },
+  { name = "git", text = "", fg = "#{{maroon.hex}}" },
+  { name = "psd", text = "", fg = "#{{blue.hex}}" },
+  { name = "qss", text = "", fg = "#{{sky.hex}}" },
+  { name = "csv", text = "", fg = "#{{green.hex}}" },
+  { name = "psm1", text = "󰨊", fg = "#{{sky.hex}}" },
+  { name = "dconf", text = "", fg = "#{{blue.hex}}" },
+  { name = "config.ru", text = "", fg = "#{{red.hex}}" },
+  { name = "prisma", text = "", fg = "#{{blue.hex}}" },
+  { name = "conf", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "clj", text = "", fg = "#{{mauve.hex}}" },
+  { name = "o", text = "", fg = "#{{success.hex}}" },
+  { name = "mp4", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cc", text = "", fg = "#{{blue.hex}}" },
+  { name = "kicad_prl", text = "", fg = "#{{teal.hex}}" },
+  { name = "bz3", text = "", fg = "#{{pink.hex}}" },
+  { name = "asc", text = "󰦝", fg = "#{{peach.hex}}" },
+  { name = "png", text = "", fg = "#{{peach.hex}}" },
+  { name = "android", text = "", fg = "#{{green.hex}}" },
+  { name = "pm", text = "", fg = "#{{teal.hex}}" },
+  { name = "h", text = "", fg = "#{{blue.hex}}" },
+  { name = "pls", text = "󰲹", fg = "#{{maroon.hex}}" },
+  { name = "ipynb", text = "", fg = "#{{maroon.hex}}" },
+  { name = "pl", text = "", fg = "#{{teal.hex}}" },
+  { name = "ads", text = "", fg = "#{{maroon.hex}}" },
+  { name = "sqlite", text = "", fg = "#{{yellow.hex}}" },
+  { name = "pdf", text = "", fg = "#{{red.hex}}" },
+  { name = "pcm", text = "", fg = "#{{pink.hex}}" },
+  { name = "ico", text = "", fg = "#{{peach.hex}}" },
+  { name = "a", text = "", fg = "#{{success.hex}}" },
+  { name = "R", text = "󰟔", fg = "#{{blue.hex}}" },
+  { name = "ogg", text = "", fg = "#{{pink.hex}}" },
+  { name = "pxd", text = "", fg = "#{{yellow.hex}}" },
+  { name = "kdenlivetitle", text = "", fg = "#{{mauve.hex}}" },
+  { name = "jxl", text = "", fg = "#{{peach.hex}}" },
+  { name = "nswag", text = "", fg = "#{{yellow.hex}}" },
+  { name = "nim", text = "", fg = "#{{yellow.hex}}" },
+  { name = "bqn", text = "⎉", fg = "#{{teal.hex}}" },
+  { name = "cts", text = "", fg = "#{{sky.hex}}" },
+  { name = "fcparam", text = "", fg = "#{{maroon.hex}}" },
+  { name = "rs", text = "", fg = "#{{maroon.hex}}" },
+  { name = "mpp", text = "", fg = "#{{blue.hex}}" },
+  { name = "fdmdownload", text = "", fg = "#{{teal.hex}}" },
+  { name = "pptx", text = "󰈧", fg = "#{{maroon.hex}}" },
+  { name = "jpeg", text = "", fg = "#{{peach.hex}}" },
+  { name = "bib", text = "󱉟", fg = "#{{blue.hex}}" },
+  { name = "vhd", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "m", text = "", fg = "#{{blue.hex}}" },
+  { name = "js", text = "", fg = "#{{yellow.hex}}" },
+  { name = "eex", text = "", fg = "#{{mauve.hex}}" },
+  { name = "tbc", text = "󰛓", fg = "#{{maroon.hex}}" },
+  { name = "astro", text = "", fg = "#{{maroon.hex}}" },
+  { name = "sha224", text = "󰕥", fg = "#{{teal.hex}}" },
+  { name = "xcplayground", text = "", fg = "#{{peach.hex}}" },
+  { name = "el", text = "", fg = "#{{mauve.hex}}" },
+  { name = "m4v", text = "", fg = "#{{maroon.hex}}" },
+  { name = "m4a", text = "", fg = "#{{pink.hex}}" },
+  { name = "cs", text = "󰌛", fg = "#{{blue.hex}}" },
+  { name = "hs", text = "", fg = "#{{peach.hex}}" },
+  { name = "tgz", text = "", fg = "#{{pink.hex}}" },
+  { name = "fs", text = "", fg = "#{{sky.hex}}" },
+  { name = "luau", text = "", fg = "#{{blue.hex}}" },
+  { name = "dxf", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "download", text = "", fg = "#{{teal.hex}}" },
+  { name = "cast", text = "", fg = "#{{maroon.hex}}" },
+  { name = "qrc", text = "", fg = "#{{sky.hex}}" },
+  { name = "lua", text = "", fg = "#{{blue.hex}}" },
+  { name = "lhs", text = "", fg = "#{{peach.hex}}" },
+  { name = "md", text = "", fg = "#{{teal.hex}}" },
+  { name = "leex", text = "", fg = "#{{mauve.hex}}" },
+  { name = "ai", text = "", fg = "#{{maroon.hex}}" },
+  { name = "lck", text = "", fg = "#{{rosewater.hex}}" },
+  { name = "kt", text = "", fg = "#{{mauve.hex}}" },
+  { name = "bicepparam", text = "", fg = "#{{sky.hex}}" },
+  { name = "hex", text = "", fg = "#{{yellow.hex}}" },
+  { name = "zig", text = "", fg = "#{{peach.hex}}" },
+  { name = "bzl", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cljc", text = "", fg = "#{{mauve.hex}}" },
+  { name = "kicad_dru", text = "", fg = "#{{teal.hex}}" },
+  { name = "fctl", text = "", fg = "#{{maroon.hex}}" },
+  { name = "f#", text = "", fg = "#{{sky.hex}}" },
+  { name = "odt", text = "", fg = "#{{blue.hex}}" },
+  { name = "conda", text = "", fg = "#{{green.hex}}" },
+  { name = "vala", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "erb", text = "", fg = "#{{red.hex}}" },
+  { name = "mp3", text = "", fg = "#{{pink.hex}}" },
+  { name = "bz2", text = "", fg = "#{{pink.hex}}" },
+  { name = "coffee", text = "", fg = "#{{maroon.hex}}" },
+  { name = "cr", text = "", fg = "#{{red.hex}}" },
+  { name = "f90", text = "󱈚", fg = "#{{maroon.hex}}" },
+  { name = "jwmrc", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "c++", text = "", fg = "#{{blue.hex}}" },
+  { name = "fcscript", text = "", fg = "#{{maroon.hex}}" },
+  { name = "fods", text = "", fg = "#{{green.hex}}" },
+  { name = "cue", text = "󰲹", fg = "#{{maroon.hex}}" },
+  { name = "srt", text = "󰨖", fg = "#{{lavender.hex}}" },
+  { name = "info", text = "", fg = "#{{onSurface.hex}}" },
+  { name = "hh", text = "", fg = "#{{blue.hex}}" },
+  { name = "sig", text = "λ", fg = "#{{mauve.hex}}" },
+  { name = "html", text = "", fg = "#{{red.hex}}" },
+  { name = "iges", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "kicad_wks", text = "", fg = "#{{teal.hex}}" },
+  { name = "hbs", text = "", fg = "#{{peach.hex}}" },
+  { name = "fcstd", text = "", fg = "#{{maroon.hex}}" },
+  { name = "gresource", text = "", fg = "#{{mauve.hex}}" },
+  { name = "sub", text = "󰨖", fg = "#{{lavender.hex}}" },
+  { name = "ical", text = "", fg = "#{{pink.hex}}" },
+  { name = "crdownload", text = "", fg = "#{{teal.hex}}" },
+  { name = "pub", text = "󰷖", fg = "#{{yellow.hex}}" },
+  { name = "vue", text = "", fg = "#{{green.hex}}" },
+  { name = "gd", text = "", fg = "#{{subtext1.hex}}" },
+  { name = "fsx", text = "", fg = "#{{sky.hex}}" },
+  { name = "mkv", text = "", fg = "#{{maroon.hex}}" },
+  { name = "py", text = "", fg = "#{{yellow.hex}}" },
+  { name = "kicad_sch", text = "", fg = "#{{teal.hex}}" },
+  { name = "epub", text = "", fg = "#{{yellow.hex}}" },
+  { name = "env", text = "", fg = "#{{yellow.hex}}" },
+  { name = "magnet", text = "", fg = "#{{red.hex}}" },
+  { name = "elf", text = "", fg = "#{{success.hex}}" },
+  { name = "fodg", text = "", fg = "#{{green.hex}}" },
+  { name = "svg", text = "󰜡", fg = "#{{yellow.hex}}" },
+  { name = "dwg", text = "󰻫", fg = "#{{blue.hex}}" },
+  { name = "docx", text = "󰈬", fg = "#{{blue.hex}}" },
+  { name = "pro", text = "", fg = "#{{maroon.hex}}" },
+  { name = "db", text = "", fg = "#{{yellow.hex}}" },
+  { name = "rb", text = "", fg = "#{{red.hex}}" },
+  { name = "r", text = "󰟔", fg = "#{{blue.hex}}" },
+  { name = "scss", text = "", fg = "#{{pink.hex}}" },
+  { name = "cow", text = "󰆚", fg = "#{{peach.hex}}" },
+  { name = "gleam", text = "", fg = "#{{sky.hex}}" },
+  { name = "v", text = "󰍛", fg = "#{{blue.hex}}" },
+  { name = "kicad_pro", text = "", fg = "#{{teal.hex}}" },
+  { name = "liquid", text = "", fg = "#{{sky.hex}}" },
+  { name = "zip", text = "", fg = "#{{pink.hex}}" },
+]
