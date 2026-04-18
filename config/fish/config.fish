@@ -24,6 +24,7 @@ if status is-interactive
     set -U tide_character_vi_icon_default \U000f016c
     set -U tide_character_vi_icon_visual \U000f016c
     set -U tide_character_vi_icon_insert \U000f016c
+    set -U tide_character_vi_icon_replace \U000f016d
 
     set -gx BAT_THEME ansi
 
@@ -34,8 +35,6 @@ if status is-interactive
       --layout=reverse
       --border=none
       --marker='✓'
-      --margin=1
-      --padding=1
       --height=40%
       --preview '~/dotfiles/scripts/fzf-preview.sh {}'
       --preview-window=right:60%
@@ -49,6 +48,7 @@ if status is-interactive
     abbr t --function projectdo_test
 
     abbr lg lazygit
+    abbr f fzf
     abbr gd 'git diff'
     abbr ga 'git add'
     abbr gaa 'git add -A'
@@ -72,6 +72,7 @@ if status is-interactive
     alias lsls="eza -la --icons --total-size --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
 
     alias vim="nvim"
+    alias v="nvim"
     alias cat="bat"
     alias grep="rg"
     alias du="dust"
@@ -84,7 +85,6 @@ if status is-interactive
     bind -M default yy fish_clipboard_copy
     bind -M default Y fish_clipboard_copy
     bind -M default p fish_clipboard_paste
-
     bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
     bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
 
@@ -94,16 +94,6 @@ if status is-interactive
 
     function mkcd
         mkdir -p $argv[1] && cd $argv[1]
-    end
-
-    function git_status
-        git -c color.status=always status -sb | awk '
-        /^##/ {print "0"$0; next} 
-        /A/   {print "1"$0; next} 
-        /M/   {print "2    "$0; next} 
-        /D/   {print "3        "$0; next} 
-        /\?\?/ {print "4            "$0; next} 
-        {print "5"$0}' | sort -k1,1n | sed 's/^.//'
     end
 
     function auto_ls --on-variable PWD
