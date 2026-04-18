@@ -5,7 +5,7 @@ file=$1
 # 1. Handle directories first
 if [ -d "$file" ]; then
   # Use 'eza' or 'ls' to show folder contents instead of an error
-  eza --tree --level=1 --icons --color=always "$file" 2>/dev/null || ls -F --color=always "$file"
+  eza --tree --level=2 --icons --color=always "$file"
   exit
 fi
 

@@ -52,6 +52,7 @@ c.url.default_page = "https://google.com/gemini"
 c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
     "yt": "https://www.youtube.com/results?search_query={}",
+    "music": "https://music.youtube.com/search?q={}",
     "gh": "https://github.com/search?q={}",
     "maps": "www.google.com/maps?q={}",
 }

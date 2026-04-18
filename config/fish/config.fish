@@ -33,9 +33,9 @@ if status is-interactive
       --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
       --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
       --layout=reverse
-      --border=none
+      --border=rounded
       --marker='✓'
-      --height=40%
+      --height=100%
       --preview '~/dotfiles/scripts/fzf-preview.sh {}'
       --preview-window=right:60%
       --prompt='❯ '
@@ -49,6 +49,7 @@ if status is-interactive
 
     abbr lg lazygit
     abbr f fzf
+    abbr v nvim
     abbr gd 'git diff'
     abbr ga 'git add'
     abbr gaa 'git add -A'
@@ -72,7 +73,6 @@ if status is-interactive
     alias lsls="eza -la --icons --total-size --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
 
     alias vim="nvim"
-    alias v="nvim"
     alias cat="bat"
     alias grep="rg"
     alias du="dust"
