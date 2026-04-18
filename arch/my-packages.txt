@@ -2,22 +2,22 @@
 caelestia-cli
 caelestia-shell
 qtengine-git
-app2unit
-wireplumber
-cliphist
-inotify-tools
+app2unit                     #run apps as systemd user units so they are a standalone process and not a child process of the launcher for example
+wireplumber                  #audio session manager (pipewire's brain)
+cliphist                     #clipboard history manager
+inotify-tools                #watch for file changes in real-time
 rash-cli
 adw-gtk-theme
-papirus-icon-theme
+papirus-icon-theme           #goated icon pack
 
 #Hyprland
-hyprland
-xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
-mesa
-mesa-utils
-qt5-wayland
-hyprpolkitagent
+hyprland                     #wayland compositor and window manager
+xdg-desktop-portal-hyprland  #screen sharing (streaming your desktop and audio to an app like discord)
+xdg-desktop-portal-gtk       #the default file picker and app chooser
+mesa                         #open source GPU drivers
+mesa-utils                   #GPU drivers diagnostics (glxinfo, glxgears, eglinfo)
+qt5-wayland                  
+hyprpolkitagent              #popup for sudo password when a GUI app needs admin permissions
 
 #My stuff
 neovim                       #goated text editor
@@ -41,13 +41,13 @@ lazygit                      #git TUI
 github-cli                   #github cli
 git-delta                    #pager for git diff
 
-#CLI tools replacements
+#Modern CLI tools
 bat                          #better cat
 eza                          #better ls
 fd                           #better find
 ripgrep                      #better grep
 zoxide                       #better cd
-tealdeer                     #better man rust version of tldr
+tealdeer                     #better man and better tldr
 duf                          #better df
 dust                         #better du
 doggo                        #better dig and better dog
@@ -57,7 +57,7 @@ xh                           #better curl
 neo-matrix                   #matrix rain
 fastfetch                    #display system info
 
-#JSON
+#Json
 jless                        #view json
 jc                           #turn text to json
 gron                         #flatten json (mainly for grep/awk)
@@ -77,10 +77,11 @@ unzip                        #unzipping needed by some tools
 wget                         #needed by some tools
 less                         #needed by git diff
 dos2unix                     #cleanup windows line endings mess
-projectdo                    #fish plugin
-wl-clipboard                 #clipboard utility
+projectdo                    #project-based task runner for fish
+wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
 hyprpicker                   #extract hex from a color
 plocate                      #the fastest version of the locate command
+chafa                        #image previews for fzf
 
 #Fonts
 ttf-jetbrains-mono-nerd       #nerd font

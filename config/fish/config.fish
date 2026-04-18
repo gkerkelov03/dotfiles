@@ -32,10 +32,13 @@ if status is-interactive
       --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
       --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
       --layout=reverse
-      --border=rounded
+      --border=none
+      --marker='✓'
       --margin=1
       --padding=1
       --height=40%
+      --preview '~/dotfiles/scripts/fzf-preview.sh {}'
+      --preview-window=right:60%
       --prompt='❯ '
     "
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
