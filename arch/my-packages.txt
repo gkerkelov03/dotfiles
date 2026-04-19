@@ -82,7 +82,9 @@ wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli too
 hyprpicker                   #extract hex from a color
 plocate                      #the fastest version of the locate command
 chafa                        #image previews for fzf
+imagemagick                  #image previews zoom utility for yazi
 mupdf-tools                  #mutool pdf cli tool needed for previews
+
 
 #Fonts
 ttf-jetbrains-mono-nerd       #nerd font

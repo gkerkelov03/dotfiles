@@ -30,6 +30,10 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
     nvm install lts
 '
 
+#Install yazi plugins
+ya pkg install
+ya pkg upgrade
+
 #Make fish default shell
 chsh -s /bin/fish
 

@@ -12,10 +12,25 @@ set -gx PAGER bat
 set -gx DOTNET_ROOT /usr/share/dotnet
 set -p PATH $HOME/.dotnet/tools
 
-if status is-interactive
-    #Load Caelestia color scheme into the shell's 16 colors
-    cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
+set -gx BAT_THEME ansi
+set -gx FZF_DEFAULT_OPTS "
+  --color=16
+  --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
+  --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
+  --layout=reverse
+  --border=rounded
+  --marker='✓ '
+  --multi
+  --height=100%
+  --preview '~/dotfiles/scripts/fzf-preview.sh {}'
+  --preview-window=right:60%
+  --popup=80%
+  --prompt='❯ '
+"
 
+#Load Caelestia color scheme into the shell's 16 colors
+cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
+if status is-interactive
     atuin init fish --disable-up-arrow | source
 
     set -U fish_key_bindings fish_vi_key_bindings
@@ -27,22 +42,6 @@ if status is-interactive
     set -U tide_character_vi_icon_insert \U000f016c
     set -U tide_character_vi_icon_replace \U000f016d
 
-    set -gx BAT_THEME ansi
-
-    set -gx FZF_DEFAULT_OPTS "
-      --color=16
-      --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
-      --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
-      --layout=reverse
-      --border=rounded
-      --marker='✓ '
-      --multi
-      --height=100%
-      --preview '~/dotfiles/scripts/fzf-preview.sh {}'
-      --preview-window=right:60%
-      --popup=80%
-      --prompt='❯ '
-    "
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
     set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
@@ -53,6 +52,7 @@ if status is-interactive
     abbr lg lazygit
     abbr f fzf
     abbr v nvim
+    abbr y yazi
     abbr gd 'git diff'
     abbr ga 'git add'
     abbr gaa 'git add -A'

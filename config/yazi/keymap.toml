@@ -1,4 +1,4 @@
-[manager]
+[mgr]
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Exit visual mode/clear" },
   { on = "q", run = "quit", desc = "Quit" },
@@ -6,40 +6,54 @@ keymap = [
   # Hopping (Vim Style)
   { on = "k", run = "arrow -1", desc = "Up" },
   { on = "j", run = "arrow 1", desc = "Down" },
-  { on = ["g", "g"], run = "arrow top", desc = "Top" },
+  { on = [
+    "g",
+    "g",
+  ], run = "arrow top", desc = "Top" },
   { on = "G", run = "arrow bot", desc = "Bottom" },
 
-  # Navigation
+  # Navigation (l is used for a plugin)
   { on = "h", run = "leave", desc = "Parent directory" },
-  { on = "l", run = "enter", desc = "Child directory" },
   { on = "H", run = "back", desc = "History back" },
   { on = "L", run = "forward", desc = "History forward" },
 
   # Selection & Visual Mode
-  { on = "<Space>", run = ["toggle", "arrow 1"], desc = "Select and move" },
+  { on = "<Space>", run = [
+    "toggle",
+    "arrow 1",
+  ], desc = "Select and move" },
   { on = "v", run = "visual_mode", desc = "Visual mode" },
   { on = "V", run = "visual_mode --unset", desc = "Visual mode (unset)" },
 
-  # Operations
+  # Operations (p is used for a plugin)
   { on = "<Enter>", run = "open", desc = "Open" },
   { on = "o", run = "open --interactive", desc = "Open with..." },
   { on = "y", run = "yank", desc = "Copy" },
   { on = "x", run = "yank --cut", desc = "Cut" },
-  { on = "p", run = "paste", desc = "Paste" },
-  { on = "P", run = "paste --force", desc = "Paste (overwrite)" },
   { on = "d", run = "remove", desc = "Trash" },
   { on = "a", run = "create", desc = "Create" },
   { on = "r", run = "rename --cursor=before_ext", desc = "Rename" },
   { on = ".", run = "hidden toggle", desc = "Toggle hidden" },
-  { on = "f", run = "filter --smart", desc = "Filter" },
-  { on = "/", run = "find --smart", desc = "Find" },
   { on = "n", run = "find_arrow", desc = "Next found" },
   { on = "N", run = "find_arrow --prev", desc = "Prev found" },
 
-  # External Tools
-  { on = "s", run = "plugin fzf", desc = "Jump (fzf)" },
-  { on = "z", run = "plugin zoxide", desc = "Jump (zoxide)" },
-
+  # External Tools (fzf and zoxide are build in plugins)
+  { on = "f", run = "plugin fzf", desc = "fzf" },
+  { on = "z", run = "plugin zoxide", desc = "zoxide" },
+  { on = [
+    "g",
+    "c",
+  ], run = "plugin vcs-files", desc = "Show Git file changes" },
+  { on = "m", run = "plugin mount" },
+  { on = "=", run = "plugin zoom 1", desc = "Zoom in hovered file" },
+  { on = "-", run = "plugin zoom -1", desc = "Zoom out hovered file" },
+  { on = "/", run = "plugin smart-filter", desc = "Smart filter" },
+  { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = [
+    "c",
+    "m",
+  ], run = "plugin chmod", desc = "Chmod on selected files" },
+  { on = "p", run = "plugin smart-paste", sdesc = "Paste into the hovered directory or CWD" },
   # Tabs
   { on = "t", run = "tab_create --current", desc = "New tab" },
   { on = "[", run = "tab_switch -1 --rel", desc = "Prev tab" },
@@ -68,7 +82,6 @@ keymap = [
 
   # Movement
   { on = "h", run = "move -1", desc = "Left" },
-  { on = "l", run = "move 1", desc = "Right" },
   { on = "w", run = "forward", desc = "Next word" },
   { on = "b", run = "backward", desc = "Prev word" },
   { on = "0", run = "move bol", desc = "BOL" },

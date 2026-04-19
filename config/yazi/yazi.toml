@@ -80,6 +80,8 @@ fetchers = [
   { id = "mime-dir", url = "*/", run = "mime.dir", prio = "high", group = "mime" },
   { id = "mime-local", url = "local://*", run = "mime.local", prio = "high", group = "mime" },
   { id = "mime-remote", url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
+  { id = "git", url = "*", run = "git", group = "git" },
+  { id = "git", url = "*/", run = "git", group = "git" },
 ]
 spotters = [
   # Multi-file
