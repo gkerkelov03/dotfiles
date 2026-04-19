@@ -83,7 +83,9 @@ hyprpicker                   #extract hex from a color
 plocate                      #the fastest version of the locate command
 chafa                        #image previews for fzf
 imagemagick                  #image previews zoom utility for yazi
-mupdf-tools                  #mutool pdf cli tool needed for previews
+mupdf-tools                  #mutool pdf cli tool needed for previews in fzf
+pdftoppm                     #pdf cli tool needed for yazi previews
+rich-cli                     #csv yazi preview
 
 
 #Fonts

@@ -75,83 +75,76 @@ rules = [
   ] },
 ]
 
+
 [plugin]
-fetchers = [
-  { id = "mime-dir", url = "*/", run = "mime.dir", prio = "high", group = "mime" },
-  { id = "mime-local", url = "local://*", run = "mime.local", prio = "high", group = "mime" },
-  { id = "mime-remote", url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
+prepend_fetchers = [
+  #Git status (yazi-rs/plugins:git)
   { id = "git", url = "*", run = "git", group = "git" },
   { id = "git", url = "*/", run = "git", group = "git" },
+  #========================================================
 ]
-spotters = [
-  # Multi-file
-  { id = "multi", mime = "multi/*", run = "multi" },
-  # Folder
-  { id = "folder", url = "*/", run = "folder" },
-  # Code
-  { id = "code-text", mime = "text/*", run = "code" },
-  { id = "code-app", mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
-  # Image
-  { id = "img-magick", mime = "image/{avif,hei?,jxl}", run = "magick" },
-  { id = "img-svg", mime = "image/svg+xml", run = "svg" },
-  { id = "img-basic", mime = "image/*", run = "image" },
-  # Video
-  { id = "video", mime = "video/*", run = "video" },
-  # Virtual file system
-  { id = "vfs", mime = "vfs/*", run = "vfs" },
-  # Error
-  { id = "null", mime = "null/*", run = "null" },
-  # Fallback
-  { id = "fallback", url = "*", run = "file" },
+
+prepend_preloaders = [
+  #Audio and Video (boydaihungst/mediainfo)
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+  { mime = "application/postscript", run = "mediainfo" },
+  { mime = "application/illustrator", run = "mediainfo" },
+  { mime = "application/dvb.ait", run = "mediainfo" },
+  { mime = "application/vnd.adobe.illustrator", run = "mediainfo" },
+  { mime = "image/x-eps", run = "mediainfo" },
+  { mime = "application/eps", run = "mediainfo" },
+  { url = "*.{ai,eps,ait}", run = "mediainfo" },
+  { mime = "{image}/*", run = "mediainfo" },
+  { mime = "{video}/*", run = "mediainfo" },
+  #===================================================================
+
+  #Office Documents (macydnah/office plugin)
+  { mime = "application/openxmlformats-officedocument.*", run = "office" },
+  { mime = "application/oasis.opendocument.*", run = "office" },
+  { mime = "application/ms-*", run = "office" },
+  { mime = "application/msword", run = "office" },
+  { name = "*.docx", run = "office" },
+  #===================================================================
 ]
-preloaders = [
-  # Image
-  { id = "img-magick", mime = "image/{avif,hei?,jxl}", run = "magick" },
-  { id = "img-svg", mime = "image/svg+xml", run = "svg" },
-  { id = "img-basic", mime = "image/*", run = "image" },
-  # Video
-  { id = "video", mime = "video/*", run = "video" },
-  # PDF
-  { id = "pdf", mime = "application/pdf", run = "pdf" },
-  # Font
-  { id = "font-any", mime = "font/*", run = "font" },
-  { id = "font-ms", mime = "application/ms-opentype", run = "font" },
+
+prepend_previewers = [
+  #Audio and Video (boydaihungst/mediainfo)
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+  { mime = "application/postscript", run = "mediainfo" },
+  { mime = "application/illustrator", run = "mediainfo" },
+  { mime = "application/dvb.ait", run = "mediainfo" },
+  { mime = "application/vnd.adobe.illustrator", run = "mediainfo" },
+  { mime = "image/x-eps", run = "mediainfo" },
+  { mime = "application/eps", run = "mediainfo" },
+  { url = "*.{ai,eps,ait}", run = "mediainfo" },
+  { mime = "{image}/*", run = "mediainfo" },
+  { mime = "{video}/*", run = "mediainfo" },
+  #===================================================================
+
+  #Archives (ndtoan96/ouch)
+  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch --show-file-icons --archive-icon='🗄️ '" },
+  #==============================================================================
+
+  #CSV and .md (AnirudhG07/rich-preview)
+  { url = "*.csv", run = "rich-preview" },
+  { url = "*.md", run = "rich-preview" },
+  { url = "*.rst", run = "rich-preview" },
+  { url = "*.ipynb", run = "rich-preview" },
+  #=====================================================================
+
+  #Office Documents (macydnah/office plugin)
+  { mime = "application/openxmlformats-officedocument.*", run = "office" },
+  { mime = "application/oasis.opendocument.*", run = "office" },
+  { mime = "application/ms-*", run = "office" },
+  { mime = "application/msword", run = "office" },
+  { name = "*.docx", run = "office" },
+  #==================================================================
 ]
-previewers = [
-  { id = "folder", url = "*/", run = "folder" },
-  # Code
-  { id = "code-text", mime = "text/*", run = "code" },
-  { id = "code-app", mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
-  # JSON
-  { id = "json", mime = "application/{json,ndjson}", run = "json" },
-  # Image
-  { id = "img-magick", mime = "image/{avif,hei?,jxl}", run = "magick" },
-  { id = "img-svg", mime = "image/svg+xml", run = "svg" },
-  { id = "img-basic", mime = "image/*", run = "image" },
-  # Video
-  { id = "video", mime = "video/*", run = "video" },
-  # PDF
-  { id = "pdf", mime = "application/pdf", run = "pdf" },
-  # Archive
-  { id = "archive-std", mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
-  { id = "archive-pkg", mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
-  { id = "appimage", url = "*.{AppImage,appimage}", run = "archive" },
-  # Virtual Disk / Disk Image
-  { id = "iso", mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
-  { id = "vbox", mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
-  { id = "disk-raw", url = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
-  # Font
-  { id = "font-any", mime = "font/*", run = "font" },
-  { id = "font-ms", mime = "application/ms-opentype", run = "font" },
-  # Empty file
-  { id = "empty", mime = "inode/empty", run = "empty" },
-  # Virtual file system
-  { id = "vfs", mime = "vfs/*", run = "vfs" },
-  # Error
-  { id = "null", mime = "null/*", run = "null" },
-  # Fallback
-  { id = "fallback", url = "*", run = "file" },
-]
+
+
+prepend_spotters = []
 
 [input]
 cursor_blink = false
