@@ -13,28 +13,13 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true    # use n and p to jump between files
+    navigate = true    
     side-by-side = true
     line-numbers = true
-    features = decorations
-    # Using 16-color names for terminal compatibility
-    minus-style = red italic
-    plus-style = green bold
-    syntax-theme = none
-
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = blue box
-    line-numbers-left-style = cyan
-    line-numbers-right-style = cyan
 
 [diff]
-    # Better diff algorithm for moved code blocks
     colorMoved = default
-    # Use the 'histogram' algorithm for more readable diffs
     algorithm = histogram
-    # Renames are detected more accurately
     renames = true
 
 [merge]

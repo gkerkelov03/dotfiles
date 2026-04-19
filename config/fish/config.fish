@@ -1,21 +1,22 @@
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx SUDO_EDITOR nvim
+set -gx BROWSER qutebrowser
+set -gx PAGER bat
+
+set -gx DOTNET_ROOT /usr/share/dotnet
+set -p PATH $HOME/.dotnet/tools
+
 if status is-interactive
     #Load Caelestia color scheme into the shell's 16 colors
     cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
 
     atuin init fish --disable-up-arrow | source
-
-    set -gx XDG_CONFIG_HOME $HOME/.config
-    set -gx XDG_CACHE_HOME $HOME/.cache
-    set -gx XDG_DATA_HOME $HOME/.local/share
-    set -gx XDG_STATE_HOME $HOME/.local/state
-
-    set -gx EDITOR nvim
-    set -gx VISUAL nvim
-    set -gx SUDO_EDITOR nvim
-    set -gx BROWSER qutebrowser
-
-    set -gx DOTNET_ROOT /usr/share/dotnet
-    set -p PATH $HOME/.dotnet/tools
 
     set -U fish_key_bindings fish_vi_key_bindings
     set -U nvm_default_version lts
@@ -34,10 +35,12 @@ if status is-interactive
       --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
       --layout=reverse
       --border=rounded
-      --marker='✓'
+      --marker='✓ '
+      --multi
       --height=100%
       --preview '~/dotfiles/scripts/fzf-preview.sh {}'
       --preview-window=right:60%
+      --popup=80%
       --prompt='❯ '
     "
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
@@ -87,6 +90,11 @@ if status is-interactive
     bind -M default p fish_clipboard_paste
     bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
     bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
+
+    bind -M insert \ef _fzf_search_directory
+    bind -M insert \ed _fzf_all_directory_shortcuts
+    bind -M default \ef _fzf_search_directory
+    bind -M default \ed _fzf_all_directory_shortcuts
 
     function man
         tldr $argv 2>/dev/null; or command man $argv
