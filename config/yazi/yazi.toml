@@ -85,6 +85,16 @@ prepend_fetchers = [
 ]
 
 prepend_preloaders = [
+
+  #Audio (AminurAlam/yazi-plugins:preview-audio)
+  { mime = 'audio/mpegurl', run = 'code' },
+  { mime = 'audio/*', run = 'preview-audio' },
+  #=============================================
+
+  #Ebooks (AminurAlam/yazi-plugins:preview-epub)
+  { mime = '*.epub', run = 'preview-epub' },
+  #=============================================
+
   #Audio and Video (boydaihungst/mediainfo)
   { mime = "{audio,video,image}/*", run = "mediainfo" },
   { mime = "application/subrip", run = "mediainfo" },
@@ -109,6 +119,15 @@ prepend_preloaders = [
 ]
 
 prepend_previewers = [
+  #Audio (AminurAlam/yazi-plugins:preview-audio)
+  { mime = 'audio/mpegurl', run = 'code' },
+  { mime = 'audio/*', run = 'preview-audio' },
+  #=============================================
+
+  #Ebooks (AminurAlam/yazi-plugins:preview-epub)
+  { mime = '*.epub', run = 'preview-epub' },
+  #=============================================
+
   #Audio and Video (boydaihungst/mediainfo)
   { mime = "{audio,video,image}/*", run = "mediainfo" },
   { mime = "application/subrip", run = "mediainfo" },
@@ -124,7 +143,7 @@ prepend_previewers = [
   #===================================================================
 
   #Archives (ndtoan96/ouch)
-  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch --show-file-icons --archive-icon='🗄️ '" },
+  { cond = "!mime:epub", mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch --show-file-icons --archive-icon='🗄️ '" },
   #==============================================================================
 
   #CSV and .md (AnirudhG07/rich-preview)

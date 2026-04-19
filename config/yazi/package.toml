@@ -68,5 +68,10 @@ use = "boydaihungst/mediainfo"
 rev = "49f5ab7"
 hash = "6e3b5e58f985cc2d625e0030dc35b1b2"
 
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:preview-audio"
+rev = "a36ff71"
+hash = "e8a166503389d5a2165762daedb54821"
+
 [flavor]
 deps = []
