@@ -68,6 +68,7 @@ jq                           #operate on json
 dotnet-sdk                   #.NET (dotnet tool)
 python-pip                   #python package manager
 luarocks                     #lua package manager
+posting                      #postman TUI
 
 #Utilities
 ouch                         #archive & unarchive
@@ -87,7 +88,12 @@ mupdf-tools                  #mutool pdf cli tool needed for previews in fzf
 pdftoppm                     #pdf cli tool needed for yazi previews
 rich-cli                     #csv yazi preview
 sqlite                       #yazi preview and nice to have
+f3d                          #3d visualization tool for yazi preview
+hevi                         #binary files preview for yazi
 
+#Hacking tools
+termshark                    #Wireshark TUI version
+ffuf                         #fuzzing
 
 #Fonts
 ttf-jetbrains-mono-nerd       #nerd font

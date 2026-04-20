@@ -85,7 +85,10 @@ prepend_fetchers = [
 ]
 
 prepend_preloaders = [
-
+  #3d objects (ruudjhuu/f3d-preview)
+  { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
+  #==================================================================
+  #
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },
   { mime = 'audio/*', run = 'preview-audio' },
@@ -114,14 +117,18 @@ prepend_preloaders = [
   { mime = "application/oasis.opendocument.*", run = "office" },
   { mime = "application/ms-*", run = "office" },
   { mime = "application/msword", run = "office" },
-  { name = "*.docx", run = "office" },
+  { url = "*.docx", run = "office" },
   #===================================================================
 ]
 
 prepend_previewers = [
+  #3d objects (ruudjhuu/f3d-preview)
+  { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
+  #==================================================================
+
   #folders with eza (ahkohd/eza-preview)
   { url = "*/", run = "eza-preview" },
-  #=======================================
+  #====================================================
 
   #systemd services (AminurAlam/yazi-plugins:preview-systemd)
   { url = "*.service", run = "preview-systemd" },
@@ -131,10 +138,6 @@ prepend_previewers = [
   { url = '*.sqlite3', run = 'preview-sqlite' },
   { mime = 'application/sqlite3', run = 'preview-sqlite' },
   #=====================================================
-
-  #.git directory preview (AminurAlam/yazi-plugins:preview-git)
-  { url = '**/.git/', run = 'preview-git' },
-  #=============================================================
 
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },

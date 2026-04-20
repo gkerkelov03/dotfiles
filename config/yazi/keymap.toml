@@ -25,10 +25,11 @@ keymap = [
   { on = "v", run = "visual_mode", desc = "Visual mode" },
   { on = "V", run = "visual_mode --unset", desc = "Visual mode (unset)" },
 
-  # Operations (p is used for a plugin)
+  # Operations
   { on = "<Enter>", run = "open", desc = "Open" },
   { on = "o", run = "open --interactive", desc = "Open with..." },
   { on = "y", run = "yank", desc = "Copy" },
+  { on = "p", run = "paste", desc = "Paste" },
   { on = "x", run = "yank --cut", desc = "Cut" },
   { on = "d", run = "remove", desc = "Trash" },
   { on = "a", run = "create", desc = "Create" },
@@ -43,7 +44,7 @@ keymap = [
   { on = [
     "g",
     "c",
-  ], run = "plugin vcs-files", desc = "Show Git file changes" },
+  ], run = "plugin git-files", desc = "Show Git file changes" },
   { on = [
     "m",
     "o",
@@ -56,8 +57,7 @@ keymap = [
     "c",
     "m",
   ], run = "plugin chmod", desc = "Chmod on selected files" },
-  { on = "p", run = "plugin smart-paste", sdesc = "Paste into the hovered directory or CWD" },
-  { on = "P", run = "plugin toggle-pane max-preview", desc = "Maximize or restore the preview pane" },
+  { on = "M", run = "plugin toggle-pane max-preview", desc = "Maximize or restore the preview pane" },
   { on = [
     "0",
   ], run = "plugin easyjump", desc = "easyjump" },
@@ -82,6 +82,13 @@ keymap = [
     "e",
     "-",
   ], run = "plugin eza-preview dec-level", desc = "Decrement tree level" },
+  { on = "P", run = "plugin ucp paste notify", desc = "Paste" },
+  { on = "Y", run = "plugin ucp copy notify", desc = "Copy" },
+  { on = [
+    "g",
+    "i",
+  ], run = "plugin lazygit", desc = "run lazygit" },
+
   # Tabs
   { on = "t", run = "tab_create --current", desc = "New tab" },
   { on = "[", run = "tab_switch -1 --rel", desc = "Prev tab" },
@@ -94,6 +101,7 @@ keymap = [
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Normal mode / Cancel" },
   { on = "<Enter>", run = "close --submit", desc = "Submit" },
+  { on = "<BackSpace>", run = "backspace", desc = "Delete character to the left" },
 
   # Modes
   { on = "i", run = "insert", desc = "Insert" },

@@ -1,5 +1,3 @@
-https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi plugins/mime-ext.yazi at main · yazi-rs/plugins
-https://github.com/yazi-rs/plugins/tree/main/piper.yazi plugins/piper.yazi at main · yazi-rs/plugins
 https://gitee.com/DreamMaoMao/bookmarks.yazi bookmarks.yazi: A Yazi plugin that Supports persistent bookmark management.No bookmarks are lost after you close yazi.
 https://gitlab.com/WhoSowSee/whoosh.yazi WhoSowSee / whoosh.yazi · GitLab
 https://github.com/jessefarinacci/smart-arrow.yazi jessefarinacci/smart-arrow.yazi
@@ -12,7 +10,7 @@ https://github.com/boydaihungst/restore.yazi boydaihungst/restore.yazi: Undo/Rec
 https://github.com/boydaihungst/gvfs.yazi boydaihungst/gvfs.yazi: gvfs.yazi uses gvfs and gio from glib to transparently mount and unmount devices in read/write mode, allowing you to navigate inside, view, and edit individual or groups of files.
 https://github.com/pirafrank/what-size.yazi pirafrank/what-size.yazi: A plugin for yazi to calculate the size of current selection or current working directory
 https://github.com/nsavvide/duck-radar.yazi nsavvide/duck-radar.yazi: Yazi plugin to copy or move files from recently used files
-https://github.com/BBOOXX/file-actions.yazi BBOOXX/file-actions.yazi
 https://github.com/mshnwq/dupes.yazi Mshnwq/dupes.yazi: Duplicate files plugin for Yazi
 https://github.com/Rolv-Apneseth/bypass.yazi Rolv-Apneseth/bypass.yazi: Yazi plugin for skipping directories with only a single sub-directory
 https://github.com/ourongxing/fast-enter.yazi ourongxing/fast-enter.yazi: Plugin for Yazi to enter the subfolder faster, or open the file directly.
+https://github.com/grappas/wl-clipboard.yazi grappas/wl-clipboard.yazi: Wayland implementation of a simple system clipboard for yazi file manager

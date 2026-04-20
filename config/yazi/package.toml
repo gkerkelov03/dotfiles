@@ -9,11 +9,6 @@ rev = "442d908"
 hash = "6849444b7c2df08eace83f3f86fb55a3"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:vcs-files"
-rev = "442d908"
-hash = "6b141fbed3c74b45558fbc7088c805ee"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:mount"
 rev = "442d908"
 hash = "77e20b071404f97c09d3f9afdb9482e0"
@@ -32,11 +27,6 @@ hash = "c887903a63a2ff520081b6d90a4b3392"
 use = "yazi-rs/plugins:chmod"
 rev = "442d908"
 hash = "f0c8c378184d5f8abd1b095a443d336d"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:smart-paste"
-rev = "442d908"
-hash = "3f8d49413bc8691b4c652eb417a20178"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:no-status"
@@ -74,11 +64,6 @@ rev = "a36ff71"
 hash = "e8a166503389d5a2165762daedb54821"
 
 [[plugin.deps]]
-use = "AminurAlam/yazi-plugins:preview-git"
-rev = "a36ff71"
-hash = "52f20cafe2faf4901910ef77da8956e8"
-
-[[plugin.deps]]
 use = "AminurAlam/yazi-plugins:preview-sqlite"
 rev = "a36ff71"
 hash = "330b9ebc435f4b6a5ac40019de9ace56"
@@ -102,6 +87,31 @@ hash = "7d62f2eae04f77d13a21917c169b151b"
 use = "ahkohd/eza-preview"
 rev = "7a2d60f"
 hash = "eed8e19469f3dca38fd977eb938dd34e"
+
+[[plugin.deps]]
+use = "ruudjhuu/f3d-preview"
+rev = "76d115d"
+hash = "6b2008327d65fe374d99f6b6ff007cba"
+
+[[plugin.deps]]
+use = "simla33/ucp"
+rev = "b74651d"
+hash = "a008e4f6e4222f282472044bec7df1ef"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "442d908"
+hash = "384464b6df8cb807425c521f8cd790f3"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "8c4086c"
+hash = "85316b5e9abeae2531d3e5d02a094381"
+
+[[plugin.deps]]
+use = "ktunprasert/git-files"
+rev = "529444e"
+hash = "a028c3c06630a33b068f4d5bd714a795"
 
 [flavor]
 deps = []

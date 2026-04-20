@@ -19,7 +19,7 @@
 # gh: move tab to the left
 # gl: move tab to the right
 # a: toggle show tabs
-# a: toggle show tabs
+# cd: close downloads
 
 # m: add quickmark
 # M: add bookmark
