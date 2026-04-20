@@ -58,8 +58,30 @@ keymap = [
   ], run = "plugin chmod", desc = "Chmod on selected files" },
   { on = "p", run = "plugin smart-paste", sdesc = "Paste into the hovered directory or CWD" },
   { on = "P", run = "plugin toggle-pane max-preview", desc = "Maximize or restore the preview pane" },
-
-
+  { on = [
+    "0",
+  ], run = "plugin easyjump", desc = "easyjump" },
+  { on = [
+    "e",
+    "e",
+  ], run = "plugin fg -- fzf", desc = "find file by content (fuzzy match)" },
+  { on = [
+    "e",
+    "t",
+  ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
+  { on = [
+    "e",
+    "g",
+    "i",
+  ], run = "plugin eza-preview toggle-git-ignore", desc = "Toggle .gitignore files" },
+  { on = [
+    "e",
+    "=",
+  ], run = "plugin eza-preview inc-level", desc = "Increment tree level" },
+  { on = [
+    "e",
+    "-",
+  ], run = "plugin eza-preview dec-level", desc = "Decrement tree level" },
   # Tabs
   { on = "t", run = "tab_create --current", desc = "New tab" },
   { on = "[", run = "tab_switch -1 --rel", desc = "Prev tab" },

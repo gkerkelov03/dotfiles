@@ -66,7 +66,7 @@ jq                           #operate on json
 
 #Dev tools
 dotnet-sdk                   #.NET (dotnet tool)
-python-pip                          #python package manager
+python-pip                   #python package manager
 luarocks                     #lua package manager
 
 #Utilities
@@ -86,6 +86,7 @@ imagemagick                  #image previews zoom utility for yazi
 mupdf-tools                  #mutool pdf cli tool needed for previews in fzf
 pdftoppm                     #pdf cli tool needed for yazi previews
 rich-cli                     #csv yazi preview
+sqlite                       #yazi preview and nice to have
 
 
 #Fonts

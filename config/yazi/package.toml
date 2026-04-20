@@ -73,5 +73,35 @@ use = "AminurAlam/yazi-plugins:preview-audio"
 rev = "a36ff71"
 hash = "e8a166503389d5a2165762daedb54821"
 
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:preview-git"
+rev = "a36ff71"
+hash = "52f20cafe2faf4901910ef77da8956e8"
+
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:preview-sqlite"
+rev = "a36ff71"
+hash = "330b9ebc435f4b6a5ac40019de9ace56"
+
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:preview-systemd"
+rev = "a36ff71"
+hash = "a0518fa2c1245692e5d84a2b211077ba"
+
+[[plugin.deps]]
+use = "DreamMaoMao/easyjump"
+rev = "42998d0"
+hash = "bf5817a4a60a44fbf7bf76338bb455be"
+
+[[plugin.deps]]
+use = "DreamMaoMao/fg"
+rev = "b9fb819"
+hash = "7d62f2eae04f77d13a21917c169b151b"
+
+[[plugin.deps]]
+use = "ahkohd/eza-preview"
+rev = "7a2d60f"
+hash = "eed8e19469f3dca38fd977eb938dd34e"
+
 [flavor]
 deps = []

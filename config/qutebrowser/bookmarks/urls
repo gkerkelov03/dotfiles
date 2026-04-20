@@ -1,2 +1,18 @@
 https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi plugins/mime-ext.yazi at main · yazi-rs/plugins
 https://github.com/yazi-rs/plugins/tree/main/piper.yazi plugins/piper.yazi at main · yazi-rs/plugins
+https://gitee.com/DreamMaoMao/bookmarks.yazi bookmarks.yazi: A Yazi plugin that Supports persistent bookmark management.No bookmarks are lost after you close yazi.
+https://gitlab.com/WhoSowSee/whoosh.yazi WhoSowSee / whoosh.yazi · GitLab
+https://github.com/jessefarinacci/smart-arrow.yazi jessefarinacci/smart-arrow.yazi
+https://github.com/iynaix/time-travel.yazi iynaix/time-travel.yazi: A yazi plugin for browsing backwards and forwards in time via BTRFS / ZFS snapshots.
+https://github.com/KKV9/compress.yazi KKV9/compress.yazi: A Yazi plugin that compresses selected files to an archive.
+https://github.com/atareao/convert.yazi atareao/convert.yazi
+https://github.com/uhs-robert/recycle-bin.yazi uhs-robert/recycle-bin.yazi: 🗑️ recycle-bin.yazi is a Recycle Bin for Yazi with browse, restore, and cleanup capabilities. Give your files a second chance before they're garbage collected!
+https://github.com/Ape/reflink.yazi Ape/reflink.yazi: Yazi plugin for reflinking files
+https://github.com/boydaihungst/restore.yazi boydaihungst/restore.yazi: Undo/Recover trashed files/folders
+https://github.com/boydaihungst/gvfs.yazi boydaihungst/gvfs.yazi: gvfs.yazi uses gvfs and gio from glib to transparently mount and unmount devices in read/write mode, allowing you to navigate inside, view, and edit individual or groups of files.
+https://github.com/pirafrank/what-size.yazi pirafrank/what-size.yazi: A plugin for yazi to calculate the size of current selection or current working directory
+https://github.com/nsavvide/duck-radar.yazi nsavvide/duck-radar.yazi: Yazi plugin to copy or move files from recently used files
+https://github.com/BBOOXX/file-actions.yazi BBOOXX/file-actions.yazi
+https://github.com/mshnwq/dupes.yazi Mshnwq/dupes.yazi: Duplicate files plugin for Yazi
+https://github.com/Rolv-Apneseth/bypass.yazi Rolv-Apneseth/bypass.yazi: Yazi plugin for skipping directories with only a single sub-directory
+https://github.com/ourongxing/fast-enter.yazi ourongxing/fast-enter.yazi: Plugin for Yazi to enter the subfolder faster, or open the file directly.

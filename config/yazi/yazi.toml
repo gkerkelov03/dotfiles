@@ -119,6 +119,23 @@ prepend_preloaders = [
 ]
 
 prepend_previewers = [
+  #folders with eza (ahkohd/eza-preview)
+  { url = "*/", run = "eza-preview" },
+  #=======================================
+
+  #systemd services (AminurAlam/yazi-plugins:preview-systemd)
+  { url = "*.service", run = "preview-systemd" },
+  #=====================================================
+
+  #sqlite (AminurAlam/yazi-plugins:preview-sqlite)
+  { url = '*.sqlite3', run = 'preview-sqlite' },
+  { mime = 'application/sqlite3', run = 'preview-sqlite' },
+  #=====================================================
+
+  #.git directory preview (AminurAlam/yazi-plugins:preview-git)
+  { url = '**/.git/', run = 'preview-git' },
+  #=============================================================
+
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },
   { mime = 'audio/*', run = 'preview-audio' },
