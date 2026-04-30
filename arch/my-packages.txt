@@ -72,6 +72,7 @@ posting                      #postman TUI
 
 #Utilities
 ouch                         #archive & unarchive
+portal                       #goated file sending tool
 age                          #encryption tool
 mpvpaper                     #set videos as wallpaper
 unzip                        #unzipping needed by some tools

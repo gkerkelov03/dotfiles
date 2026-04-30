@@ -30,7 +30,7 @@
 
 # yy: copy current url
 # yf: copy some link that you see
-# co: edit current url
+# so: show current url
 
 # q: video speed -0.1
 # w: video speed +0.1
@@ -67,7 +67,7 @@ config.bind("gl", "tab-move +")
 config.bind("yf", "hint links yank")
 config.bind("x", "devtools")
 config.bind("a", "config-cycle tabs.show always never")
-config.bind("co", "cmd-set-text :open {url:pretty}")
+config.bind("so", "cmd-set-text :open {url:pretty}")
 
 # Setup q w e to do -0.1 +0.1 =1 speed for videos
 config.bind(
@@ -98,6 +98,7 @@ c.completion.height = "20%"
 c.tabs.show = "switching"
 c.statusbar.show = "in-mode"
 config.unbind("<Ctrl-v>", mode="normal")
+c.input.insert_mode.auto_leave = False
 
 # Tabs colors
 c.colors.tabs.even.bg = "#282c34"
