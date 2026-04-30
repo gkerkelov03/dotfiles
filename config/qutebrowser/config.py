@@ -6,12 +6,22 @@ config: ConfigAPI = config  # noqa: F821, E0602
 
 config.load_autoconfig(False)  # Don't allow config outside of this file
 c.bindings.default = {}  # Unbind all default keybingings
+c.colors.webpage.preferred_color_scheme = "dark"
 
-config.bind(":", "cmd-set-text :")  # bind : to open the cmd in qute browser
+config.bind(":", "cmd-set-text :")
 config.bind("<Return>", "command-accept", mode="command")
 config.bind("i", "mode-enter insert", mode="normal")
 config.bind("<Ctrl-[>", "mode-leave", mode="insert")
 config.bind("<Ctrl-[>", "mode-leave", mode="command")
+config.bind("o", "cmd-set-text -s :open")
+config.bind("O", "cmd-set-text -s :open -t")
+config.bind("<Up>", "completion-item-focus prev", mode="command")
+config.bind("<Down>", "completion-item-focus next", mode="command")
+
+# Write your text in in nvim
+c.editor.command = ["foot", "nvim", "{file}"]
+config.bind("<Ctrl-e>", "edit-text", mode="insert")
+config.bind("<Ctrl-e>", "edit-command", mode="command")
 
 # Navigation
 config.bind("h", "scroll left")
@@ -21,15 +31,15 @@ config.bind("l", "scroll right")
 config.bind("gg", "scroll-to-perc 0")
 config.bind("G", "scroll-to-perc 100")
 
-# Window/Tab Management
+# Tab Management
 config.bind("d", "tab-close")  # 'd' is usually tab-close in qutebrowser
 config.bind("u", "undo")  # Restore closed tab
 config.bind("H", "back")
 config.bind("L", "forward")
-config.bind("J", "tab-prev")
-config.bind("K", "tab-next")
-config.bind("gh", "tab-move -")
-config.bind("gl", "tab-move +")
+config.bind("J", "tab-prev")  # Focus prev tab
+config.bind("K", "tab-next")  # Focus next tab
+config.bind("gh", "tab-move -")  # Move tab to the left
+config.bind("gl", "tab-move +")  # Move tab to the right
 config.bind("a", "config-cycle tabs.show always never")
 
 # Reload & Open
@@ -38,23 +48,20 @@ config.bind("R", "reload -f")  # Hard reload
 config.bind("f", "hint")  # Open link in current tab
 config.bind("F", "hint all tab")  # Open link in new tab
 config.bind("cd", "download-clear")  # Close/clear downloads
+config.bind("cn", "clear-messages")  # Close/clear notifications
+c.messages.timeout = 3000
 
 # Marks & History
-config.bind("m", "quickmark-save")
-config.bind("M", "bookmark-add")
-config.bind("Sq", "bookmark-list")
-config.bind("Sh", "history")
-config.bind("x", "devtools")
+config.bind("ma", "bookmark-add")
+config.bind("md", "bookmark-del")
+config.bind("sm", "bookmark-list")
+config.bind("sh", "history")
+config.bind("sd", "devtools")
 
 # Yank & URL display
-config.bind("yy", "yank url")
-config.bind("yf", "hint links yank")
-config.bind("so", "set-cmd-text -s :open {url:pretty}")
-
-# Yank & URL display
-config.bind("yy", "yank url")
-config.bind("yf", "hint links yank")
-config.bind("so", "set-cmd-text -s :open {url:pretty}")
+config.bind("yy", "yank url")  # Copy current url
+config.bind("yf", "hint links yank")  # Copy some url on the page
+config.bind("so", "set-cmd-text -s :open {url:pretty}")  # Show opened url
 
 # Video Speed Controls
 config.bind(
