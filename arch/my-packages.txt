@@ -71,6 +71,7 @@ luarocks                     #lua package manager
 posting                      #postman TUI
 
 #Utilities
+man-db                       #the man and mandb commands
 ouch                         #archive & unarchive
 portal                       #goated file sending tool
 age                          #encryption tool
