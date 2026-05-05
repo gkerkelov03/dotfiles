@@ -50,9 +50,12 @@ if status is-interactive
     abbr t --function projectdo_test
 
     abbr lg lazygit
+    abbr ld lazydocker
     abbr f fzf
     abbr v nvim
     abbr y yazi
+    abbr c cd
+
     abbr gd 'git diff'
     abbr ga 'git add'
     abbr gaa 'git add -A'

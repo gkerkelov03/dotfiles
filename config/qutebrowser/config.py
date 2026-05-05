@@ -140,8 +140,8 @@ c.statusbar.show = "in-mode"
 c.input.insert_mode.auto_leave = False
 config.bind("y", "prompt-accept yes", mode="yesno")
 config.bind("n", "prompt-accept no", mode="yesno")
-config.bind("Y", "prompt-accept always", mode="yesno")
-config.bind("N", "prompt-accept never", mode="yesno")
+config.bind("Y", "prompt-accept --save yes", mode="yesno")
+config.bind("N", "prompt-accept --save no", mode="yesno")
 
 # Tabs colors
 c.colors.tabs.even.bg = "#282c34"
