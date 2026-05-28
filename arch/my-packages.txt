@@ -1,22 +1,6 @@
-#Caelestia stuff
-caelestia-cli
-caelestia-shell
-qtengine-git
-app2unit                     #run apps as systemd user units so they are a standalone process and not a child process of the launcher for example
-wireplumber                  #audio session manager (pipewire's brain)
-cliphist                     #clipboard history manager
-inotify-tools                #watch for file changes in real-time
-rash-cli
-adw-gtk-theme
-papirus-icon-theme           #goated icon pack
-
 #Hyprland
-hyprland                     #wayland compositor and window manager
-xdg-desktop-portal-hyprland  #screen sharing (streaming your desktop and audio to an app like discord)
-xdg-desktop-portal-gtk       #the default file picker and app chooser
 mesa                         #open source GPU drivers
 mesa-utils                   #GPU drivers diagnostics (glxinfo, glxgears, eglinfo)
-qt5-wayland                  
 hyprpolkitagent              #popup for sudo password when a GUI app needs admin permissions
 
 #My stuff
@@ -25,10 +9,11 @@ foot                         #terminal
 fish                         #modern shell
 tmux                         #terminal multiplexer
 fzf                          #general-purpose fuzzy finder
-atuin                        #Better Shell History
+atuin                        #better Shell History
 yazi                         #file manager
 btop                         #system monitor
 lazydocker                   #docker TUI
+ly                           #login manager
 
 #GUI apps
 mpv                          #media player
@@ -92,6 +77,7 @@ rich-cli                     #csv yazi preview
 sqlite                       #yazi preview and nice to have
 f3d                          #3d visualization tool for yazi preview
 hevi                         #binary files preview for yazi
+python-pynacl                #needed for browser integration with keepassxc
 
 #Hacking tools
 termshark                    #Wireshark TUI version

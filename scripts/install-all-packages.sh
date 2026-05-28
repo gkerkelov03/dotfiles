@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+bash "./install-caelestia.sh"
+
 packages_file_path="$HOME/dotfiles/arch/my-packages.txt"
 
 # Check if the file exists
 if [[ ! -f "$packages_file_path" ]]; then
-    echo "❌ Error: $PKG_FILE not found!"
-    exit 1
+  echo "❌ Error: $PKG_FILE not found!"
+  exit 1
 fi
 
 echo "Reading package list and syncing with paru..."

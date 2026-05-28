@@ -30,8 +30,10 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
     nvm install lts
 '
 
-#Enable systemd services
+#Enable and disable systemd services
 systemctl --user enable --now hyprpolkitagent wireplumber
+sudo systemctl disable --now getty@tty1.service
+sudo systemctl enable --now ly.service
 
 #Install yazi plugins
 ya pkg install

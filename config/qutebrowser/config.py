@@ -4,6 +4,7 @@ import os
 c: Keymerger = c  # noqa: F821, E0602
 config: ConfigAPI = config  # noqa: F821, E0602
 allModes = ["command", "insert", "hint", "caret", "passthrough", "prompt", "yesno"]
+gpg_key = "gkerkelov03@gmail.com"
 
 config.load_autoconfig(False)  # Don't allow config outside of this file
 c.bindings.default = {}  # Unbind all default keybingings
@@ -17,7 +18,6 @@ config.bind("<Up>", "completion-item-focus prev", mode="command")
 config.bind("<Down>", "completion-item-focus next", mode="command")
 for mode in allModes:
     config.bind("<Ctrl-[>", "mode-leave", mode=mode)
-
 
 config.bind("o", "cmd-set-text -s :open")
 config.bind("O", "cmd-set-text -s :open -t")
@@ -59,9 +59,8 @@ config.bind("d", "tab-clone")
 c.messages.timeout = 3000
 
 # Marks & History
-config.bind("ma", "bookmark-add")
-config.bind("md", "bookmark-del")
-config.bind("sm", "bookmark-list")
+config.bind("ma", "open -t https://app.raindrop.io/add?link={url}&title={title}")
+config.bind("sm", "open -t https://app.raindrop.io/my/0")
 config.bind("sh", "history")
 config.bind("sd", "devtools")
 
@@ -69,6 +68,12 @@ config.bind("sd", "devtools")
 config.bind("yy", "yank url")  # Copy current url
 config.bind("yf", "hint links yank")  # Copy some url on the page
 config.bind("so", "cmd-set-text -s :open {url:pretty}")  # Show opened url
+
+config.bind("/", "cmd-set-text /")
+# KeepassXC integration
+config.bind(
+    "ke", f"spawn --userscript keepassxc.py --key {gpg_key} {{url}}", mode="normal"
+)
 
 # Video Speed Controls
 config.bind(
@@ -86,8 +91,8 @@ config.bind(
 
 
 # Default pages to open
-c.url.start_pages = "https://google.com/gemini"
-c.url.default_page = "https://google.com/gemini"
+c.url.start_pages = "https://gemini.google.com"
+c.url.default_page = "https://gemini.google.com"
 
 # make :open yt gosho search directly in youtube and so on...
 c.url.searchengines = {
