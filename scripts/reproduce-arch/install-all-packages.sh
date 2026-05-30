@@ -2,7 +2,7 @@
 
 bash "./install-caelestia.sh"
 
-packages_file_path="$HOME/dotfiles/arch/my-packages.txt"
+packages_file_path="$HOME/dotfiles/arch/packages.txt"
 
 # Check if the file exists
 if [[ ! -f "$packages_file_path" ]]; then

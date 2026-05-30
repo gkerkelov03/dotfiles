@@ -18,9 +18,6 @@ dotnet tool install --global dotnet-ef
 #Install gh dash
 gh extension install dlvhdr/gh-dash
 
-#Enable the service that updates the db of the locate command (plocate package)
-sudo systemctl enable --now plocate-updatedb.timer
-
 #Install fisher and load fisher plugins
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | fish -c '
     source; 
@@ -30,16 +27,16 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
     nvm install lts
 '
 
-#Enable and disable systemd services
-systemctl --user enable --now hyprpolkitagent wireplumber
-sudo systemctl disable --now getty@tty1.service
-sudo systemctl enable --now ly.service
-
 #Install yazi plugins
 ya pkg install
 ya pkg upgrade
 
 #Make fish default shell
 chsh -s /bin/fish
+
+#Enable and disable systemd services
+sudo systemctl enable --now plocate-updatedb.timer # The service that updates the db of the locate command (plocate package)
+sudo systemctl --user enable --now hyprpolkitagent wireplumber
+sudo systemctl enable greetd
 
 echo "Done"
