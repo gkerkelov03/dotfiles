@@ -2,6 +2,8 @@
 mesa                         #open source GPU drivers
 mesa-utils                   #GPU drivers diagnostics (glxinfo, glxgears, eglinfo)
 hyprpolkitagent              #popup for sudo password when a GUI app needs admin permissions
+greetd                       #display/login manager daemon
+greetd-regreet-git           #the greeter for greetd (the UI)
 
 #My stuff
 neovim                       #goated text editor
@@ -78,6 +80,7 @@ sqlite                       #yazi preview and nice to have
 f3d                          #3d visualization tool for yazi preview
 hevi                         #binary files preview for yazi
 python-pynacl                #needed for browser integration with keepassxc
+dosfstools                   #file system dyagnostics tools like fsck.fat
 
 #Hacking tools
 termshark                    #Wireshark TUI version
