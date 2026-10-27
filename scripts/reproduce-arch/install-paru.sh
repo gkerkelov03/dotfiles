@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-#Install paru if not already installed
-command -v paru &>/dev/null || {
+if [[ $EUID -eq 0 ]]; then
+  echo "Run this as a normal user, not root." >&2
+  exit 1
+fi
+
+sudo pacman -Syu --noconfirm
+
+if ! paru --version &>/dev/null; then
+  # Remove broken prebuilt paru, only the parts that are installed
+  pacman -Qq paru-bin paru-bin-debug 2>/dev/null \
+    | sudo pacman -Rns --noconfirm - || true
+
   sudo pacman -S --needed --noconfirm base-devel git
-  git clone https://aur.archlinux.org/paru-bin.git /tmp/paru
-  (cd /tmp/paru && makepkg -si --noconfirm)
-  rm -rf /tmp/paru
-}
+
+  tmp=$(mktemp -d)
+  trap 'rm -rf "$tmp"' EXIT
+  git clone https://aur.archlinux.org/paru.git "$tmp/paru"
+  (cd "$tmp/paru" && makepkg -si --noconfirm)
+fi
+
+paru --version
