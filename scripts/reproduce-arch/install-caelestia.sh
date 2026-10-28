@@ -1,33 +1,23 @@
 #!/usr/bin/env bash
 
-# Packages to skip
-exclude=(
-  "starship"
-)
+paru -S caelestia-cli
+caelestia install
 
-# Fetch and parse depends from PKGBUILD
-raw=$(curl -s "https://raw.githubusercontent.com/caelestia-dots/caelestia/main/PKGBUILD")
+# delete some caelestia defaults that we don't need
+paru -Rs starship thunar micro
+paru -c
 
-deps=($(echo "$raw" |
-  grep -A 999 "^depends=(" |
-  grep -m1 -oP "(?<=depends=\().*?(?=\))" |
-  tr -d "'" |
-  tr -s " \n" "\n"))
+# delete config folders for apps/tools cuz caelestia copy pastes all dotfiles.
+cd ~/.config
 
-if [[ ${#deps[@]} -eq 0 ]]; then
-  echo "Failed to fetch dependencies. Check your internet connection."
-  exit 1
-fi
-
-# Filter out excluded packages
-to_install=()
-for pkg in "${deps[@]}"; do
-  skip=false
-  for ex in "${exclude[@]}"; do
-    [[ "$pkg" == "$ex" ]] && skip=true && break
-  done
-  $skip || to_install+=("$pkg")
-done
-
-echo "Installing: ${to_install[*]}"
-paru -S --needed "${to_install[@]}"
+rm -rf \
+  cava \	
+go \
+  htop \
+  micro \
+  nvtop \
+  Thunar \
+  Vencord \
+  starship.toml \
+  fastfetch \
+  foot

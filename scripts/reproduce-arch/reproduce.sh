@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-bash "./install-all-packages-from-the-packages-file.sh"
-bash "./update-hyprland-config.sh"
+bash "./install-paru.sh"
+bash "./install-caelestia.sh"
 bash "./symlink-dotfiles.sh"
+bash "./install-all-packages-from-the-packages-file.sh"
 
 #Install dotnet ef tool
 dotnet tool install --global dotnet-ef
@@ -30,8 +31,8 @@ ya pkg upgrade
 chsh -s /bin/fish
 
 #Enable and disable systemd services
-sudo systemctl enable --now plocate-updatedb.timer # The service that updates the db of the locate command (plocate package)
-sudo systemctl --user enable --now hyprpolkitagent wireplumber
-sudo systemctl enable greetd
+systemctl enable --now plocate-updatedb.timer # The service that updates the db of the locate command (plocate package)
+systemctl --user enable --now hyprpolkitagent wireplumber
+systemctl enable greetd
 
 echo "Done"

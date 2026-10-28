@@ -146,7 +146,7 @@
             "activeIndicator": true,
             "activeLabel": "󰮯",
             "activeTrail": true,
-            "capitalisation": "preserve",
+            "capitalisation": "Preserve",
             "label": " ",
             "maxWindowIcons": 0,
             "occupiedBg": true,
@@ -157,13 +157,17 @@
             "shown": 5,
             "specialWorkspaceIcons": [
                 {
+                    "flags": "",
                     "icon": "sports_esports",
-                    "name": "steam"
+                    "name": "steam",
+                    "regex": ""
                 }
             ],
             "windowIcons": [
                 {
+                    "flags": "",
                     "icon": "sports_esports",
+                    "name": "",
                     "regex": "steam(_app_(default|[0-9]+))?"
                 }
             ]
@@ -207,12 +211,14 @@
             "criticalLevel": 3,
             "warnLevels": [
                 {
+                    "critical": false,
                     "icon": "battery_android_frame_2",
                     "level": 20,
                     "message": "",
                     "title": "Battery 20%"
                 },
                 {
+                    "critical": false,
                     "icon": "battery_android_frame_1",
                     "level": 10,
                     "message": "",
@@ -232,19 +238,31 @@
             "lockBeforeSleep": true,
             "timeouts": [
                 {
+                    "enabled": true,
                     "idleAction": "lock",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
                     "timeout": 180
                 },
                 {
+                    "enabled": true,
                     "idleAction": "dpms off",
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
                     "returnAction": "dpms on",
                     "timeout": 300
                 },
                 {
+                    "enabled": true,
                     "idleAction": [
                         "systemctl",
                         "suspend-then-hibernate"
                     ],
+                    "inhibitWhenAudio": false,
+                    "inhibitWhenCharging": false,
+                    "respectInhibitors": true,
                     "timeout": 600
                 }
             ]
@@ -445,7 +463,7 @@
         "defaultExpireTimeout": 5000,
         "expandThreshold": 20,
         "expire": false,
-        "fullscreen": "on",
+        "fullscreen": "On",
         "groupPreviewNum": 3,
         "openExpanded": false
     },
@@ -566,14 +584,21 @@
             "vpnChanged": true
         },
         "vpn": {
-            "enabled": true,
+            "enabled": false,
             "provider": [
                 {
+                    "connectCmd": [
+                    ],
+                    "disconnectCmd": [
+                    ],
                     "displayName": "Wireguard (Your VPN)",
                     "enabled": false,
+                    "id": "vpn-mvs3f2gt-2ascc",
+                    "interface": "",
                     "name": "wireguard"
                 }
-            ]
+            ],
+            "selectedProvider": "vpn-mvs3f2gt-2ascc"
         }
     }
 }

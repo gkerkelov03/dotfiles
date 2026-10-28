@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-bash "./install-caelestia.sh"
-
 packages_file_path="$HOME/dotfiles/arch/packages.txt"
 
 # Check if the file exists
