@@ -1,36 +1,27 @@
 {
- "theme": {
-        "enableDiscord": false,
-        "enableSpicetify": false,
-        "enablePandora": false,
-        "enableNvtop": false,
-        "enableHtop": false,
-        "enableWarp": false,
-        "enableChromium": false,
-        "enableZed": false,
-        "enableCava": false
+  "theme": {
+      "enableDiscord":   false,
+      "enableSpicetify": false,
+      "enablePandora":   false,
+      "enableNvtop":     false,
+      "enableHtop":      false,
+      "enableWarp":      false,
+      "enableChromium":  false,
+      "enableZed":       false,
+      "enableCava":      false
   },
+
   "toggles": {
       "communication": {
-          "discord": {
-              "enable": false
-          },
-          "whatsapp": {
-              "enable": false
-          }
+          "discord":  { "enable": false },
+          "whatsapp": { "enable": false }
       },
       "music": {
-          "spotify": {
-              "enable": false
-          },
-          "feishin": {
-              "enable": false
-          }
+          "spotify": { "enable": false },
+          "feishin": { "enable": false }
       },
       "todo": {
-          "todoist": {
-              "enable": false
-          }
+          "todoist": { "enable": false }
       }
   }
 }
