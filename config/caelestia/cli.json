@@ -1,61 +1,35 @@
 {
-    "record": {
-        "extraArgs": []
-    },
-    "wallpaper": {
-        "postHook": "echo $WALLPAPER_PATH"
-    },
-    "theme": {
-        "enableTerm": true,
-        "enableHypr": true,
-        "enableFuzzel": true,
-        "enableBtop": true,
-        "enableGtk": true,
-        "enableQt": true,
+ "theme": {
         "enableDiscord": false,
-        "enableSpicetify": false
+        "enableSpicetify": false,
+        "enablePandora": false,
         "enableNvtop": false,
+        "enableHtop": false,
+        "enableWarp": false,
+        "enableChromium": false,
+        "enableZed": false,
+        "enableCava": false
     },
     "toggles": {
         "communication": {
             "discord": {
-                "enable": false,
-                "match": [{ "class": "discord" }],
-                "command": ["discord"],
-                "move": true
+                "enable": false
             },
             "whatsapp": {
-                "enable": false,
-                "match": [{ "class": "whatsapp" }],
-                "move": true
-            }
-        },
-        "sysmon": {
-            "btop": {
-                "enable": true,
-                "match": [{ "class": "btop", "title": "btop", "workspace": { "name": "special:sysmon" } }],
-                "command": ["foot", "-a", "btop", "-T", "btop", "fish", "-C", "exec btop"]
-            }
-        },
-        "todo": {
-            "todoist": {
-                "enable": false,
-                "match": [{ "class": "Todoist" }],
-                "command": ["todoist"],
-                "move": true
+                "enable": false
             }
         },
         "music": {
             "spotify": {
-                "enable": false,
-                "match": [{ "class": "Spotify" }, { "initialTitle": "Spotify" }, { "initialTitle": "Spotify Free" }],
-                "command": ["spicetify", "watch", "-s"],
-                "move": true
+                "enable": false
             },
             "feishin": {
-                "enable": false,
-                "match": [{ "class": "feishin" }],
-                "move": true
+                "enable": false
+            }
+        },
+        "todo": {
+            "todoist": {
+                "enable": false
             }
         }
     }
