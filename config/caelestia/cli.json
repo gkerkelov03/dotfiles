@@ -9,28 +9,28 @@
         "enableChromium": false,
         "enableZed": false,
         "enableCava": false
-    },
-    "toggles": {
-        "communication": {
-            "discord": {
-                "enable": false
-            },
-            "whatsapp": {
-                "enable": false
-            }
-        },
-        "music": {
-            "spotify": {
-                "enable": false
-            },
-            "feishin": {
-                "enable": false
-            }
-        },
-        "todo": {
-            "todoist": {
-                "enable": false
-            }
-        }
-    }
+  },
+  "toggles": {
+      "communication": {
+          "discord": {
+              "enable": false
+          },
+          "whatsapp": {
+              "enable": false
+          }
+      },
+      "music": {
+          "spotify": {
+              "enable": false
+          },
+          "feishin": {
+              "enable": false
+          }
+      },
+      "todo": {
+          "todoist": {
+              "enable": false
+          }
+      }
+  }
 }
