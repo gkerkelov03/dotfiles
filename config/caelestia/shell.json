@@ -55,12 +55,17 @@
             { "id": "dnd",       "enabled": true },
             { "id": "vpn",       "enabled": true }
         ],
-        "vpn": {
-            "enabled": false,
-            "provider": [
-                { "name": "wireguard", "interface": "your-connection-name", "displayName": "Wireguard (Your VPN)", "enabled": false }
-            ]
-        }
+       "vpn": {
+          "enabled": false,
+          "provider": [
+          {
+              "name": "wireguard",
+              "interface": "your-connection-name",
+              "displayName": "Wireguard (Your VPN)",
+              "enabled": false
+          }
+        ]
+      }
     },
 
     "osd": { "enableMicrophone": true },
