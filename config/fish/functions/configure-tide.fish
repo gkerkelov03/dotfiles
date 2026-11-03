@@ -1,1 +1,0 @@
-/home/qwest/dotfiles/scripts/fish-functions/configure-tide.fish
