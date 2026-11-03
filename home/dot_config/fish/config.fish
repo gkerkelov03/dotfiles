@@ -30,9 +30,14 @@ set -gx FZF_DEFAULT_OPTS "
   --prompt='❯ '
 "
 
+#Set the default fish_greeting to nothing otherwise it prints Welcome to fish
+set -g fish_greeting
+
 #Load Caelestia color scheme into the shell's 16 colors
 cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
+
 if status is-interactive
+    fastfetch
     atuin init fish --disable-up-arrow | source
 
     set -U fish_key_bindings fish_vi_key_bindings
@@ -63,7 +68,7 @@ if status is-interactive
     abbr gaa 'git add -A'
     abbr gc --set-cursor 'git commit -m "%"'
     abbr gl 'git log'
-    abbr gs git_status
+    abbr gs git-status
     abbr gst 'git stash'
     abbr gsp 'git stash pop'
     abbr gp 'git push'
@@ -85,9 +90,7 @@ if status is-interactive
     alias grep="rg"
     alias du="dust"
     alias df="duf"
-    alias neo "neo-matrix --defaultbg --colormode=16"
-
-    alias symlink-dotfiles="sh ~/dotfiles/scripts/symlink-dotfiles.sh"
+    alias neo="neo-matrix --defaultbg --colormode=16"
 
     #Keybindigs for vim mode
     bind -M default yy fish_clipboard_copy

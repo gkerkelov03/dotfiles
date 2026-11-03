@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-function configure_tide
+function configure-tide
     tide configure --auto \
         --style=Rainbow \
         --prompt_colors='16 colors' \

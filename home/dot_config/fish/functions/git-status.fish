@@ -1,4 +1,4 @@
-function git_status
+function git-status
     git status --porcelain -b | awk '
         BEGIN {
             green  = "\033[38;2;80;250;123m"
