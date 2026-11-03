@@ -8,11 +8,11 @@ if [[ ! -f "$packages_file_path" ]]; then
   exit 1
 fi
 
-echo "Reading package list and syncing with paru..."
+echo "Reading package list and installing with paru..."
 
 # 1. grep -v '^#'       -> Ignore lines that are JUST comments
 # 2. sed 's/#.*//'      -> Remove everything after a # on any line
 # 3. xargs              -> Pass the cleaned names to paru
 grep -v '^#' "$packages_file_path" | sed 's/#.*//' | xargs -r paru -S --needed --noconfirm
 
-echo "✅ System synchronization complete!"
+echo "✅ Installation finished!"

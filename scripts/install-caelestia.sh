@@ -11,8 +11,8 @@ paru -c
 cd ~/.config
 
 rm -rf \
-  cava \	
-go \
+  cava \
+  go \
   htop \
   micro \
   nvtop \

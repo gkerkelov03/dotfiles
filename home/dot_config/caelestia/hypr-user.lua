@@ -17,6 +17,8 @@ hl.env("PAGER", "bat")
 
 hl.env("DOTNET_ROOT", "/usr/share/dotnet")
 
+hl.env("CAELESTIA_SCREENSHOTS_DIR", home .. "/media/screenshots")
+hl.env("CAELESTIA_RECORDINGS_DIR", home .. "/media/recordings")
 ---------------------------
 ---- MONITORS -------------
 ---------------------------

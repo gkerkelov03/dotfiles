@@ -37,7 +37,9 @@ set -g fish_greeting
 cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
 
 if status is-interactive
-    fastfetch
+    sleep 0.01 #because the terminal width in the call-fastfetch function is calculated too fast otherwise and its wrong
+    call-fastfetch
+
     atuin init fish --disable-up-arrow | source
 
     set -U fish_key_bindings fish_vi_key_bindings
