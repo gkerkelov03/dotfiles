@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+
 keymap.set({ "n", "x" }, "0", "^") -- Map 0 to ^
 keymap.set("n", "o", "o<Esc>") -- Open new lines without staying in insert mode
 keymap.set("n", "da", ":%d<cr>", { desc = "Delete all" }) -- Delete all
