@@ -1,5 +1,7 @@
 function git-status
     git status --porcelain -b | awk '
+        function emit(group, line) { print group "\t" key "\t" line }
+
         BEGIN {
             green  = "\033[38;2;80;250;123m"
             yellow = "\033[38;2;241;250;140m"
@@ -9,22 +11,20 @@ function git-status
             reset  = "\033[0m"
         }
 
-        # 1. Handle the Branch Header
-        /^##/ { print "0" cyan $0 reset; next }
+        /^##/ { key = ""; emit(0, cyan $0 reset); next }
 
-        # 2. Extract status and filename
         {
             s = substr($0, 1, 2)
             file = substr($0, 4)
+            key = file
+            gsub(/"/, "", key)
         }
 
-        # 3. Categorize, Colorize, and Indent
-        s ~ /A/    { print "1  " green "A " reset file; next }
-        s ~ /M/    { print "2    " yellow "M " reset file; next }
-        s ~ /D/    { print "3      " red "D " reset file; next }
-        s ~ /\?\?/ { print "4        " purple "?? " reset file; next }
+        s ~ /\?\?/ { emit(1, "  " purple "?? " reset file); next }
+        s ~ /A/    { emit(2, "    " green "A " reset file); next }
+        s ~ /M/    { emit(3, "      " yellow "M " reset file); next }
+        s ~ /D/    { emit(4, "        " red "D " reset file); next }
 
-        # Fallback
-        { print "5 " $0 }
-    ' | sort -k1,1n | sed 's/^.//'
+        { emit(5, $0) }
+    ' | LC_ALL=C sort -t \t -k1,1n -k2,2 | cut -f3-
 end

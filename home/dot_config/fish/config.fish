@@ -8,7 +8,7 @@ set -gx VISUAL nvim
 set -gx SUDO_EDITOR nvim
 set -gx BROWSER qutebrowser
 set -gx PAGER bat
-set -gx SSH_AUTH_SOCK /home/qwest/.ssh/agent.sock
+set -gx SSH_AUTH_SOCK /home/gkerkelov03/.ssh/agent.sock
 
 set -gx DOTNET_ROOT /usr/share/dotnet
 set -p PATH $HOME/.dotnet/tools
@@ -85,11 +85,26 @@ if status is-interactive
     bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
     bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
 
+    function clone --description 'git clone into ~/repos'
+        if test (count $argv) -eq 0
+            echo 'Usage: clone <url or user/repo> [git clone options]' >&2
+            return 1
+        end
+
+        set -l repo $argv[1]
+        if string match -rq '^[^/:@]+/[^/:@]+$' -- $repo
+            set repo https://github.com/$repo
+        end
+
+        mkdir -p ~/repos
+        and git -C ~/repos clone $repo $argv[2..]
+    end
+
     function man
         tldr $argv 2>/dev/null; or command man $argv
     end
 
-    function mkcd
+    function mkcd --description 'create a directory and cd into it'
         mkdir -p $argv[1] && cd $argv[1]
     end
 
