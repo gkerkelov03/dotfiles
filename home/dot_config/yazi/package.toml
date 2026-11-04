@@ -99,11 +99,6 @@ rev = "b74651d"
 hash = "a008e4f6e4222f282472044bec7df1ef"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:piper"
-rev = "442d908"
-hash = "384464b6df8cb807425c521f8cd790f3"
-
-[[plugin.deps]]
 use = "Lil-Dank/lazygit"
 rev = "8c4086c"
 hash = "85316b5e9abeae2531d3e5d02a094381"

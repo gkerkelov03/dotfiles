@@ -1,78 +1,5 @@
 [mgr]
-ratio = [1, 4, 3]
-sort_by = "alphabetical"
-sort_sensitive = false
-sort_reverse = false
-sort_dir_first = true
-sort_translit = false
-linemode = "none"
-show_hidden = false
-show_symlink = true
-scrolloff = 5
-mouse_events = ["click", "scroll"]
-
-[preview]
-wrap = "no"
-tab_size = 2
-max_width = 600
-max_height = 900
-cache_dir = ""
-image_delay = 30
-image_filter = "triangle"
-image_quality = 75
-ueberzug_scale = 1
-ueberzug_offset = [0, 0, 0, 0]
-
-[opener]
-open = [{ run = "xdg-open %s1", desc = "Open", for = "linux", orphan = true }]
-edit = [
-  { run = '${EDITOR} "$@"', desc = "$EDITOR", for = "unix", block = true },
-]
-play = [{ run = "xdg-open %s1", desc = "Play", for = "linux", orphan = true }]
-extract = [{ run = "ya pub extract --list %s", desc = "Extract here" }]
-download = [
-  { run = "ya emit download --open %S", desc = "Download and open" },
-  { run = "ya emit download %S", desc = "Download" },
-]
-
-[open]
-rules = [
-  # Folder
-  { url = "*/", use = [
-    "edit",
-  ] },
-  # Text
-  { mime = "text/*", use = [
-    "edit",
-  ] },
-  # Image
-  { mime = "image/*", use = [
-    "open",
-  ] },
-  # Media
-  { mime = "{audio,video}/*", use = [
-    "play",
-  ] },
-  # Code
-  { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = [
-    "edit",
-  ] },
-  # Archive
-  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
-    "extract",
-  ] },
-  # Empty file
-  { mime = "inode/empty", use = [
-    "edit",
-  ] },
-  # Virtual file system
-  { mime = "vfs/{absent,stale}", use = "download" },
-  # Fallback
-  { url = "*", use = [
-    "open",
-  ] },
-]
-
+show_hidden = true
 
 [plugin]
 prepend_fetchers = [
@@ -89,43 +16,31 @@ prepend_preloaders = [
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = "audio/*", run = "preview-audio" },
 
-  #Ebooks (AminurAlam/yazi-plugins:preview-epub)
-  { url = "*.epub", run = "preview-epub" },
-
   #Video and images (boydaihungst/mediainfo)
   { mime = "{video,image}/*", run = "mediainfo" },
   { url = "*.{ai,eps,ait}", run = "mediainfo" },
 
-  #Office Documents (macydnah/office plugin)
+  #Office Documents (macydnah/office)
   { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*,msword}", run = "office" },
 ]
 
 prepend_previewers = [
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
-  #==================================================================
 
   #folders with eza (ahkohd/eza-preview)
   { url = "*/", run = "eza-preview" },
-  #====================================================
 
   #systemd services (AminurAlam/yazi-plugins:preview-systemd)
   { url = "*.service", run = "preview-systemd" },
-  #=====================================================
 
   #sqlite (AminurAlam/yazi-plugins:preview-sqlite)
   { url = '*.sqlite3', run = 'preview-sqlite' },
   { mime = 'application/sqlite3', run = 'preview-sqlite' },
-  #=====================================================
 
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },
   { mime = 'audio/*', run = 'preview-audio' },
-  #=============================================
-
-  #Ebooks (AminurAlam/yazi-plugins:preview-epub)
-  { mime = '*.epub', run = 'preview-epub' },
-  #=============================================
 
   #Audio and Video (boydaihungst/mediainfo)
   { mime = "{audio,video,image}/*", run = "mediainfo" },
@@ -139,18 +54,15 @@ prepend_previewers = [
   { url = "*.{ai,eps,ait}", run = "mediainfo" },
   { mime = "{image}/*", run = "mediainfo" },
   { mime = "{video}/*", run = "mediainfo" },
-  #===================================================================
 
   #Archives (ndtoan96/ouch)
   { cond = "!mime:epub", mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch --show-file-icons --archive-icon='🗄️ '" },
-  #==============================================================================
 
   #CSV and .md (AnirudhG07/rich-preview)
   { url = "*.csv", run = "rich-preview" },
   { url = "*.md", run = "rich-preview" },
   { url = "*.rst", run = "rich-preview" },
   { url = "*.ipynb", run = "rich-preview" },
-  #=====================================================================
 
   #Office Documents (macydnah/office plugin)
   { mime = "application/openxmlformats-officedocument.*", run = "office" },
@@ -158,78 +70,4 @@ prepend_previewers = [
   { mime = "application/ms-*", run = "office" },
   { mime = "application/msword", run = "office" },
   { url = "*.docx", run = "office" },
-  #==================================================================
 ]
-
-
-prepend_spotters = []
-
-[input]
-cursor_blink = false
-
-# cd
-cd_title = "Change directory:"
-cd_origin = "top-center"
-cd_offset = [0, 2, 50, 3]
-
-# create
-create_title = ["Create:", "Create (dir):"]
-create_origin = "top-center"
-create_offset = [0, 2, 50, 3]
-
-# rename
-rename_title = "Rename:"
-rename_origin = "hovered"
-rename_offset = [0, 1, 50, 3]
-
-# filter
-filter_title = "Filter:"
-filter_origin = "top-center"
-filter_offset = [0, 2, 50, 3]
-
-# find
-find_title = ["Find next:", "Find previous:"]
-find_origin = "top-center"
-find_offset = [0, 2, 50, 3]
-
-# search
-search_title = "Search via {n}:"
-search_origin = "top-center"
-search_offset = [0, 2, 50, 3]
-
-# shell
-shell_title = ["Shell:", "Shell (block):"]
-shell_origin = "top-center"
-shell_offset = [0, 2, 50, 3]
-
-[confirm]
-# trash
-trash_title = "Trash {n} selected file{s}?"
-trash_origin = "center"
-trash_offset = [0, 0, 70, 20]
-
-# delete
-delete_title = "Permanently delete {n} selected file{s}?"
-delete_origin = "center"
-delete_offset = [0, 0, 70, 20]
-
-# overwrite
-overwrite_title = "Overwrite file?"
-overwrite_body = "Will overwrite the following file:"
-overwrite_origin = "center"
-overwrite_offset = [0, 0, 50, 15]
-
-# quit
-quit_title = "Quit?"
-quit_body = "There are unfinished tasks, quit anyway?\n(Open task manager with default key 'w')"
-quit_origin = "center"
-quit_offset = [0, 0, 50, 15]
-
-[pick]
-open_title = "Open with:"
-open_origin = "hovered"
-open_offset = [0, 1, 50, 7]
-
-[which]
-sort_by = "key"
-sort_sensitive = true

@@ -73,7 +73,6 @@ if status is-interactive
 
     alias vim="nvim"
     alias cat="bat"
-    alias grep="rg"
     alias du="dust"
     alias df="duf"
     alias neo="neo-matrix --defaultbg --colormode=16"
