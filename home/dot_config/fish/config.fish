@@ -85,6 +85,11 @@ if status is-interactive
     bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
     bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
 
+    #Keybindings for empty enter
+    bind \r go-back-on-empty-enter-press
+    bind -M insert \r go-back-on-empty-enter-press
+    bind -M default \r go-back-on-empty-enter-press
+
     function clone --description 'git clone into ~/repos'
         if test (count $argv) -eq 0
             echo 'Usage: clone <url or user/repo> [git clone options]' >&2
