@@ -15,7 +15,7 @@ atuin                        #better Shell History
 yazi                         #file manager
 btop                         #system monitor
 lazydocker                   #docker TUI
-ssh
+ssh                          #remote access
 
 #GUI apps
 mpv                          #media player
@@ -64,22 +64,27 @@ age                          #encryption tool
 mpvpaper                     #set videos as wallpaper
 unzip                        #unzipping needed by some tools
 wget                         #needed by some tools
-less                         #needed by git diff
+less                         #pager needed by git diff
 dos2unix                     #cleanup windows line endings mess
 projectdo                    #project-based task runner for fish
 wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
 hyprpicker                   #extract hex from a color
 plocate                      #the fastest version of the locate command
+dosfstools                   #file system dyagnostics tools like fsck.fat
+
+#Fzf
 chafa                        #image previews for fzf
-imagemagick                  #image previews zoom utility for yazi
 mupdf-tools                  #mutool pdf cli tool needed for previews in fzf
+
+#Yazi
+imagemagick                  #image previews zoom utility for yazi
 pdftoppm                     #pdf cli tool needed for yazi previews
 rich-cli                     #csv yazi preview
-sqlite                       #yazi preview and nice to have
-f3d                          #3d visualization tool for yazi preview
 hevi                         #binary files preview for yazi
-python-pynacl                #needed for browser integration with keepassxc
-dosfstools                   #file system dyagnostics tools like fsck.fat
+f3d                          #3d visualization tool for yazi preview
+sqlite                       #yazi preview and nice to have
+mediainfo                    #media info preview
+
 
 #Hacking tools
 termshark                    #Wireshark TUI version

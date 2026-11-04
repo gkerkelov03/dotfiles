@@ -3,6 +3,10 @@
 paru -S caelestia-cli
 caelestia install
 
+# set default wallpaper and scheme
+caelestia wallpaper -f ~/dotfiles/arch/hinata.jpg
+caelestia scheme set -n onedark
+
 # delete some caelestia defaults that we don't need
 paru -Rs starship thunar micro
 paru -c

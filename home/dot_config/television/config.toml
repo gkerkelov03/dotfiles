@@ -1,0 +1,9 @@
+[ui.preview_panel]
+word_wrap = true
+scrollbar = false
+
+[ui.input_bar]
+prompt = "❯ "
+
+[ui.status_bar]
+hidden = true

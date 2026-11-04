@@ -85,31 +85,22 @@ prepend_fetchers = [
 prepend_preloaders = [
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
-  #==================================================================
 
   #Audio (AminurAlam/yazi-plugins:preview-audio)
-  { mime = 'audio/mpegurl', run = 'code' },
-  { mime = 'audio/*', run = 'preview-audio' },
-  #=============================================
+  { mime = "audio/*", run = "preview-audio" },
 
   #Ebooks (AminurAlam/yazi-plugins:preview-epub)
-  { mime = '*.epub', run = 'preview-epub' },
-  #=============================================
+  { url = "*.epub", run = "preview-epub" },
 
-  #Audio and Video (boydaihungst/mediainfo)
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  #Video and images (boydaihungst/mediainfo)
+  { mime = "{video,image}/*", run = "mediainfo" },
   { url = "*.{ai,eps,ait}", run = "mediainfo" },
-  #===================================================================
 
   #Office Documents (macydnah/office plugin)
-  { mime = "application/openxmlformats-officedocument.*", run = "office" },
-  { mime = "application/oasis.opendocument.*", run = "office" },
-  { mime = "application/msword", run = "office" },
-  #===================================================================
+  { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*,msword}", run = "office" },
 ]
 
 prepend_previewers = [
-
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
   #==================================================================

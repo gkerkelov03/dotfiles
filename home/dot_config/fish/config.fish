@@ -15,32 +15,19 @@ set -p PATH $HOME/.dotnet/tools
 set -p PATH $HOME/.local/bin
 
 set -gx BAT_THEME ansi
-set -gx FZF_DEFAULT_OPTS "
-  --color=16
-  --color=fg:-1,bg:-1,hl:14,fg+:15,bg+:4,hl+:14
-  --color=info:8,prompt:2,pointer:15,marker:13,spinner:11,header:6
-  --layout=reverse
-  --border=rounded
-  --marker='✓ '
-  --multi
-  --height=100%
-  --preview '~/dotfiles/scripts/fzf-preview.sh {}'
-  --preview-window=right:60%
-  --popup=80%
-  --prompt='❯ '
-"
 
 #Set the default fish_greeting to nothing otherwise it prints Welcome to fish
 set -g fish_greeting
 
-#Load Caelestia color scheme into the shell's 16 colors
-cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
-
 if status is-interactive
+    #Load Caelestia color scheme into the shell's 16 colors
+    cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
+
     sleep 0.01 #because the terminal width in the call-fastfetch function is calculated too fast otherwise and its wrong
     call-fastfetch
 
-    atuin init fish --disable-up-arrow | source
+    atuin init fish --disable-up-arrow --disable-ctrl-r | source
+    tv init fish | source
 
     set -U fish_key_bindings fish_vi_key_bindings
     set -U nvm_default_version lts
@@ -50,9 +37,6 @@ if status is-interactive
     set -U tide_character_vi_icon_visual \U000f016c
     set -U tide_character_vi_icon_insert \U000f016c
     set -U tide_character_vi_icon_replace \U000f016d
-
-    set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
     abbr b --function projectdo_build
     abbr r --function projectdo_run
@@ -100,11 +84,6 @@ if status is-interactive
     bind -M default p fish_clipboard_paste
     bind -M visual y 'fish_clipboard_copy; set fish_bind_mode default; commandline -f end-selection repaint-mode'
     bind -M visual p 'commandline -f kill-selection; fish_clipboard_paste'
-
-    bind -M insert \ef _fzf_search_directory
-    bind -M insert \ed _fzf_all_directory_shortcuts
-    bind -M default \ef _fzf_search_directory
-    bind -M default \ed _fzf_all_directory_shortcuts
 
     function man
         tldr $argv 2>/dev/null; or command man $argv
