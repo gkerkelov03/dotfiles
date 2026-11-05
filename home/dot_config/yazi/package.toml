@@ -59,11 +59,6 @@ rev = "50d82a7"
 hash = "2f217dfc35f979af075a7a985285a5cf"
 
 [[plugin.deps]]
-use = "ahkohd/eza-preview"
-rev = "e8fb6c8"
-hash = "c238595c801caa4f28553b9af8cf8804"
-
-[[plugin.deps]]
 use = "ruudjhuu/f3d-preview"
 rev = "33ce345"
 hash = "5368a9f95ebeb613d9a2614d594a185c"

@@ -28,9 +28,6 @@ prepend_previewers = [
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
 
-  #folders with eza (ahkohd/eza-preview)
-  { url = "*/", run = "eza-preview" },
-
   #systemd services (AminurAlam/yazi-plugins:preview-systemd)
   { url = "*.service", run = "preview-systemd" },
 
