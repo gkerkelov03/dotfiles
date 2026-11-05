@@ -4,8 +4,8 @@ keymap = [
   { on = "q", run = "quit", desc = "Quit" },
 
   # Hopping (Vim Style)
-  { on = "k", run = "arrow -1", desc = "Up" },
-  { on = "j", run = "arrow 1", desc = "Down" },
+  { on = "k", run = "arrow prev", desc = "Up" },
+  { on = "j", run = "arrow next", desc = "Down" },
   { on = [
     "g",
     "g",
@@ -18,7 +18,10 @@ keymap = [
   { on = "L", run = "forward", desc = "History forward" },
 
   # Selection & Visual Mode
-  { on = "<Space>", run = [ "toggle", "arrow 1", ], desc = "Select and move" },
+  { on = "<Space>", run = [
+    "toggle",
+    "arrow 1",
+  ], desc = "Select and move" },
   { on = "v", run = "visual_mode", desc = "Visual mode" },
   { on = "V", run = "visual_mode --unset", desc = "Visual mode (unset)" },
 
@@ -37,12 +40,24 @@ keymap = [
 
   # External Tools 
   # moxuze/television
-  { on = ["f", "t"], run = "plugin television -- text", desc = "Jump to a file with tv" },
-  { on = ["f", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
-  { on = ["f", "d"], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
+  { on = [
+    "f",
+    "t",
+  ], run = "plugin television -- text", desc = "Jump to a file with tv" },
+  { on = [
+    "f",
+    "f",
+  ], run = "plugin television -- files", desc = "Jump to a file with tv" },
+  { on = [
+    "f",
+    "d",
+  ], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
 
   #yazi-rs/plugins:mount
-  { on = [ "m", "o", ], run = "plugin mount" },
+  { on = [
+    "m",
+    "o",
+  ], run = "plugin mount" },
 
   #yazi-rs/plugins:smart-filter
   { on = "/", run = "plugin smart-filter", desc = "Smart filter" },
@@ -51,20 +66,39 @@ keymap = [
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
   #yazi-rs/plugins:chmod
-  { on = [ "c", "m", ], run = "plugin chmod", desc = "Chmod on selected files" },
+  { on = [
+    "c",
+    "m",
+  ], run = "plugin chmod", desc = "Chmod on selected files" },
 
   #ahkohd/eza-preview
-  { on = [ "e", "t", ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
-  { on = [ "e", "g", "i", ], run = "plugin eza-preview toggle-git-ignore", desc = "Toggle .gitignore files" },
-  { on = [ "e", "=", ], run = "plugin eza-preview inc-level", desc = "Increment tree level" },
-  { on = [ "e", "-", ], run = "plugin eza-preview dec-level", desc = "Decrement tree level" },
+  { on = [
+    "e",
+    "t",
+  ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
+  { on = [
+    "e",
+    "g",
+    "i",
+  ], run = "plugin eza-preview toggle-git-ignore", desc = "Toggle .gitignore files" },
+  { on = [
+    "e",
+    "=",
+  ], run = "plugin eza-preview inc-level", desc = "Increment tree level" },
+  { on = [
+    "e",
+    "-",
+  ], run = "plugin eza-preview dec-level", desc = "Decrement tree level" },
 
   #simla33/ucp
   { on = "P", run = "plugin ucp paste notify", desc = "Paste" },
   { on = "Y", run = "plugin ucp copy notify", desc = "Copy" },
 
   #Lil-Dank/lazygit
-  { on = [ "g", "i", ], run = "plugin lazygit", desc = "run lazygit" },
+  { on = [
+    "g",
+    "i",
+  ], run = "plugin lazygit", desc = "run lazygit" },
 
   # Tabs
   { on = "t", run = "tab_create --current", desc = "New tab" },
@@ -99,7 +133,7 @@ keymap = [
   { on = "b", run = "backward", desc = "Prev word" },
   { on = "0", run = "move bol", desc = "BOL" },
   { on = "$", run = "move eol", desc = "EOL" },
-  { on   = "<C-o>", run  = "plugin visual-pivot", desc = "Move cursor to the other end of the selection" },
+  { on = "<C-o>", run = "plugin visual-pivot", desc = "Move cursor to the other end of the selection" },
 
   # Editing
   { on = "x", run = [
