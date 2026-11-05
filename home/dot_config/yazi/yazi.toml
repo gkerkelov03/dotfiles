@@ -55,9 +55,6 @@ prepend_previewers = [
   { mime = "{image}/*", run = "mediainfo" },
   { mime = "{video}/*", run = "mediainfo" },
 
-  #Archives (ndtoan96/ouch)
-  { cond = "!mime:epub", mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch --show-file-icons --archive-icon='🗄️ '" },
-
   #CSV and .md (AnirudhG07/rich-preview)
   { url = "*.csv", run = "rich-preview" },
   { url = "*.md", run = "rich-preview" },
@@ -71,3 +68,15 @@ prepend_previewers = [
   { mime = "application/msword", run = "office" },
   { url = "*.docx", run = "office" },
 ]
+
+#Settings for the official git yazi plugin (yazi-rs/plugins:git) cuz by default it visualizes some figures
+[git]
+unknown_sign = " "
+untracked_sign = "? "
+unstaged_sign = "M "
+staged_sign = "M "
+added_sign = "A "
+deleted_sign = "D "
+updated_sign = "U "
+ignored_sign = "! "
+clean_sign = ""

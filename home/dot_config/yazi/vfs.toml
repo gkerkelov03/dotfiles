@@ -1,0 +1,9 @@
+# This file is used and needed only from yazi-rs/plugins:rclone plugin
+[rclone.test]
+kind         = "scope"
+run          = "rclone"
+root         = "/"
+backend.type = "webdav"
+backend.url  = "https://my-domain.com/"
+backend.user = "yazi"
+backend.pass = "fake-password"
