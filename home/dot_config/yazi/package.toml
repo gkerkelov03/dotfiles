@@ -14,11 +14,6 @@ rev = "25d992d"
 hash = "dbfc342600993eefbb055bff145fa22a"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:zoom"
-rev = "25d992d"
-hash = "558bbb58e3dd36d488280a8f10e7b904"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
 rev = "25d992d"
 hash = "d6f7351ea25a43c9b5f4315fa1e23935"
@@ -42,11 +37,6 @@ hash = "33982a6e2d6df07619a2a0fc163a0950"
 use = "macydnah/office"
 rev = "41ebef8"
 hash = "5805affd3ae8adcb3c72b6997d21c0a6"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:toggle-pane"
-rev = "25d992d"
-hash = "5b2fbef7d1513ce38ff72623a071a5e"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
@@ -79,11 +69,6 @@ rev = "33ce345"
 hash = "5368a9f95ebeb613d9a2614d594a185c"
 
 [[plugin.deps]]
-use = "simla33/ucp"
-rev = "5ef8203"
-hash = "e9c94e81b3159dd283822811b0276367"
-
-[[plugin.deps]]
 use = "Lil-Dank/lazygit"
 rev = "e73fd74"
 hash = "6ea5f37c7f219671ec504cb8311f889d"
@@ -102,6 +87,11 @@ hash = "3150647e9fb2a47153412d976571dc33"
 use = "moxuze/television"
 rev = "8d9ce62"
 hash = "b82055b61933310ebfa7ccf5239d5c46"
+
+[[plugin.deps]]
+use = "simla33/ucp"
+rev = "5ef8203"
+hash = "e9c94e81b3159dd283822811b0276367"
 
 [flavor]
 deps = []
