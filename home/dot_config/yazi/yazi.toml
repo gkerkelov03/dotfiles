@@ -16,10 +16,6 @@ prepend_preloaders = [
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = "audio/*", run = "preview-audio" },
 
-  #Video and images (boydaihungst/mediainfo)
-  { mime = "{video,image}/*", run = "mediainfo" },
-  { url = "*.{ai,eps,ait}", run = "mediainfo" },
-
   #Office Documents (macydnah/office)
   { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*,msword}", run = "office" },
 ]
@@ -38,25 +34,6 @@ prepend_previewers = [
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },
   { mime = 'audio/*', run = 'preview-audio' },
-
-  #Audio and Video (boydaihungst/mediainfo)
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
-  { mime = "application/subrip", run = "mediainfo" },
-  { mime = "application/postscript", run = "mediainfo" },
-  { mime = "application/illustrator", run = "mediainfo" },
-  { mime = "application/dvb.ait", run = "mediainfo" },
-  { mime = "application/vnd.adobe.illustrator", run = "mediainfo" },
-  { mime = "image/x-eps", run = "mediainfo" },
-  { mime = "application/eps", run = "mediainfo" },
-  { url = "*.{ai,eps,ait}", run = "mediainfo" },
-  { mime = "{image}/*", run = "mediainfo" },
-  { mime = "{video}/*", run = "mediainfo" },
-
-  #CSV and .md (AnirudhG07/rich-preview)
-  { url = "*.csv", run = "rich-preview" },
-  { url = "*.md", run = "rich-preview" },
-  { url = "*.rst", run = "rich-preview" },
-  { url = "*.ipynb", run = "rich-preview" },
 
   #Office Documents (macydnah/office plugin)
   { mime = "application/openxmlformats-officedocument.*", run = "office" },
