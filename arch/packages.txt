@@ -21,6 +21,7 @@ ssh                          #remote access
 mpv                          #media player
 keepassxc                    #passwords manager
 libreoffice-fresh            #word, excel, power point, visio, access and some math formulas
+localsend                    #file sending in the among devices in the LAN. There is mobile app as well
 
 #Git
 lazygit                      #git TUI 
@@ -75,7 +76,6 @@ dosfstools                   #file system dyagnostics tools like fsck.fat
 
 
 #Yazi
-
 #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed
 imagemagick                  
 f3d                          #3d visualization tool for yazi preview
