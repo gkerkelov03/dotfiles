@@ -68,5 +68,10 @@ use = "gkerkelov03/yazi-office-documents-preview"
 rev = "a49f5a5"
 hash = "ba7abba4ef791d2d588538947f908cf5"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "2e0d8cf"
+hash = "d1e0499cae5f3aeb628c267616d4b682"
+
 [flavor]
 deps = []

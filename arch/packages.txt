@@ -80,7 +80,7 @@ dosfstools                   #file system dyagnostics tools like fsck.fat
 imagemagick                  
 f3d                          #3d visualization tool for yazi preview
 sqlite                       #yazi preview and much more overall nice to have
-
+glow                         #tool to perview md files
 
 #Hacking tools
 termshark                    #Wireshark TUI version
