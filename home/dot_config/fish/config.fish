@@ -71,10 +71,7 @@ if status is-interactive
     alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
     alias lsls="eza -la --icons --total-size --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
 
-    alias vim="nvim"
     alias cat="bat"
-    alias du="dust"
-    alias df="duf"
     alias neo="neo-matrix --defaultbg --colormode=16"
 
     #Keybindigs for vim mode

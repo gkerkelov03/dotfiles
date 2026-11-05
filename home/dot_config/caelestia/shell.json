@@ -124,6 +124,7 @@
     "maxShown": 4,
     "maxWallpapers": 5,
     "enableDangerousActions": true,
+    "vimKeybinds": true,
     "actions": [
       {
         "name": "Calculator",
@@ -226,7 +227,7 @@
   },
 
   "paths": {
-    "wallpaperDir": "~/media/wallpapers",
+    "wallpaperDir": "/home/gkerkelov03/media/wallpapers",
     "lyricsDir": "~/junk",
     "sessionGif": "root:/assets/kurukuru.gif",
     "mediaGif": "root:/assets/bongocat.gif",

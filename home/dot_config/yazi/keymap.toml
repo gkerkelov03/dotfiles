@@ -37,6 +37,7 @@ keymap = [
   { on = ".", run = "hidden toggle", desc = "Toggle hidden" },
   { on = "n", run = "find_arrow", desc = "Next found" },
   { on = "N", run = "find_arrow --prev", desc = "Prev found" },
+  { on = "<C-t>", run = 'shell --orphan -- foot', desc = "Open foot here" },
 
   # External Tools 
   # moxuze/television
