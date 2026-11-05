@@ -19,9 +19,8 @@ Run the installer:
 archinstall --config-url https://gkerkelov03.com/archinstall-helper
 ```
 
-When the installation finishes, reboot and remove the USB.
-
 > [!WARNING]
+> When the installation finishes, reboot and remove the USB.
 > Do not chroot into the new environment.
 
 ## 2. Get the dotfiles
