@@ -1,12 +1,8 @@
-[mgr]
-show_hidden = true
-
 [plugin]
 prepend_fetchers = [
   #Git status (yazi-rs/plugins:git)
   { id = "git", url = "*", run = "git", group = "git" },
   { id = "git", url = "*/", run = "git", group = "git" },
-  #========================================================
 ]
 
 prepend_preloaders = [
@@ -15,21 +11,19 @@ prepend_preloaders = [
 
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = "audio/*", run = "preview-audio" },
-
-  #Office Documents (macydnah/office)
-  { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*,msword}", run = "office" },
 ]
 
 prepend_previewers = [
+  { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
 
   #systemd services (AminurAlam/yazi-plugins:preview-systemd)
   { url = "*.service", run = "preview-systemd" },
 
-  #sqlite (AminurAlam/yazi-plugins:preview-sqlite)
-  { url = '*.sqlite3', run = 'preview-sqlite' },
-  { mime = 'application/sqlite3', run = 'preview-sqlite' },
+  #sqlite databases
+  { mime = "application/sqlite3", run = 'piper -- sqlite3 "$1" ".schema --indent"' },
 
   #Audio (AminurAlam/yazi-plugins:preview-audio)
   { mime = 'audio/mpegurl', run = 'code' },
@@ -42,15 +36,3 @@ prepend_previewers = [
   { mime = "application/msword", run = "office" },
   { url = "*.docx", run = "office" },
 ]
-
-#Settings for the official git yazi plugin (yazi-rs/plugins:git) cuz by default it visualizes some figures
-[git]
-unknown_sign = " "
-untracked_sign = "? "
-unstaged_sign = "M "
-staged_sign = "M "
-added_sign = "A "
-deleted_sign = "D "
-updated_sign = "U "
-ignored_sign = "! "
-clean_sign = ""

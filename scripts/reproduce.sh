@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
+if [[ $EUID -eq 0 ]]; then
+  echo "Error: do not run this script with sudo or as root." >&2
+  exit 1
+fi
+
+sudo pacman -Syu --noconfirm
+
 bash "./install-paru.sh"
 bash "./install-all-packages-from-the-packages-file.sh"
-chezmoi --source ~/dotfiles init
 bash "./install-caelestia.sh"
+chezmoi --source ~/dotfiles init
+
+bash "./setup-home-folders.sh"
 bash "./install-fisher-and-fish-plugins.sh"
 bash "./install-yazi-plugins.sh"
 
