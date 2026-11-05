@@ -78,12 +78,8 @@ dosfstools                   #file system dyagnostics tools like fsck.fat
 
 #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed
 imagemagick                  
-pdftoppm                     #pdf cli tool needed for yazi previews
-rich-cli                     #csv yazi preview
-hevi                         #binary files preview for yazi
 f3d                          #3d visualization tool for yazi preview
 sqlite                       #yazi preview and much more overall nice to have
-mediainfo                    #media info preview
 
 
 #Hacking tools
