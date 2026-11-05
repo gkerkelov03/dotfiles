@@ -11,11 +11,18 @@
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("ChezmoiApply", { clear = true }),
   pattern = vim.fn.expand("~/dotfiles/home") .. "/*",
-  callback = function()
-    vim.system({ "chezmoi", "apply", "--force" }, { text = true }, function(res)
+  callback = function(args)
+    local file = args.match
+
+    -- Skip chezmoi's special files, which don't map to a target file
+    if file:find("/.chezmoi", 1, true) then
+      return
+    end
+
+    vim.system({ "chezmoi", "apply", "--force", "--source-path", file }, { text = true }, function(res)
       vim.schedule(function()
         if res.code == 0 then
-          vim.notify("chezmoi apply done")
+          vim.notify("chezmoi apply done: " .. vim.fn.fnamemodify(file, ":t"))
         else
           vim.notify("chezmoi apply failed:\n" .. res.stderr, vim.log.levels.ERROR)
         end
@@ -40,7 +47,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
       vim.system({ "chezmoi", "re-add", file }, { text = true, timeout = 10000 }, function(res)
         vim.schedule(function()
           if res.code == 0 then
-            vim.notify("chezmoi re-add done")
+            vim.notify("chezmoi re-add done: " .. vim.fn.fnamemodify(file, ":t"))
           else
             vim.notify("chezmoi re-add failed:\n" .. res.stderr, vim.log.levels.ERROR)
           end

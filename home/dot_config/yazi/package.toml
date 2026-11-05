@@ -39,11 +39,6 @@ rev = "50d82a7"
 hash = "6f01d98391ba55868fd5cdc753aa94d5"
 
 [[plugin.deps]]
-use = "AminurAlam/yazi-plugins:preview-sqlite"
-rev = "50d82a7"
-hash = "66ae8cf6c12f50fe95b73d13e7d49fe6"
-
-[[plugin.deps]]
 use = "AminurAlam/yazi-plugins:preview-systemd"
 rev = "50d82a7"
 hash = "2f217dfc35f979af075a7a985285a5cf"
