@@ -2,6 +2,7 @@
 
 bash "./install-paru.sh"
 bash "./install-all-packages-from-the-packages-file.sh"
+chezmoi --source ~/dotfiles init
 bash "./install-caelestia.sh"
 bash "./install-fisher-and-fish-plugins.sh"
 bash "./install-yazi-plugins.sh"
@@ -18,7 +19,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 #Make fish default shell
 chsh -s /bin/fish
 
-#Enable and disable systemd services
+#Enable systemd services
 systemctl enable --now plocate-updatedb.timer # The service that updates the db of the locate command (plocate package)
 systemctl --user enable --now hyprpolkitagent wireplumber
 systemctl enable greetd
