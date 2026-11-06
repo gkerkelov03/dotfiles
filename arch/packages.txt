@@ -90,3 +90,5 @@ ffuf                         #fuzzing
 ttf-jetbrains-mono-nerd       #nerd font
 noto-fonts-emoji              #emoji font
 noto-fonts-cjk                #japanese symbols font
+
+#Unsorted packages
