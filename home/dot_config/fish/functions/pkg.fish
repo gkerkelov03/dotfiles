@@ -2,12 +2,11 @@ function pkg --description 'Simple package manager wrapper that tracks a package
     # ============================================================
     #  Settings - edit these when you distro hop
     # ============================================================
-    set -l add_cmd paru -S --needed # install packages
-    set -l noconfirm_flag --noconfirm # added by: pkg add --noconfirm
-    set -l remove_cmd paru -Rns # remove packages + unneeded deps
-    set -l update_cmd paru -Syu # update everything
+    set -l add_cmd paru -S --needed --noconfirm
+    set -l remove_cmd paru -Rns --noconfirm
+    set -l update_cmd paru -Syu
     set -l clean_cmd paru -c # run after update (clean unneeded deps)
-    set -l check_cmd paru -Qi # show info about an installed package
+    set -l check_cmd paru -Qi
 
     set -l pkg_file ~/dotfiles/arch/packages.txt # your package list
     set -l unsorted_header '#Unsorted packages' # matched case-insensitively
@@ -15,10 +14,10 @@ function pkg --description 'Simple package manager wrapper that tracks a package
     # ============================================================
 
     set -l usage "Usage:
-  pkg add [--noconfirm] <package>...   $add_cmd <package>...   (+ adds to $pkg_file)
-  pkg remove <package>...              $remove_cmd <package>...   (+ removes from $pkg_file)
-  pkg update                           $update_cmd && $clean_cmd
-  pkg check <package>...               $check_cmd <package>..."
+  pkg add|a <packages-list>
+  pkg remove|r <packages-list>
+  pkg update-all|u
+  pkg check|c <packages-list>"
 
     if not command -q $add_cmd[1]
         echo "error: $add_cmd[1] is not installed or not in PATH" >&2
@@ -34,27 +33,15 @@ function pkg --description 'Simple package manager wrapper that tracks a package
     set -l args $argv[2..-1]
 
     switch $cmd
-        case add
-            set -l noconfirm 0
-            set -l pkgs
-            for arg in $args
-                if test "$arg" = --noconfirm
-                    set noconfirm 1
-                else
-                    set -a pkgs $arg
-                end
-            end
+        case add a
+            set -l pkgs $args
             if test (count $pkgs) -eq 0
                 echo "error: 'add' needs at least one package name" >&2
                 return 1
             end
 
             # 1. install - stop here if it fails, so the list stays accurate
-            if test $noconfirm -eq 1
-                $add_cmd $noconfirm_flag $pkgs
-            else
-                $add_cmd $pkgs
-            end
+            $add_cmd $pkgs
             or return
 
             # 2. add each package that isn't already in the list
@@ -69,12 +56,20 @@ function pkg --description 'Simple package manager wrapper that tracks a package
                     continue
                 end
 
-                read -l -P "Description for $p (enter to skip): " desc
-
-                set -l line $p
-                if test -n "$desc"
-                    set line (printf "%-*s #%s" (math $comment_column - 2) $p $desc)
+                # description is mandatory - keep asking until one is given
+                set -l desc
+                while true
+                    if not read -P "Description for $p: " desc
+                        # read was cancelled (Ctrl+C / Ctrl+D)
+                        echo "error: no description given, $p was installed but NOT added to $pkg_file" >&2
+                        return 1
+                    end
+                    set desc (string trim -- "$desc")
+                    test -n "$desc"; and break
+                    echo "a description is required" >&2
                 end
+
+                set -l line (printf "%-*s #%s" (math $comment_column - 2) $p $desc)
 
                 # insert at the end of the Unsorted section (created if missing)
                 set -l tmp (mktemp)
@@ -110,7 +105,7 @@ function pkg --description 'Simple package manager wrapper that tracks a package
                 echo "added $p to $pkg_file"
             end
 
-        case remove
+        case remove r
             if test (count $args) -eq 0
                 echo "error: 'remove' needs at least one package name" >&2
                 return 1
@@ -159,14 +154,14 @@ function pkg --description 'Simple package manager wrapper that tracks a package
             rm -f $tmp
             echo "removed $listed from $pkg_file"
 
-        case update
+        case update-all u
             if test (count $args) -gt 0
-                echo "error: 'update' takes no arguments" >&2
+                echo "error: 'update-all' takes no arguments" >&2
                 return 1
             end
             $update_cmd; and $clean_cmd
 
-        case check
+        case check c
             if test (count $args) -eq 0
                 echo "error: 'check' needs at least one package name" >&2
                 return 1

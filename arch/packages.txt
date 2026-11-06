@@ -74,7 +74,6 @@ hyprpicker                   #extract hex from a color
 plocate                      #the fastest version of the locate command
 dosfstools                   #file system dyagnostics tools like fsck.fat
 
-
 #Yazi
 #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed
 imagemagick                  
@@ -87,8 +86,6 @@ termshark                    #Wireshark TUI version
 ffuf                         #fuzzing
 
 #Fonts
-ttf-jetbrains-mono-nerd       #nerd font
-noto-fonts-emoji              #emoji font
-noto-fonts-cjk                #japanese symbols font
-
-#Unsorted packages
+ttf-jetbrains-mono-nerd      #nerd font
+noto-fonts-emoji             #emoji font
+noto-fonts-cjk               #japanese symbols font
