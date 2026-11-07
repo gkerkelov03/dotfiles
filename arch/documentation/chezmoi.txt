@@ -1,0 +1,45 @@
+1. The .chezmoii.json.tmpl file aka the chezmoi config file.
+
+There is a .chezmoi.json.tmpl file in ~/dotfiles/home-configs
+This is essentially the chezmoi config file and we use it mainly to specify that we don't want chezmoi to create its own repo in ~/.local/share/chezmoi but we want it to use our already existing ~/dotfiles repo. So the first time we run chezmoi we need to tell it to
+go to our dotfiles repo explicitly because its config file is not in place yet. 
+
+chezmoi --source ~/dotfiles init
+
+The chezmoi init command either git clones a repo or gets pointed to an existing repo
+or creates a new repo in the default location. Also every time init is run it finds
+the .chezmoi.json.tmpl file and puts it in place. So when we edit that .chezmoi.json.tmpl
+file we need to run chezmoi init after that to apply the changes. 
+We don't need to give it a --source anymore cuz it already has its config file
+that tells it where our source repo is.
+
+2. The .chezmoiroot file
+
+There is a .chezmoiroot file in ~/dotfiles/.chezmoiroot that has only one word in it
+and it is the word home-configs. This makes it so this is essentially the folder that 
+chezmoi actively manages and it is the folder that is the source for all of our dotfiles.
+This lets us keep the other files in our ~/dotfiles repo completely separate from chezmoi
+management but still in our dotfiles repo. 
+
+3. The run_onchange_after_apply_system_configs.sh.tmpl aka the system-configs setup
+
+There is a run_onchange_after_apply_system_configs.sh.tmpl file that is both a chezmoi 
+template and a chezmoi script. You can read more about chezmoi scripts here: 
+
+https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#understand-how-scripts-work
+
+I am using the templates feature to put a comment with the sha256 hash of the whole 
+~/dotfiles/system-configs folder. The chezmoi scripts feature allows me to run that 
+script automatically on the next chezmoi apply if the script file contents have changed.
+But the file contents of the script include the hash of the system-configs directory so 
+when anything in there changes the contents of the script change too. 
+And the script itself copies over the corresponding files from system-configs if needed.
+
+4. Nvim autocmds
+
+We have nvim autocmds to automatically apply a file if it lives in 
+home-configs or system-confgs on save.
+
+Also to re-add a file if it is managed by chezmoi and in ~ but not in ~/dotfiles
+
+

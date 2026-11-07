@@ -1,0 +1,6 @@
+EDITOR=nvim
+VISUAL=nvim
+SUDO_EDITOR=nvim
+BROWSER=qutebrowser
+PAGER=bat
+DOTNET_ROOT=/usr/share/dotnet

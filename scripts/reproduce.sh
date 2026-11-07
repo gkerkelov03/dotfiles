@@ -10,8 +10,7 @@ sudo pacman -Syu --noconfirm
 bash "./install-paru.sh"
 bash "./install-all-packages-from-the-packages-file.sh"
 bash "./install-caelestia.sh"
-chezmoi --source ~/dotfiles init
-
+chezmoi --source ~/dotfiles init --apply
 bash "./setup-home-folders.sh"
 bash "./install-fisher-and-fish-plugins.sh"
 bash "./install-yazi-plugins.sh"

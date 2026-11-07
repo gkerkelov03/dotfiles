@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#this line below is getting replaced with the hash of the system-configs folder 
+# {{ output "sh" "-c" "find ~/dotfiles/system -type f -exec sha256sum {} + | sha256sum" }}
+
+set -euo pipefail
+cd ~/dotfiles/system
+
+sudo -v
+find . -type f -printf '%P\n' | while read -r f; do
+    sudo install -C -v -D -m "$(stat -c %a "$f")" "$f" "/$f"
+done
