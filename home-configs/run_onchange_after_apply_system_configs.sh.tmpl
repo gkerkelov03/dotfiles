@@ -1,12 +1,16 @@
 #!/bin/bash
 
 #this line below is getting replaced with the hash of the system-configs folder 
-# {{ output "sh" "-c" "find ~/dotfiles/system -type f -exec sha256sum {} + | sha256sum" }}
+# {{ output "sh" "-c" "find ~/dotfiles/system-configs -type f -exec sha256sum {} + | sha256sum" }}
 
 set -euo pipefail
-cd ~/dotfiles/system
+cd ~/dotfiles/system-configs
+
+echo "System level config files need to be applied"
 
 sudo -v
 find . -type f -printf '%P\n' | while read -r f; do
-    sudo install -C -v -D -m "$(stat -c %a "$f")" "$f" "/$f"
+    sudo install -C -D -m "$(stat -c %a "$f")" "$f" "/$f"
 done
+
+echo "Done!"
