@@ -1,0 +1,1 @@
+gkerkelov03 ALL=(ALL) NOPASSWD: /usr/bin/astra-airlock -s, /usr/bin/astra-airlock --sync
