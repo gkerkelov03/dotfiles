@@ -1,20 +1,5 @@
 local home = os.getenv("HOME")
 
-hl.env("XDG_CONFIG_HOME", home .. "/.config")
-hl.env("XDG_CACHE_HOME", home .. "/.cache")
-hl.env("XDG_DATA_HOME", home .. "/.local/share")
-hl.env("XDG_STATE_HOME", home .. "/.local/state")
-
-hl.env("EDITOR", "nvim")
-hl.env("VISUAL", "nvim")
-hl.env("SUDO_EDITOR", "nvim")
-hl.env("BROWSER", "qutebrowser")
-hl.env("PAGER", "bat")
-
-hl.env("DOTNET_ROOT", "/usr/share/dotnet")
-
-hl.env("SSH_AUTH_SOCK", home .. "/.ssh/agent.sock")
-
 hl.env("CAELESTIA_SCREENSHOTS_DIR", home .. "/media/screenshots")
 hl.env("CAELESTIA_RECORDINGS_DIR", home .. "/media/recordings")
 

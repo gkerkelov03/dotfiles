@@ -1,10 +1,3 @@
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-set -gx SUDO_EDITOR nvim
-set -gx BROWSER qutebrowser
-set -gx PAGER bat
-set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
-
 set -gx DOTNET_ROOT /usr/share/dotnet
 fish_add_path --path --move $HOME/.local/bin $HOME/.dotnet/tools
 

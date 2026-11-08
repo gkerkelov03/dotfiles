@@ -1,27 +1,32 @@
 {
   "theme": {
-      "enableDiscord":   false,
-      "enableSpicetify": false,
-      "enablePandora":   false,
-      "enableNvtop":     false,
-      "enableHtop":      false,
-      "enableWarp":      false,
-      "enableChromium":  false,
-      "enableZed":       false,
-      "enableCava":      false
+    "postHook": "sudo -n astra-airlock --sync",
+    "enableDiscord": false,
+    "enableSpicetify": false,
+    "enablePandora": false,
+    "enableNvtop": false,
+    "enableHtop": false,
+    "enableWarp": false,
+    "enableChromium": false,
+    "enableZed": false,
+    "enableCava": false
   },
 
   "toggles": {
-      "communication": {
-          "discord":  { "enable": false },
-          "whatsapp": { "enable": false }
-      },
-      "music": {
-          "spotify": { "enable": false },
-          "feishin": { "enable": false }
-      },
-      "todo": {
-          "todoist": { "enable": false }
-      }
+    "communication": {
+      "discord": { "enable": false },
+      "whatsapp": { "enable": false }
+    },
+    "music": {
+      "spotify": { "enable": false },
+      "feishin": { "enable": false }
+    },
+    "todo": {
+      "todoist": { "enable": false }
+    }
+  },
+
+  "wallpaper": {
+    "postHook": "sudo -n astra-airlock --sync"
   }
 }
