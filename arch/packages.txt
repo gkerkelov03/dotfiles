@@ -89,3 +89,6 @@ ffuf                         #fuzzing
 ttf-jetbrains-mono-nerd      #nerd font
 noto-fonts-emoji             #emoji font
 noto-fonts-cjk               #japanese symbols font
+
+#Unsorted packages
+astra-airlock-git            #The greeter for greetd that respects caelestia theme
