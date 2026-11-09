@@ -1,38 +1,36 @@
 #Caelestia core
-caelestia-shell
-caelestia-cli
+caelestia-shell              #desktop shell
+caelestia-cli                #caelestia cli tool: install, update, themes, wallpapers and so on...
 
 #Caelestia hyprland
-hyprland
-xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
+hyprland                     #wayland compositor and tiling window manager
+xdg-desktop-portal-hyprland  #screen sharing & screenshots for apps on hyprland
+xdg-desktop-portal-gtk       #file picker dialogs & other portals hyprland's portal lacks
 
 #Caelestia qt and gtk
-adw-gtk-theme 
+adw-gtk-theme                #modern libadwaita look for gtk3 apps
+qtengine                     #qt platform theme. Style, icons and fonts for qt apps
+darkly-bin                   #modern qt widget style (buttons, menus, scrollbars)
+frameworkintegration         #kde library darkly needs but its PKGBUILD forgets to install
+papirus-icon-theme           #icon theme for gtk and qt apps
+papirus-folders              #recolors papirus folder icons to match the color scheme
 
-qtengine
-frameworkintegration
-darkly-bin
-
-papirus-icon-theme 
-papirus-folders
-
-#Caelestia auth 
-gnome-keyring
-polkit-gnome
+#Caelestia auth
+gnome-keyring                #stores app passwords & tokens encrypted, unlocked on login
+polkit-gnome                 #password popup when a gui app needs admin rights
 
 #Caelestia bluetooth
-bluez
-bluez-utils
+bluez                        #bluetooth stack & daemon
+bluez-utils                  #bluetoothctl for pairing and connecting from the terminal
 
 #Caelestia pipewire
-pipewire
-pipewire-pulse
-pipewire-audio
-pipewire-alsa
-pipewire-jack
-wireplumber
-pwvucontrol
+pipewire                     #audio/video server, also powers wayland screen sharing
+pipewire-pulse               #pulseaudio compatibility, gives most apps their sound
+pipewire-audio               #audio support for pipewire (incl. bluetooth audio)
+pipewire-alsa                #routes old alsa apps through pipewire
+pipewire-jack                #jack compatibility for pro-audio apps
+wireplumber                  #pipewire session manager: device switching, routing, saved volumes
+pwvucontrol                  #gui volume mixer, per-app volume & device selection
 
 #Caelestia clipboard
 wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
@@ -50,7 +48,7 @@ xdg-user-dirs                #Tool that manages the default directories in your 
 neovim                       #text editor TUI, better vim
 foot                         #terminal
 fish                         #goated shell
-tmux                         #persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session. 
+tmux                         #persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session.
 television                   #modern well structured fuzzy finder
 atuin                        #shell history manager
 yazi                         #file manager TUI, better ranger
@@ -66,7 +64,7 @@ libreoffice-fresh            #word, excel, power point, visio, access and some m
 localsend                    #file sending among devices in the LAN. There is mobile app as well
 
 #Git
-lazygit                      #git TUI 
+lazygit                      #git TUI
 github-cli                   #github cli
 git-delta                    #pager for git diff
 
@@ -100,7 +98,7 @@ luarocks                     #lua package manager
 posting                      #postman TUI
 
 #Utilities
-networkmanager
+networkmanager               #wifi, ethernet & vpn manager (nmcli, nmtui)
 man-db                       #the man and mandb commands
 ouch                         #archive & unarchive primarely for me to use
 7zip                         #archive & unarchive primarely for other tools to use
@@ -118,7 +116,7 @@ trash-cli                    #tool that implements the official Trash specificat
 ydotool                      #simulate keyboard or mouse input via a cli tool. Wayland native.
 
 #Yazi
-imagemagick   #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed               
+imagemagick                  #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed
 f3d                          #3d visualization tool for yazi preview
 sqlite                       #yazi preview and much more overall nice to have
 glow                         #tool to perview md files
