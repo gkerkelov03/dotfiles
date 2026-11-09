@@ -1,8 +1,47 @@
+#Caelestia core
+caelestia-shell
+caelestia-cli
+
+#Caelestia hyprland
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+
+#Caelestia qt and gtk
+adw-gtk-theme 
+
+qtengine
+frameworkintegration
+darkly-bin
+
+papirus-icon-theme 
+papirus-folders
+
+#Caelestia auth 
+gnome-keyring
+polkit-gnome
+
+#Caelestia bluetooth
+bluez
+bluez-utils
+
+#Caelestia pipewire
+pipewire
+pipewire-pulse
+pipewire-audio
+pipewire-alsa
+pipewire-jack
+wireplumber
+pwvucontrol
+
+#Caelestia clipboard
+wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
+cliphist                     #clipboard history manager
+
 #System
 git                          #version control system
 mesa                         #open source GPU drivers
 mesa-utils                   #GPU drivers diagnostics (glxinfo, glxgears, eglinfo)
-hyprpolkitagent              #popup for sudo password when a GUI app needs admin permissions
 greetd                       #lightweight and the best login manager daemon
 astra-airlock-git            #The greeter for greetd that respects caelestia theme
 xdg-user-dirs                #Tool that manages the default directories in your home folder like Desktop, Documents, Downloads, Music
@@ -18,6 +57,7 @@ yazi                         #file manager TUI, better ranger
 btop                         #system monitor, better htop
 lazydocker                   #docker TUI
 openssh                      #remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on...
+
 
 #GUI apps
 mpv                          #media player
@@ -60,6 +100,7 @@ luarocks                     #lua package manager
 posting                      #postman TUI
 
 #Utilities
+networkmanager
 man-db                       #the man and mandb commands
 ouch                         #archive & unarchive primarely for me to use
 7zip                         #archive & unarchive primarely for other tools to use
@@ -70,10 +111,11 @@ curl                         #general purpose scripting tool speaking http, smtp
 less                         #pager needed by git diff
 dos2unix                     #cleanup windows line endings mess
 projectdo                    #project-based task runner for fish
-wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
 hyprpicker                   #extract hex from a color on your screen
 plocate                      #the fastest version of the locate command, better locate and mlocate
 dosfstools                   #file system dyagnostics tools like fsck.fat
+trash-cli                    #tool that implements the official Trash specification. Provides tools to use with the trash like trash-put, trash-list, trash-restore, trash-empty, trash-rm. There are other tools equivalent to trash-cli that are maybe a little better but trash-cli is very mature and very well maintained in the official arch repos.
+ydotool                      #simulate keyboard or mouse input via a cli tool. Wayland native.
 
 #Yazi
 imagemagick   #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed               
@@ -86,8 +128,9 @@ termshark                    #Wireshark TUI version
 ffuf                         #fuzzing tool, better dirb, dirbuster and gobuster
 
 #Fonts
-ttf-jetbrains-mono-nerd      #nerd font
-noto-fonts-emoji             #emoji font
-noto-fonts-cjk               #japanese symbols font
+ttf-jetbrains-mono-nerd      #coding font + nerd icons (terminal, eza, yazi, prompt)
+noto-fonts                   #fallback font for most languages, no more □ tofu boxes
+noto-fonts-emoji             #color emoji font
+noto-fonts-cjk               #chinese, japanese and korean characters
 
 #Unsorted packages
