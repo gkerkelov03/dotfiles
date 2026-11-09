@@ -131,5 +131,7 @@
     "noto-fonts-emoji": "color emoji font",
     "noto-fonts-cjk": "chinese, japanese and korean characters"
   },
-  "unsorted packages": {}
+  "unsorted": {
+    "cowsay": "test"
+  }
 }

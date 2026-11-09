@@ -63,6 +63,7 @@ if status is-interactive
 
     alias cat="bat"
     alias neo="neo-matrix --defaultbg --colormode=16"
+    alias pkg="~/dotfiles/scripts/pkg.cs"
 
     # fish calls this after loading the key binding preset, so these
     # survive any reload or switch of fish_key_bindings

@@ -54,19 +54,26 @@ var packageOperation = packageOperationPassedFromTheTerminal switch
     "update" or "upgrade" => PackageOperation.UpdatePackages,
     "update-all" or "upgrade-all" => PackageOperation.UpdateAllPackages,
     "check" or "c" or "info" => PackageOperation.ShowPackagesInfo,  
-    _ => ExitWithErrorMessageAndDisplayTheUsage($"Unknown command: {packageOperationPassedFromTheTerminal}")
+    _ => (PackageOperation?)null
 };
+
+if(packageOperation is null)
+{
+  ExitWithErrorMessageAndDisplayTheUsage($"Unknown command: {packageOperationPassedFromTheTerminal}");
+}
 
 var flagsPassedFromTheTerminal = args[1..].Where(IsFlag).ToList();
 var packagesPassedFromTheTerminal = args[1..].Where(argument => !IsFlag(argument)).ToArray();
 
 var packagesFileJsonObject = new JsonObject();
-var packagesFileSections = packagesFileJsonObject.Select(section => section.Value.AsObject());
+IEnumerable<JsonObject> packagesFileSections = [];
+
 
 if(packageOperation != PackageOperation.UpdateAllPackages)
 {
-  packagesFileJsonObject = LoadPackagesFileJsonObject();
   RequireAtLeastOnePackageNameToBePassedFromTheTerminal();
+  packagesFileJsonObject = LoadPackagesFileJsonObject();
+  packagesFileSections = packagesFileJsonObject.Select(section => section.Value!.AsObject());
 }
 
 if(packageOperation == PackageOperation.AddPackages)
@@ -104,15 +111,17 @@ void AddThePackages()
     foreach (var package in packagesThatAreNotAlreadyInThePackagesFile)
     {
         var description = AskForDescriptionOfThePackage(package);
-        packagesFileJsonObject[unsortedSectionName][package] = description;
+        packagesFileJsonObject[unsortedSectionName]![package] = description;
         SaveTheModifiedPackagesFileJsonObjectIntoTheFile();
+
+        Console.WriteLine();
         Console.WriteLine($"Successfully added the packages!");
     }
 }
 
 void RemoveThePackages()
 {
-    RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(updateAllPackagesShellCommand);
+    RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(uninstallPackagesShellCommand, packagesPassedFromTheTerminal);
 
     foreach (var package in packagesPassedFromTheTerminal)
     {
@@ -165,16 +174,16 @@ void RequireAtLeastOnePackageNameToBePassedFromTheTerminal()
 
 string AskForDescriptionOfThePackage(string packageName)
 {
-    Console.Write($"Description for {packageName}");
+    Console.Write($"Description for {packageName}: ");
     var description = Console.ReadLine()?.Trim();
 
-    while (string.IsNullOrEmpty(description))
+    while (description == "")
     {
-      Console.Write($"Description for {packageName}");
+      Console.Write($"Description for {packageName}: ");
       description = Console.ReadLine()?.Trim();
     }
 
-    return description;
+    return description ?? "";
 }
 
 void RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(string shellCommand, params string[] packageNames)
@@ -191,7 +200,7 @@ void RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(strin
 [DoesNotReturn]
 void ExitWithErrorMessageAndDisplayTheUsage(string errorMessage)
 {
-    Console.Error.WriteLine($"error: {errorMessage}\n");
+    Console.Error.WriteLine($"Error: {errorMessage}\n");
     Console.Error.WriteLine(usage);
     Environment.Exit(1);
 }
