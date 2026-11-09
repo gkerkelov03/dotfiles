@@ -1,27 +1,29 @@
-#Hyprland
+#System
+git                          #version control system
 mesa                         #open source GPU drivers
 mesa-utils                   #GPU drivers diagnostics (glxinfo, glxgears, eglinfo)
 hyprpolkitagent              #popup for sudo password when a GUI app needs admin permissions
-greetd                       #display/login manager daemon
-greetd-regreet-git           #the greeter for greetd (the UI)
+greetd                       #lightweight and the best login manager daemon
+astra-airlock-git            #The greeter for greetd that respects caelestia theme
+xdg-user-dirs                #Tool that manages the default directories in your home folder like Desktop, Documents, Downloads, Music
 
-#My stuff
-neovim                       #goated text editor
+#Fundamental
+neovim                       #text editor TUI, better vim
 foot                         #terminal
-fish                         #modern shell
-tmux                         #terminal multiplexer
-fzf                          #general-purpose fuzzy finder
-atuin                        #better Shell History
-yazi                         #file manager
-btop                         #system monitor
+fish                         #goated shell
+tmux                         #persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session. 
+television                   #modern well structured fuzzy finder
+atuin                        #shell history manager
+yazi                         #file manager TUI, better ranger
+btop                         #system monitor, better htop
 lazydocker                   #docker TUI
-ssh                          #remote access
+openssh                      #remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on...
 
 #GUI apps
 mpv                          #media player
 keepassxc                    #passwords manager
 libreoffice-fresh            #word, excel, power point, visio, access and some math formulas
-localsend                    #file sending in the among devices in the LAN. There is mobile app as well
+localsend                    #file sending among devices in the LAN. There is mobile app as well
 
 #Git
 lazygit                      #git TUI 
@@ -34,15 +36,15 @@ eza                          #better ls
 fd                           #better find
 ripgrep                      #better grep
 zoxide                       #better cd
-tealdeer                     #better man and better tldr
+tealdeer                     #better man and tldr
 duf                          #better df
 dust                         #better du
-doggo                        #better dig and better dog
-xh                           #better curl
+doggo                        #better dig and dog
+xh                           #better curl and httpie, has nice syntax and its for us to use ourselves when we work with some apis in the terminal
 
 #Terminal visualizers
 neo-matrix                   #matrix rain
-fastfetch                    #display system info
+fastfetch                    #display system info, better neofetch
 
 #Json
 jless                        #view json
@@ -52,7 +54,7 @@ jqp                          #jq query builder
 jq                           #operate on json
 
 #Dev tools
-dotnet-sdk                   #.NET (dotnet tool)
+dotnet-sdk                   #the dotnet cli tool
 python-pip                   #python package manager
 luarocks                     #lua package manager
 posting                      #postman TUI
@@ -62,28 +64,26 @@ man-db                       #the man and mandb commands
 ouch                         #archive & unarchive primarely for me to use
 7zip                         #archive & unarchive primarely for other tools to use
 unzip                        #unzipping needed by some tools
-portal                       #goated file sending tool
 age                          #encryption tool
-mpvpaper                     #set videos as wallpaper
-wget                         #needed by some tools
+wget                         #http and ftp file downloader, needed by some tools
+curl                         #general purpose scripting tool speaking http, smtp, ftp and others.
 less                         #pager needed by git diff
 dos2unix                     #cleanup windows line endings mess
 projectdo                    #project-based task runner for fish
 wl-clipboard                 #copy/paste for wayland, wl-copy & wl-paste cli tools
-hyprpicker                   #extract hex from a color
-plocate                      #the fastest version of the locate command
+hyprpicker                   #extract hex from a color on your screen
+plocate                      #the fastest version of the locate command, better locate and mlocate
 dosfstools                   #file system dyagnostics tools like fsck.fat
 
 #Yazi
-#image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed
-imagemagick                  
+imagemagick   #image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed               
 f3d                          #3d visualization tool for yazi preview
 sqlite                       #yazi preview and much more overall nice to have
 glow                         #tool to perview md files
 
 #Hacking tools
 termshark                    #Wireshark TUI version
-ffuf                         #fuzzing
+ffuf                         #fuzzing tool, better dirb, dirbuster and gobuster
 
 #Fonts
 ttf-jetbrains-mono-nerd      #nerd font
@@ -91,4 +91,3 @@ noto-fonts-emoji             #emoji font
 noto-fonts-cjk               #japanese symbols font
 
 #Unsorted packages
-astra-airlock-git            #The greeter for greetd that respects caelestia theme

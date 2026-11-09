@@ -20,4 +20,6 @@ mkdir -p \
   media/videos \
   media/wallpapers/live-wallpapers
 
+xdg-user-dirs-update
+
 echo "Done!"
