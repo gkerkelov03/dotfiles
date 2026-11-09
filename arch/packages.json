@@ -1,0 +1,135 @@
+{
+  "caelestia core": {
+    "caelestia-shell": "desktop shell",
+    "caelestia-cli": "caelestia cli tool: install, update, themes, wallpapers and so on..."
+  },
+  "caelestia hyprland": {
+    "hyprland": "wayland compositor and tiling window manager",
+    "xdg-desktop-portal-hyprland": "screen sharing & screenshots for apps on hyprland",
+    "xdg-desktop-portal-gtk": "file picker dialogs & other portals hyprland's portal lacks"
+  },
+  "caelestia qt and gtk": {
+    "adw-gtk-theme": "modern libadwaita look for gtk3 apps",
+    "qtengine": "qt platform theme. Style, icons and fonts for qt apps",
+    "darkly-bin": "modern qt widget style (buttons, menus, scrollbars)",
+    "frameworkintegration": "kde library darkly needs but its PKGBUILD forgets to install",
+    "papirus-icon-theme": "icon theme for gtk and qt apps",
+    "papirus-folders": "recolors papirus folder icons to match the color scheme"
+  },
+  "caelestia auth": {
+    "gnome-keyring": "stores app passwords & tokens encrypted, unlocked on login",
+    "polkit-gnome": "password popup when a gui app needs admin rights"
+  },
+  "caelestia bluetooth": {
+    "bluez": "bluetooth stack & daemon",
+    "bluez-utils": "bluetoothctl for pairing and connecting from the terminal"
+  },
+  "caelestia pipewire": {
+    "pipewire": "audio/video server, also powers wayland screen sharing",
+    "pipewire-pulse": "pulseaudio compatibility, gives most apps their sound",
+    "pipewire-audio": "audio support for pipewire (incl. bluetooth audio)",
+    "pipewire-alsa": "routes old alsa apps through pipewire",
+    "pipewire-jack": "jack compatibility for pro-audio apps",
+    "wireplumber": "pipewire session manager: device switching, routing, saved volumes",
+    "pwvucontrol": "gui volume mixer, per-app volume & device selection"
+  },
+  "caelestia clipboard": {
+    "wl-clipboard": "copy/paste for wayland, wl-copy & wl-paste cli tools",
+    "cliphist": "clipboard history manager"
+  },
+  "system": {
+    "git": "version control system",
+    "mesa": "open source GPU drivers",
+    "mesa-utils": "GPU drivers diagnostics (glxinfo, glxgears, eglinfo)",
+    "greetd": "lightweight and the best login manager daemon",
+    "astra-airlock": "The greeter for greetd that respects caelestia theme",
+    "xdg-user-dirs": "Tool that manages the default directories in your home folder like Desktop, Documents, Downloads, Music"
+  },
+  "fundamental": {
+    "neovim": "text editor TUI, better vim",
+    "foot": "terminal",
+    "fish": "goated shell",
+    "tmux": "persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session.",
+    "television": "modern well structured fuzzy finder",
+    "atuin": "shell history manager",
+    "yazi": "file manager TUI, better ranger",
+    "btop": "system monitor, better htop",
+    "lazydocker": "docker TUI",
+    "openssh": "remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on..."
+  },
+  "gui apps": {
+    "mpv": "media player",
+    "keepassxc": "passwords manager",
+    "libreoffice-fresh": "word, excel, power point, visio, access and some math formulas",
+    "localsend": "file sending among devices in the LAN. There is mobile app as well"
+  },
+  "git": {
+    "lazygit": "git TUI",
+    "github-cli": "github cli",
+    "git-delta": "pager for git diff"
+  },
+  "modern cli tools": {
+    "bat": "better cat",
+    "eza": "better ls",
+    "fd": "better find",
+    "ripgrep": "better grep",
+    "zoxide": "better cd",
+    "tealdeer": "better man and tldr",
+    "duf": "better df",
+    "dust": "better du",
+    "doggo": "better dig and dog",
+    "xh": "better curl and httpie, has nice syntax and its for us to use ourselves when we work with some apis in the terminal"
+  },
+  "terminal visualizers": {
+    "neo-matrix": "matrix rain",
+    "fastfetch": "display system info, better neofetch"
+  },
+  "json": {
+    "jless": "view json",
+    "jc": "turn text to json",
+    "gron": "flatten json (mainly for grep/awk)",
+    "jqp": "jq query builder",
+    "jq": "operate on json"
+  },
+  "dev tools": {
+    "dotnet-sdk": "the dotnet cli tool",
+    "python-pip": "python package manager",
+    "luarocks": "lua package manager",
+    "posting": "postman TUI"
+  },
+  "utilities": {
+    "networkmanager": "wifi, ethernet & vpn manager (nmcli, nmtui)",
+    "man-db": "the man and mandb commands",
+    "ouch": "archive & unarchive primarely for me to use",
+    "7zip": "archive & unarchive primarely for other tools to use",
+    "unzip": "unzipping needed by some tools",
+    "age": "encryption tool",
+    "wget": "http and ftp file downloader, needed by some tools",
+    "curl": "general purpose scripting tool speaking http, smtp, ftp and others.",
+    "less": "pager needed by git diff",
+    "dos2unix": "cleanup windows line endings mess",
+    "projectdo": "project-based task runner for fish",
+    "hyprpicker": "extract hex from a color on your screen",
+    "plocate": "the fastest version of the locate command, better locate and mlocate",
+    "dosfstools": "file system dyagnostics tools like fsck.fat",
+    "trash-cli": "tool that implements the official Trash specification. Provides tools to use with the trash like trash-put, trash-list, trash-restore, trash-empty, trash-rm. There are other tools equivalent to trash-cli that are maybe a little better but trash-cli is very mature and very well maintained in the official arch repos.",
+    "ydotool": "simulate keyboard or mouse input via a cli tool. Wayland native."
+  },
+  "yazi": {
+    "imagemagick": "image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed",
+    "f3d": "3d visualization tool for yazi preview",
+    "sqlite": "yazi preview and much more overall nice to have",
+    "glow": "tool to perview md files"
+  },
+  "hacking tools": {
+    "termshark": "Wireshark TUI version",
+    "ffuf": "fuzzing tool, better dirb, dirbuster and gobuster"
+  },
+  "fonts": {
+    "ttf-jetbrains-mono-nerd": "coding font + nerd icons (terminal, eza, yazi, prompt)",
+    "noto-fonts": "fallback font for most languages, no more □ tofu boxes",
+    "noto-fonts-emoji": "color emoji font",
+    "noto-fonts-cjk": "chinese, japanese and korean characters"
+  },
+  "unsorted packages": {}
+}
