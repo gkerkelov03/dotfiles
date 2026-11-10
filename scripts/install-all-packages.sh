@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-file="$HOME/dotfiles/arch/packages.json"
+packages_file="$HOME/dotfiles/arch/packages.json"
 
-pkg add --silent jq
+paru -S --needed --noconfirm jq
 
-jq -r '.[] | keys_unsorted[]' "$file" | while read -r pkg; do
-  pkg add --silent "$pkg"
+jq -r '.[] | keys_unsorted[]' "$packages_file" | while read -r pkg; do
+  paru -S --needed --noconfirm "$pkg"
 done
 
 echo "✅ Installation finished!"

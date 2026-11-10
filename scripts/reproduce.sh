@@ -8,7 +8,7 @@ fi
 sudo pacman -Syu --noconfirm
 
 bash "./install-paru.sh"
-bash "./install-all-packages-from-the-packages-file.sh"
+bash "./install-all-packages.sh"
 bash "./install-caelestia.sh"
 chezmoi --source ~/dotfiles init --apply
 bash "./setup-home-folders.sh"
@@ -24,12 +24,15 @@ gh extension install dlvhdr/gh-dash
 #Install claude code
 curl -fsSL https://claude.ai/install.sh | bash
 
+#Install the latest arch linux iso so we have it available for virtual machines
+wget -O ~/others/arch.iso https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso
+
 #Make fish default shell
 chsh -s /bin/fish
 
 #Enable systemd services
-systemctl enable --now plocate-updatedb.timer # The service that updates the db of the locate command (plocate package)
-systemctl --user enable --now hyprpolkitagent wireplumber
-systemctl enable greetd
+systemctl enable plocate-updatedb.timer #the service that updates the db of the locate command (plocate package)
+systemctl enable greetd                 #the login manager daemon
+sudo systemctl enable libvirtd          #the libvirt daemon that receives requests from tools like virt-manager and carries them out
 
 echo "Done"

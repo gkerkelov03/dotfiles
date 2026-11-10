@@ -210,8 +210,8 @@
       {
         "name": "Sleep",
         "icon": "bedtime",
-        "description": "Suspend then hibernate",
-        "command": ["suspendThenHibernate"],
+        "description": "Suspend",
+        "command": ["suspend"],
         "enabled": true,
         "dangerous": false
       },

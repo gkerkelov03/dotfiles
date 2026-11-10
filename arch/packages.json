@@ -49,6 +49,7 @@
     "neovim": "text editor TUI, better vim",
     "foot": "terminal",
     "fish": "goated shell",
+    "firefox": "the most well maintained and stable browser that is customizable enough for us",
     "tmux": "persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session.",
     "television": "modern well structured fuzzy finder",
     "atuin": "shell history manager",
@@ -130,6 +131,11 @@
     "noto-fonts": "fallback font for most languages, no more □ tofu boxes",
     "noto-fonts-emoji": "color emoji font",
     "noto-fonts-cjk": "chinese, japanese and korean characters"
+  },
+  "virtual machines": {
+    "virt-manager": "a graphical app for creating, starting and managing VMs. It works through libvirt which starts and manages a qemu process for each VM",
+    "qemu-desktop": "runs the VM and its emulated hardware, it uses KVM (native linux kernel module that kinda turns the linux kernel itself into hypervisor) for acceleration through /dev/kvm",
+    "dnsmasq": "small, lightweight program that doesis both a DHCP server and a DNS server. We need it for VMs. libvirt uses it but it is an optional dependency"
   },
   "unsorted": {}
 }
