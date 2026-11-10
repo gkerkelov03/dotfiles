@@ -1,0 +1,25 @@
+[metadata]
+name = "pkg"
+description = "Search ~/dotfiles/arch/packages.json by package, section and description"
+requirements = ["jq"]
+
+[source]
+# Each line: <package>  [<section>]  <description>  — all of it is fuzzy-searchable
+command = '''
+jq -r '
+  def pad(n): . + (" " * ([n - length, 1] | max));
+  to_entries[] | .key as $s | .value | to_entries[]
+  | "\(.key | pad(30))\("[" + $s + "]" | pad(24))\(.value)"
+' "$HOME/dotfiles/arch/packages.json"
+'''
+output = "{split: :0}"
+
+[preview]
+command = '''
+jq -r --arg p '{split: :0}' '
+  to_entries[] | .key as $s | .value | to_entries[] | select(.key == $p)
+  | "Package:     \(.key)\nSection:     \($s)\n\n\(.value)\n"
+' "$HOME/dotfiles/arch/packages.json" | fold -s -w 80
+echo "────────────────────────────────────────"
+pacman -Qi '{split: :0}' 2>/dev/null || pacman -Si '{split: :0}' 2>/dev/null || echo "(not in the pacman repos, probably AUR)"
+'''

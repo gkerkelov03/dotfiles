@@ -49,7 +49,7 @@ if(packageOperationPassedFromTheTerminal is "help" or "h" or "--help" or "-h")
 
 var packageOperation = packageOperationPassedFromTheTerminal switch 
 {
-    "add" or "a" or "install" or "i" => PackageOperation.AddPackages, 
+    "add" or "a" or "install" or "i" or "get" or "g" => PackageOperation.AddPackages, 
     "remove" or "r" or "delete" or "d" or "uninstall" or "u" => PackageOperation.RemovePackages,
     "update" or "upgrade" => PackageOperation.UpdatePackages,
     "update-all" or "upgrade-all" => PackageOperation.UpdateAllPackages,
@@ -63,11 +63,11 @@ if(packageOperation is null)
 }
 
 var flagsPassedFromTheTerminal = args[1..].Where(IsFlag).ToList();
-var packagesPassedFromTheTerminal = args[1..].Where(argument => !IsFlag(argument)).ToArray();
+ValidateTheFlags();
 
+var packagesPassedFromTheTerminal = args[1..].Where(argument => !IsFlag(argument)).ToArray();
 var packagesFileJsonObject = new JsonObject();
 IEnumerable<JsonObject> packagesFileSections = [];
-
 
 if(packageOperation != PackageOperation.UpdateAllPackages)
 {
@@ -76,19 +76,9 @@ if(packageOperation != PackageOperation.UpdateAllPackages)
   packagesFileSections = packagesFileJsonObject.Select(section => section.Value!.AsObject());
 }
 
-if(packageOperation == PackageOperation.AddPackages)
-{
-    AllowOnlyFlags(addSilentlyFlag);
-    AddThePackages();
-}
-else
-{
-  //Don't allow any flags
-  AllowOnlyFlags();
-}
-
 switch (packageOperation)
 {
+    case PackageOperation.AddPackages: AddThePackages(); break;
     case PackageOperation.RemovePackages: RemoveThePackages(); break;
     case PackageOperation.UpdatePackages : RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(updatePackagesShellCommand, packagesPassedFromTheTerminal); break;
     case PackageOperation.UpdateAllPackages: UpdateAllThePackages(); break;
@@ -157,7 +147,19 @@ void SaveTheModifiedPackagesFileJsonObjectIntoTheFile() =>
 
 bool IsFlag(string argument) => argument.StartsWith('-');
 
-//Used with no arguments is like don't allow any flags
+void ValidateTheFlags()
+{
+  if(packageOperation == PackageOperation.AddPackages)
+  {
+      AllowOnlyFlags(addSilentlyFlag);
+  }
+  else
+  {
+    //Don't allow any flags
+    AllowOnlyFlags();
+  }
+}
+
 void AllowOnlyFlags(params string[] allowedFlags)
 {
     var unknownFlag = flagsPassedFromTheTerminal.FirstOrDefault(flag => !allowedFlags.Contains(flag));
