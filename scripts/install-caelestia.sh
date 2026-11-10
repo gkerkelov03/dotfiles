@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-caelestia install --noconfirm
+caelestia install --enable-components firefox --noconfirm
 
 # set default wallpaper and scheme
 caelestia wallpaper -f ~/dotfiles/arch/hinata.jpg
