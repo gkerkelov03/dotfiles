@@ -139,5 +139,12 @@
     "qemu-desktop": "runs the VM and its emulated hardware, it uses KVM (native linux kernel module that kinda turns the linux kernel itself into hypervisor) for acceleration through /dev/kvm",
     "dnsmasq": "small, lightweight program that doesis both a DHCP server and a DNS server. We need it for VMs. libvirt uses it but it is an optional dependency"
   },
+  "YuBiKey": {
+    "yubikey-manager": "provides ykman the yubikey management cli tool",
+    "yubikey-personalization": "adds ykchalresp for testing and installs udev rules so you don’t need root.",
+    "pcsclite": "provides pcscd, the smart card daemon.",
+    "ccid": "the USB smart card driver",
+    "libfido2": "fido2-token and the related FIDO2 tools"
+  },
   "unsorted": {}
 }
