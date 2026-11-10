@@ -21,7 +21,7 @@ disabled_components=(
 )
 
 #install caelestia but enable only the firefox and hypr components
-caelestia install --noconfirm \
+caelestia install --noconfirm --aur-helper paru \
   --disable-components "$(
     IFS=,
     echo "${disabled_components[*]}"

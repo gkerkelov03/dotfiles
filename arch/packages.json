@@ -38,6 +38,7 @@
     "cliphist": "clipboard history manager"
   },
   "system": {
+    "base-devel": "meta-package with the core tools for compiling software and building Arch packages (e.g. gcc, make, binutils, fakeroot) and is required for makepkg and the AUR.",
     "mesa": "open source GPU drivers",
     "mesa-utils": "GPU drivers diagnostics (glxinfo, glxgears, eglinfo)",
     "greetd": "lightweight and the best login manager daemon",
@@ -52,6 +53,7 @@
     "tmux": "persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session.",
     "television": "modern well structured fuzzy finder",
     "atuin": "shell history manager",
+    "chezmoi": "the most capable and robust dotfiles manager",
     "yazi": "file manager TUI, better ranger",
     "btop": "system monitor, better htop",
     "lazydocker": "docker TUI",
@@ -137,7 +139,5 @@
     "qemu-desktop": "runs the VM and its emulated hardware, it uses KVM (native linux kernel module that kinda turns the linux kernel itself into hypervisor) for acceleration through /dev/kvm",
     "dnsmasq": "small, lightweight program that doesis both a DHCP server and a DNS server. We need it for VMs. libvirt uses it but it is an optional dependency"
   },
-  "unsorted": {
-    "base-devel": "meta-package with the core tools for compiling software and building Arch packages (e.g. gcc, make, binutils, fakeroot) and is required for makepkg and the AUR."
-  }
+  "unsorted": {}
 }

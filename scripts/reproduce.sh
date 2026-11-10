@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 if [[ $EUID -eq 0 ]]; then
   echo "Error: do not run this script with sudo or as root." >&2
@@ -9,11 +10,17 @@ sudo pacman -Syu --noconfirm
 
 bash "./install-paru.sh"
 bash "./install-all-packages.sh"
-bash "./install-caelestia.sh"
-chezmoi --source ~/dotfiles init --apply
-bash "./setup-home-folders.sh"
 bash "./install-fisher-and-fish-plugins.sh"
 bash "./install-yazi-plugins.sh"
+bash "./setup-home-folders.sh"
+
+#cleanup the .config folder cuz some random apps put some random stuff in there when installed
+rm -rf ~/.config/*
+
+# first apply the dotfiles so our caelestia cli and shell configs are in place
+# otherwise caelestia is gonna put a bunch of bullshit in the .config folder
+chezmoi --source ~/dotfiles init --apply
+bash "./install-caelestia.sh"
 
 #Install the dotnet ef tool
 dotnet tool install --global dotnet-ef
@@ -32,7 +39,6 @@ chsh -s /bin/fish
 
 #Enable systemd services
 systemctl enable plocate-updatedb.timer #the service that updates the db of the locate command (plocate package)
-systemctl enable greetd                 #the login manager daemon
 sudo systemctl enable libvirtd          #the libvirt daemon that receives requests from tools like virt-manager and carries them out
 
 echo "Done"

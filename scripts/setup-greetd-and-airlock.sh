@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#enable the login manager daemon
+systemctl enable greetd
+
 # Create the greeter user only if your greetd package did not provide one
 getent passwd greeter >/dev/null ||
   sudo useradd -r -M -s /usr/bin/nologin -d /var/cache/astra-airlock greeter

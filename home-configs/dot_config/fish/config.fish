@@ -88,6 +88,11 @@ if status is-interactive
         mkdir -p $argv[1]; and cd $argv[1]
     end
 
+    function copy --description 'copy file contents to clipboard'
+        wl-copy <$argv[1]
+        echo done
+    end
+
     function auto_ls --on-variable PWD --description 'list directory contents after cd'
         l
     end
