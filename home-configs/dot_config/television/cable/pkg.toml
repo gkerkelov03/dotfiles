@@ -13,6 +13,7 @@ jq -r '
 ' "$HOME/dotfiles/arch/packages.json"
 '''
 output = "{split: :0}"
+frecency = false
 
 [preview]
 command = '''
