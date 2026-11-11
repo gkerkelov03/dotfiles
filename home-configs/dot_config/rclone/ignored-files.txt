@@ -1,0 +1,53 @@
+# Files bisync should ignore.
+# After editing this file, run setup-google-drive-sync.sh again (it does a --resync).
+
+# LibreOffice / OnlyOffice / MS Office lock files
+- .~lock.*#
+- ~$*
+
+# OS junk
+- .DS_Store
+- ._*
+- Thumbs.db
+- desktop.ini
+- .directory
+- .Trash-*/**
+- .fuse_hidden*
+
+# Editor swap / backup / lock files
+- *.swp
+- *.swo
+- *~
+- .#*
+- #*#
+
+# Temporary and partial files
+- *.tmp
+- *.part
+- *.partial
+- *.crdownload
+
+# Code: version control (use git remotes for this, not file sync)
+- .git/**
+
+# Code: dependencies (reinstallable)
+- node_modules/**
+- .venv/**
+- venv/**
+- .direnv/**
+
+# Code: caches and compiled output
+- __pycache__/**
+- *.pyc
+- .pytest_cache/**
+- .mypy_cache/**
+- .ruff_cache/**
+- .cache/**
+- .gradle/**
+- .zig-cache/**
+- .terraform/**
+- *.o
+- *.class
+
+# Code: build output (generic names, see note below)
+- .next/**

@@ -1,0 +1,7 @@
+[Unit]
+Description=Two-way sync between ~/sync and the folder sync in Google Drive
+
+[Service]
+Type=oneshot
+ExecStart=%h/dotfiles/scripts/google-drive-sync.sh run
+
