@@ -10,7 +10,10 @@
 -- auto run chezmoi apply after a file has been saved in ~/dotflies/home
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("ChezmoiApply", { clear = true }),
-  pattern = vim.fn.expand("~/dotfiles/home") .. "/*",
+  pattern = {
+    vim.fn.expand("~/dotfiles/home-configs") .. "/*",
+    vim.fn.expand("~/dotfiles/system-configs") .. "/*",
+  },
   callback = function(args)
     local file = args.match
 
@@ -34,7 +37,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- auto run chezmoi re-add file when a file is saved from ~/.config if the file is managed by chezmoi
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("ChezmoiReAdd", { clear = true }),
-  pattern = vim.fn.expand("~/.config") .. "/*",
+  pattern = vim.fn.expand("~") .. "/*",
   callback = function(args)
     local file = args.match
 

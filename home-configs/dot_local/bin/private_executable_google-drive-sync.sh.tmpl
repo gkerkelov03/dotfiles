@@ -6,7 +6,7 @@ set -euo pipefail
 #  ./google-drive-sync.sh      Run this when you are setting the google drive sync
 #                              for the first time on a new machine
 #                              or your sync folder stopped syncing for some reason
-#                              or you changed filters.txt
+#                              or you changed the ignored-files.txt
 #
 #  ./google-drive-sync.sh run  used by the systemd service
 
@@ -33,7 +33,7 @@ FLAGS=(
 
 bisync() { rclone bisync "$REMOTE_PATH" "$LOCAL_PATH" "${FLAGS[@]}" "$@"; }
 
-#mode = the first argument passed to the script or setup of none were passed
+#mode = the first argument passed to the script or <setup> if none were passed
 MODE="${1:-setup}"
 
 #this is basically the syntax in bash to make it run the bisync function and return
@@ -51,21 +51,24 @@ systemctl --user stop "$SYSTEMD_SERVICE_NAME.timer" 2>/dev/null || true
 #if a timer-started sync is already running, wait until it finishes, checking every 2 seconds.
 while systemctl --user is-active --quiet "$SYSTEMD_SERVICE_NAME.service"; do sleep 2; done
 
+#start the timer again when the script exits, even if it failed
+#because if some error happens like no internet or google sign in error
+#the script will exit and the timer is going to stay stopped
+trap 'systemctl --user start "$SYSTEMD_SERVICE_NAME.timer" 2>/dev/null || true' EXIT
+
 setup() {
   echo "==> Checking the rclone remote"
   if ! remote_exists; then
     # new machine: create the remote and sign in to your Google Account
-    ask_secret
     rclone config create "$REMOTE" drive scope=drive \
       client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET"
-    unset CLIENT_SECRET
-  elif [[ "$(current_client_id)" != "$CLIENT_ID" ]]; then
-    # CLIENT_ID changed: update the remote and sign in again
-    echo "Client ID changed, updating the remote"
-    ask_secret
+  elif [[ "$(remote_setting client_id)" != "$CLIENT_ID" ||
+    "$(remote_setting client_secret)" != "$CLIENT_SECRET" ]]; then
+    # client ID or secret changed in KeePassXC: update the remote and sign in again
+    echo "Client ID or secret changed, updating the remote"
     rclone config update "$REMOTE" \
-      client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET"
-    unset CLIENT_SECRET
+      client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET" \
+      config_refresh_token=false
     rclone config reconnect "$REMOTE:"
   fi
 
@@ -112,21 +115,10 @@ remote_exists() {
   rclone listremotes | grep -qx "$REMOTE:"
 }
 
-# client ID the remote uses now (empty if none)
-current_client_id() {
+# a setting the remote uses now, e.g. client_id (empty if none)
+remote_setting() {
   rclone config show "$REMOTE" 2>/dev/null |
-    awk -F' = ' '$1=="client_id"{print $2}' || true
-}
-
-# ask for the client secret without showing it
-ask_secret() {
-  read -rsp "Google client secret: " CLIENT_SECRET
-  echo
-  # stop if nothing was entered
-  if [[ -z "$CLIENT_SECRET" ]]; then
-    echo "No client secret entered." >&2
-    exit 1
-  fi
+    awk -F' = ' -v key="$1" '$1==key{print $2}' || true
 }
 
 # can we reach Google Drive?
