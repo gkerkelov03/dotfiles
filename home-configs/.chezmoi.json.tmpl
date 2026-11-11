@@ -1,7 +1,7 @@
 {
     "sourceDir": "~/dotfiles",
-    "git": {
-        "autoCommit": false,
-        "autoPush": false 
+    "keepassxc": {
+      "database": {{ joinPath .chezmoi.homeDir "sync/credentials.kdbx" | toJson }},
+      "args": ["--yubikey", "2"]
     }
 }
