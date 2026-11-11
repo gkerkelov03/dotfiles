@@ -10,8 +10,9 @@ set -euo pipefail
 #
 #  ./google-drive-sync.sh run  used by the systemd service
 
-CLIENT_ID={{ (keepassxc "Google Drive rclone").UserName | squote }}
-CLIENT_SECRET={{ (keepassxc "Google Drive rclone").Password | squote }}
+VAULT="$HOME/sync/credentials.kdbx"
+VAULT_ENTRY="rclone"
+YUBIKEY_SLOT=2
 
 REMOTE="google-drive"
 REMOTE_PATH="$REMOTE:sync"
@@ -57,26 +58,29 @@ while systemctl --user is-active --quiet "$SYSTEMD_SERVICE_NAME.service"; do sle
 trap 'systemctl --user start "$SYSTEMD_SERVICE_NAME.timer" 2>/dev/null || true' EXIT
 
 setup() {
+  echo "==> Reading CLIENT_ID and CLIENT_SECRET credentials from KeePassXC"
+  load_credentials
+
   echo "==> Checking the rclone remote"
   if ! remote_exists; then
     # new machine: create the remote and sign in to your Google Account
     rclone config create "$REMOTE" drive scope=drive \
-      client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET"
+      client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET" \
+      --auto-confirm >/dev/null
   elif [[ "$(remote_setting client_id)" != "$CLIENT_ID" ||
-    "$(remote_setting client_secret)" != "$CLIENT_SECRET" ]]; then
-    # client ID or secret changed in KeePassXC: update the remote and sign in again
+  "$(remote_setting client_secret)" != "$CLIENT_SECRET" ]]; then
+    # client ID or secret changed in KeePassXC: update the remote (signs in once)
     echo "Client ID or secret changed, updating the remote"
     rclone config update "$REMOTE" \
       client_id="$CLIENT_ID" client_secret="$CLIENT_SECRET" \
-      config_refresh_token=false
-    rclone config reconnect "$REMOTE:"
+      --auto-confirm >/dev/null
   fi
 
   echo "==> Checking access to Google Drive"
   if ! drive_reachable; then
     # token expired or revoked: sign in again
     echo "Access failed, signing in to Google again"
-    rclone config reconnect "$REMOTE:"
+    rclone config reconnect "$REMOTE:" --auto-confirm >/dev/null
     # still failing (e.g. no internet): stop here
     if ! drive_reachable; then
       echo "Still can't reach Google Drive. Check your connection." >&2
@@ -85,8 +89,6 @@ setup() {
   fi
 
   echo "==> Preparing folders and check-access markers"
-  mkdir -p "$LOCAL_PATH"      # local sync folder
-  rclone mkdir "$REMOTE_PATH" # Google Drive sync folder
   # local marker
   if [[ ! -f "$LOCAL_PATH/RCLONE_TEST" ]]; then
     touch "$LOCAL_PATH/RCLONE_TEST"
@@ -108,6 +110,15 @@ setup() {
   systemctl --user enable --now "$SYSTEMD_SERVICE_NAME.timer" # start now and at every login
 
   echo "Done. Sync runs on the timer from now on."
+}
+
+# read the client ID and secret from KeePassXC (asks for password + YubiKey touch)
+load_credentials() {
+  local out
+  out="$(keepassxc-cli show --yubikey "$YUBIKEY_SLOT" \
+    -a UserName -a Password "$VAULT" "$VAULT_ENTRY")"
+  CLIENT_ID="$(sed -n 1p <<<"$out")"
+  CLIENT_SECRET="$(sed -n 2p <<<"$out")"
 }
 
 # does the rclone remote exist?

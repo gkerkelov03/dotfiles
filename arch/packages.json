@@ -146,5 +146,7 @@
     "ccid": "the USB smart card driver",
     "libfido2": "fido2-token and the related FIDO2 tools"
   },
-  "unsorted": {}
+  "unsorted": {
+    "rclone": "sync to google drive"
+  }
 }
