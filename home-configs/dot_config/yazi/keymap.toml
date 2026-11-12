@@ -10,7 +10,7 @@ prepend_keymap = [
   # moxuze/television
   { on = ["t", "t"], run = "plugin television -- text", desc = "Search text with tv" },
   { on = ["t", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
-  { on = ["t", "d"], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
+  { on = ["t", "d"], run = "plugin television -- dirs --cd", desc = "Enter a directory with tv" },
 
   # yazi-rs/plugins:mount 
   { on = ["m", "o"], run = "plugin mount", desc = "Mount manager" },
@@ -20,6 +20,9 @@ prepend_keymap = [
 
   # yazi-rs/plugins:chmod
   { on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files" },
+
+  # ndtoan96/ouch
+  { on = ["c", "a"], run = "plugin ouch", desc = "Compress with ouch" },
 
   # simla33/ucp
   { on = "P", run = "plugin ucp paste notify", desc = "Paste from system clipboard" },

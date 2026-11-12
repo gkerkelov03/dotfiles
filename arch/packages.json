@@ -106,7 +106,6 @@
     "networkmanager": "wifi, ethernet & vpn manager (nmcli, nmtui)",
     "man-db": "the man and mandb commands",
     "ouch": "archive & unarchive primarely for me to use",
-    "7zip": "archive & unarchive primarely for other tools to use",
     "unzip": "unzipping needed by some tools",
     "age": "encryption tool",
     "wget": "http and ftp file downloader, needed by some tools",

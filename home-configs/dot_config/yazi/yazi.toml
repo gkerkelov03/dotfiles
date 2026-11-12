@@ -1,3 +1,10 @@
+
+[opener]
+extract = [
+  #Extract archives with yazi when you enter the archive with l and then hover the newly created folder
+	{ run = '''set -- %s; before=$(ls -A); ouch d -n "$@"; new=$(ls -A | grep -vxF -e "$before" | head -n 1); [ -n "$new" ] || { f=${1##*/}; new=${f%.*}; new=${new%.tar}; }; [ -e "$new" ] && ya emit reveal "$PWD/$new"''', desc = "Extract here with ouch", for = "unix" },
+]
+
 [plugin]
 prepend_fetchers = [
   #Git status (yazi-rs/plugins:git)
@@ -11,6 +18,9 @@ prepend_preloaders = [
 ]
 
 prepend_previewers = [
+  #archives with ndtoan96/ouch
+  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run  = "ouch --show-file-icons" },
+
   #md files with glow
   { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
 
