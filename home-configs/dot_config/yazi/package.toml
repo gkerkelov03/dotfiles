@@ -14,11 +14,6 @@ rev = "1ef5fe0"
 hash = "f0dcc0ea71d5c59ce0d527f4b8a3937b"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-filter"
-rev = "1ef5fe0"
-hash = "d6f7351ea25a43c9b5f4315fa1e23935"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
 rev = "1ef5fe0"
 hash = "87472b05a8c420100f6a2b9cde1e7746"
@@ -59,11 +54,6 @@ rev = "5ef8203"
 hash = "e9c94e81b3159dd283822811b0276367"
 
 [[plugin.deps]]
-use = "dedukun/relative-motions"
-rev = "a603d9e"
-hash = "e02a788e5b8ae0fb47fd0193dda589cc"
-
-[[plugin.deps]]
 use = "gkerkelov03/yazi-office-documents-preview"
 rev = "a49f5a5"
 hash = "ba7abba4ef791d2d588538947f908cf5"
@@ -72,6 +62,11 @@ hash = "ba7abba4ef791d2d588538947f908cf5"
 use = "yazi-rs/plugins:piper"
 rev = "1ef5fe0"
 hash = "d1e0499cae5f3aeb628c267616d4b682"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "596b666"
+hash = "c2f4f4aca257dcceafa9e3b828dbf1c9"
 
 [flavor]
 deps = []
