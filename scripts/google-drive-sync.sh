@@ -10,9 +10,7 @@ set -euo pipefail
 #
 #  ./google-drive-sync.sh run  used by the systemd service
 
-VAULT="$HOME/sync/credentials.kdbx"
 VAULT_ENTRY="rclone"
-YUBIKEY_SLOT=2
 
 REMOTE="google-drive"
 REMOTE_PATH="$REMOTE:sync"
@@ -47,6 +45,10 @@ elif [[ "$MODE" != "setup" ]]; then
   exit 2
 fi
 
+#loads read_keepassxc_entry, VAULT_PATH and YUBIKEY_SLOT.
+#only needed for setup, so the systemd run above doesn't depend on it
+source "$HOME/.local/lib/keepass.sh"
+
 #stop the timer so it doesn’t start a sync while the script is running
 systemctl --user stop "$SYSTEMD_SERVICE_NAME.timer" 2>/dev/null || true
 #if a timer-started sync is already running, wait until it finishes, checking every 2 seconds.
@@ -59,7 +61,10 @@ trap 'systemctl --user start "$SYSTEMD_SERVICE_NAME.timer" 2>/dev/null || true' 
 
 setup() {
   echo "==> Reading CLIENT_ID and CLIENT_SECRET credentials from KeePassXC"
-  load_credentials
+  read_keepassxc_entry "$VAULT_ENTRY" CLIENT_ID CLIENT_SECRET || {
+    echo "Couldn't read entry '$VAULT_ENTRY' from KeePassXC" >&2
+    exit 1
+  }
 
   echo "==> Checking the rclone remote"
   if ! remote_exists; then
@@ -110,15 +115,6 @@ setup() {
   systemctl --user enable --now "$SYSTEMD_SERVICE_NAME.timer" # start now and at every login
 
   echo "Done. Sync runs on the timer from now on."
-}
-
-# read the client ID and secret from KeePassXC (asks for password + YubiKey touch)
-load_credentials() {
-  local out
-  out="$(keepassxc-cli show --yubikey "$YUBIKEY_SLOT" \
-    -a UserName -a Password "$VAULT" "$VAULT_ENTRY")"
-  CLIENT_ID="$(sed -n 1p <<<"$out")"
-  CLIENT_SECRET="$(sed -n 2p <<<"$out")"
 }
 
 # does the rclone remote exist?

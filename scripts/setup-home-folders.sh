@@ -9,7 +9,7 @@ mkdir -p \
   backup \
   nas \
   sync \
-  others \
+  other \
   repos \
   downloads \
   junk \
