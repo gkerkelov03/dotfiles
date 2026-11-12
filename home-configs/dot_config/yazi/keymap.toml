@@ -1,164 +1,61 @@
+# Defaults: https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml
+
 [mgr]
-keymap = [
-  { on = "<Esc>", run = "escape", desc = "Exit visual mode/clear" },
-  { on = "q", run = "quit", desc = "Quit" },
-
-  # Hopping (Vim Style)
-  { on = "k", run = "arrow prev", desc = "Up" },
-  { on = "j", run = "arrow next", desc = "Down" },
-  { on = [
-    "g",
-    "g",
-  ], run = "arrow top", desc = "Top" },
-  { on = "G", run = "arrow bot", desc = "Bottom" },
-
-  # Navigation (l is used for a plugin)
-  { on = "h", run = "leave", desc = "Parent directory" },
-  { on = "H", run = "back", desc = "History back" },
-  { on = "L", run = "forward", desc = "History forward" },
-
-  # Selection & Visual Mode
-  { on = "<Space>", run = [
-    "toggle",
-    "arrow 1",
-  ], desc = "Select and move" },
-  { on = "v", run = "visual_mode", desc = "Visual mode" },
-  { on = "V", run = "visual_mode --unset", desc = "Visual mode (unset)" },
-
-  # Operations
-  { on = "<Enter>", run = "open", desc = "Open" },
+prepend_keymap = [
+  # Overrides
   { on = "o", run = "open --interactive", desc = "Open with..." },
-  { on = "y", run = "yank", desc = "Copy" },
-  { on = "p", run = "paste", desc = "Paste" },
-  { on = "x", run = "yank --cut", desc = "Cut" },
-  { on = "d", run = "remove", desc = "Trash" },
-  { on = "a", run = "create", desc = "Create" },
-  { on = "r", run = "rename --cursor=before_ext", desc = "Rename" },
-  { on = ".", run = "hidden toggle", desc = "Toggle hidden" },
-  { on = "n", run = "find_arrow", desc = "Next found" },
-  { on = "N", run = "find_arrow --prev", desc = "Prev found" },
-  { on = "<C-t>", run = 'shell --orphan -- foot', desc = "Open foot here" },
+  { on = "t", run = "tab_create --current", desc = "New tab" },
+  { on = "<C-t>", run = "shell --orphan -- foot", desc = "Open foot here" },
 
-  # External Tools 
   # moxuze/television
-  { on = [
-    "f",
-    "t",
-  ], run = "plugin television -- text", desc = "Jump to a file with tv" },
-  { on = [
-    "f",
-    "f",
-  ], run = "plugin television -- files", desc = "Jump to a file with tv" },
-  { on = [
-    "f",
-    "d",
-  ], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
+  { on = ["f", "t"], run = "plugin television -- text", desc = "Search text with tv" },
+  { on = ["f", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
+  { on = ["f", "d"], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
 
-  #yazi-rs/plugins:mount
-  { on = [
-    "m",
-    "o",
-  ], run = "plugin mount" },
+  # yazi-rs/plugins:mount
+  { on = ["m", "o"], run = "plugin mount", desc = "Mount manager" },
 
-  #yazi-rs/plugins:smart-filter
+  # yazi-rs/plugins:smart-filter
   { on = "/", run = "plugin smart-filter", desc = "Smart filter" },
 
-  #yazi-rs/plugins:smart-enter
+  # yazi-rs/plugins:smart-enter
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
-  #yazi-rs/plugins:chmod
-  { on = [
-    "c",
-    "m",
-  ], run = "plugin chmod", desc = "Chmod on selected files" },
+  # yazi-rs/plugins:chmod
+  { on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files" },
 
-  #ahkohd/eza-preview
-  { on = [
-    "e",
-    "t",
-  ], run = "plugin eza-preview", desc = "Toggle tree/list dir preview" },
-  { on = [
-    "e",
-    "g",
-    "i",
-  ], run = "plugin eza-preview toggle-git-ignore", desc = "Toggle .gitignore files" },
-  { on = [
-    "e",
-    "=",
-  ], run = "plugin eza-preview inc-level", desc = "Increment tree level" },
-  { on = [
-    "e",
-    "-",
-  ], run = "plugin eza-preview dec-level", desc = "Decrement tree level" },
+  # simla33/ucp
+  { on = "P", run = "plugin ucp paste notify", desc = "Paste from system clipboard" },
+  { on = "Y", run = "plugin ucp copy notify", desc = "Copy to system clipboard" },
 
-  #simla33/ucp
-  { on = "P", run = "plugin ucp paste notify", desc = "Paste" },
-  { on = "Y", run = "plugin ucp copy notify", desc = "Copy" },
+  # Lil-Dank/lazygit
+  { on = ["g", "i"], run = "plugin lazygit", desc = "Run lazygit" },
 
-  #Lil-Dank/lazygit
-  { on = [
-    "g",
-    "i",
-  ], run = "plugin lazygit", desc = "run lazygit" },
+  # dedukun/relative-motions (digits start a motion: 3j, 5k, 2yy, 10gg ...)
+  { on = "1", run = "plugin relative-motions 1", desc = "Move in relative steps" },
+  { on = "2", run = "plugin relative-motions 2", desc = "Move in relative steps" },
+  { on = "3", run = "plugin relative-motions 3", desc = "Move in relative steps" },
+  { on = "4", run = "plugin relative-motions 4", desc = "Move in relative steps" },
+  { on = "5", run = "plugin relative-motions 5", desc = "Move in relative steps" },
+  { on = "6", run = "plugin relative-motions 6", desc = "Move in relative steps" },
+  { on = "7", run = "plugin relative-motions 7", desc = "Move in relative steps" },
+  { on = "8", run = "plugin relative-motions 8", desc = "Move in relative steps" },
+  { on = "9", run = "plugin relative-motions 9", desc = "Move in relative steps" },
 
-  # Tabs
-  { on = "t", run = "tab_create --current", desc = "New tab" },
-  { on = "[", run = "tab_switch -1 --rel", desc = "Prev tab" },
-  { on = "]", run = "tab_switch 1 --rel", desc = "Next tab" },
-  { on = "1", run = "tab_switch 0", desc = "Tab 1" },
-  { on = "2", run = "tab_switch 1", desc = "Tab 2" },
+  # Tab switching moved from 1-9 (now used by relative-motions) to Alt+1-9
+  { on = "<A-1>", run = "tab_switch 0", desc = "Switch to tab 1" },
+  { on = "<A-2>", run = "tab_switch 1", desc = "Switch to tab 2" },
+  { on = "<A-3>", run = "tab_switch 2", desc = "Switch to tab 3" },
+  { on = "<A-4>", run = "tab_switch 3", desc = "Switch to tab 4" },
+  { on = "<A-5>", run = "tab_switch 4", desc = "Switch to tab 5" },
+  { on = "<A-6>", run = "tab_switch 5", desc = "Switch to tab 6" },
+  { on = "<A-7>", run = "tab_switch 6", desc = "Switch to tab 7" },
+  { on = "<A-8>", run = "tab_switch 7", desc = "Switch to tab 8" },
+  { on = "<A-9>", run = "tab_switch 8", desc = "Switch to tab 9" },
 ]
 
 [input]
-keymap = [
-  { on = "<Esc>", run = "escape", desc = "Normal mode / Cancel" },
-  { on = "<Enter>", run = "close --submit", desc = "Submit" },
-  { on = "<BackSpace>", run = "backspace", desc = "Delete character to the left" },
-
-  # Modes
-  { on = "i", run = "insert", desc = "Insert" },
-  { on = "a", run = "insert --append", desc = "Append" },
-  { on = "I", run = [
-    "move bol",
-    "insert",
-  ], desc = "Insert at BOL" },
-  { on = "A", run = [
-    "move eol",
-    "insert --append",
-  ], desc = "Append at EOL" },
-  { on = "v", run = "visual", desc = "Visual mode" },
-
-  # Movement
-  { on = "h", run = "move -1", desc = "Left" },
-  { on = "w", run = "forward", desc = "Next word" },
-  { on = "b", run = "backward", desc = "Prev word" },
-  { on = "0", run = "move bol", desc = "BOL" },
-  { on = "$", run = "move eol", desc = "EOL" },
+prepend_keymap = [
+  # yazi-rs/plugins:visual-pivot
   { on = "<C-o>", run = "plugin visual-pivot", desc = "Move cursor to the other end of the selection" },
-
-  # Editing
-  { on = "x", run = [
-    "delete --cut",
-    "move 1 --in-operating",
-  ], desc = "Delete char" },
-  { on = "d", run = "delete --cut", desc = "Cut selection" },
-  { on = "y", run = "yank", desc = "Copy" },
-  { on = "p", run = "paste", desc = "Paste" },
-  { on = "u", run = "undo", desc = "Undo" },
-  { on = "<C-r>", run = "redo", desc = "Redo" },
-]
-
-[tasks]
-keymap = [
-  { on = "<Esc>", run = "close", desc = "Close" },
-  { on = "k", run = "arrow prev", desc = "Up" },
-  { on = "j", run = "arrow next", desc = "Down" },
-  { on = "x", run = "cancel", desc = "Cancel task" },
-]
-
-[confirm]
-keymap = [
-  { on = "<Esc>", run = "close", desc = "Cancel" },
-  { on = "y", run = "close --submit", desc = "Confirm" },
-  { on = "n", run = "close", desc = "Cancel" },
 ]

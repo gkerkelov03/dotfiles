@@ -11,7 +11,7 @@ prepend_preloaders = [
 ]
 
 prepend_previewers = [
-  #md files via glow
+  #md files with glow
   { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
 
   #systemd services
@@ -20,16 +20,13 @@ prepend_previewers = [
   #sqlite databases
   { mime = "application/sqlite3", run = 'piper -- sqlite3 "$1" ".schema --indent"' },
 
-  #Audio ffprobe comes from ffmpeg
+  #Audio with ffprobe what comes from ffmpeg
   { mime = "audio/*", run = '''piper -- { echo "Type=$(file -b --mime-type "$1")"; ffprobe -v error -pretty -select_streams a:0 -show_entries format=duration,size:format_tags=artist,album:stream=codec_long_name -of default=noprint_wrappers=1 "$1"; } | sed -E 's/^TAG://; /=N\/A$/d; s/^codec_long_name=/Codec=/; s/^(duration=[0-9:]+)\.[0-9]+/\1/; s/([0-9]+\.[0-9])[0-9]* ([KMG])/\1 \2/; s/^(.)([^=]*)=/\u\1\L\2\E: /' ''' },
 
   #3d objects (ruudjhuu/f3d-preview)
   { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
 
-  #Office Documents (gkerkelov03/yazi-office-documents-preview.yazi)
-  { mime = "application/openxmlformats-officedocument.*", run = "yazi-office-documents-preview" },
-  { mime = "application/oasis.opendocument.*", run = "yazi-office-documents-preview" },
-  { mime = "application/ms-*", run = "yazi-office-documents-preview" },
-  { mime = "application/msword", run = "yazi-office-documents-preview" },
+  #Office documents (gkerkelov03/yazi-office-documents-preview.yazi)
+  { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-excel*,ms-powerpoint*,ms-word*,msword}", run = "yazi-office-documents-preview" },
   { url = "*.docx", run = "yazi-office-documents-preview" },
 ]
