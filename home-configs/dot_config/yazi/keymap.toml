@@ -4,19 +4,16 @@
 prepend_keymap = [
   # Overrides
   { on = "o", run = "open --interactive", desc = "Open with..." },
-  { on = "t", run = "tab_create --current", desc = "New tab" },
   { on = "<C-t>", run = "shell --orphan -- foot", desc = "Open foot here" },
+  { on = ["t", "n"], run = "tab_create --current", desc = "New tab" },
 
   # moxuze/television
-  { on = ["f", "t"], run = "plugin television -- text", desc = "Search text with tv" },
-  { on = ["f", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
-  { on = ["f", "d"], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
+  { on = ["t", "t"], run = "plugin television -- text", desc = "Search text with tv" },
+  { on = ["t", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
+  { on = ["t", "d"], run = "plugin television -- dirs", desc = "Jump to a directory with tv" },
 
-  # yazi-rs/plugins:mount
+  # yazi-rs/plugins:mount 
   { on = ["m", "o"], run = "plugin mount", desc = "Mount manager" },
-
-  # yazi-rs/plugins:smart-filter
-  { on = "/", run = "plugin smart-filter", desc = "Smart filter" },
 
   # yazi-rs/plugins:smart-enter
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
@@ -30,28 +27,6 @@ prepend_keymap = [
 
   # Lil-Dank/lazygit
   { on = ["g", "i"], run = "plugin lazygit", desc = "Run lazygit" },
-
-  # dedukun/relative-motions (digits start a motion: 3j, 5k, 2yy, 10gg ...)
-  { on = "1", run = "plugin relative-motions 1", desc = "Move in relative steps" },
-  { on = "2", run = "plugin relative-motions 2", desc = "Move in relative steps" },
-  { on = "3", run = "plugin relative-motions 3", desc = "Move in relative steps" },
-  { on = "4", run = "plugin relative-motions 4", desc = "Move in relative steps" },
-  { on = "5", run = "plugin relative-motions 5", desc = "Move in relative steps" },
-  { on = "6", run = "plugin relative-motions 6", desc = "Move in relative steps" },
-  { on = "7", run = "plugin relative-motions 7", desc = "Move in relative steps" },
-  { on = "8", run = "plugin relative-motions 8", desc = "Move in relative steps" },
-  { on = "9", run = "plugin relative-motions 9", desc = "Move in relative steps" },
-
-  # Tab switching moved from 1-9 (now used by relative-motions) to Alt+1-9
-  { on = "<A-1>", run = "tab_switch 0", desc = "Switch to tab 1" },
-  { on = "<A-2>", run = "tab_switch 1", desc = "Switch to tab 2" },
-  { on = "<A-3>", run = "tab_switch 2", desc = "Switch to tab 3" },
-  { on = "<A-4>", run = "tab_switch 3", desc = "Switch to tab 4" },
-  { on = "<A-5>", run = "tab_switch 4", desc = "Switch to tab 5" },
-  { on = "<A-6>", run = "tab_switch 5", desc = "Switch to tab 6" },
-  { on = "<A-7>", run = "tab_switch 6", desc = "Switch to tab 7" },
-  { on = "<A-8>", run = "tab_switch 7", desc = "Switch to tab 8" },
-  { on = "<A-9>", run = "tab_switch 8", desc = "Switch to tab 9" },
 ]
 
 [input]
