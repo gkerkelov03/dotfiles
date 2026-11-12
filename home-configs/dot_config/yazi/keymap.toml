@@ -4,7 +4,7 @@
 prepend_keymap = [
   # Overrides
   { on = "o", run = "open --interactive", desc = "Open with..." },
-  { on = "<C-t>", run = "shell --orphan -- foot", desc = "Open foot here" },
+  { on = "<C-t>", run = "shell --orphan -- kitty -1", desc = "Open foot here" },
   { on = ["t", "n"], run = "tab_create --current", desc = "New tab" },
 
   # moxuze/television
