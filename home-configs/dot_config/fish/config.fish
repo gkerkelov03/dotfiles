@@ -56,6 +56,8 @@ if status is-interactive
     abbr gco 'git checkout'
     abbr gsh 'git show'
 
+    abbr cs 'chezmoi status'
+
     alias l="eza -1 --icons --git --group-directories-first --color-scale --mounts"
     alias ls="eza -a1 --icons --git --group-directories-first --color-scale --mounts"
     alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"

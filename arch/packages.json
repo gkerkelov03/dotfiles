@@ -147,6 +147,7 @@
     "libfido2": "fido2-token and the related FIDO2 tools"
   },
   "unsorted": {
-    "kitty": "the most feature rich terminal"
+    "kitty": "the most feature rich terminal",
+    "cifs-utils": "Provides the mount.cifs helper, which lets you mount SMB/CIFS network shares (Windows shares, Samba, most NASes) with mount -t cifs. It reads the credentials= file, resolves hostnames, and passes the options to the kernel’s cifs module, which does the actual file sharing."
   }
 }
