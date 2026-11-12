@@ -57,7 +57,8 @@
     "yazi": "file manager TUI, better ranger",
     "btop": "system monitor, better htop",
     "lazydocker": "docker TUI",
-    "openssh": "remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on..."
+    "openssh": "remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on...",
+    "rclone": "sync to google drive"
   },
   "gui apps": {
     "mpv": "media player",
@@ -69,7 +70,8 @@
     "git": "version control system",
     "lazygit": "git TUI",
     "github-cli": "github cli",
-    "git-delta": "pager for git diff"
+    "git-delta": "pager for git diff",
+    "worktrunk": "git worktrees helper"
   },
   "modern cli tools": {
     "bat": "better cat",
@@ -146,7 +148,5 @@
     "ccid": "the USB smart card driver",
     "libfido2": "fido2-token and the related FIDO2 tools"
   },
-  "unsorted": {
-    "rclone": "sync to google drive"
-  }
+  "unsorted": {}
 }

@@ -31,8 +31,8 @@ gh extension install dlvhdr/gh-dash
 #Install claude code
 curl -fsSL https://claude.ai/install.sh | bash
 
-#Install the latest arch linux iso so we have it available for virtual machines
-wget -O ~/others/arch.iso https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso
+#Install the latest Arch ISO straight into libvirt's folder (QEMU can read it there)
+sudo wget -O /var/lib/libvirt/images/arch.iso https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso
 
 #Make fish default shell
 chsh -s /bin/fish
