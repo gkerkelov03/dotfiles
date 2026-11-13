@@ -56,7 +56,6 @@ if status is-interactive
 
     #trash-cli
     abbr t trash-put
-    abbr tl trash-list
     abbr te 'trash-empty 30' # older than 30 days; edit the number before running if you want
     abbr rm 'don\'t use rm use trash-cli'
 
