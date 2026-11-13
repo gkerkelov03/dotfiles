@@ -13,7 +13,7 @@
 # Other branches go next to main/ with:
 #   wt switch feat      existing remote branch -> ~/repos/<repo-name>/feat/
 #   wt switch -c feat   brand-new branch based on the default branch -> ~/repos/<name>/feat/
-function clone --description 'Clone a repo into ~/repos/<name>/ as bare repo + worktrees'
+function wt-clone --description 'Clone a repo into ~/repos/<name>/ as bare repo + worktrees'
     set -l url $argv[1]
 
     # Short form (owner/repo) has no "://" and no "git@" -> turn it into a GitHub URL
