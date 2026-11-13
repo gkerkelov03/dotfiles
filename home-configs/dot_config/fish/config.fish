@@ -1,5 +1,5 @@
 set -gx DOTNET_ROOT /usr/share/dotnet
-fish_add_path --path --move $HOME/.local/bin $HOME/.dotnet/tools
+fish_add_path --path --move $HOME/.local/bin $HOME/.dotnet/tools $HOME/dotfiles/scripts
 
 set -gx BAT_THEME ansi
 
@@ -26,19 +26,18 @@ if status is-interactive
     set -U tide_character_vi_icon_replace \U000f016d
 
     # projectdo
-    abbr b --function projectdo_build
-    abbr r --function projectdo_run
-    abbr t --function projectdo_test
+    abbr pb --function projectdo_build
+    abbr pr --function projectdo_run
+    abbr pt --function projectdo_test
 
-    # Tools
+    #tools
     abbr lg lazygit
     abbr ld lazydocker
-    abbr f fzf
     abbr v nvim
     abbr y yazi
     abbr c cd
 
-    # Git
+    #git
     abbr gd 'git diff'
     abbr ga 'git add'
     abbr gaa 'git add -A'
@@ -54,8 +53,14 @@ if status is-interactive
     abbr gb 'git branch'
     abbr gbd 'git branch -d'
     abbr gco 'git checkout'
-    abbr gsh 'git show'
 
+    #trash-cli
+    abbr t trash-put
+    abbr tl trash-list
+    abbr te 'trash-empty 30' # older than 30 days; edit the number before running if you want
+    abbr rm 'don\'t use rm use trash-cli'
+
+    #chezmoi 
     abbr cs 'chezmoi status'
     abbr ca 'chezmoi apply'
 
@@ -66,9 +71,9 @@ if status is-interactive
 
     alias cat="bat"
     alias neo="neo-matrix --defaultbg --colormode=16"
-    alias pkg="~/dotfiles/scripts/pkg.cs"
-    alias google-drive-sync-now="systemctl --user start google-drive-sync"
-    alias apply-system-configs="chezmoi apply --include=scripts"
+
+    alias pkg="pkg.cs"
+    alias chezmoi-apply-scripts="chezmoi apply --include=scripts"
 
     # fish calls this after loading the key binding preset, so these
     # survive any reload or switch of fish_key_bindings
