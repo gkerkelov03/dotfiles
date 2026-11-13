@@ -69,7 +69,7 @@ var packagesPassedFromTheTerminal = args[1..].Where(argument => !IsFlag(argument
 var packagesFileJsonObject = new JsonObject();
 IEnumerable<JsonObject> packagesFileSections = [];
 
-if(packageOperation != PackageOperation.UpdateAllPackages)
+if(packageOperation is not (PackageOperation.UpdateAllPackages or PackageOperation.UpdatePackages))
 {
   RequireAtLeastOnePackageNameToBePassedFromTheTerminal();
   packagesFileJsonObject = LoadPackagesFileJsonObject();
@@ -82,7 +82,7 @@ switch (packageOperation)
     case PackageOperation.RemovePackages: RemoveThePackages(); break;
     case PackageOperation.UpdatePackages : RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(updatePackagesShellCommand, packagesPassedFromTheTerminal); break;
     case PackageOperation.UpdateAllPackages: UpdateAllThePackages(); break;
-    case PackageOperation.ShowPackagesInfo: RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(packageInfoShellCommand, packagesPassedFromTheTerminal); break;
+    case PackageOperation.ShowPackagesInfo: ShowThePackagesInfo(); break;
 }
 
 void AddThePackages()
@@ -130,6 +130,32 @@ void UpdateAllThePackages()
     if (packagesPassedFromTheTerminal.Length > 0) ExitWithErrorMessageAndDisplayTheUsage($"'{packageOperation}' takes no package names");
     RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(updateAllPackagesShellCommand);
     RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(cleanupShellCommand);
+}
+
+void ShowThePackagesInfo()
+{
+  foreach (var package in packagesPassedFromTheTerminal)
+  {
+    var sectionContainingThePackage = packagesFileSections.FirstOrDefault(section => section.ContainsKey(package));
+    var packageDescription = sectionContainingThePackage?[package]?.GetValue<string>();
+
+    if(packageDescription is null)
+    {
+      Console.WriteLine();
+      Console.WriteLine($"The package {package} is not in our packages.json file");
+      Console.WriteLine();
+    }
+    else 
+    {
+      Console.WriteLine("Package description from our packages.json file");
+      Console.WriteLine();
+      Console.WriteLine($"{package}: {packageDescription}");
+      Console.WriteLine();
+    }
+
+
+    RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(packageInfoShellCommand, package);
+  }
 }
 
 JsonObject LoadPackagesFileJsonObject() 
