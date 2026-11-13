@@ -37,6 +37,10 @@ sudo wget -O /var/lib/libvirt/images/arch.iso https://geo.mirror.pkgbuild.com/is
 #Make fish default shell
 chsh -s /bin/fish
 
+#Setup shell integration for worktrunk mainly for the sake of wt switch <branch> to
+#be able to cd into the branche's directory, also adds autocompletions
+wt config shell install
+
 #Enable systemd services
 systemctl enable plocate-updatedb.timer #the service that updates the db of the locate command (plocate package)
 sudo systemctl enable libvirtd          #the libvirt daemon that receives requests from tools like virt-manager and carries them out

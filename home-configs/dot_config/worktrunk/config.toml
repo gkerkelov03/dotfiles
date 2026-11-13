@@ -1,0 +1,3 @@
+#Where to put the branches 
+#repo_path is the .git folder and /../ to make it go one folder up
+worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
