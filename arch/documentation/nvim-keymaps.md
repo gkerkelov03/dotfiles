@@ -125,22 +125,18 @@
 
 ### Files, info, and misc
 
-- `ZZ`: write if changed and close the window
-- `ZQ`: close the window without writing
 - `gf`: edit the file under the cursor
 - `gF`: edit the file under the cursor and jump to the line number after it
 - `gx`: open the path under the cursor with the system application
 - `K`: look up the keyword (LSP hover when a server is attached)
-- `ga`: show the character value under the cursor
-- `g CTRL-G`: show cursor position and word counts
-- `g<`: show the previous command output
 - `do` / `dp`: `:diffget` / `:diffput`
 
 ---
 
 ## Text objects
 
-Use after an operator or in Visual mode. `i` means inner; `a` also includes the surrounding characters or white space.
+Use after an operator or in Visual mode. `i` means inside or inner; `a` means around
+also includes the surrounding characters or white space.
 
 - `iw` / `aw`: word
 - `iW` / `aW`: WORD
@@ -153,7 +149,7 @@ Use after an operator or in Visual mode. `i` means inner; `a` also includes the 
 - `i[` / `a[`: `[]` block, same as `i]` / `a]`
 - `i{` / `a{`: `{}` block, same as `i}`, `iB` / `a}`, `aB`
 - `i<` / `a<`: `<>` block, same as `i>` / `a>`
-- `it` / `at`: tag block
+- `it` / `at`: tag block (HTML, XML, JSX tags)
 
 ## Operator-pending mode
 
