@@ -151,6 +151,8 @@ also includes the surrounding characters or white space.
 - `i<` / `a<`: `<>` block, same as `i>` / `a>`
 - `it` / `at`: tag block (HTML, XML, JSX tags)
 
+TODO: you were until here on the 15th of november
+
 ## Operator-pending mode
 
 Use after an operator, before the motion.
@@ -375,6 +377,10 @@ Most Normal mode commands also work here. These are the ones that differ.
 - `:tab`: open the next command's window in a new tab
 - `:vert` / `:hor`: run the next split command vertically / horizontally
 
+Ctrl + d - move cursor and screen down 1/2 page
+Ctrl + u - move cursor and screen up 1/2 page
+gcc - comment
+
 ### Editing
 
 - `:s`: find and replace
@@ -414,13 +420,6 @@ Most Normal mode commands also work here. These are the ones that differ.
 ### Inspect
 
 - `:reg`: registers
-- `:marks`: marks
-- `:delm`: delete marks
-- `:ju`: jump list
-- `:changes`: change list
-- `:mes`: messages
-- `:his`: command history
-- `:scr`: sourced scripts
 - `:ve`: version and build info
 - `:che`: health checks
 - `:te`: open a terminal buffer
