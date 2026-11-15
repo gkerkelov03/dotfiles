@@ -66,7 +66,7 @@ if not vim.uv.fs_stat(lazy_plugin_itself_folder_path) then
     }, true, {})
 
     -- waits for a key press and returns either a string or a number
-    -- depending on what was pressed. We use it here so we have time to already
+    -- depending on what was pressed. We use it here so we have time to read
     -- the error message otherwise nvim will close instantly
     vim.fn.getchar()
 
@@ -83,7 +83,7 @@ vim.opt.rtp:prepend(lazy_plugin_itself_folder_path)
 -- the result is an object with a few functions and one of them is .setup()
 require("lazy").setup({
   -- the list of specs to load. The list of specs defines all the plugins that
-  -- lazy.nvim is managing and all their settings. For example until now we have
+  -- lazy.nvim is managing and all their options. For example until now we have
   -- installed lazy.nvim the package manager plugin and we got it running but
   -- if down the chain there is no spec that defines the lazy.nvim plugin itself
   -- then lazy is not gonna manage itself. The fact that we have cloned lazy.nvim
@@ -96,36 +96,27 @@ require("lazy").setup({
     --they return (including the init.lua file if such exists).
     --Import also runs and merges the specs of all the init.lua files
     --of all folders within LazyVim/lazyvim/plugins/<folder>init.lua
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "caelestia" } },
     -- run all the code from all the .lua files from .config/nvim/lua/plugins
     -- and merge all the specs that they return
     { import = "plugins" },
   },
-  -- settings applying to every plugin spec unless its specified in the spec itself
-  defaults = {
-    -- Only LazyVim plugins will be lazy-loaded
-    -- Your custom plugins will load during startup
-    -- Unless you put lazy = true in their specs
-    lazy = false,
-    -- use the latest git commit of the default branch instead of tagged releases
-    -- becaues many plugins have stale tags
-    version = false,
-  },
-  -- Only used when lazy has to install missing plugins at startup.
-  -- It tries caelestia theme for the installer window’s look.
+  -- sets the colorscheme for the installer window to be caelestia because
+  -- the installer window shows up when lazy sees that it needs to install
+  -- a plugin and this is happening before lazy loads and applies the options
+  -- to all plugins so the install window will have some default colorscheme
   install = { colorscheme = { "caelestia" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+    notify = false, -- don't show notifications
+    frequency = 1209600, -- check every 14 days (14 days * 24 hours * 60 minutes * 60 seconds)
+  },
   performance = {
     rtp = {
-      -- disable some rtp plugins
+      -- disable some nvim builtin plugins that are totally useless and only
+      -- slow down our startup time
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
