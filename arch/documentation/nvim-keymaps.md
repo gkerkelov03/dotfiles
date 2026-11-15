@@ -16,11 +16,6 @@
 - `0`: first character of the line
 - `^`: first non-blank character of the line
 - `$`: end of the line
-- `g_`: last non-blank character, N-1 lines lower
-- `_`: first non-blank character, N-1 lines lower
-- `+` / `-`: first non-blank character N lines down / up
-- `|`: column N
-- `g0` / `g^` / `g$`: start / first non-blank / end of the screen line
 
 ### Move by word, sentence, and paragraph
 
@@ -44,7 +39,7 @@
 - `G`: line N, default last line
 - `{count}%`: N percent through the file
 - `%`: matching bracket, comment, or preprocessor directive
-- `H` / `M` / `L`: top / middle / bottom of the screen
+- `M`: go to the middle of the screen
 
 ### Search
 
@@ -63,11 +58,8 @@
 
 - `i` / `a`: insert before / after the cursor
 - `I` / `A`: insert at the first non-blank character / end of the line
-- `gI`: insert at column 1
 - `gi`: insert where Insert mode was last stopped
 - `o` / `O`: open a new line below / above
-- `R`: enter Replace mode
-- `r{char}`: replace N characters with `{char}`
 
 ### Operators
 
@@ -80,22 +72,20 @@
 - `gw{motion}`: format text and keep the cursor in place
 - `gu{motion}` / `gU{motion}`: lowercase / uppercase
 - `g~{motion}`: swap case
-- `!{motion}{filter}`: filter text through an external command
 - `zf{motion}`: create a fold
 
 ### Line shortcuts
 
-- `["x]dd` / `["x]cc` / `["x]yy`: delete / change / yank N lines
 - `>>` / `<<`: indent / unindent N lines
 - `==`: auto-indent N lines
-- `!!{filter}`: filter N lines through an external command
+- `["x]dd` / `["x]cc` / `["x]yy`: delete / change / yank N lines
 - `["x]D`: delete to the end of the line
 - `["x]C`: change to the end of the line
 - `["x]Y`: yank to the end of the line (Neovim default)
 
 ### Small edits
 
-- `["x]x` / `["x]X`: delete N characters under / before the cursor
+- `["x]x` / `["x]X`: delete N characters to the right / to the left
 - `["x]s`: delete N characters and start Insert mode
 - `["x]S`: delete N lines and start Insert mode
 - `~`: swap the case of N characters
@@ -105,8 +95,6 @@
 ### Put
 
 - `["x]p` / `["x]P`: put after / before the cursor
-- `["x]gp` / `["x]gP`: same, but leave the cursor after the new text
-- `]p` / `[p`: put after / before, adjusting indent to the current line
 
 ### Undo and repeat
 
