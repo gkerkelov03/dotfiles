@@ -1,33 +1,90 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+-- vim.fn.stdpath stands for standardpath and you pass it what kind of
+-- category of files you wanna store there and it gives you the path to place them
+-- into. The main categories are data, state, config, cache but there are others
+-- the standardpath for config is XDG_CONFIG_HOME/nvim and the standardpath
+-- for the others is based on the XDG home directories standard too
+
+-- in this case the variable lazy_plugin_itself_folder_path is gonna be XDG_DATA_HOME/nvim/lazy/lazy.nvim
+-- and the lazy.nvim at the end of the path doesn't mean that the path points to a file
+-- the path is just a path and whatever we put there first it is gonna become that
+-- for example in our case here it is gonna become a directory that just has . in the name
+-- because we are gonna clone a repo into it. If we use the path like
+-- io.open(path, "w") for example the lazy.nvim at the end of the path is gonna be a file
+local lazy_plugins_folder = vim.fn.stdpath("data") .. "/lazy"
+local lazy_plugin_itself_folder_path = lazy_plugins_folder .. "/lazy.nvim"
+
+-- vim.uv is libuv (a C library for OS level tasks like file operations, processes, timers and so on)
+-- fs_stat returns an object containing info for whatever the path that you passed
+-- to it points to or nil(null). In this case we use it only to check if
+-- the folder for the lazy.nvim plugin already exists because nil is a falsy value in lua
+-- if it doesn't we clone the repo into that folder
+if not vim.uv.fs_stat(lazy_plugin_itself_folder_path) then
+  local lazy_plugin_repo_url = "https://github.com/folke/lazy.nvim.git"
+  local command_output_as_text = vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    lazy_plugin_repo_url,
+    lazy_plugin_itself_folder_path,
+  })
+
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { command_output_as_text, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
+
+    -- waits for a key press and returns either a string or a number
+    -- depending on what was pressed. We use it here so we have time to already
+    -- the error message otherwise nvim will close instantly
     vim.fn.getchar()
+
+    -- ends the nvim process with a status code for error
     os.exit(1)
   end
 end
-vim.opt.rtp:prepend(lazypath)
 
+vim.opt.rtp:prepend(lazy_plugin_itself_folder_path)
+
+-- looks for a file lua/lazy.lua or lua/lazy/init.lua
+-- in all runtime paths and it finds it in lazy_plugin_itself_folder_path
+-- it runs that file and caches the result.
+-- the result is an object with a few functions and one of them is .setup()
 require("lazy").setup({
+  -- the list of specs to load. The list of specs defines all the plugins that
+  -- lazy.nvim is managing and all their settings. For example until now we have
+  -- installed lazy.nvim the package manager plugin and we got it running but
+  -- if down the chain there is no spec that defines the lazy.nvim plugin itself
+  -- then lazy is not gonna manage itself. The fact that we have cloned lazy.nvim
+  -- into lazy_plugin_itself_folder_path doesn't mean that lazy is managing that plugin
+  -- somewhere in the chain of specs down below someone needs to define a spec for the lazy.nvim
+  -- plugin and then lazy is gonna manage itself.
   spec = {
+    --tell lazy.nvim that it needs to manage the LazyVim plugin and run all the
+    --code in the .lua files from LazyVim/lazyvim/plugins and merge the specs that
+    --they return (including the init.lua file if such exists).
+    --Import also runs and merges the specs of all the init.lua files
+    --of all folders within LazyVim/lazyvim/plugins/<folder>init.lua
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- run all the code from all the .lua files from .config/nvim/lua/plugins
+    -- and merge all the specs that they return
     { import = "plugins" },
   },
+  -- settings applying to every plugin spec unless its specified in the spec itself
   defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+    -- Only LazyVim plugins will be lazy-loaded
+    -- Your custom plugins will load during startup
+    -- Unless you put lazy = true in their specs
     lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
+    -- use the latest git commit of the default branch instead of tagged releases
+    -- becaues many plugins have stale tags
+    version = false,
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  -- Only used when lazy has to install missing plugins at startup.
+  -- It tries caelestia theme for the installer window’s look.
+  install = { colorscheme = { "caelestia" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update

@@ -36,6 +36,7 @@ if status is-interactive
     abbr v nvim
     abbr y yazi
     abbr c cd
+    abbr cp cp -r
 
     #git
     abbr gd 'git diff'

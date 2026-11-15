@@ -6,12 +6,14 @@
 
 -- VimEnter so plugins shipping highlight groups have loaded first
 vim.api.nvim_create_autocmd("VimEnter", {
-    once = true,
-    group = vim.api.nvim_create_augroup("caelestia_colorscheme", { clear = true }),
-    callback = function() pcall(vim.cmd.colorscheme, "caelestia") end,
+  once = true,
+  group = vim.api.nvim_create_augroup("caelestia_colorscheme", { clear = true }),
+  callback = function()
+    pcall(vim.cmd.colorscheme, "caelestia")
+  end,
 })
 
 -- optional = true so this only applies if LazyVim is already installed
 return {
-    { "LazyVim/LazyVim", optional = true, opts = { colorscheme = "caelestia" } },
+  { "LazyVim/LazyVim", optional = true, opts = { colorscheme = "caelestia" } },
 }
