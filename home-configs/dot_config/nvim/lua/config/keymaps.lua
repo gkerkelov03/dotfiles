@@ -9,3 +9,9 @@ keymap.set("n", "o", "o<Esc>") -- Open new lines without staying in insert mode
 keymap.set("n", "da", ":%d<cr>", { desc = "Delete all" }) -- Delete all
 keymap.set("n", "ya", ":%y+<cr>", { desc = "Copy all" }) -- Copy all
 --keymap.set("n", "P", "kp", { desc = "Paste on line above" }) -- Paste on the line above
+
+-- move trough the suggestions in command mode (: mode) with up and down arrow
+-- if no suggestions are shown (if you havent typed anything yet) the up arrow key
+-- is gonna cycle trough your history of commands that you ran with :
+vim.keymap.set("c", "<Down>", "<C-n>", { remap = true, desc = "Next suggestion / history" })
+vim.keymap.set("c", "<Up>", "<C-p>", { remap = true, desc = "Previous suggestion / history" })

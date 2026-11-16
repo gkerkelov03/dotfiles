@@ -16,6 +16,9 @@
 - `0`: first character of the line
 - `^`: first non-blank character of the line
 - `$`: end of the line
+- `Ctrl + d`: move cursor and screen down 1/2 page
+- `Ctrl + u`: move cursor and screen up 1/2 page
+- `gcc`: comment
 
 ### Move by word, sentence, and paragraph
 
@@ -151,67 +154,10 @@ also includes the surrounding characters or white space.
 - `i<` / `a<`: `<>` block, same as `i>` / `a>`
 - `it` / `at`: tag block (HTML, XML, JSX tags)
 
-TODO: you were until here on the 15th of november
-
-## Operator-pending mode
-
-Use after an operator, before the motion.
-
-- `v`: force the operator to work charwise
-- `V`: force the operator to work linewise
-- `CTRL-V`: force the operator to work blockwise
-
----
-
-## Window commands
-
-### Create and close
-
-- `CTRL-W s` / `CTRL-W v`: split horizontally / vertically
-- `CTRL-W n`: open a new window
-- `CTRL-W q`: quit the current window
-- `CTRL-W c`: close the current window
-- `CTRL-W o`: close all other windows
-
-### Move between windows
-
-- `CTRL-W h` / `j` / `k` / `l`: go left / down / up / right
-- `CTRL-W w` / `CTRL-W W`: next / previous window
-- `CTRL-W p`: last accessed window
-- `CTRL-W t` / `CTRL-W b`: top / bottom window
-
-### Move and arrange windows
-
-- `CTRL-W H` / `J` / `K` / `L`: move to the far left / bottom / top / far right
-- `CTRL-W T`: move the window to a new tab
-- `CTRL-W r` / `CTRL-W R`: rotate windows down / up
-- `CTRL-W x`: exchange with the next window
-
-### Resize
-
-- `CTRL-W +` / `CTRL-W -`: increase / decrease height by N
-- `CTRL-W >` / `CTRL-W <`: increase / decrease width by N
-- `CTRL-W =`: make all windows equal
-- `CTRL-W _`: set height to N (default: maximum)
-- `CTRL-W |`: set width to N (default: maximum)
-
-### Open in a split or tab
-
-- `CTRL-W f`: split and edit the file under the cursor
-- `CTRL-W F`: same, and jump to the line number after the file name
-- `CTRL-W gf`: edit the file under the cursor in a new tab
-- `CTRL-W gF`: same, and jump to the line number after the file name
-- `CTRL-W ]`: split and jump to the tag under the cursor
-- `CTRL-W ^`: split and edit the alternate file
-
----
-
 ## Tabs
 
 - `gt` / `gT`: next / previous tab
 - `g<Tab>`: last accessed tab
-
----
 
 ## Square bracket commands
 
@@ -221,11 +167,7 @@ Use after an operator, before the motion.
 - `[]` / `][`: N SECTIONS backward / forward
 - `[m` / `]m`: start of the previous / end of the next member function
 - `[c` / `]c`: previous / next change
-- `[s` / `]s`: previous / next misspelled word
 - `[z` / `]z`: start / end of the open fold
-- `[I` / `]I`: list lines containing the word under the cursor, from the file start / cursor
-
----
 
 ## Commands starting with `z`
 
@@ -234,30 +176,12 @@ Use after an operator, before the motion.
 - `zz` / `zt` / `zb`: put the cursor line at the center / top / bottom
 - `zh` / `zl`: scroll N characters right / left when `wrap` is off
 - `zH` / `zL`: scroll half a screen right / left when `wrap` is off
-- `zs` / `ze`: put the cursor at the left / right of the screen when `wrap` is off
 
 ### Folds
 
-- `za` / `zA`: toggle a fold / toggle recursively
-- `zo` / `zO`: open a fold / open recursively
-- `zc` / `zC`: close a fold / close recursively
-- `zv`: open enough folds to view the cursor line
-- `zm` / `zM`: fold more / close all folds
-- `zr` / `zR`: fold less / open all folds
-- `zj` / `zk`: start of the next fold / end of the previous fold
-- `zF`: create a fold for N lines
-- `zd` / `zD`: delete a fold / delete recursively
-- `zE`: eliminate all folds
-- `zi`: toggle folding
-- `zx`: re-apply `foldlevel` and do `zv`
-
-### Spelling
-
-- `z=`: show spelling suggestions
-- `zg` / `zw`: mark a word as correct / incorrect
-- `zug` / `zuw`: undo `zg` / `zw`
-
----
+- `za` / `zA`: toggle the fold under the cursor / toggle all the folds nested under the cursor
+- `zm` / `zM`: close 1 more level of folds through the whole file / close all folds
+- `zr` / `zR`: open 1 more level of folds through the whole file / open all folds
 
 ## Visual mode
 
@@ -265,11 +189,8 @@ Most Normal mode commands also work here. These are the ones that differ.
 
 ### Selection
 
-- `<Esc>`: stop Visual mode
-- `v` / `V` / `CTRL-V`: switch to charwise / linewise / blockwise, or stop
 - `o`: move to the other end of the selection
 - `O`: move horizontally to the other corner in block mode
-- `gv`: exchange the current and previous selection
 
 ### Edit the selection
 
@@ -281,13 +202,9 @@ Most Normal mode commands also work here. These are the ones that differ.
 - `Y`: yank the selected lines
 - `p`: replace with a register, saving the deleted text in the unnamed register
 - `P`: replace with a register, leaving registers unchanged
-- `r{char}`: replace the selection with a character
 - `u` / `U` / `~`: lowercase / uppercase / swap case
 - `J` / `gJ`: join lines with / without spaces
 - `>` / `<`: indent / unindent
-- `=`: filter through `equalprg`
-- `gq`: format the selected lines
-- `!{filter}`: filter through an external command
 - `CTRL-A` / `CTRL-X`: add / subtract N from numbers
 - `g CTRL-A` / `g CTRL-X`: add / subtract N from numbers, increasing by N on each line
 
@@ -299,127 +216,19 @@ Most Normal mode commands also work here. These are the ones that differ.
 ### Other
 
 - `:`: start a command with the selected lines as a range
-- `K`: run `keywordprg` on the selection
-
----
-
-## Command-line mode
-
-- `<CR>`: run the command
-- `<Esc>` / `CTRL-C`: cancel
-- `<Tab>` / `<S-Tab>`: complete / previous match
-- `CTRL-N` / `CTRL-P`: next / previous match or history entry
-- `<Up>` / `<Down>`: history matching the text before the cursor
-- `CTRL-D`: list completions
-- `CTRL-A`: insert all completions
-- `CTRL-L`: insert the longest common completion
-- `CTRL-B` / `CTRL-E`: start / end of the command line
-- `CTRL-W`: delete the word before the cursor
-- `CTRL-U`: delete everything before the cursor
-- `CTRL-R {register}`: insert a register as if typed
-- `CTRL-V`: insert the next character literally
-- `CTRL-F`: open the command-line window
-- `CTRL-G` / `CTRL-T`: next / previous match while using `incsearch`
-
-### Completion menu
-
-- `CTRL-Y`: accept the selected match
-- `CTRL-E`: stop completion and restore the original text
-
----
-
-## Terminal mode
-
-- `CTRL-\ CTRL-N`: go to Normal mode
-- `CTRL-\ CTRL-O`: run one Normal mode command, then return
-
----
 
 ## Ex commands
 
 ### Files and quitting
 
-- `:w`: write
-- `:wa`: write all changed buffers
-- `:up`: write only if the buffer changed
-- `:sav`: save under another name
-- `:q`: quit the window
-- `:qa`: quit Neovim
-- `:wq` / `:x`: write and quit
-- `:xa`: write all changed buffers and quit
-- `:e`: edit a file
-- `:ene`: edit a new unnamed buffer
-- `:r`: read a file into the buffer
-- `:find`: find a file in `path` and edit it
-- `:oldfiles`: list recent files
-- `:restart`: restart Neovim
-
-### Buffers
-
-- `:ls`: list buffers
-- `:b`: go to a buffer
-- `:bn` / `:bp`: next / previous buffer
-- `:bd`: remove a buffer from the list
-- `:bw`: fully wipe a buffer
-
-### Windows and tabs
-
-- `:sp` / `:vs`: split horizontally / vertically
-- `:new` / `:vne`: new empty window, horizontal / vertical
-- `:on`: close all other windows
-- `:clo`: close the current window
-- `:res`: change window height
-- `:tabnew`: new tab
-- `:tabc`: close the tab
-- `:tabo`: close all other tabs
-- `:tabn` / `:tabp`: next / previous tab
-- `:tabm`: move the tab
-- `:tab`: open the next command's window in a new tab
-- `:vert` / `:hor`: run the next split command vertically / horizontally
-
-Ctrl + d - move cursor and screen down 1/2 page
-Ctrl + u - move cursor and screen up 1/2 page
-gcc - comment
+- `:w` / `:wa`: save / save all
+- `:q` / `:qa`: quit / quit all
+- `:wq` save and quit
+- `:sav <file-name.extension>`: save under another name
+- `:restart`: restart nvim
 
 ### Editing
 
 - `:s`: find and replace
-- `:g`: run a command on matching lines
-- `:v`: run a command on non-matching lines
-- `:norm`: run Normal mode commands
-- `:d`: delete lines
-- `:m`: move lines
-- `:t` / `:co`: copy lines
-- `:y`: yank lines
-- `:pu`: put a register
-- `:j`: join lines
-- `:sor`: sort lines
-- `:uni`: remove duplicate lines
-- `:ret`: change tab size
-- `:noh`: clear search highlighting
-- `:!`: run an external command or filter lines
-- `:!!`: repeat the last `:!`
-
-### Search and quickfix
-
-- `:gr`: run `grepprg`
-- `:vim`: search for a pattern in files
-- `:helpg`: search help files
-- `:mak`: run `makeprg` and parse errors
-- `:cope` / `:ccl`: open / close the quickfix list
-- `:cw`: open or close the quickfix list based on errors
-- `:cn` / `:cp`: next / previous entry
-- `:cc`: go to a specific entry
-- `:cfir` / `:cla`: first / last entry
-- `:cnew` / `:col`: newer / older list
-- `:cdo`: run a command on each entry
-- `:cfd`: run a command on each file
-- `:lop` / `:lcl`: open / close the location list
-- `:lne` / `:lp`: next / previous location
-
-### Inspect
-
-- `:reg`: registers
-- `:ve`: version and build info
-- `:che`: health checks
-- `:te`: open a terminal buffer
+- `:g`: run a command on matching lines. g/TODO/d deletes every matching line
+- `:v`: run a command on non-matching lines. :v/keep/d deletes everything else.
