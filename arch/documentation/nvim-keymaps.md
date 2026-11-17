@@ -12,7 +12,6 @@
 
 - `h` / `l`: left / right N characters
 - `j` / `k`: down / up N lines
-- `gj` / `gk`: down / up N screen lines
 - `0`: first character of the line
 - `^`: first non-blank character of the line
 - `$`: end of the line
@@ -51,7 +50,6 @@
 - `n` / `N`: next / previous match
 - `*` / `#`: search forward / backward for the word under the cursor
 - `g*` / `g#`: same, but also match inside longer words
-- `gd` / `gD`: go to definition in the current function / file
 
 ### Marks and positions
 
@@ -89,8 +87,6 @@
 ### Small edits
 
 - `["x]x` / `["x]X`: delete N characters to the right / to the left
-- `["x]s`: delete N characters and start Insert mode
-- `["x]S`: delete N lines and start Insert mode
 - `~`: swap the case of N characters
 - `J` / `gJ`: join N lines with / without a space
 - `CTRL-A` / `CTRL-X`: add / subtract N from the number at or after the cursor
@@ -196,8 +192,8 @@ Most Normal mode commands also work here. These are the ones that differ.
 
 - `d` / `x`: delete the selection
 - `D` / `X`: delete the selected lines
-- `c` / `s`: delete the selection and start Insert mode
-- `C` / `R` / `S`: delete the selected lines and start Insert mode
+- `c`: delete the selection and start Insert mode
+- `C`: delete the selected lines and start Insert mode
 - `y`: yank the selection
 - `Y`: yank the selected lines
 - `p`: replace with a register, saving the deleted text in the unnamed register
