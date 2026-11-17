@@ -43,6 +43,7 @@ if status is-interactive
     abbr ga 'git add'
     abbr gaa 'git add -A'
     abbr gc --set-cursor 'git commit -m "%"'
+    abbr gcs --set-cursor 'git commit -m "save%"'
     abbr gl 'git log'
     abbr gs git-status
     abbr gst 'git stash'

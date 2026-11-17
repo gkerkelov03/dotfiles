@@ -149,6 +149,7 @@
   "unsorted": {
     "kitty": "the most feature rich terminal",
     "cifs-utils": "Provides the mount.cifs helper, which lets you mount SMB/CIFS network shares (Windows shares, Samba, most NASes) with mount -t cifs. It reads the credentials= file, resolves hostnames, and passes the options to the kernel’s cifs module, which does the actual file sharing.",
-    "go": "the go programming language and cli-tool"
+    "go": "the go programming language and cli-tool",
+    "satty": "image preview GUI app, default for xdg-open"
   }
 }
