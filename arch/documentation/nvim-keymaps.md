@@ -17,15 +17,12 @@
 - `$`: end of the line
 - `Ctrl + d`: move cursor and screen down 1/2 page
 - `Ctrl + u`: move cursor and screen up 1/2 page
-- `gcc`: comment
 
-### Move by word, sentence, and paragraph
+### Move by word and paragraph
 
 - `w` / `b`: N words forward / backward
 - `W` / `B`: N WORDS forward / backward
 - `e` / `ge`: forward to end of word / backward to end of previous word
-- `E` / `gE`: forward to end of WORD / backward to end of previous WORD
-- `(` / `)`: N sentences backward / forward
 - `{` / `}`: N paragraphs backward / forward
 
 ### Find a character
@@ -40,20 +37,23 @@
 - `gg`: line N, default first line
 - `G`: line N, default last line
 - `{count}%`: N percent through the file
-- `%`: matching bracket, comment, or preprocessor directive
+- `%`: matching bracket, comment, or preprocessor directive; with matchit, also jumps between tags and keyword pairs (`if` / `else` / `end`)
+- `g%`: like `%`, but cycle backward through the matches (matchit)
 - `M`: go to the middle of the screen
 
 ### Search
 
 - `/{pattern}<CR>` / `?{pattern}<CR>`: search forward / backward
-- `/<CR>` / `?<CR>`: repeat the last search forward / backward
 - `n` / `N`: next / previous match
 - `*` / `#`: search forward / backward for the word under the cursor
-- `g*` / `g#`: same, but also match inside longer words
 
 ### Marks and positions
 
 - `g;` / `g,`: older / newer position in the change list
+- `m{a-z}`: set a mark
+- `'{a-z}` / `` `{a-z} ``: jump to the line / exact position of a mark
+- `''`: jump back to where you were before the last jump
+- `Ctrl-o` / `Ctrl-i`: older / newer position in the jump list
 
 ### Insert and replace
 
@@ -61,6 +61,7 @@
 - `I` / `A`: insert at the first non-blank character / end of the line
 - `gi`: insert where Insert mode was last stopped
 - `o` / `O`: open a new line below / above
+- `r{char}`: replace N characters with {char}
 
 ### Operators
 
@@ -69,11 +70,9 @@
 - `["x]y{motion}`: yank
 - `>{motion}` / `<{motion}`: indent / unindent lines
 - `={motion}`: auto-indent lines
-- `gq{motion}`: format text
-- `gw{motion}`: format text and keep the cursor in place
 - `gu{motion}` / `gU{motion}`: lowercase / uppercase
 - `g~{motion}`: swap case
-- `zf{motion}`: create a fold
+- `gc{motion}`: comment / uncomment
 
 ### Line shortcuts
 
@@ -83,6 +82,7 @@
 - `["x]D`: delete to the end of the line
 - `["x]C`: change to the end of the line
 - `["x]Y`: yank to the end of the line (Neovim default)
+- `gcc`: comment / uncomment N lines
 
 ### Small edits
 
@@ -98,10 +98,7 @@
 ### Undo and repeat
 
 - `u` / `CTRL-R`: undo / redo
-- `g-` / `g+`: older / newer text state
 - `.`: repeat the last change
-- `&`: repeat the last `:s` with its flags (Neovim default)
-- `g&`: repeat the last `:s` on all lines
 
 ### Registers and macros
 
@@ -119,8 +116,6 @@
 - `gn` / `gN`: select the next / previous search match
 - `:`: start an Ex command
 - `{count}:`: start an Ex command with a range covering N lines
-- `q:`: open the command-line window
-- `q/` / `q?`: open the search history window
 
 ### Files, info, and misc
 
@@ -134,8 +129,7 @@
 
 ## Text objects
 
-Use after an operator or in Visual mode. `i` means inside or inner; `a` means around
-also includes the surrounding characters or white space.
+Use after an operator or in Visual mode. `i` means inside or inner; `a` means around, which also includes the surrounding characters or white space.
 
 - `iw` / `aw`: word
 - `iW` / `aW`: WORD
@@ -150,19 +144,10 @@ also includes the surrounding characters or white space.
 - `i<` / `a<`: `<>` block, same as `i>` / `a>`
 - `it` / `at`: tag block (HTML, XML, JSX tags)
 
-## Tabs
-
-- `gt` / `gT`: next / previous tab
-- `g<Tab>`: last accessed tab
-
 ## Square bracket commands
 
-- `[(` / `])`: previous / next unmatched parenthesis
-- `[{` / `]}`: previous / next unmatched curly brace
-- `[[` / `]]`: N sections backward / forward
-- `[]` / `][`: N SECTIONS backward / forward
-- `[m` / `]m`: start of the previous / end of the next member function
-- `[c` / `]c`: previous / next change
+- `[%` / `]%`: go to the start / end of the enclosing block (matchit)
+- `[c` / `]c`: previous / next difference (diff mode only)
 - `[z` / `]z`: start / end of the open fold
 
 ## Commands starting with `z`
@@ -187,6 +172,7 @@ Most Normal mode commands also work here. These are the ones that differ.
 
 - `o`: move to the other end of the selection
 - `O`: move horizontally to the other corner in block mode
+- `a%`: select the matching pair, including its contents (matchit, Visual mode only)
 
 ### Edit the selection
 
@@ -219,12 +205,12 @@ Most Normal mode commands also work here. These are the ones that differ.
 
 - `:w` / `:wa`: save / save all
 - `:q` / `:qa`: quit / quit all
-- `:wq` save and quit
+- `:wq`: save and quit
 - `:sav <file-name.extension>`: save under another name
 - `:restart`: restart nvim
 
 ### Editing
 
-- `:s`: find and replace
-- `:g`: run a command on matching lines. g/TODO/d deletes every matching line
-- `:v`: run a command on non-matching lines. :v/keep/d deletes everything else.
+- `:s`: find and replace. `:%s/old/new/gc` replaces in the whole file, asking for confirmation on each match
+- `:g`: run a command on matching lines. `:g/TODO/d` deletes every matching line
+- `:v`: run a command on non-matching lines. `:v/keep/d` deletes everything else

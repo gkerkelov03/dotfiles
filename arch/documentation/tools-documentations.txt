@@ -1,0 +1,11 @@
+Nvim
+- Vim reference manual (all vim default keybindings): https://github.com/neovim/neovim/blob/master/runtime/doc/index.txt
+- Nvim keybindings on top of the default vim keybindings: https://github.com/neovim/neovim/blob/master/runtime/doc/vim_diff.txt#L142
+- LazyVim keybindings on top of nvim's: https://www.lazyvim.org/keymaps
+
+Yazi: https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml
+
+lazydocker: https://github.com/jesseduffield/lazydocker/blob/master/docs/keybindings/Keybindings_en.md
+
+lazygit: https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Keybindings_en.md
+
