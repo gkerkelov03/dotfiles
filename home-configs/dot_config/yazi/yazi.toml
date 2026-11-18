@@ -3,11 +3,25 @@
 # A TOML linter such as Tombi can use this schema to validate your config.
 #:schema https://yazi-rs.github.io/schemas/yazi.json
 
+#predefined openers and open rules so everything except archives and vfs 
+#gets opened in nvim when we l into it
 [opener]
+nvim = [{ run = 'nvim %s', desc = "nvim", block = true }]
 extract = [
-  #Extract archives with yazi when you enter the archive with l and then hover the newly created folder
-  { run = '''set -- %s; before=$(ls -A); ouch d -n "$@"; new=$(ls -A | grep -vxF -e "$before" | head -n 1); [ -n "$new" ] || { f=${1##*/}; new=${f%.*}; new=${new%.tar}; }; [ -e "$new" ] && ya emit reveal "$PWD/$new"''', desc = "Extract here with ouch", for = "unix" },
+  # Extract archives when you enter the archive with l and then hover the newly created folder
+  { run = '''set -- %s; before=$(ls -A); ouch d -n "$@"; new=$(ls -A | grep -vxF -e "$before" | head -n 1); [ -n "$new" ] || { f=${1##*/}; new=${f%.*}; new=${new%.tar}; }; [ -e "$new" ] && ya emit reveal "$PWD/$new"''', desc = "Extract here with ouch" },
+]
+download = [{ run = "ya emit download --open %S", desc = "Download and open" }]
 
+[open]
+rules = [
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
+    "extract",
+  ] },
+  { mime = "vfs/{absent,stale}", use = "download" },
+  { url = "*", use = [
+    "nvim",
+  ] },
 ]
 
 [plugin]

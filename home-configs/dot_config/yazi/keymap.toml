@@ -3,33 +3,60 @@
 [mgr]
 prepend_keymap = [
   # Overrides
-  { on = "o", run = "open --interactive", desc = "Open with..." },
-  { on = ["t", "h"], run = "shell --orphan -- kitty -1", desc = "Open foot here" },
-  { on = ["t", "n"], run = "tab_create --current", desc = "New tab" },
+  { on = "o", run = "shell --orphan -- xdg-open %h", desc = "Open with xdg-open" },
+  { on = [
+    "t",
+    "h",
+  ], run = "shell --orphan -- kitty -1", desc = "Open terminal here" },
+  { on = [
+    "t",
+    "n",
+  ], run = "tab_create --current", desc = "New tab" },
 
   # moxuze/television
-  { on = ["t", "t"], run = "plugin television -- text", desc = "Search text with tv" },
-  { on = ["t", "f"], run = "plugin television -- files", desc = "Jump to a file with tv" },
-  { on = ["t", "d"], run = "plugin television -- dirs --cd", desc = "Enter a directory with tv" },
+  { on = [
+    "t",
+    "t",
+  ], run = "plugin television -- text", desc = "Search text with tv" },
+  { on = [
+    "t",
+    "f",
+  ], run = "plugin television -- files", desc = "Jump to a file with tv" },
+  { on = [
+    "t",
+    "d",
+  ], run = "plugin television -- dirs --cd", desc = "Enter a directory with tv" },
 
   # yazi-rs/plugins:mount 
-  { on = ["m", "o"], run = "plugin mount", desc = "Mount manager" },
+  { on = [
+    "m",
+    "o",
+  ], run = "plugin mount", desc = "Mount manager" },
 
   # yazi-rs/plugins:smart-enter
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
 
   # yazi-rs/plugins:chmod
-  { on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files" },
+  { on = [
+    "c",
+    "m",
+  ], run = "plugin chmod", desc = "Chmod on selected files" },
 
   # ndtoan96/ouch
-  { on = ["c", "a"], run = "plugin ouch", desc = "Compress with ouch" },
+  { on = [
+    "c",
+    "a",
+  ], run = "plugin ouch", desc = "Compress with ouch" },
 
   # simla33/ucp
   { on = "P", run = "plugin ucp paste notify", desc = "Paste from system clipboard" },
   { on = "Y", run = "plugin ucp copy notify", desc = "Copy to system clipboard" },
 
   # Lil-Dank/lazygit
-  { on = ["g", "i"], run = "plugin lazygit", desc = "Run lazygit" },
+  { on = [
+    "g",
+    "i",
+  ], run = "plugin lazygit", desc = "Run lazygit" },
 ]
 
 [input]

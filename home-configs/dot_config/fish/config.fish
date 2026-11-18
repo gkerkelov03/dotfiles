@@ -2,6 +2,7 @@ set -gx DOTNET_ROOT /usr/share/dotnet
 fish_add_path --path --move $HOME/.local/bin $HOME/.dotnet/tools $HOME/dotfiles/scripts
 
 set -gx BAT_THEME ansi
+set -Ux TIME_STYLE '+%d/%m/%Y %H:%M' #time format for eza and ls mainly
 
 # Set the default fish_greeting to nothing, otherwise it prints "Welcome to fish"
 set -g fish_greeting

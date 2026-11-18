@@ -10,16 +10,21 @@ image/avif=satty.desktop
 image/heif=satty.desktop
 image/heic=satty.desktop
 
-#Documents
-application/pdf=org.kde.okular.desktop
-application/epub+zip=org.kde.okular.desktop
-
 #Video & Audio
-# MPV is the best native Wayland player in 2026
+# MPV is the best Wayland nativep layer in 2026
 video/x-matroska=mpv.desktop
 video/mp4=mpv.desktop
 video/mpeg=mpv.desktop
 audio/mpeg=mpv.desktop
+
+#PDF
+application/pdf=firefox.desktop
+
+#HTML
+text/html=firefox.desktop
+
+#Text & code
+text/plain=nvim.desktop
 
 # Word Documents
 application/msword=libreoffice-writer.desktop
