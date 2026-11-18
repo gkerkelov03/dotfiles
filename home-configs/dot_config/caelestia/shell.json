@@ -113,19 +113,15 @@
     "maxShown": 4,
     "maxWallpapers": 5,
     "enableDangerousActions": true,
-    "vimKeybinds": true,
-    "actions": [
-      { "name": "Random", "enabled": false },
-      { "name": "Sleep", "description": "Suspend", "command": ["suspend"] }
-    ]
+    "vimKeybinds": true
   },
 
   "paths": {
-    "wallpaperDir": "/home/gkerkelov03/media/wallpapers",
-    "lyricsDir": "~/junk",
-    "sessionGif": "root:/assets/kurukuru.gif",
-    "mediaGif": "root:/assets/bongocat.gif",
-    "noNotifsPic": "root:/assets/dino.png",
-    "lockNoNotifsPic": "root:/assets/dino.png"
+    "wallpaperDir": "~/media/wallpapers",
+    "mediaGif": "~/media/gifs/tsunade.gif",
+    "sessionGif": "~/media/gifs/sasuke.gif",
+    "noNotifsPic": "~/media/gifs/naruto.jpg",
+    "lockNoNotifsPic": "~/media/gifs/hinata-and-sakura.jpg",
+    "lyricsDir": "~/junk"
   }
 }
