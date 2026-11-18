@@ -1,5 +1,8 @@
 local home = os.getenv("HOME")
 
+-- File chooser via XDG portal for gtk3 apps
+hl.env("GTK_USE_PORTAL", "1")
+
 hl.env("CAELESTIA_SCREENSHOTS_DIR", home .. "/media/screenshots")
 hl.env("CAELESTIA_RECORDINGS_DIR", home .. "/media/recordings")
 
