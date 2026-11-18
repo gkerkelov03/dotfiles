@@ -30,7 +30,7 @@
     "brightnessIncrement": 0.05,
     "maxVolume": 2,
     "defaultPlayer": "Firefox",
-    "visualiserBars": 60
+    "visualiserBars": 20
   },
 
   "notifs": { "openExpanded": true, "actionOnClick": true },
