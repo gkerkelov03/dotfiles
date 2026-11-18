@@ -65,3 +65,24 @@ hl.bind("ALT + K", hl.dsp.send_shortcut({ mods = "", key = "up" }))
 hl.bind("ALT + H", hl.dsp.send_shortcut({ mods = "", key = "left" }))
 hl.bind("ALT + L", hl.dsp.send_shortcut({ mods = "", key = "right" }))
 hl.bind("ALT + E", hl.dsp.send_shortcut({ mods = "", key = "escape" }))
+
+local function smart_copy_paste(key)
+	local window = hl.get_active_window()
+	local class = window and window.class and window.class:lower() or ""
+
+	if class == "kitty" then
+		-- Kitty focused: Ctrl + Shift + C/V
+		hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL + SHIFT", key = key }))
+	else
+		-- Anything else: Ctrl + C/V
+		hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL", key = key }))
+	end
+end
+
+-- Bind Alt + c / v to do Ctrl + Shift + c / v if kitty is on focus and Ctrl + c / v otherwise
+hl.bind("ALT + c", function()
+	smart_copy_paste("c")
+end)
+hl.bind("ALT + v", function()
+	smart_copy_paste("v")
+end)

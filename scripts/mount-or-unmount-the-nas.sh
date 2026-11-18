@@ -15,8 +15,9 @@ CREDS="$XDG_RUNTIME_DIR/nas-creds"
 #its mission is to cleanup the temporary file
 trap 'rm -f "$CREDS"' EXIT
 
-if mountpoint -q "$MOUNT_POINT"; then
-  sudo umount "$MOUNT_POINT"
+if findmnt -rn --mountpoint "$MOUNT_POINT" >/dev/null 2>&1; then
+  sudo -v
+  timeout -k 2 5 sudo umount "$MOUNT_POINT" 2>/dev/null || sudo umount -l "$MOUNT_POINT"
   echo "Unmounted $MOUNT_POINT"
   exit 0
 fi
