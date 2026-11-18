@@ -3,6 +3,10 @@ local home = os.getenv("HOME")
 -- File chooser via XDG portal for gtk3 apps
 hl.env("GTK_USE_PORTAL", "1")
 
+-- the DOCKER_HOST env variable pointing to the podman socket and the socket needs
+-- to be enabled so tools that expect docker can work with our podman seamlessly
+hl.env("DOCKER_HOST", "unix://" .. os.getenv("XDG_RUNTIME_DIR") .. "/podman/podman.sock")
+
 hl.env("CAELESTIA_SCREENSHOTS_DIR", home .. "/media/screenshots")
 hl.env("CAELESTIA_RECORDINGS_DIR", home .. "/media/recordings")
 

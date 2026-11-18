@@ -42,7 +42,12 @@ chsh -s /bin/fish
 wt config shell install
 
 #Enable systemd services
-systemctl enable plocate-updatedb.timer #the service that updates the db of the locate command (plocate package)
-sudo systemctl enable libvirtd          #the libvirt daemon that receives requests from tools like virt-manager and carries them out
+systemctl enable plocate-updatedb.timer     #the service that updates the db of the locate command (plocate package)
+systemctl --user enable --now podman.socket #the service that needs to be running so tools that expect docker can work with podman seamlessly
+sudo systemctl enable libvirtd              #the libvirt daemon that receives requests from tools like virt-manager and carries them out
+
+#Pull the podman mssql server image
+podman pull mcr.microsoft.com/mssql/server:2022-latest
+bash "./create-mssql-podman-container.sh"
 
 echo "Done"

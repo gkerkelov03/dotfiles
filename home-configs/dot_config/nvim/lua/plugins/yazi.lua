@@ -7,7 +7,6 @@ return {
     { "nvim-lua/plenary.nvim", lazy = true },
   },
   keys = {
-    -- 👇 in this section, choose your own keymappings!
     {
       "<leader>-",
       mode = { "n", "v" },
