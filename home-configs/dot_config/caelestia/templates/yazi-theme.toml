@@ -1,6 +1,3 @@
-[app]
-overall = { bg = "#{{background.hex}}" }
-
 [mgr]
 cwd = { fg = "#{{tertiary.hex}}" }
 

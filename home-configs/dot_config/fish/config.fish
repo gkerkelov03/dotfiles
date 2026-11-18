@@ -8,10 +8,11 @@ set -Ux TIME_STYLE '+%d/%m/%Y %H:%M' #time format for eza and ls mainly
 set -g fish_greeting
 
 if status is-interactive
-    # Load Caelestia color scheme into the shell's 16 colors
+    # load caelestia color scheme
     cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
 
-    sleep 0.01 # the terminal width in call-fastfetch is calculated too early otherwise and is wrong
+    # the terminal width in call-fastfetch is calculated too early otherwise and is wrong
+    sleep 0.01
     call-fastfetch
 
     atuin init fish --disable-up-arrow --disable-ctrl-r | source
