@@ -152,6 +152,7 @@
     "go": "the go programming language and cli-tool",
     "satty": "image preview GUI app, default for xdg-open",
     "xdg-desktop-portal-termfilechooser-hunkyburrito-git": "replaces standard GUI \"Open File\" and \"Save As\" dialogs (in apps like Firefox or Discord) with a terminal file manager like Yazi.",
-    "podman": "free, open-source, deamonless docker equivalent"
+    "podman": "free, open-source, deamonless docker equivalent",
+    "reflector": "the tool that keeps your mirror list fresh"
   }
 }

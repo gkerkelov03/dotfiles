@@ -61,12 +61,13 @@ if status is-interactive
     #trash-cli
     abbr t trash-put
     abbr te 'trash-empty 30' # older than 30 days; edit the number before running if you want
-    abbr rm 'don\'t use rm use trash-cli'
+    abbr rm 'don\'t use rm use trash-cli (t)'
 
     #chezmoi 
     abbr cs 'chezmoi status'
     abbr ca 'chezmoi apply'
 
+    #eza
     alias l="eza -1 --icons --git --group-directories-first --color-scale --mounts"
     alias ls="eza -a1 --icons --git --group-directories-first --color-scale --mounts"
     alias lsl="eza -la --icons --octal-permissions --group --git --header --group-directories-first --color-scale --created --mounts --modified"
@@ -76,7 +77,8 @@ if status is-interactive
     alias neo="neo-matrix --defaultbg --colormode=16"
 
     alias pkg="pkg.cs"
-    alias chezmoi-apply-scripts="chezmoi apply --include=scripts"
+    alias chezmoi-run-scripts="chezmoi apply --include=scripts"
+    alias refresh-mirrors = "sudo systemctl start reflector.service"
 
     # fish calls this after loading the key binding preset, so these
     # survive any reload or switch of fish_key_bindings

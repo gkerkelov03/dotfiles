@@ -13,7 +13,6 @@ mkdir -p \
   repos \
   downloads \
   junk \
-  media/gifs \
   media/pictures \
   media/recordings \
   media/videos \
