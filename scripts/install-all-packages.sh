@@ -9,4 +9,4 @@ jq -r '.[] | keys_unsorted[]' "$packages_file" | while read -r pkg; do
   paru -S --needed --noconfirm "$pkg"
 done
 
-echo "✅ Installation finished!"
+echo "Installation finished!"

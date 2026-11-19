@@ -78,7 +78,7 @@ if status is-interactive
 
     alias pkg="pkg.cs"
     alias chezmoi-run-scripts="chezmoi apply --include=scripts"
-    alias refresh-mirrors = "sudo systemctl start reflector.service"
+    alias refresh-mirrors="sudo systemctl start reflector.service"
 
     # fish calls this after loading the key binding preset, so these
     # survive any reload or switch of fish_key_bindings
