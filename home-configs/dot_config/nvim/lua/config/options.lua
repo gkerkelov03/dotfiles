@@ -4,3 +4,7 @@
 
 vim.opt.wrap = true -- turn line wrap on
 vim.opt.linebreak = true -- wrap at word boundaries instead of mid-word
+
+vim.opt.expandtab = true -- use spaces globally for consistent formatting instead of tabs
+vim.opt.tabstop = 4 -- display width of a tab = 4 saces
+vim.opt.shiftwidth = 4 -- indent by 4 spaces
