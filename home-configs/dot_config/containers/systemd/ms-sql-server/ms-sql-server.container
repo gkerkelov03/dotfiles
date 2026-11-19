@@ -1,0 +1,21 @@
+# Connection string:
+#   Server=localhost,1433;Database=<database-name>;User Id=sa;Password=P@ssw0rd123;TrustServerCertificate=True
+
+[Unit]
+Description=MSSQL Server (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=ms-sql-server.image
+ContainerName=ms-sql-server
+Environment=ACCEPT_EULA=Y
+Environment=MSSQL_SA_PASSWORD=P@ssw0rd123
+PublishPort=127.0.0.1:1433:1433
+Volume=ms-sql-server.volume:/var/opt/mssql
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=60

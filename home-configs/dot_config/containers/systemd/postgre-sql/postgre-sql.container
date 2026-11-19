@@ -1,0 +1,38 @@
+#   Host=localhost;Port=5432;Database=<database-name>;Username=postgres;Password=P@ssw0rd123
+
+[Unit]
+Description=PostgreSQL (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=postgre-sql.image
+ContainerName=postgre-sql
+Environment=POSTGRES_PASSWORD=P@ssw0rd123
+PublishPort=127.0.0.1:5432:5432
+Volume=postgre-sql.volume:/var/lib/postgresql
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=60
+TimeoutStartSec=900
+Restart=on-failure
+RestartSec=5
+[Unit]
+Description=PostgreSQL (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=postgre-sql.image
+ContainerName=postgre-sql
+Environment=POSTGRES_PASSWORD=P@ssw0rd123
+PublishPort=127.0.0.1:5432:5432
+Volume=postgre-sql.volume:/var/lib/postgresql
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=60

@@ -1,0 +1,19 @@
+# Connection string:
+#   mongodb://localhost:27017/<database-name>
+
+[Unit]
+Description=MongoDB (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=mongodb.image
+ContainerName=mongodb
+PublishPort=127.0.0.1:27017:27017
+Volume=mongodb.volume:/data/db
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=60

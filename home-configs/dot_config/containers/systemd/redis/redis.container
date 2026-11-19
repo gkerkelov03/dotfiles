@@ -1,0 +1,19 @@
+# Connection string:
+#   redis://localhost:6379
+
+[Unit]
+Description=Redis cache (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=redis.image
+ContainerName=redis
+PublishPort=127.0.0.1:6379:6379
+Volume=redis.volume:/data
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=30

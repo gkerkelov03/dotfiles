@@ -1,0 +1,21 @@
+# Connection String:
+#   http://localhost:5341
+
+[Unit]
+Description=Seq log server (dev)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=seq.image
+ContainerName=seq
+Environment=ACCEPT_EULA=Y
+Environment=SEQ_FIRSTRUN_NOAUTHENTICATION=true
+PublishPort=127.0.0.1:5341:80
+Volume=seq.volume:/data
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=900
+TimeoutStopSec=60

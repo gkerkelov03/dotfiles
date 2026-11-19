@@ -33,6 +33,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 #Install the latest Arch ISO straight into libvirt's folder (QEMU can read it there)
 sudo wget -O /var/lib/libvirt/images/arch.iso https://geo.mirror.pkgbuild.com/iso/latest/archlinux-x86_64.iso
+bash "./create-arch-vm-in-virt-manager.sh"
 
 #Make fish default shell
 chsh -s /bin/fish
@@ -45,9 +46,5 @@ wt config shell install
 systemctl enable plocate-updatedb.timer     #the service that updates the db of the locate command (plocate package)
 systemctl --user enable --now podman.socket #the service that needs to be running so tools that expect docker can work with podman seamlessly
 sudo systemctl enable libvirtd              #the libvirt daemon that receives requests from tools like virt-manager and carries them out
-
-#Pull the podman mssql server image
-podman pull mcr.microsoft.com/mssql/server:2022-latest
-bash "./create-mssql-podman-container.sh"
 
 echo "Done"
