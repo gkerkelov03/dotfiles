@@ -66,6 +66,8 @@ if status is-interactive
     #chezmoi 
     abbr cs 'chezmoi status'
     abbr ca 'chezmoi apply'
+    abbr cr 'chezmoi re-add'
+    abbr cdiff 'chezmoi diff'
 
     #eza
     alias l="eza -1 --icons --git --group-directories-first --color-scale --mounts"
