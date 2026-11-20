@@ -2,8 +2,8 @@
 set -euo pipefail
 
 if [[ $EUID -eq 0 ]]; then
-  echo "Error: do not run this script with sudo or as root." >&2
-  exit 1
+    echo "Error: do not run this script with sudo or as root." >&2
+    exit 1
 fi
 
 sudo pacman -Syu --noconfirm
@@ -46,6 +46,5 @@ wt config shell install
 sudo systemctl enable --now plocate-updatedb.timer #the service that updates the db of the locate command (plocate package)
 systemctl --user enable --now podman.socket        #the service that needs to be running so tools that expect docker can work with podman seamlessly
 sudo systemctl enable --now libvirtd               #the libvirt daemon that receives requests from tools like virt-manager and carries them out
-sudo systemctl enable --now reflector.timer        #the service that refreshes the mirror list every week
 
 echo "Done"
