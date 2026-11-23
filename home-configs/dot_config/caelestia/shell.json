@@ -66,10 +66,9 @@
     "desktopClock": {
       "enabled": true,
       "position": "top-left",
-      "scale": 1.0,
-      "invertColors": true,
-      "background": { "enabled": false, "opacity": 0.7, "blur": true },
-      "shadow": { "enabled": true, "opacity": 0.7, "blur": 0.4 }
+      "scale": 0.9,
+      "invertColors": false,
+      "background": { "enabled": true, "opacity": 0.2, "blur": true }
     },
     "visualiser": {
       "enabled": true,
