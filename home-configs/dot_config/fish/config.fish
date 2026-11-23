@@ -66,7 +66,7 @@ if status is-interactive
     #chezmoi 
     abbr cs 'chezmoi status'
     abbr ca 'chezmoi apply'
-    abbr cr 'chezmoi re-add'
+    abbr cr 'chezmoi re-add ~/.config/'
     abbr cdiff 'chezmoi diff'
 
     #eza
