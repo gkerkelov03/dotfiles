@@ -1,4 +1,3 @@
-
 # Setup
 
 ## 1. Install Arch Linux
@@ -29,11 +28,17 @@ archinstall --config-url https://gkerkelov03.com/archinstall-helper
 git clone https://gitlab.com/kerkelov/dotfiles ~/dotfiles
 ```
 
-## 3. Run the reproduce-home script
+## 3. Run install-all-packages.sh
+
+```bash
+bash ~/dotfiles/scripts/install-all-packages.sh
+```
+
+> [!WARNING]
+> If there are packages that failed to install you should install them manually.
+
+## 4. Run reproduce.sh
 
 ```bash
 bash ~/dotfiles/scripts/reproduce.sh
 ```
-
-
-
