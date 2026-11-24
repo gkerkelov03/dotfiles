@@ -32,7 +32,7 @@ function reminder-after --description "Send a desktop notification after a delay
         return 1
     end
 
-    systemd-run --user --quiet --on-active=$when \
-        notify-send -a Reminder -i alarm-clock Reminder "$msg"
+    systemd-run --user --quiet --timer-property=AccuracySec=1s --on-active=$when \
+        notify-send -a Reminder -i alarm-clock "$msg"
     and echo "reminder set for $when from now: $msg"
 end
