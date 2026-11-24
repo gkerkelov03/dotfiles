@@ -159,6 +159,10 @@
     "gcalcli": "google calendar cli",
     "gum": "beautiful user input and output for cli tools, use it in your scripts instead of echo and read and so on..",
     "claude-code": "claude code cli tool. AI in the terminal that can see and edit your local files directly",
-    "fisher": "package manager for the fish shell"
+    "fisher": "package manager for the fish shell",
+    "yt-dlp": "free, open-source cli for downloading video, audio, subtitles, and metadata from YouTube and over 1,700 other websites.",
+    "gh-dash": "a  TUI dashboard for GitHub that lets you monitor, review, and manage pull requests and issues directly from your terminal using Vim-style keybindings and custom YAML search filters.",
+    "ytfzf": "ytfzf is a terminal script that lets you search, browse, and stream or download YouTube (and PeerTube/Odysee) videos using fzf for interactive fuzzy selection, mpv for playback, and yt-dlp for stream extraction and downloading.",
+    "ueberzug": "command-line image overlay tool for Unix/Linux terminal emulators. Because standard terminal text grids cannot natively draw high-resolution images on their own, ueberzug / ueberzugpp draws real images directly over or inside terminal windows—commonly used with CLI tools like fzf, lf, ranger, and ytfzf for preview panes."
   }
 }

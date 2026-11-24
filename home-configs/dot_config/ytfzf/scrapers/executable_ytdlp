@@ -1,0 +1,16 @@
+#!/bin/sh
+
+scrape_ytdlp() {
+    search="$1"
+    out_file="$2"
+    [ -z "$search" ] && return 1
+
+    yt-dlp --flat-playlist --dump-json "ytsearch20:${search}" 2>/dev/null | jq -s 'map({
+      ID: .id,
+      title: .title,
+      url: (.webpage_url // ("https://www.youtube.com/watch?v=" + .id)),
+      duration: (.duration_string // ""),
+      channel: (.channel // .uploader // ""),
+      thumbs: (.thumbnails[-1].url // "")
+    })' >"$out_file"
+}

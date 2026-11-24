@@ -3,6 +3,28 @@ fish_add_path --path --move $HOME/.local/share/mise/shims $HOME/.local/bin $HOME
 set -gx BAT_THEME ansi
 set -Ux TIME_STYLE '+%d/%m/%Y %H:%M' #time format for eza and ls mainly
 
+set -gx FZF_DEFAULT_OPTS "
+  --style full
+  --layout=reverse
+  --border=none
+  --input-border=rounded
+  --list-border=rounded
+  --preview-window='right:50%:border-rounded'
+  --input-label=' Search '
+  --list-label=' Results '
+  --preview-label=' Preview '
+  --info=inline-right
+  --prompt='> '
+  --pointer='▌'
+  --marker='✓ '
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Preview: %s \" {}'
+  --bind 'result:transform-list-label:printf \" Results (%s/%s) \" \$FZF_MATCH_COUNT \$FZF_TOTAL_COUNT'
+  --color='bg:-1,bg+:0,fg:-1,fg+:15:bold'
+  --color='hl:1,hl+:9:bold,info:4,prompt:2'
+  --color='pointer:5,marker:2,spinner:4'
+  --color='border:8,input-border:4,list-border:8,preview-border:8'
+  --color='input-label:4:bold,list-label:2:bold,preview-label:5:bold'
+"
 # Set the default fish_greeting to nothing, otherwise it prints "Welcome to fish"
 set -g fish_greeting
 
