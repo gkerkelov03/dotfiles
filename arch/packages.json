@@ -96,9 +96,8 @@
     "jq": "operate on json"
   },
   "dev tools": {
-    "dotnet-sdk": "the dotnet cli tool",
-    "python-pip": "python package manager",
     "luarocks": "lua package manager",
+    "python-pip": "python package manager",
     "posting": "postman TUI"
   },
   "utilities": {
@@ -153,6 +152,11 @@
     "satty": "image preview GUI app, default for xdg-open",
     "xdg-desktop-portal-termfilechooser-hunkyburrito-git": "replaces standard GUI \"Open File\" and \"Save As\" dialogs (in apps like Firefox or Discord) with a terminal file manager like Yazi.",
     "podman": "free, open-source, deamonless docker equivalent",
-    "reflector": "the tool that keeps your mirror list fresh"
+    "reflector": "the tool that keeps your mirror list fresh",
+    "mise": "tool for managing dev environments.",
+    "w3m": "text browser tui",
+    "browsh": "browser tui that is using the firefox engine. It depends on firefox to be installed.",
+    "gcalcli": "google calendar cli",
+    "gum": "beautiful user input and output for cli tools, use it in your scripts instead of echo and read and so on.."
   }
 }

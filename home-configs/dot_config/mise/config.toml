@@ -1,0 +1,7 @@
+[tools]
+node = "latest"
+deno = "latest"
+bun = "latest"
+dotnet = "latest"
+"dotnet:dotnet-ef" = "latest"
+"github:dlvhdr/gh-dash" = "latest"

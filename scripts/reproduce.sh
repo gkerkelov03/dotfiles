@@ -22,12 +22,6 @@ rm -rf ~/.config/*
 chezmoi --source ~/dotfiles init --apply
 bash "./install-caelestia.sh"
 
-#Install the dotnet ef tool
-dotnet tool install --global dotnet-ef
-
-#Install gh dash
-gh extension install dlvhdr/gh-dash
-
 #Install claude code
 curl -fsSL https://claude.ai/install.sh | bash
 

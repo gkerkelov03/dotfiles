@@ -1,5 +1,4 @@
-set -gx DOTNET_ROOT /usr/share/dotnet
-fish_add_path --path --move $HOME/.local/bin $HOME/.dotnet/tools $HOME/dotfiles/scripts
+fish_add_path --path --move $HOME/.local/share/mise/shims $HOME/.local/bin $HOME/.dotnet/tools $HOME/dotfiles/scripts
 
 set -gx BAT_THEME ansi
 set -Ux TIME_STYLE '+%d/%m/%Y %H:%M' #time format for eza and ls mainly
@@ -97,6 +96,10 @@ if status is-interactive
         bind -M insert enter go-back-on-empty-enter-press
     end
 
+    function ask
+        claude -p "$argv"
+    end
+
     function man --description 'tldr page, falling back to man'
         tldr $argv 2>/dev/null; or command man $argv
     end
@@ -107,7 +110,6 @@ if status is-interactive
 
     function copy --description 'copy file contents to clipboard'
         wl-copy <$argv[1]
-        echo done
     end
 
     function auto_ls --on-variable PWD --description 'list directory contents after cd'
