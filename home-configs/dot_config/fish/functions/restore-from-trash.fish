@@ -11,7 +11,7 @@ function restore-from-trash --description 'restore trashed files, picked with te
         set channel trash-root
     end
 
-    set -l picks (tv $channel)
+    set -l picks (tv --ui-scale 100 $channel)
     test (count $picks) -gt 0; or return 1
 
     for pick in $picks
