@@ -2,5 +2,6 @@
 node = "latest"
 deno = "latest"
 bun = "latest"
+go = "latest"
 dotnet = "latest"
 "dotnet:dotnet-ef" = "latest"

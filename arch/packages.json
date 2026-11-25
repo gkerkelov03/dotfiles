@@ -148,7 +148,6 @@
   "unsorted": {
     "kitty": "the most feature rich terminal",
     "cifs-utils": "Provides the mount.cifs helper, which lets you mount SMB/CIFS network shares (Windows shares, Samba, most NASes) with mount -t cifs. It reads the credentials= file, resolves hostnames, and passes the options to the kernel’s cifs module, which does the actual file sharing.",
-    "go": "the go programming language and cli-tool",
     "satty": "image preview GUI app, default for xdg-open",
     "xdg-desktop-portal-termfilechooser-hunkyburrito-git": "replaces standard GUI \"Open File\" and \"Save As\" dialogs (in apps like Firefox or Discord) with a terminal file manager like Yazi.",
     "podman": "free, open-source, deamonless docker equivalent",
@@ -162,7 +161,6 @@
     "fisher": "package manager for the fish shell",
     "yt-dlp": "free, open-source cli for downloading video, audio, subtitles, and metadata from YouTube and over 1,700 other websites.",
     "gh-dash": "a  TUI dashboard for GitHub that lets you monitor, review, and manage pull requests and issues directly from your terminal using Vim-style keybindings and custom YAML search filters.",
-    "ytfzf": "ytfzf is a terminal script that lets you search, browse, and stream or download YouTube (and PeerTube/Odysee) videos using fzf for interactive fuzzy selection, mpv for playback, and yt-dlp for stream extraction and downloading.",
-    "ueberzug": "command-line image overlay tool for Unix/Linux terminal emulators. Because standard terminal text grids cannot natively draw high-resolution images on their own, ueberzug / ueberzugpp draws real images directly over or inside terminal windows—commonly used with CLI tools like fzf, lf, ranger, and ytfzf for preview panes."
+    "ast-grep": "search and replace tool for source code files that is self contained rust binary and uses built-in Abstract Syntax Trees (ASTs) to understand code structure. It is optional backend search-and-replace engine for the grug-far.nvim plugin"
   }
 }

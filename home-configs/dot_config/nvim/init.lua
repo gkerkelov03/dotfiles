@@ -125,3 +125,6 @@ require("lazy").setup({
     },
   },
 })
+
+-- Make normal-mode commands work with the Bulgarian phonetic layout
+require("config.bulgarian").setup()
