@@ -1,105 +1,71 @@
 {
-    "app_config": {
-        "audio_config": {
-            "audio": "pipewire"
-        },
-        "bluetooth_config": {
-            "enabled": true
-        },
-        "fonts_config": {
-            "fonts": [
-                "noto-fonts",
-                "noto-fonts-emoji",
-                "noto-fonts-cjk"
-            ]
-        },
-        "print_service_config": {
-            "enabled": true
-        }
+  "app_config": {
+    "audio_config": {
+      "audio": "pipewire"
     },
-    "archinstall_language": "English",
-    "bootloader_config": {
-        "bootloader": "Grub",
-        "removable": true,
-        "uki": true
+    "bluetooth_config": {
+      "enabled": true
     },
-    "custom_commands": [],
-    "firmware_optdeps": [],
-    "hostname": "arch",
-    "kernels": [
-        "linux"
+    "fonts_config": {
+      "fonts": ["noto-fonts", "noto-fonts-emoji", "noto-fonts-cjk"]
+    },
+    "print_service_config": {
+      "enabled": true
+    }
+  },
+  "archinstall_language": "English",
+  "bootloader_config": {
+    "bootloader": "Grub",
+    "removable": true,
+    "uki": true
+  },
+  "custom_commands": [],
+  "firmware_optdeps": [],
+  "hostname": "arch",
+  "kernels": ["linux"],
+  "locale_config": {
+    "console_font": "default8x16",
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US.UTF-8"
+  },
+  "mirror_config": {
+    "custom_repositories": [],
+    "custom_servers": [
+      {
+        "url": "https://fastly.mirror.pkgbuild.com/$repo/os/$arch"
+      },
+      {
+        "url": "https://geo.mirror.pkgbuild.com/$repo/os/$arch"
+      }
     ],
-    "locale_config": {
-        "console_font": "default8x16",
-        "kb_layout": "us",
-        "sys_enc": "UTF-8",
-        "sys_lang": "en_US.UTF-8"
-    },
-    "mirror_config": {
-        "custom_repositories": [],
-        "custom_servers": [],
-        "mirror_regions": {
-            "Bulgaria": [
-                "http://mirror.telepoint.bg/archlinux/$repo/os/$arch",
-                "https://mirror.telepoint.bg/archlinux/$repo/os/$arch",
-                "http://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
-                "https://mirrors.uni-plovdiv.net/archlinux/$repo/os/$arch",
-                "http://mirror.host.ag/archlinux/$repo/os/$arch"
-            ],
-            "Greece": [
-                "http://ftp.otenet.gr/linux/archlinux/$repo/os/$arch",
-                "http://ftp.cc.uoc.gr/mirrors/linux/archlinux/$repo/os/$arch",
-                "https://repo.greeklug.gr/data/pub/linux/archlinux/$repo/os/$arch"
-            ],
-            "Romania": [
-                "http://archlinux.mirrors.linux.ro/$repo/os/$arch",
-                "http://mirrors.pidginhost.com/arch/$repo/os/$arch",
-                "https://mirrors.pidginhost.com/arch/$repo/os/$arch",
-                "http://mirrors.nxthost.com/archlinux/$repo/os/$arch",
-                "https://mirrors.nxthost.com/archlinux/$repo/os/$arch",
-                "http://mirrors.nav.ro/archlinux/$repo/os/$arch",
-                "http://mirror.efect.ro/archlinux/$repo/os/$arch",
-                "https://mirror.efect.ro/archlinux/$repo/os/$arch",
-                "http://mirrors.chroot.ro/archlinux/$repo/os/$arch",
-                "https://mirrors.chroot.ro/archlinux/$repo/os/$arch",
-                "http://mirrors.hostico.ro/archlinux/$repo/os/$arch",
-                "https://mirrors.hostico.ro/archlinux/$repo/os/$arch",
-                "http://ro.mirror.flokinet.net/archlinux/$repo/os/$arch",
-                "https://ro.mirror.flokinet.net/archlinux/$repo/os/$arch",
-                "http://mirrors.hosterion.ro/archlinux/$repo/os/$arch",
-                "https://mirrors.hosterion.ro/archlinux/$repo/os/$arch"
-            ]
-        },
-        "optional_repositories": [
-            "multilib"
-        ]
-    },
-    "network_config": {
-        "type": "nm"
-    },
-    "ntp": true,
-    "packages": [
-        "git"
-    ],
-    "pacman_config": {
-        "color": true,
-        "parallel_downloads": 5
-    },
-    "profile_config": {
-        "gfx_driver": null,
-        "greeter": null,
-        "profile": {
-            "custom_settings": {},
-            "details": [],
-            "main": "Minimal"
-        }
-    },
-    "script": null,
-    "services": [],
-    "swap": {
-        "algorithm": "zstd",
-        "enabled": true
-    },
-    "timezone": "Europe/Sofia",
-    "version": "4.5"
+    "mirror_regions": {},
+    "optional_repositories": ["multilib"]
+  },
+  "network_config": {
+    "type": "nm"
+  },
+  "ntp": true,
+  "packages": ["git"],
+  "pacman_config": {
+    "color": true,
+    "parallel_downloads": 5
+  },
+  "profile_config": {
+    "gfx_driver": null,
+    "greeter": null,
+    "profile": {
+      "custom_settings": {},
+      "details": [],
+      "main": "Minimal"
+    }
+  },
+  "script": null,
+  "services": [],
+  "swap": {
+    "algorithm": "zstd",
+    "enabled": true
+  },
+  "timezone": "Europe/Sofia",
+  "version": "4.5"
 }

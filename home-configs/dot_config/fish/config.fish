@@ -76,6 +76,7 @@ if status is-interactive
 
     alias cat="bat"
     alias neo="neo-matrix --defaultbg --colormode=16"
+    alias paste="wl-paste"
 
     alias pkg="pkg.cs"
     alias chezmoi-run-scripts="chezmoi apply --include=scripts"
@@ -108,8 +109,12 @@ if status is-interactive
         mkdir -p $argv[1]; and cd $argv[1]
     end
 
-    function copy --description 'copy file contents to clipboard'
-        wl-copy <$argv[1]
+    function copy --description 'copy file contents or stdin to clipboard'
+        if test (count $argv) -gt 0
+            wl-copy <$argv[1]
+        else
+            wl-copy
+        end
     end
 
     function auto_ls --on-variable PWD --description 'list directory contents after cd'

@@ -36,4 +36,7 @@ systemctl --user enable --now podman.socket
 #the libvirt daemon that receives requests from tools like virt-manager and carries them out
 sudo systemctl enable --now libvirtd
 
+#autostart libvirt's default network so that the VMs can get an IP address from the DHCP server that libvirt runs
+sudo virsh net-autostart default
+
 echo "Done"
