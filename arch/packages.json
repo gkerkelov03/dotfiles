@@ -162,6 +162,7 @@
     "yt-dlp": "free, open-source cli for downloading video, audio, subtitles, and metadata from YouTube and over 1,700 other websites.",
     "gh-dash": "a  TUI dashboard for GitHub that lets you monitor, review, and manage pull requests and issues directly from your terminal using Vim-style keybindings and custom YAML search filters.",
     "ast-grep": "search and replace tool for source code files that is self contained rust binary and uses built-in Abstract Syntax Trees (ASTs) to understand code structure. It is optional backend search-and-replace engine for the grug-far.nvim plugin",
-    "archiso": "tool for making arch linux isos. even the official arch iso is made by this tool. The tool has two profiles a baseline profile and a releng one. They are just a starting point for your iso. The releng one is exactly the one that the official arch iso is built from so when you change it and build it you tweak the official arch iso however you want. The releng profile is located at /usr/share/archiso/configs/releng after you install the archiso tool and you just copy it to a folder of your choice and start tweaking it"
+    "archiso": "tool for making arch linux isos. even the official arch iso is made by this tool. The tool has two profiles a baseline profile and a releng one. They are just a starting point for your iso. The releng one is exactly the one that the official arch iso is built from so when you change it and build it you tweak the official arch iso however you want. The releng profile is located at /usr/share/archiso/configs/releng after you install the archiso tool and you just copy it to a folder of your choice and start tweaking it",
+    "iamb": "a tui for matrix servers chatting for vim lovers"
   }
 }
