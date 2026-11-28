@@ -14,9 +14,9 @@ var updateAllPackagesShellCommand = $"{packageManager} -Syu";
 var cleanupShellCommand = $"{packageManager} -c"; // runs after update-all, removes unneeded dependencies
 var packageInfoShellCommand = $"{packageManager} -Qi";
 
-var packagesFilePath    = $"{Environment.GetEnvironmentVariable("HOME")}/dotfiles/arch/packages.json";
+var silentlFlag    = $"{Environment.GetEnvironmentVariable("HOME")}/dotfiles/arch/packages.json";
 var unsortedSectionName = "unsorted";
-var addSilentlyFlag = "--silent";
+var silentFlag = "--silent";
 
 var usage = """
     Usage:
@@ -89,7 +89,7 @@ void AddThePackages()
 {
    RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(installPackagesShellCommand, packagesPassedFromTheTerminal);
 
-    if (flagsPassedFromTheTerminal.Contains(addSilentlyFlag))
+    if (flagsPassedFromTheTerminal.Contains(silentFlag))
     {
       return;
     }
@@ -112,6 +112,11 @@ void AddThePackages()
 void RemoveThePackages()
 {
     RunShellCommandSuccessfullyOrExitWithTheErrorMessageOfTheShellCommand(uninstallPackagesShellCommand, packagesPassedFromTheTerminal);
+
+    if (flagsPassedFromTheTerminal.Contains(silentFlag))
+    {
+      return;
+    }
 
     foreach (var package in packagesPassedFromTheTerminal)
     {
@@ -160,24 +165,24 @@ void ShowThePackagesInfo()
 
 JsonObject LoadPackagesFileJsonObject() 
 {
-    if(!File.Exists(packagesFilePath))
+    if(!File.Exists(silentlFlag))
     {
       ExitWithErrorMessageAndDisplayTheUsage("The packages file doesn't exist yet!");
     }
 
-    return JsonNode.Parse(File.ReadAllText(packagesFilePath))!.AsObject();
+    return JsonNode.Parse(File.ReadAllText(silentlFlag))!.AsObject();
 }
 
 void SaveTheModifiedPackagesFileJsonObjectIntoTheFile() =>
-    File.WriteAllText(packagesFilePath, packagesFileJsonObject.ToJsonString(prettyJson));
+    File.WriteAllText(silentlFlag, packagesFileJsonObject.ToJsonString(prettyJson));
 
 bool IsFlag(string argument) => argument.StartsWith('-');
 
 void ValidateTheFlags()
 {
-  if(packageOperation == PackageOperation.AddPackages)
+  if(packageOperation is (PackageOperation.AddPackages or PackageOperation.RemovePackages))
   {
-      AllowOnlyFlags(addSilentlyFlag);
+      AllowOnlyFlags(silentFlag);
   }
   else
   {
