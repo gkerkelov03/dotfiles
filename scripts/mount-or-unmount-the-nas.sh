@@ -5,7 +5,7 @@ source "$HOME/dotfiles/scripts/read-keepassxc-entry.sh"
 
 NAS_FOULDER_TO_MOUNT="//192.168.1.3/personal_folder"
 MOUNT_POINT="$HOME/nas"
-KEEPASSXC_ENTRY_NAME="nas-personal-account"
+KEEPASSXC_ENTRY_NAME="personal"
 
 #the credentials file that we will fill in with credentials from read_keepassxc_entry
 #it lives only in ram never touches the disk
@@ -16,15 +16,15 @@ CREDS="$XDG_RUNTIME_DIR/nas-creds"
 trap 'rm -f "$CREDS"' EXIT
 
 if findmnt -rn --mountpoint "$MOUNT_POINT" >/dev/null 2>&1; then
-  sudo -v
-  timeout -k 2 5 sudo umount "$MOUNT_POINT" 2>/dev/null || sudo umount -l "$MOUNT_POINT"
-  echo "Unmounted $MOUNT_POINT"
-  exit 0
+    sudo -v
+    timeout -k 2 5 sudo umount "$MOUNT_POINT" 2>/dev/null || sudo umount -l "$MOUNT_POINT"
+    echo "Unmounted $MOUNT_POINT"
+    exit 0
 fi
 
 read_keepassxc_entry "$KEEPASSXC_ENTRY_NAME" NAS_USERNAME NAS_PASSWORD || {
-  echo "Couldn't read entry '$KEEPASSXC_ENTRY_NAME'" >&2
-  exit 1
+    echo "Couldn't read entry '$KEEPASSXC_ENTRY_NAME'" >&2
+    exit 1
 }
 
 #umask makes it so the credentials file is created with mode 600
@@ -36,6 +36,6 @@ umask 077
 printf 'username=%s\npassword=%s\n' "$NAS_USERNAME" "$NAS_PASSWORD" >"$CREDS"
 
 sudo mount -t cifs "$NAS_FOULDER_TO_MOUNT" "$MOUNT_POINT" \
-  -o "credentials=$CREDS,uid=$(id -u),gid=$(id -g),iocharset=utf8,vers=3.1.1"
+    -o "credentials=$CREDS,uid=$(id -u),gid=$(id -g),iocharset=utf8,vers=3.1.1"
 
 echo "Successfully mounted $NAS_FOULDER_TO_MOUNT at $MOUNT_POINT"

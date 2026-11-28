@@ -1,0 +1,13 @@
+[metadata]
+name = "trash-root"
+description = "Browse root's trash (needs a cached sudo password: run sudo -v first)"
+requirements = ["trash-list", "trash-peek"]
+
+[source]
+command = "sudo -n trash-list 2>/dev/null | sort -r"
+display = "{split: :0|split:-:2}/{split: :0|split:-:1}/{split: :0|split:-:0} {split: :1|split:\\::..2} {split: :2..}"
+frecency = false
+
+[preview]
+command = "sudo -n \"/home/gkerkelov03/dotfiles/scripts/trash-peek.py\" '{}'"
+

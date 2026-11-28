@@ -1,0 +1,9 @@
+[metadata]
+name = "paru"
+description = "Search all packages (repos + AUR) available through paru"
+
+[source]
+command = "paru -Slq"
+
+[preview]
+command = "paru -Si '{}'"
