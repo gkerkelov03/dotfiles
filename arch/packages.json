@@ -164,6 +164,9 @@
     "gum": "beautiful user input and output for cli tools, use it in your scripts instead of echo and read and so on..",
     "ast-grep": "search and replace tool for source code files that is self contained rust binary and uses built-in Abstract Syntax Trees (ASTs) to understand code structure. It is optional backend search-and-replace engine for the grug-far.nvim plugin",
     "archiso": "tool for making arch linux isos. even the official arch iso is made by this tool. The tool has two profiles a baseline profile and a releng one. They are just a starting point for your iso. The releng one is exactly the one that the official arch iso is built from so when you change it and build it you tweak the official arch iso however you want. The releng profile is located at /usr/share/archiso/configs/releng after you install the archiso tool and you just copy it to a folder of your choice and start tweaking it",
-    "aerc": "TUI email client. Check your email inbox from the terminal"
+    "aerc": "TUI email client. Check your email inbox from the terminal",
+    "ytm-player-git": "youtube music TUI",
+    "gophertube": "youtube TUI",
+    "gemini-cli": "gemini cli tool"
   }
 }

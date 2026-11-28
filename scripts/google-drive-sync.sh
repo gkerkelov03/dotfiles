@@ -10,7 +10,7 @@ set -euo pipefail
 #
 #  ./google-drive-sync.sh run  used by the systemd service
 
-VAULT_ENTRY="rclone"
+VAULT_ENTRY="accessed-in-scripts/rclone-google-drive"
 
 REMOTE="google-drive"
 REMOTE_PATH="$REMOTE:sync"

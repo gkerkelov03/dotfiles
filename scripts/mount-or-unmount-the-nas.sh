@@ -5,7 +5,7 @@ source "$HOME/dotfiles/scripts/read-keepassxc-entry.sh"
 
 NAS_FOULDER_TO_MOUNT="//192.168.1.3/personal_folder"
 MOUNT_POINT="$HOME/nas"
-KEEPASSXC_ENTRY_NAME="personal"
+KEEPASSXC_ENTRY_NAME="accessed-in-scripts/nas-personal-account "
 
 #the credentials file that we will fill in with credentials from read_keepassxc_entry
 #it lives only in ram never touches the disk

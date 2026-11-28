@@ -1,0 +1,5 @@
+search_limit = 10
+quality = "1080p"
+downloads_path = "/home/$USER/downloads" 
+theme = "Dracula"
+fullscreen = false

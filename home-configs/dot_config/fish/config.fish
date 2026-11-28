@@ -77,6 +77,7 @@ if status is-interactive
     alias cat="bat"
     alias neo="neo-matrix --defaultbg --colormode=16"
     alias paste="wl-paste"
+    alias yt="gophertube"
 
     alias pkg="pkg.cs"
     alias chezmoi-run-scripts="chezmoi apply --include=scripts"
