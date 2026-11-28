@@ -43,11 +43,15 @@
     "mesa-utils": "GPU drivers diagnostics (glxinfo, glxgears, eglinfo)",
     "greetd": "lightweight and the best login manager daemon",
     "astra-airlock": "The greeter for greetd that respects caelestia theme",
-    "xdg-user-dirs": "Tool that manages the default directories in your home folder like Desktop, Documents, Downloads, Music"
+    "xdg-user-dirs": "Tool that manages the default directories in your home folder like Desktop, Documents, Downloads, Music",
+    "xdg-desktop-portal-termfilechooser-hunkyburrito-git": "replaces standard GUI \"Open File\" and \"Save As\" dialogs (in apps like Firefox or Discord) with a terminal file manager like Yazi.",
+    "cifs-utils": "Provides the mount.cifs helper, which lets you mount SMB/CIFS network shares (Windows shares, Samba, most NASes) with mount -t cifs. It reads the credentials= file, resolves hostnames, and passes the options to the kernel’s cifs module, which does the actual file sharing.",
+    "reflector": "the tool that keeps your mirror list fresh"
   },
   "fundamental": {
     "neovim": "text editor TUI, better vim",
     "fish": "goated shell",
+    "fisher": "package manager for the fish shell",
     "firefox": "the most well maintained and stable browser that is customizable enough for us",
     "tmux": "persistent terminal sessions. Everything in your tmux window is owned by a separate process called the tmux server. This process owns your current shell and you are connected to it via the tmux client via a socket file. That assures persistance via ssh for example cuz if your ssh connection drops the remote server is still running the tmux server and everything inside it is still alive and well and you just need to reattach to that session.",
     "television": "modern well structured fuzzy finder",
@@ -55,21 +59,28 @@
     "chezmoi": "the most capable and robust dotfiles manager",
     "yazi": "file manager TUI, better ranger",
     "btop": "system monitor, better htop",
+    "podman": "free, open-source, deamonless docker equivalent",
     "lazydocker": "docker TUI",
     "openssh": "remote access via ssh and everything connected to it like scp, sftp, ssh-agent, sshd and so on...",
+    "claude-code": "the claude code cli tool. AI in the terminal that can see and edit your local files directly",
+    "iamb": "a tui for matrix servers chatting for vim lovers",
+    "kitty": "the most feature rich terminal",
+    "mise": "tool for managing dev environments.",
     "rclone": "sync to google drive"
   },
   "gui apps": {
     "mpv": "media player",
     "keepassxc": "passwords manager",
     "libreoffice-fresh": "word, excel, power point, visio, access and some math formulas",
-    "localsend": "file sending among devices in the LAN. There is mobile app as well"
+    "localsend": "file sending among devices in the LAN. There is mobile app as well",
+    "satty": "image preview GUI app, the default we use for xdg-open"
   },
   "git": {
     "git": "version control system",
     "lazygit": "git TUI",
     "github-cli": "github cli",
     "git-delta": "pager for git diff",
+    "gh-dash": "a  TUI dashboard for GitHub that lets you monitor, review, and manage pull requests and issues directly from your terminal using Vim-style keybindings and custom YAML search filters.",
     "worktrunk": "git worktrees helper"
   },
   "modern cli tools": {
@@ -115,7 +126,8 @@
     "plocate": "the fastest version of the locate command, better locate and mlocate",
     "dosfstools": "file system dyagnostics tools like fsck.fat",
     "trash-cli": "tool that implements the official Trash specification. Provides tools to use with the trash like trash-put, trash-list, trash-restore, trash-empty, trash-rm. There are other tools equivalent to trash-cli that are maybe a little better but trash-cli is very mature and very well maintained in the official arch repos.",
-    "ydotool": "simulate keyboard or mouse input via a cli tool. Wayland native."
+    "ydotool": "simulate keyboard or mouse input via a cli tool. Wayland native and mainly used in scripts.",
+    "yt-dlp": "free, open-source cli for downloading video, audio, subtitles, and metadata from YouTube and over 1,700 other websites."
   },
   "yazi": {
     "imagemagick": "image previews for less common image formats like avif. It is used in the yazi default config and suggested by the docs to be installed",
@@ -146,23 +158,11 @@
     "libfido2": "fido2-token and the related FIDO2 tools"
   },
   "unsorted": {
-    "kitty": "the most feature rich terminal",
-    "cifs-utils": "Provides the mount.cifs helper, which lets you mount SMB/CIFS network shares (Windows shares, Samba, most NASes) with mount -t cifs. It reads the credentials= file, resolves hostnames, and passes the options to the kernel’s cifs module, which does the actual file sharing.",
-    "satty": "image preview GUI app, default for xdg-open",
-    "xdg-desktop-portal-termfilechooser-hunkyburrito-git": "replaces standard GUI \"Open File\" and \"Save As\" dialogs (in apps like Firefox or Discord) with a terminal file manager like Yazi.",
-    "podman": "free, open-source, deamonless docker equivalent",
-    "reflector": "the tool that keeps your mirror list fresh",
-    "mise": "tool for managing dev environments.",
     "w3m": "text browser tui",
     "browsh": "browser tui that is using the firefox engine. It depends on firefox to be installed.",
     "gcalcli": "google calendar cli",
     "gum": "beautiful user input and output for cli tools, use it in your scripts instead of echo and read and so on..",
-    "claude-code": "claude code cli tool. AI in the terminal that can see and edit your local files directly",
-    "fisher": "package manager for the fish shell",
-    "yt-dlp": "free, open-source cli for downloading video, audio, subtitles, and metadata from YouTube and over 1,700 other websites.",
-    "gh-dash": "a  TUI dashboard for GitHub that lets you monitor, review, and manage pull requests and issues directly from your terminal using Vim-style keybindings and custom YAML search filters.",
     "ast-grep": "search and replace tool for source code files that is self contained rust binary and uses built-in Abstract Syntax Trees (ASTs) to understand code structure. It is optional backend search-and-replace engine for the grug-far.nvim plugin",
-    "archiso": "tool for making arch linux isos. even the official arch iso is made by this tool. The tool has two profiles a baseline profile and a releng one. They are just a starting point for your iso. The releng one is exactly the one that the official arch iso is built from so when you change it and build it you tweak the official arch iso however you want. The releng profile is located at /usr/share/archiso/configs/releng after you install the archiso tool and you just copy it to a folder of your choice and start tweaking it",
-    "iamb": "a tui for matrix servers chatting for vim lovers"
+    "archiso": "tool for making arch linux isos. even the official arch iso is made by this tool. The tool has two profiles a baseline profile and a releng one. They are just a starting point for your iso. The releng one is exactly the one that the official arch iso is built from so when you change it and build it you tweak the official arch iso however you want. The releng profile is located at /usr/share/archiso/configs/releng after you install the archiso tool and you just copy it to a folder of your choice and start tweaking it"
   }
 }
